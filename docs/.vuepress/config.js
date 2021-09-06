@@ -5,7 +5,7 @@ module.exports = {
   // base: "/docs/",
   title: 'Script',
   // description: '记录个人的学习笔记和各种工具',
-  // dest: './dist',
+  dest: './dist',
   head: [
     ['link', { rel: 'icon', href: '/icon.png' }],
     ['link', { rel: 'stylesheet', href: '/style/index.css' }],
