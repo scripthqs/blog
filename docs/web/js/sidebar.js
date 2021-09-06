@@ -1,0 +1,67 @@
+module.exports = [
+{
+  title: 'JavaScript基础',
+  collapsable: true,
+  children: [
+    '/web/js/js1/jsa01',
+    '/web/js/js1/jsa02',
+    '/web/js/js1/jsa03',
+    '/web/js/js1/jsa04',
+    '/web/js/js1/jsa05',
+    '/web/js/js1/jsa06',
+    '/web/js/js1/jsa07',
+    '/web/js/js1/jsa08',
+    '/web/js/js1/jsa09',
+    '/web/js/js1/jsa10',
+    '/web/js/js1/jsa11',
+    '/web/js/js1/jsa12',
+    '/web/js/js1/jsa13',
+    '/web/js/js1/jsa14',
+    '/web/js/js1/jsa15',
+    '/web/js/js1/jsa16',
+    '/web/js/js1/jsa17',
+    '/web/js/js1/jsa18',
+    '/web/js/js1/jsa19',
+    '/web/js/js1/jsa20',
+    '/web/js/js1/jsa21',
+  ]
+},{
+  title: 'JavaScript高级',
+  collapsable: true,
+  children: [
+    '/web/js/js2/jsb01',
+    '/web/js/js2/jsb02',
+    '/web/js/js2/jsb03',
+    '/web/js/js2/jsb04',
+    '/web/js/js2/jsb05',
+    '/web/js/js2/jsb06',
+    '/web/js/js2/jsb07',
+    '/web/js/js2/jsb08',
+    '/web/js/js2/jsb09',
+  ]
+},{
+  title: 'ECMAScript 6',
+  collapsable: true,
+  children: [
+    '/web/js/js3/jsc01',
+    '/web/js/js3/jsc02',
+    '/web/js/js3/jsc03',
+    '/web/js/js3/jsc04',
+    '/web/js/js3/jsc05',
+    '/web/js/js3/jsc06',
+    '/web/js/js3/jsc07',
+    '/web/js/js3/jsc08',
+    '/web/js/js3/jsc09',
+    '/web/js/js3/jsc10',
+    '/web/js/js3/jsc11',
+    '/web/js/js3/jsc12',
+    '/web/js/js3/jsc13',
+    '/web/js/js3/jsc14',
+    '/web/js/js3/jsc15',
+    '/web/js/js3/jsc16',
+    '/web/js/js3/jsc17',
+    '/web/js/js3/jsc18',
+    '/web/js/js3/jsc19',
+  ]
+}
+]
