@@ -32,8 +32,13 @@ module.exports = {
     sidebarDepth: 2,
     lastUpdated: '更新时间',
     searchMaxSuggestoins: 10,
-    repo: 'vuejs/vuepress',
-    repoLabel: '查看源码'
+    docsRepo: 'Scripthqs/scripthqs.github.io',
+    // 假如文档不是放在仓库的根目录下：
+    docsDir: 'docs',
+    // 假如文档放在一个特定的分支下：
+    docsBranch: 'master',
+    editLinks: true,
+    editLinkText: '在 GitHub 上编辑此页 ！'
   },
   plugins: pluginsConfig
 }
