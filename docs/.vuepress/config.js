@@ -31,7 +31,9 @@ module.exports = {
     collapsable: true,
     sidebarDepth: 2,
     lastUpdated: '更新时间',
-    searchMaxSuggestoins: 10
+    searchMaxSuggestoins: 10,
+    repo: 'vuejs/vuepress',
+    repoLabel: '查看源码'
   },
   plugins: pluginsConfig
 }
