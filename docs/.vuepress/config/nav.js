@@ -30,8 +30,8 @@ module.exports = [
     text: '实用工具',
     items: [
       { text: 'Git', link: '/tools/git/' },
-      { text: '内网穿透', link: '/tools/nat/' },
       { text: 'Webpack', link: '/tools/webpack/01webpack' },
+      { text: '内网穿透', link: '/tools/nat/' },
     ]
   },
   {

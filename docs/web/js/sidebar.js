@@ -38,6 +38,7 @@ module.exports = [
     '/web/js/js2/jsb07',
     '/web/js/js2/jsb08',
     '/web/js/js2/jsb09',
+    '/web/js/js2/jsb10',
   ]
 },{
   title: 'ECMAScript 6',

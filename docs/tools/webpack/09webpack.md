@@ -19,7 +19,7 @@
 
 __dirname表示当前文件的完整路径，在node的全局对象中
 
-```
+```js
 const path = require('path');//引入node的路径模块
 // 此时存在__dirname，返回当前文件所在的绝对路径
 const path1 = path.join(__dirname, '/foo');
@@ -37,7 +37,7 @@ foo/bar/baz
 
 path.resolve:方法会把一个路径或路径片段的序列解析为一个**绝对路径**
 
-```
+```js
 const path = require('path');
 
 const path1 = path.resolve('/a/b', '/c/d');
@@ -50,7 +50,7 @@ const path4 = path.resolve('a', 'b');
 // 输出： /Users/xiao/work/test/a/b
 ```
 
-- **esolve把`／`当成根目录**
+- **resolve把`／`当成根目录**
 
 - resolve操作相当于进行了一系列的cd操作，
 - 但是和cd不一样，resolve()方法不会利用底层的文件系统判断路径是否存在，而只是进行路径字符串操作
@@ -59,7 +59,7 @@ const path4 = path.resolve('a', 'b');
 
 1、join是把各个path片段连接在一起， resolve把‘／’当成根目录
 
-```
+```js
 path.join('/a', '/b'); 
 // /a/b
 path.resolve('/a', '/b');
