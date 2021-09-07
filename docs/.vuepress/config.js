@@ -2,6 +2,11 @@ const navConfig = require('./config/nav')
 const sidebarConfig = require('./config/sidebar')
 const pluginsConfig = require('./config/plugins')
 module.exports = {
+  locales: {
+    '/': {
+      lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
+    }
+  },
   // base: "/docs/",
   title: 'Script',
   // description: '记录个人的学习笔记和各种工具',
