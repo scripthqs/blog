@@ -9,7 +9,6 @@ module.exports = [
     'css4',
     'css5',
     'css6',
-    'css6',
     'css7',
     'css8',
     'css9',
