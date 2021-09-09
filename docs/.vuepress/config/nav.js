@@ -22,7 +22,7 @@ module.exports = [
   {
     text: '框架学习',
     items: [
-      { text: 'Vue', link: '/framework/vue/' },
+      { text: 'Vue', link: '/framework/vue/01vue' },
       { text: '组件', link: '/framework/ui/' },
     ]
   },
