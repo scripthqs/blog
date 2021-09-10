@@ -4,6 +4,8 @@
 
 <a href="http://scripthqs.gitee.io/vuemall/#/home">项目预览</a><OutboundLink/>
 
+<a href="http://scripthqs.gitee.io/vantmall">使用vant-ui组件库重构的版本</a><OutboundLink/>
+
 <a href="https://github.com/Scripthqs/vuemall">源码链接</a><OutboundLink/>
 
 ## 移动端电商类项目开发

@@ -62,7 +62,6 @@ module.exports = [
     '/web/js/js3/jsc16',
     '/web/js/js3/jsc17',
     '/web/js/js3/jsc18',
-    '/web/js/js3/jsc19',
   ]
 }
 ]

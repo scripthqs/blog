@@ -8,12 +8,12 @@
 
 ```css
 @keyframes 动画名称 {
-	from{
-		width: 100px;
-	}
-	to{
-		width: 200px;
-	}
+ from{
+  width: 100px;
+ }
+ to{
+  width: 200px;
+ }
 }
 ```
 
@@ -22,8 +22,8 @@
 2. 再使用动画
 
 ```css
-	animation: name duration timing-function delay iteration-count direction fill-mode;
-	animation: 动画名称 10s;/*name和duration不能省略*/
+ animation: name duration timing-function delay iteration-count direction fill-mode;
+ animation: 动画名称 10s;/*name和duration不能省略*/
 ```
 
 ## 2、animation-name
@@ -55,8 +55,8 @@
 规定动画应该播放的次数。正整数或者无限次
 
 ```css
-	animation-iteration-count: 2;/*2次，默认值是1*/	
-	animation-iteration-count: infinite;/*循环播放*/
+ animation-iteration-count: 2;/*2次，默认值是1*/ 
+ animation-iteration-count: infinite;/*循环播放*/
 ```
 
 ## 6、animation-direction
@@ -64,8 +64,8 @@
 规定是否应该轮流反向播放动画。
 
 ```css
-	animation-direction: normal;/*默认值。正常播放。*/
-	animation-direction: alternate;/*轮流反向播放*/
+ animation-direction: normal;/*默认值。正常播放。*/
+ animation-direction: alternate;/*轮流反向播放*/
 ```
 
 ## 7、animation-play-state
@@ -93,6 +93,5 @@ animation简写属性
 
 ```
 animation: 名称 时间 曲线 何时开始 播放次数 反方向 起始或结束位置;
-	animation: 动画名称 10s;/*name和duration不能省略*/
+ animation: 动画名称 10s;/*name和duration不能省略*/
 ```
-
