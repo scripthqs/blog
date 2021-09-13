@@ -98,7 +98,13 @@ created () {
 
  用于全局事件监听（可以跨很多组件）
 
-  1.在Vue的原型上添加一个$bus的属性让其等于一个新的Vue实例  Vue.prototype.$bus = new Vue()
+  1.在Vue的原型上添加一个$bus的属性让其等于一个新的Vue实例  
+
+```js
+Vue.prototype.$bus = new Vue()
+//或者
+Vue.prototype.$bus = this
+```
 
   2.发射全局监听事件，例如 this.$bus.$emit("itemImageLoad") 和常规$emit一样这个也可以传递参数
 
@@ -107,5 +113,7 @@ created () {
 ```
 // 这里的$bus是事件总线，用于设置全局的发送事件与监听，也可以用Vuex来处理
 Vue.prototype.$bus = new Vue()
+//或者
+Vue.prototype.$bus = this
 ```
 

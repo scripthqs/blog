@@ -11,7 +11,7 @@ less是一门css预处理语言，less是css增强版，通过less可以编写�
 变量时指没有固定的值，可以改变的。因为css中的一些颜色和数值经常使用。
 
 ```css
-	@变量: 值;
+ @变量: 值;
 ```
 
 - 必须有@为前缀
@@ -19,26 +19,15 @@ less是一门css预处理语言，less是css增强版，通过less可以编写�
 - 不能以数字开头
 - 大小写敏感
 
-
-
-
-
-
-
-
-
-
-
-
-
 - 原生css支持设置变量，语法`--*`：
   - `--color:red`
 - 后面通过var引用，语法`var(--*)`
   - `var(--color)`
--  原生css支持计算，计算函数：
-  - `calc()`
+- 原生css支持计算，计算函数：
+- `calc()`
 
 less中添加了许多的新特性，语法大体和css一致，但是less增添了许多css的扩展，浏览器不能直接执行less代码，要执行必须将less转化css，再由浏览器执行。在 `vscode`下载`Easy LESS`插件。
+
 - 创建`style.less`的文件，文件名必须是`.less`
 - 保存时插件会自动生成一个`.css`文件
 - //是less的单行注释，/**/多行注释
@@ -56,7 +45,8 @@ less中添加了许多的新特性，语法大体和css一致，但是less增添
 - `darken(red,20%)`可以加深颜色
 - less中可以直接将所有数值直接运算`+ - * /`，less除法时需要用括号括起来。
 - `@import "其他less路径"`可以将其他的less引入到当前的less中。
--    `.map`
+- `.map`
+
 ````less
       "less.compile": {
         "compress": false, // true => remove surplus whitespace
@@ -65,8 +55,10 @@ less中添加了许多的新特性，语法大体和css一致，但是less增添
     }
 ````
 
-### minxi混合函数
+## minxi混合函数
+
 在混合函数中可以直接设置变量
+
 ````less
 .test(@w,@h){
     width:@w;
@@ -76,7 +68,9 @@ div{
     .test(200px,100px);
 }
 ````
+
 调用混合函数，按照顺序传递参数。可以直接把名字写好，此时就不用按顺序。
+
 ````less
 .test(@w,@h){
     width:@w;
@@ -86,7 +80,9 @@ div{
     .test(@w:200px,@h:100px);
 }
 ````
+
 定义值，定义几个必须传几个参数，可以在定义时直接指定默认值。
+
 ````less
 .test(@w:200px,@h:100px){
     width:@w;

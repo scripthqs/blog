@@ -20,15 +20,22 @@ module.exports = [
       '15vue',
       '16vue',
       'proxy',
-
-
+      'mixin',
+      'vuecss',
     ]
   },
   {
     title: 'Vue-Router',
     collapsable: true,
     children: [
-      '17vue',
+      'vueRouter',
+    ]
+  },
+  {
+    title: 'Vuex',
+    collapsable: true,
+    children: [
+      'vuex',
     ]
   }
 ]
