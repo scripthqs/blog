@@ -44,13 +44,13 @@ vue create vuemall
 
    在app.vue文件中引入时，需要在style标签里面引入
 
-   ```
+   ```bash
    @import "@/assets/css/base.css";
    ```
 
    在main.js文件中引入
 
-   ```
+   ```bash
    import '@/assets/css/base.css';
    ```
 
@@ -60,7 +60,7 @@ vue create vuemall
 
 - 在vue.config.js中配置别名
 
-  ```
+  ```js
   module.exports = {
       configureWebpack: {
         resolve: {
@@ -204,13 +204,13 @@ export function request(config) {
        proxy: {
          '/api': {
            target: 'http://152.136.185.210:7878/api/m5',
-     		pathRewrite:{'^/api':''},//重写api，将地址栏路径中的api用''替代
+       pathRewrite:{'^/api':''},//重写api，将地址栏路径中的api用''替代
            ws: true, //用于支持websocket
            changeOrigin: true //用于控制请求头中的host值
          },
          '/demo': {
            target: 'http://localhost:5001',
-     		pathRewrite:{'^/demo':''},
+       pathRewrite:{'^/demo':''},
          }
        }
    }
@@ -261,7 +261,7 @@ export function request(config) {
 
 1 在组件中使用**自定义属性props**
 
-```
+```js
 export default {
   name: "RecommendView",
   props: {
@@ -285,23 +285,23 @@ export default {
 
 ```js
     //在methods中写网络请求的方法
-	getHmMultidata () {
+ getHmMultidata () {
       getHomeMultidata().then((res) => {
         this.banners = res.data.banner.list
         this.recommends = res.data.recommend.list
       })
     },
-	//也可以使用async和await简化promise
-	async getHmMultidata () {
+ //也可以使用async和await简化promise
+ async getHmMultidata () {
       const { data: res } = await getHomeMultidata()
       this.banners = res.banner.list
       this.recommends = res.recommend.list
     },
      
     //在created()中，调用网络请求的方法
-	created () {
-    	this.getHmMultidata()
-  	},   
+ created () {
+     this.getHmMultidata()
+   },   
 ```
 
 ### 5.5 Tab 标签页封装
@@ -320,7 +320,7 @@ export default {
 
 2 在组件中使用**自定义属性props**
 
-```
+```js
  props: {
     titles: {
       type: Array,
@@ -364,7 +364,7 @@ export default {
 
 6 切换不同的标签，请求不同的数据
 
-```
+```js
 tabClick (index) {
       switch (index) {
         case 0:
@@ -382,7 +382,7 @@ tabClick (index) {
 
 7 根据不同的type，请求不同的数据
 
-```
+```js
 getHmGoods (type) {//定义变量，请求，不同的数据
       const page = this.goods[type].page + 1
       getHomeGoods(type, page).then((res) => {
@@ -425,7 +425,7 @@ loadMore () {
 
 1 安装better-scroll插件
 
-```
+```bash
 npm install @better-scroll/core --save
 npm install @better-scroll/pull-up --save
 npm install @better-scroll/observe-image --save
@@ -433,7 +433,7 @@ npm install @better-scroll/observe-image --save
 
 2 当content 的高度>父容器wrapper的高度，才能滚动的，当有图片异步请求时，很容易出问题。
 
-```
+```js
   observeDOM: true
   
   updated() {
@@ -450,9 +450,4 @@ npm install @better-scroll/observe-image --save
 disableTouch: false 
 ```
 
-## 3 
-
-
-
-
-
+## 3
