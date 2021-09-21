@@ -120,7 +120,7 @@ vue create vuemall
 
 ## 2 首页的开发
 
-### 5.1.navbar导航栏封装
+### 2.1  navbar导航栏封装
 
 导航栏的封装一般比较简单
 
@@ -134,7 +134,7 @@ vue create vuemall
 </template>
 ```
 
-### 5.2.网络的请求的封装
+### 2.2 网络的请求的封装
 
 1. 在src/network文件夹中，基于axios框架封装request.js
 
@@ -216,7 +216,7 @@ export function request(config) {
    }
    ```
 
-### 5.3 swiper轮播图封装
+### 2.3 swiper轮播图封装
 
 1. 先写对应的结构
 
@@ -255,7 +255,7 @@ export function request(config) {
    </template>
    ```
 
-### 5.4 推荐信息封装
+### 2.4 推荐信息封装
 
 封装RecommendView.vue和FeatureView.vue文件，重点：
 
@@ -304,7 +304,7 @@ export default {
    },   
 ```
 
-### 5.5 Tab 标签页封装
+### 2.5 Tab 标签页封装
 
 1 写出对应的结构
 
@@ -421,7 +421,7 @@ loadMore () {
 * goodsItem 取出数据, 并且使用正确的div/span/img基本标签进行展示
 ```
 
-### 5.6 better-scroll滚动封装
+### 2.6 better-scroll滚动封装
 
 1 安装better-scroll插件
 
@@ -450,4 +450,562 @@ npm install @better-scroll/observe-image --save
 disableTouch: false 
 ```
 
-## 3
+### 2.7 BackTop回到顶部
+
+1  BackTop的封装
+
+```vue
+<template>
+  <div class="back-top">
+    <img src="~assets/img/common/top.png" alt="" />
+  </div>
+</template>
+```
+
+结构比较简单，主要是逻辑的书写。
+
+在Home.vue中使用BackTop组件
+
+```vue
+<back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
+```
+
+> @click.native可以监听组件根元素的点击 
+
+**监听组件的点击：**
+
+* 组件的点击加上修饰符.native
+* 回到顶部的点击事件功能实现
+
+```js
+   backClick () {
+      // 获取滚动的高度
+      let top = document.documentElement.scrollTop || document.body.scrollTop
+      // 实现滚动效果
+      const timeTop = setInterval(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = top -= 100
+        if (top <= 0) {
+          clearInterval(timeTop)
+        }
+      }, 10)
+    },
+```
+
+BackTop组件的**显示和隐藏** 
+
+- 监听滚动, 拿到滚动的位置
+
+```js
+data(){
+  return {
+    isShowBackTop: false
+  }
+}
+mounted () {
+	window.addEventListener('scroll', this.scrollToTop, true)
+},
+destroyed () {
+	window.removeEventListener('scroll', this.scrollToTop, true)
+},
+methods:{
+    scrollToTop () {
+      const top = document.documentElement.scrollTop || document.body.scrollTop
+      if (top >= 700) {
+        this.isShowBackTop = true
+      } else {
+        this.isShowBackTop = false
+      }
+    },
+}
+  
+```
+
+### 2.8 上拉加载更多的问题
+
+1 设计数据结构
+
+```js
+    currentType: 'pop',
+	goods: {
+        pop: { page: 0, list: [] },
+        new: { page: 0, list: [] },
+        sell: { page: 0, list: [] }
+      },
+```
+
+2 点击切换tab栏切换currentType
+
+```js
+    tabClick (index, title) {
+      switch (index) {
+        case 0:
+          this.currentType = 'pop'
+          break
+        case 1:
+          this.currentType = 'new'
+          break
+        case 2:
+          this.currentType = 'sell'
+          break
+      }
+    },
+```
+
+3 更新数据 
+
+```js
+    onLoad () {
+      // 异步更新数据
+      this.getHmGoods(this.currentType)
+    },
+```
+
+4  商品数据的网络请求
+
+```js
+    getHmGoods (type) {
+      const page = this.goods[type].page + 1
+      getHomeGoods(type, page).then((res) => {
+        this.goods[type].list.push(...res.data.list)
+        this.goods[type].page += 1
+      })
+    },
+```
+
+### 2.9 让Home保持原来的状态
+
+从home跳到了cetegroy，再返回home后又重新加载home
+
+让Home不要随意销毁掉，使用、
+
+```vue
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+```
+
+### 2.10 使用防抖，优化监听
+
+当屏幕滚动时，调用获取屏幕高度的函数调用非常频繁，使用防抖优化
+
+```js
+/**
+ * 防抖
+ * 说明：定义一个 const 常量保存本函数的返回值（返回值也是一个函数），并多次调用该返回值函数即可
+ * @param {*} func 需要执行的函数，必填
+ * @param {*} delay 防抖的延时，默认 100 毫秒
+ * @returns 供使用的防抖函数，可为需要执行的函数添加可变参数项，使用...定义
+ */
+export function debounce (func, delay = 100) {
+  // 初始化一个计时器，用于判断上一次调用的计时器是否已经计时结束
+  let times = null
+
+  // 返回函数形成闭包，使得 times 变量能够重复引用不被销毁
+  return function (...args) {
+    // 下次调用时如果存在上次的计时，则清空上次的计时并重置计时
+    if (times) clearTimeout(times)
+    // 设置延时执行函数，以期待下次调用在本次延时未结束时重新进入此处
+    times = setTimeout(() => {
+      // 延时结束时最终执行传入的函数
+      func.apply(this, args)
+    }, delay)
+  }
+}
+```
+
+## 3 详情页的开发
+
+### 3.1 根据商品ID配置路由
+
+配置详情页的路由采用动态路由的方式
+
+```js
+{ path: '/detail/:iid', name: 'Detail', component: Detail }
+```
+
+根据点击商品的id，获取对应的商品信息
+
+```js
+created () {
+    // 保存传入的iid数据
+    this.iid = this.$route.params.iid
+    // 发送网络请求请求详情页数据
+    getDetail(this.iid).then((res) => {
+      console.log(res)
+      const data = res.result
+      // 顶部图片轮播数据
+      this.topImages = data.itemInfo.topImages
+      console.log(this.topImages)
+      // 取出并整合需要使用的数据
+      this.goods = new Goods(
+        data.itemInfo,
+        data.columns,
+        data.shopInfo.services
+      )
+      // 取出并整合店家信息
+      this.shop = new Shop(data.shopInfo)
+      // 图片详情相关信息
+      this.detailInfo = data.detailInfo
+      // detailParam相关信息整合
+      this.paramInfo = new GoodsParam(
+        data.itemParams.info,
+        data.itemParams.rule
+      )
+      // 取出评论信息
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0]
+      }
+      this.itemInfo = data.itemInfo
+    })
+    getRecommend().then((res) => {
+      this.recommend = res.data.list
+    })
+  },
+```
+
+### 3.2 详情页导航栏
+
+### 3.3 轮播图
+
+### 3.4 商品信息
+
+### 3.5 商家信息
+
+### 3.6 商品细节
+
+### 3.7 评论信息 
+
+使用过滤器，将获取到的时间戳转换成对应的时间
+
+```js
+filters: {
+    showDate: function (value) {
+      const date = new Date(value * 1000)
+      return formatDate(date, 'yyyy-MM-dd')
+    }
+  }
+```
+
+格式化时间的工具函数
+
+```js
+export function formatDate (date, fmt) {
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+  }
+  const o = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds()
+  }
+  for (const k in o) {
+    if (new RegExp(`(${k})`).test(fmt)) {
+      const str = o[k] + ''
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str))
+    }
+  }
+  return fmt
+}
+function padLeftZero (str) {
+  return ('00' + str).substr(str.length)
+}
+```
+
+### 3.8 参数信息
+
+### 3.9 推荐商品
+
+主要是网络请求的封装，取出并整合需要使用的数据
+
+### 3.10 标题和内容的联动效果
+
+1 监听标题点击，滚动到对应的模块
+
+```js
+onClick (name, title) {
+      console.log(name, title)
+      // const currentScroll = Math.ceil(document.documentElement.scrollTop)
+      // this.active = name
+      // console.log(document.querySelector('#推荐').offsetTop - 46)
+      switch (title) {
+        case '商品':
+          document.documentElement.scrollTop = 0
+          break
+        case '评价':
+          document.documentElement.scrollTop = document.querySelector('#评价').offsetTop - 46
+          break
+        case '参数':
+          document.documentElement.scrollTop = document.querySelector('#参数').offsetTop - 46
+          break
+        case '推荐':
+          document.documentElement.scrollTop = document.querySelector('#推荐').offsetTop - 46
+          break
+      }
+    },
+```
+
+2 滚动模块，改变为显示正确的标题
+
+```js
+  mounted () {
+    window.addEventListener('scroll', this.scrollToTop)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.scrollToTop)
+  },
+  methods: {
+  scrollToTop () {
+      const top = document.documentElement.scrollTop || document.body.scrollTop
+      // console.log(2)
+      if (top >= 700) {
+        this.isShowBackTop = true
+      } else {
+        this.isShowBackTop = false
+      }
+      if (top < document.querySelector('#评价').offsetTop - 46) {
+        this.active = 0
+      } else if (top < document.querySelector('#参数').offsetTop - 46) {
+        this.active = 1
+      } else if (top < document.querySelector('#推荐').offsetTop - 47) {
+        this.active = 2
+      } else {
+        this.active = 3
+      }
+    }
+  }
+      
+```
+
+### 3.11 底部工具栏的封装
+
+重点，点击加入购物车
+
+1 将购物车所需页面的的信息进行整理，network/cart.js
+
+```js
+export class CartGoods {
+  constructor (itemInfo) {
+    this.desc = itemInfo.desc
+    this.title = itemInfo.title
+    this.iid = itemInfo.iid
+    this.imgURL = itemInfo.topImages[0]
+    this.newPrice = itemInfo.lowNowPrice
+  }
+}
+```
+
+传入参数，得到商品信息
+
+```
+addToCart () {
+      const product = new CartGoods(this.itemInfo)
+      // this.$store.dispatch("addCart", product);
+      // 由于通过mapActions将store中的方法映射了过来，因此可以直接调用改方法
+      //  这是普通方法使用toast，若想要看以插件形式封装的toast使用，看Cart中相关的
+      this.addCart(product).then((res) => {
+        this.toastMessage = res
+        this.$toast.show(res, 1000)
+      })
+    },
+```
+
+### 3.12 toast插件的封装
+
+```js
+show(message, duration) {
+      this.isShow = true;
+      this.message = message;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.isShow = false;
+        this.message = "";
+      }, duration);
+    },
+    
+.toast {
+  position: fixed;
+  z-index: 99999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+```
+
+插件的封装
+
+```js
+// 这是关于toast插件的封装
+
+import Toast from "./Toast"
+const obj = {}
+
+export default obj
+
+
+// 在main.js安装插件时，会自动调用该插件的install函数，并自动传入Vue对象
+obj.install = function (Vue) {
+  // 1.创建组件构造器
+  const toastContrustor = Vue.extend(Toast);
+  // 2.根据组件构造器，可以创建出一个组件对象
+  const toast = new toastContrustor();
+  // 3.将组件对象，手动挂载到某一元素上
+  toast.$mount(document.createElement('div'));
+  // 4.toast.$el对应的就是div
+  document.body.appendChild(toast.$el);
+
+  // 在Vue原型中定义$toast，方便直接采用$toast使用
+  Vue.prototype.$toast = toast;
+}
+```
+
+## 4 购物车页面的开发
+
+### 4.1 使用Vuex管理购物车的商品
+
+1. 安装、配置Vuex
+
+2. 定义state，存放购物车状态相关的信息
+
+   ```js
+   const state = {
+     cartList: []
+   }
+   ```
+
+3. 定义actions,actions中进行异步方法的处理，或者进行复杂的逻辑判断
+
+   ```js
+   addCart (context, payload) {
+       return new Promise((resolve, reject) => {
+         let flag = false
+         for (let i = 0; i < context.state.cartList.length; i++) {
+           if (context.state.cartList[i].iid === payload.iid) {
+             flag = true
+             context.commit('addCounter', i)
+             resolve('已存在商品，数量+1')
+             break
+           }
+         }
+         if (!flag) {
+           context.commit('addGoods', payload)
+           resolve('添加至购物车成功！')
+         }
+       })
+     },
+   ```
+
+4. 定义mutations，将商品添加到state，cartList，相当于我们vue里面的methods，定义各种方法
+
+   ```js
+    // 存在的商品，已有数量+1
+   addCounter (state, payload) {
+       state.cartList[payload].count++
+     },
+   
+     // 不存在的商品，商品+1
+     addGoods (state, payload) {
+       payload.count = 1
+       payload.checked = true
+       state.cartList.push(payload)
+     },
+   ```
+
+5. 定义getters，其实就是相当于vue里面的计算属性，将 state中的数据进行计算处理
+
+   ```js
+   cartLength (state) {
+       return state.cartList.length
+     },
+     // 购物车商品列表
+     cartList (state) {
+       return state.cartList
+     },
+   ```
+
+### 4.2 删除商品
+
+```js
+  //  actions.js
+  deleteCart (context, payload) {
+    return new Promise((resolve, reject) => {
+      context.commit('deleteCart', payload)
+      resolve('已移除该商品！')
+    })
+  },
+    //  motations.js
+  deleteCart (state, payload) {
+    var arrRemoveJson = function (arr, attr, value) {
+      if (!arr || arr.length === 0) {
+        return ''
+      }
+      const newArr = arr.filter(function (item) {
+        return item[attr] !== value
+      })
+      return newArr
+    }
+    state.cartList = arrRemoveJson(state.cartList, 'iid', payload)
+  },
+```
+
+### 4.3 全选按钮
+
+```js
+  //  actions.js
+allCheckClick (context) {
+    context.commit('changeAllChecked')
+ }
+  //  motations.js
+    changeAllChecked (state) {
+    if (state.cartList.length !== 0) {
+      if (state.cartList.find(item => !item.checked)) {
+        for (const item of state.cartList) { item.checked = true }
+      } else {
+        for (const item of state.cartList) { item.checked = false }
+      }
+    }
+  }
+```
+
+### 4.4 计算总价格
+
+- 计算选中的数量
+
+```js
+// getters.js
+  cartChecked (state) {
+    return state.cartList.filter(item => item.checked)
+  },
+```
+
+- 计算选中的价格
+
+```js
+// getters.js
+  // 已选的购物车商品总额
+  cartTotal (state) {
+    // console.log(cartChecked)
+    return state.cartList.filter((item) => {
+      return item.checked
+    }).reduce((preValue, item) => {
+      return preValue + item.newPrice * item.count
+    }, 0)
+  }
+```
+
+## 5 分类页面的开发
+
+### 5.1 导航栏的开发
+
+
+
+## 7 项目的打包优化和发布
+
+### 1 移除console的信息
+

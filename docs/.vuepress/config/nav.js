@@ -47,6 +47,7 @@ module.exports = [
     items: [
       { text: 'MDN', link: 'https://developer.mozilla.org/zh-CN/' },
       { text: 'Vue', link: 'https://v3.cn.vuejs.org/' },
+      { text: 'Vant', link: 'https://youzan.github.io/vant/#/zh-CN/' },
       { text: 'Element-UI', link: 'https://element.eleme.cn/#/zh-CN' },
       { text: 'VuePress', link: 'https://vuepress.vuejs.org/zh/' },
     ]

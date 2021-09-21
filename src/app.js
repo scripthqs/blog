@@ -54,31 +54,31 @@ new Vue({
         loading3: false,
         message: 'hello',
         selectedTabs: 'sport',
-        selectedTab: ['2','1']
+        selectedTab: ['2', '1']
     },
 
-    created() {
+    created () {
     },
 
     methods: {
-        showToast1() {
+        showToast1 () {
             this.showToast('top')
         },
-        showToast2() {
+        showToast2 () {
             this.showToast('middle')
         },
-        showToast3() {
+        showToast3 () {
             this.showToast('bottom')
         },
-        showToast(position) {
-            this.$toast('<strong>您的智商需要充值了</strong>', {
+        showToast (position) {
+            this.$toast('<strong>春眠不觉晓</strong>', {
                 enableHtml: true,
                 position,
                 closeButton: {
-                    text: '已充值',
-                    callback(toast) {
+                    text: '春晓',
+                    callback (toast) {
                         toast.log()
-                        console.log('用户说他充值智商了');
+                        console.log('夜来风雨声')
                     }
                 },
                 autoClose: 8,

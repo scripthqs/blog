@@ -160,6 +160,10 @@ export default new Vuex.Store({
 $store.getters.bigSum
 ```
 
+### 4.5 modules方法
+
+modules，模块化，因为是单一状态树，如果在state里面写的东西太多，就不好进行查找，那我们可以在我们的modules里面重新定义一个模块，就是相当于一个store，里面也有我们所需要的五个属性，所进行的操作也是一样的。
+
 ## 5 四个map方法的使用
 
 ```js
