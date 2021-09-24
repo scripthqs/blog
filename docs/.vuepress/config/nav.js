@@ -23,7 +23,6 @@ module.exports = [
     text: '框架学习',
     items: [
       { text: 'Vue', link: '/framework/vue/01vue' },
-      { text: '组件', link: '/framework/ui/' },
     ]
   },
   {
@@ -40,6 +39,7 @@ module.exports = [
       { text: '购物街', link: '/project/vuemall/' },
       { text: '后台管理系统', link: '/project/vuecms/' },
       { text: 'F-UI', link: '/project/fui/button' },
+      { text: '自定义工具函数库', link: '/project/utils/chapter1/01_intro' },
     ]
   },
   {

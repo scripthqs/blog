@@ -4,9 +4,9 @@
 
 <a href="http://scripthqs.gitee.io/vuemall/#/home">项目预览</a><OutboundLink/>
 
-<a href="http://scripthqs.gitee.io/vantmall">使用vant-ui组件库重构的版本</a><OutboundLink/>
-
 <a href="https://github.com/Scripthqs/vuemall">源码链接</a><OutboundLink/>
+
+<a href="http://scripthqs.gitee.io/vantmall">使用vant-ui组件库重构的版本</a><OutboundLink/>
 
 ## 1 准备
 
@@ -1003,9 +1003,11 @@ allCheckClick (context) {
 
 ### 5.1 导航栏的开发
 
+### 5.2 侧边栏的开发
 
+### 5.3 商品分类的开发
 
-## 7 项目的打包优化和发布
+## 6 项目的打包优化和发布
 
-### 1 移除console的信息
+### 6.1 移除console的信息
 
