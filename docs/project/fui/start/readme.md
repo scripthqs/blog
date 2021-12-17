@@ -10,10 +10,11 @@
 
 2.引用
 
-- app.js全局引入fliUi(推荐)
-```
+- index.js全局引入f-Ui(推荐)
+
+```vue
 import {Button,ButtonGroup,Row,Col,Header,Footer,Content,Sider,Layout,Icon,Input,Toast,plugin,Tabs,TabsHead,TabsBody,TabsItem,Collapse,CollapseItem,Popover} from 'fli-ui'
-import 'flight-ui/dist/index.css'
+import 'hqs-ui/dist/index.css'
 
 Vue.component('f-button', Button)
 Vue.component('f-icon', Icon)
@@ -37,11 +38,13 @@ Vue.component('f-collapse', Collapse)
 Vue.component('f-collapse-item', CollapseItem)
 
 ```
+
 - 模块化引用
 
 在使用的组件里引用,下面以 Button 为例
-```
-import {Button} from 'fli-ui'
+
+```vue
+import {Button} from 'hqs-ui'
     export default {
         components: {
             'f-button': Button,
@@ -56,10 +59,10 @@ import {Button} from 'fli-ui'
 
 通过如下步骤可以直接运行项目：
 
-    1.git clone git@github.com:yinlong22/flight-UI.git
+    1.git clone https://github.com/Scripthqs/hqs-ui.git
     2.npm install
     3.npm run start
-运行入口为src/app.js文件，该文件中是各个组件的使用代码，可以在此引用全部组件，自由修改测试
+运行入口为src/index.js文件，该文件中是各个组件的使用代码，可以在此引用全部组件，自由修改测试
 
 ### 启动
 
@@ -68,7 +71,7 @@ import {Button} from 'fli-ui'
 ### 构建
 
     npm run docs:build
-    
+
 ## 打包
 
     npm run build

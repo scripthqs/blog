@@ -103,7 +103,7 @@ align-content属性设置侧轴上的子元素的排列方式（多行），必�
     align-content: center;/*侧轴居中*/
     align-content: space-around;/*子项在侧轴平分剩余空间*/
     align-content: space-between;/*侧轴贴边，再侧轴平分剩余空间*/
-    align-content: space-evenl;/*平分侧轴空间*/
+    align-content: space-evenly;/*平分侧轴空间*/
 ```
 
 ### 3.6、flex-flow

@@ -1,4 +1,4 @@
-# html问题
+# HTML问题
 
 ## 1、Doctype 的作用
 
@@ -18,7 +18,7 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 - 能够便于开发者阅读和写出更优雅的代码。
 - 同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容。
-- 更好地搜索引擎优化（SEO)。
+- 更好地搜索引擎优化（SEO）。
 
 ## 4、浏览器内核
 
@@ -40,9 +40,9 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 ## 6、Web存储
 
- 在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有4kb左右，解析也非常复杂。
+在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有4kb左右，解析也非常复杂。
 
-1. Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。
+1. Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据（通常是一段**加密的字符串**），并且默认情况下，只会在同源的HTTP请求中携带。（同源：同域名、同端口、同协议）
 
 2. 浏览器需要保存这段数据，不得轻易删除。
 
@@ -50,19 +50,21 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 Cookie 一般有两个作用:
 
-1. 识别用户身份
-2. 记录历史
+1. **识别用户身份**
+2. **记录历史**
 
 **H5有两种存储方式：**
 
 1. `window.sessionStorage`：会话存储
+   - 浏览器**本地存储**的一种方式，以**键值对**的形式的进行存储
    - 保存在内存中
-   - 生命周期为关闭浏览器窗口，窗口关闭时浏览器销毁
+   - 生命周期为关闭浏览器窗口，**窗口关闭时浏览器销毁**
    - 在同一个窗口下数据可以共享
 
 2. `window.localStorage`：本地存储
+   - 浏览器**本地存储**的一种方式，以**键值对**的形式的进行存储
    - 有可能保存在浏览器内存里，也可能在硬盘中
-   - 永久生效除非手动删除
+   - **永久生效除非手动删除**
    - 可以多串口共享
 
 Web存储的特性：
@@ -71,9 +73,27 @@ Web存储的特性：
 2. 容量较大，`sessionStorage`约5M，`localStorage`约20M
 3. 只能存储字符串，可以将对象JSON.stringfy()编码后存储
 
+**cookie、sessionStorage、localStorage的区别**
+
+cookie是浏览器访问服务器后，服务器返回的一段数据，通常是一段加密的字符串，并且只会在同源HTTP请求中携带，作用是识别用户的身份和记录历史，sessionStorage是浏览器本地存储的一种方式，以键值对的形式进行存储，存储的数据会在浏览器窗口关闭后销毁，localStorage也是浏览器本地存储的一种方式，以键值对的形式进行存储，不过它的数据一般都会一直存在，除非手动删除。
+
 ## 7、浏览器内多个标签页之间的通信
 
-- 使用 `localStorage`: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`
+- 使用 `localStorage`: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`，一个窗口更新localStorage，另一个窗口监听window对象的'storage'事件，来实现通信
+
+```js
+// 本窗口的设值代码
+localStorage.setItem('aaa', (Math.random()*10).toString())
+
+// 其他窗口监听storage事件
+window.addEventListener("storage", function (e) {
+  console.log(e)
+  console.log(e.newValue)
+})
+```
+
+**注：两个页面要同源（URL的协议、域名和端口相同）**
+
 - `websocket`协议
 - `webworker`
 
@@ -81,10 +101,9 @@ Web存储的特性：
 
 `src` 用于替代这个元素，而 `href` 用于建立这个标签与外部资源之间的关系
 
-```
+```js
 <link href="style.css" rel="stylesheet" />
 <a href=""></a>
-
 ```
 
 浏览器加载到这里的时候，`html` 的渲染和解析不会暂停，`css` 文件的加载是同时进行的
@@ -111,4 +130,3 @@ Web存储的特性：
 defer 和 async属性都是去**异步加载外部的JS**脚本文件，它们都不会阻塞页面的解析，区别：
 
 - 多个带async属性的标签，不能保证加载的顺序；多个带defer属性的标签，按照加载顺序执行；
-

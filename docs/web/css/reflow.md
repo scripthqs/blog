@@ -48,8 +48,10 @@
 
 ## 4 display: none和visibility:hidden
 
-- display:none，该元素不占据任何空间，在文档渲染时，该元素如同不存在。
-- visibility:hidden，该元素空间依旧存在。
+共同点：都可以让元素变得不可见
+
+- display:none，该元素不占据任何空间，在文档渲染时，该元素如同不存在。非继承属性。
+- visibility:hidden，该元素空间依旧存在。继承属性，子孙节点继承hidden，可以设置visible来显示。
 
 - display:none，会触发reflow（回流），所以必然repaint（重绘）进行渲染
 - visibility:hidden，只会触发repaint（重绘），因为没有发生位置变化，不进行渲染。

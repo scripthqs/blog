@@ -38,7 +38,7 @@ module.exports = [
     items: [
       { text: '购物街', link: '/project/vuemall/' },
       { text: '后台管理系统', link: '/project/vuecms/' },
-      { text: 'F-UI', link: '/project/fui/button' },
+      { text: '自定义组件库', link: '/project/fui/button' },
       { text: '自定义工具函数库', link: '/project/utils/chapter1/01_intro' },
     ]
   },

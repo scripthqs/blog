@@ -1,6 +1,7 @@
 # 安装
 
 安装fliUi
-```
-npm i --save fli-ui
+
+```shell
+npm i --save hqs-ui
 ```

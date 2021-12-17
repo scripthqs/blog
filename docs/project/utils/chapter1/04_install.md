@@ -3,15 +3,15 @@
 ## 4.1.下载工具包
 
 ```shell
-npm install a-utils2
+npm install hqs-utils
 ```
 
 ## 4.2.网页中引入并使用
 
 ```html
-<script src="./node_modules/a-utils2/dist/hqs-utils.js"></script>
+<script src="./node_modules/hqs-utils/dist/hqs-utils.js"></script>
 <script>
-  aUtils.test()
+  utils.test()
 </script>
 ```
 
@@ -19,10 +19,10 @@ npm install a-utils2
 
 ```js
 // 使用ESM引入
-import {test} from 'a-utils2'
+import {test} from 'hqs-utils'
 test()
 
 // 使用commonjs引入
-const {test} = require('a-utils2')
+const {test} = require('hqs-utils)
 test()
 ```
