@@ -119,3 +119,17 @@ BFC是块级格式化环境，当元素开启BFC后，该区域会变成一个�
 ### 包含块是离它最近那个开启定位的祖先元素，没有就是HTML根元素
 
 固定定位是特殊的绝对定位，参照物是浏览器视口。粘滞定位是特殊的相对定位，参照物是浏览器视口。开启定位的元素可以是z-index来设置层级。
+
+## css画三角形
+
+主要是利用盒模型的border属性来设置的
+
+```css
+div {
+  width: 0;
+  height: 0;
+  border: 50px solid red;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+```
