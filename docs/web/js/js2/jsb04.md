@@ -9,16 +9,16 @@
 - **使用new操作符来调用构造函数，并返回对象实例**
 
 ```js
-	//构造函数和普通函数的创建方式一样，为了区分，首字母大写
-	function Person(){
+ //构造函数和普通函数的创建方式一样，为了区分，首字母大写
+ function Person(){
     //使用this对象，来指向将要生成的对象实例。
         this.name = 'Tom';
      }
-	//构造函数需要使用new关键字调用，此时确定Person是构造函数
+ //构造函数需要使用new关键字调用，此时确定Person是构造函数
      var per = new Person();
-	//创建的对象称该构造函数的实例
+ //创建的对象称该构造函数的实例
      console.log(per.name);    //'Tom'
-	//per是Person类的实例,所以this指向per
+ //per是Person类的实例,所以this指向per
      console.log(this.name);    //'Tom'
 ```
 
@@ -26,9 +26,9 @@
 
 - 每一个**构造函数**都有一个**prototype**属性，这个属性就是对象实例的**原型对象**。
 
-```
-	Person.prototype是new Person的原型对象
-	console.log(Person.prototype)
+```js
+ Person.prototype是new Person的原型对象
+ console.log(Person.prototype)
 ```
 
 - 原型对象中有一个属性constructor，指向构造函数
@@ -55,13 +55,13 @@
 每一个**构造函数**都有一个**prototype**属性，称为显式原型属性。
 
 ```js
-	console.log(Person.prototype)
+ console.log(Person.prototype)
 ```
 
 每一个**实例对象**都有一个`__proto__`属性，称为隐式原型属性。
 
-```
-	console.log(per.__proto__)
+```js
+ console.log(per.__proto__)
 ```
 
 构造函数的显式原型的值 **===** 实例对象的隐式原型的值
@@ -81,26 +81,26 @@
 
 创建Person函数时，
 
-```
-	function Person(){
-		//相当于内部执行语句：this.prototype = {}
-	}
+```js
+ function Person(){
+  //相当于内部执行语句：this.prototype = {}
+ }
 ```
 
 调用构造函数时，
 
 ```js
-	var per = new Person()
-	相当于内部语句：this.__proto__ = Person.prototype
+ var per = new Person()
+ 相当于内部语句：this.__proto__ = Person.prototype
 ```
 
 所以
 
 ```js
-	Person.prototype === per.__proto__
+ Person.prototype === per.__proto__
 ```
 
-![显示原型和隐式原型](D:\user\Desktop\scripthqs\note\material\js\显示原型和隐式原型.png)
+![显示原型和隐式原型](https://gitee.com/scripthqs/assets/raw/master/js/%E6%98%BE%E7%A4%BA%E5%8E%9F%E5%9E%8B%E5%92%8C%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png)
 
 ## 4.原型链
 
@@ -114,7 +114,7 @@
 
 所以**原型链是隐式原型链**，作用：查找对象属性（方法）
 
-<img src="D:\user\Desktop\scripthqs\note\material\js\原型链.png" alt="原型链" style="zoom:80%;" />
+<img src="https://gitee.com/scripthqs/assets/raw/master/js/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt="原型链" style="zoom:80%;" />
 
 1. **构造函数的显示原型的值===实例对象的隐式原型的值**
 
@@ -126,38 +126,38 @@
 2. 所有**原型对象和实例对象**都是**Object**的实例(**除Object的原型对象外，它是指向null**)
 
 ```js
-	Function.prototype.__proto__ === o1.__proto__ === f1.__proto__.__proto__ === Object.prototype
-	Function.prototype.__proto__ === Object.prototype
-	Foo.prototype.__proto__ === Object.prototype//所有原型对象都是Object的实例对象
-	Object.prototype.__proto__  === null//Object函数的原型对象是原型链的尽头
+ Function.prototype.__proto__ === o1.__proto__ === f1.__proto__.__proto__ === Object.prototype
+ Function.prototype.__proto__ === Object.prototype
+ Foo.prototype.__proto__ === Object.prototype//所有原型对象都是Object的实例对象
+ Object.prototype.__proto__  === null//Object函数的原型对象是原型链的尽头
 ```
 
 3. **所有的函数都是Function的实例**
 
-```
-	c.prototype === Function.__proto__//Function是new Function()产生的
-    Function.prototype === Object.__proto__//Object也是new Function()产生的
-    Function.prototype === Foo.__proto__//所有函数都是Function的实例对象
-    Function.__proto__ ===  Object.__proto__ === Foo.__proto__ //所有函数的隐式原型的值都相等
-    Function的实例对象和原型对象是同一个
+```js
+  Function.prototype === Function.__proto__//Function是new Function()产生的
+  Function.prototype === Object.__proto__//Object也是new Function()产生的
+  Function.prototype === Foo.__proto__//所有函数都是Function的实例对象
+  Function.__proto__ ===  Object.__proto__ === Foo.__proto__ //所有函数的隐式原型的值都相等
+Function的实例对象和原型对象是同一个
 ```
 
 4. **所有原型对象都有一个constructor属性，指向函数对象。**
 
 ```js
-	Function.prototype.constructor = Function
-	Object.prototype.constructor = Object
-	Foo.prototype.constructor = Foo
+ Function.prototype.constructor = Function
+ Object.prototype.constructor = Object
+ Foo.prototype.constructor = Foo
 ```
 
 - 由图可知，只要在Object原型对象添加方法，所有的构造函数和实例对象都能够访问。
 
 ```js
-    	 function Person() {
+      function Person() {
             this.name = 'Tom';
         }
         var per = new Person();   
-		Object.prototype.hqs = function(){
+  Object.prototype.hqs = function(){
             console.log('原型链真简单');
         }
         per.hqs()
@@ -219,8 +219,8 @@ Object.getPrototypeOf(object)
 ```js
     p1.constructor == Person;  // true，沿着原型链的
     p2.constructor == Person;  // true，实例对象上本身没有
-	P1.__proto__.constructor === Person
-	Person.prototype.constructor = Person
+ P1.__proto__.constructor === Person
+ Person.prototype.constructor = Person
 ```
 
 **constructor记录该对象引用了哪个构造函数**
@@ -229,13 +229,13 @@ Object.getPrototypeOf(object)
 
 ```js
     //将原型对象赋值为一个对象，则需要手动设置constructor
-	Person.prototype = {
+ Person.prototype = {
         constructor: Person,//使用constructor属性指回原来的构造函数
         fun1: function () {
-        	console.log('fun1');
+         console.log('fun1');
         },
         fun2: function () {
-        	console.log('fun2');
+         console.log('fun2');
         }
     }
     console.log(Person.prototype.constructor);//Person
@@ -282,7 +282,7 @@ Object.getPrototypeOf(object)
     console.log(a.call({}));//[object Object]
     console.log(a.call(undefined));//[object Undefined]
     console.log(a.call(null));//[object Null]
-  	console.log(a.call(/\d/));//[object RegExp]
+   console.log(a.call(/\d/));//[object RegExp]
 ```
 
 RegExp、Array、function等**类型作为Object的实例，都重写了toString方法**
@@ -301,4 +301,3 @@ function iterate(obj){
    return res;
 } 
 ```
-
