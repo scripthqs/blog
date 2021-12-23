@@ -1,6 +1,6 @@
-#  ref 引用
+# ref 引用
 
-ref 用来辅助开发者在**不依赖于 jQuery 的情况下**，获取 DOM 元素或组件的引用。 
+ref 用来辅助开发者在**不依赖于 jQuery 的情况下**，获取 DOM 元素或组件的引用。
 
 每个 vue 的组件实例上，都包含一个 **$refs 对象**，里面存储着对应的 DOM 元素或组件的引用。默认情况下， **组件的 $refs 指向一个空对象**
 
@@ -8,7 +8,7 @@ ref 用来辅助开发者在**不依赖于 jQuery 的情况下**，获取 DOM �
 
 使用 ref 引用 DOM 元素
 
-```
+```js
 <h1 ref="aaa">App根组件</h1>
 <button @click="showThis">打印</button>
 methods: {
@@ -32,7 +32,32 @@ methods: {
     }
 ```
 
-## 3 this.$nextTick(cb) 
+## 3 使用ref/$refs属性实现组件通信
+
+ref属性用在子组件上，它的引用就指向子组件的实例。可以通过实例访问组件的数据和方法。
+
+```vue
+// 子组件
+data(){
+  return {
+    message: 'hello'
+  }
+},
+methods:{
+  fun(){
+    console.log('world')
+  }
+}
+
+// 父组件
+<Son ref='child'></Son>
+mounted(){
+  console.log(this.$refs.child.message)//hello
+  this.$refs.child.fun()//world
+}
+```
+
+## 4 this.$nextTick(cb)
 
 通过布尔值 inputVisible 来控制组件中的文本框与按钮的按需切换
 
@@ -46,4 +71,3 @@ this.$nextTick(() => {
     this.$refs.inputRef.focus()
 })
 ```
-

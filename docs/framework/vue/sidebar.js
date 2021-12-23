@@ -18,16 +18,17 @@ module.exports = [
       '13vue',
       '14vue',
       '15vue',
-      '16vue',
       'vue_proxy',
       'vue_mixin',
       'vue_css',
+      'v_total',
     ]
   },
   {
     title: 'Vue-Router',
     collapsable: true,
     children: [
+      'vue_r',
       'vueRouter',
     ]
   },

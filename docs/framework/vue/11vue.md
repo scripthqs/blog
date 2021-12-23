@@ -16,16 +16,16 @@
 
 ## 3 父子组件数据传递
 
-父组件向子组件共享数据使用**自定义属性**。
+父组件向子组件共享数据使用**自定义属性props**。
 
-```
+```js
   //父组件
   <Son :msg="message"></Son>
-	data(){
-	  return {
-	    message: 'hello vue'
-	  }
-	}
+ data(){
+   return {
+     message: 'hello vue'
+   }
+ }
   //子组件
   props: ['msg']
 ```
@@ -34,7 +34,7 @@
 
 用**`:`**才能把'hello vue'传递给子组件
 
-子组件向父组件共享数据使用**自定义事件**
+子组件向父组件共享数据使用**自定义事件$emit**
 
 ```js
   //子组件
@@ -72,9 +72,9 @@ EventBus 的使用步骤：
 
 1. 创建 **eventBus.js** 模块，并向外共享一个 **Vue 的实例对象**
 2. 在数据**发送方**，调用 **bus.$emit('事件名称', 要发送的数据)** 方法触发自定义事件
-3. 在数据接收方，调用 **bus.$on('事件名称', 事件处理函数)** 方法注册一个自定义事件
+3. 在数据**接收方**，调用 **bus.$on('事件名称', 事件处理函数)** 方法注册一个自定义事件
 
-```
+```js
 //eventBus.js
 import Vue from 'vue'
 export default new Vue()
@@ -110,10 +110,9 @@ Vue.prototype.$bus = this
 
   3.监听全局事件，例如 this.$bus.$on("itemImageLoad", () => {})
 
-```
+```js
 // 这里的$bus是事件总线，用于设置全局的发送事件与监听，也可以用Vuex来处理
 Vue.prototype.$bus = new Vue()
 //或者
 Vue.prototype.$bus = this
 ```
-
