@@ -122,6 +122,22 @@ inject:['msg']
 
 当数据比较复杂时，可以使用vuex，将一些公共的数据抽离出来，作为全局变量进行管理，其他组件可以对这个公共数据进行读写操作。
 
+### 8.离线存储
+
+可以使用浏览器的离线存储机制
+
+```vue
+//组件a
+created(){
+  localStorage.setItem('data','a数据')
+}
+
+//组件b
+created(){
+  console.log(localStorage.getItem('data'))
+}
+```
+
 ## Vue的生命周期
 
 ### Vue的生命周期函数
@@ -167,4 +183,20 @@ activated(){
 
 ## Vue其他问题
 
-### $nextTick的原理和作用
+### v-if和v-show
+
+v-if和v-show都可以控制元素的显示和隐藏。
+
+- v-if是真正的条件渲染，在显示隐藏过程中有DOM的添加和删除
+- v-show只是切换css，相当于设置display属性
+
+如何需要非常频繁的切换，可以考虑使用v-show
+
+### $nextTick的作用
+
+`$nextTick`将回调函数推迟到下一次DOM更新后执行，在created生命周期函数中，需要进行DOM操作，就一定要放在nextTick函数中。
+
+### computed和watch
+
+- computed是计算属性，依赖于其他属性计算而来的，有缓存机制
+- watch是监听其他属性的变化，支持异步，不支持缓存

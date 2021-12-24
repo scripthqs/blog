@@ -75,8 +75,7 @@ State 提供**唯一**的**公共**数据源，所有共享的数据都要统一
 
 ```js
  const store = new Vuex.Store({
- state: { sum
-         、: 0 }
+ state: { sum: 0 }
  })
 ```
 
@@ -142,15 +141,15 @@ this.$store.getters.xxx
 
 ```js
 const getters = {
-	bigSum(state){
-		return state.sum * 10
-	}
+ bigSum(state){
+  return state.sum * 10
+ }
 }
 
 //创建并暴露store
 export default new Vuex.Store({
-	......
-	getters
+ ......
+ getters
 })
 ```
 
@@ -297,4 +296,3 @@ this.$store.commit('personAbout/ADD_PERSON',person)
 //方式二：借助mapMutations：
 ...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
 ```
-

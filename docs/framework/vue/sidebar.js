@@ -30,6 +30,7 @@ module.exports = [
     children: [
       'vue_r',
       'vueRouter',
+      'vuer_total'
     ]
   },
   {

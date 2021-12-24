@@ -4,7 +4,7 @@
 
 vue-router 是vue.js官方**插件**，是 vue.js 官方给出的**路由解决方案**。它只能结合 vue 项目进行使用，能够轻松的管理 SPA 项目 中组件的切换。
 
-vue-router 的官方文档地址：https://router.vuejs.org/zh
+vue-router 的官方文档地址：<https://router.vuejs.org/zh>
 
 ## 2 vue-router 安装和配置
 
@@ -47,7 +47,7 @@ new Vue({
 
 ### 2.4 声明**路由链接**和**占位符**
 
-在 **src/App.vue 组件**中，使用 vue-router 提供的**` <router-link>`**和  **`<router-view>`**声明路由链接和占位符
+在 **src/App.vue 组件**中，使用 vue-router 提供的**`<router-link>`**和  **`<router-view>`**声明路由链接和占位符
 
 ```vue
 <router-link to="/">Home</router-link> |
@@ -65,7 +65,7 @@ import About from '../views/About.vue'
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'Home',component: Home},
-  	{ path: '/about', name: 'About',component: About}
+   { path: '/about', name: 'About',component: About}
   ]
 })
 ```
@@ -87,9 +87,9 @@ const Home =  () => import('../views/About.vue')
 ```js
 const router = new VueRouter({
   routes: [
-  	{ path: '/'.redirect: '/home'}
+   { path: '/'.redirect: '/home'}
     { path: '/home', name: 'Home',component: Home},
-  	{ path: '/about', name: 'About',component: About}
+   { path: '/about', name: 'About',component: About}
   ]
 })
 ```
@@ -174,7 +174,7 @@ const router = new VueRouter({
 
 在Movie组件中，希望根据id的值拿到对于的电影的详细信息
 
-##  6 $route.params 参数对象
+## 6 $route.params 参数对象
 
 在**动态路由**渲染出来的组件中，可以使用 **this.$route.params** 对象访问到**动态匹配的参数值**。
 
@@ -188,8 +188,8 @@ const router = new VueRouter({
 $route.params.id
 ```
 
-- $route时路由的**参数对象**
-- $router时路由的**导航对象**
+- $route是路由的**参数对象**
+- $router是路由的**导航对象**
 
 ## 7  使用 props 接收路由参数
 
@@ -273,7 +273,7 @@ const router = new VueRouter({
 
 router.beforeEach(fn)
 router.beforeEach((to,from,next) =>{
-	
+ 
 })
 ```
 
@@ -300,24 +300,23 @@ router.beforeEach((to, from, next) => {
 next 函数的 **3 种调用方式**:
 
 - 当前用户**拥有**后台主页的访问权限，直接放行
-- next() 当前用户**没有**后台主页的访问权限，**强制其跳转到登录页面**：`next('/login')` 
+- next() 当前用户**没有**后台主页的访问权限，**强制其跳转到登录页面**：`next('/login')`
 - 当前用户**没有**后台主页的访问权限，**不允许跳转到后台主页**：`next(false`)
 
 控制后台主页的访问权限:
 
 ```
 router.beforeEach((to, from, next) => {
-	if(to.path==='/main'){
-		const token = localStorage.getItem('token')
-		if(token){
-			next();
-		}else{
-			next('/login')		
-		}
-	}else{
-		next()
-	}
+ if(to.path==='/main'){
+  const token = localStorage.getItem('token')
+  if(token){
+   next();
+  }else{
+   next('/login')  
+  }
+ }else{
+  next()
+ }
 
 })
 ```
-
