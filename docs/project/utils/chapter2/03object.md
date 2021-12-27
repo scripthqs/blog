@@ -1,13 +1,12 @@
 # 3. 对象相关
 
 ## 3.1.相关API
+
 - newInstance()
 - myInstanceOf()
 - mergeObject()
 - clone1() / clone2()
 - deepClone1() / deepClone2() / deepClone3() / deepClone4()
-
-
 
 ## 3.2.自定义new
 
@@ -70,8 +69,6 @@ export function newInstance(Fn, ...args) {
 </html>
 ```
 
-
-
 ## 3.3.自定义instanceof
 
 ### 3.3.1. API 相关
@@ -129,15 +126,13 @@ export function myInstanceOf(obj, Type) {
 </html>
 ```
 
-
-
 ## 3.4.合并多个对象
 
 ### 3.4.1.API 相关
 
 - 语法: object mergeObject(...objs)
 - 功能: 合并多个对象, 返回一个合并后对象(不改变原对象)
-- 例子: 
+- 例子:
   - { a: [{ x: 2 }, { y: 4 }], b: 1}
   - { a: { z: 3}, b: [2, 3], c: 'foo'}
   - 合并后: { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], c: 'foo' }
@@ -183,8 +178,6 @@ export function mergeObject(...objs) {
 </body>
 </html>
 ```
-
-
 
 ## 3.5. 对象/数组拷贝
 
@@ -238,41 +231,24 @@ export function clone2(target) {
 }
 ```
 
-
-
 ### 3.5.3.实现深拷贝
 
-- 实现一: 大众乞丐版
-  - 问题1: 函数属性会丢失
+- 实现一: JSON.parse/JSON.stringify
+  - 问题1: 不能克隆方法，函数属性会丢失
   - 问题2: 循环引用会出错
-- 实现二: 面试基础版
+- 实现二: 递归循环
   - 解决问题1: 函数属性还没丢失
-- 实现三: 面试加强版本
+- 实现三: 递归，借用map解决循环引用
   - 解决问题2: 循环引用正常
-- 实现四: 面试加强版本2(优化遍历性能)
-  - 数组: while | for | forEach() 优于 for-in | keys()&forEach() 
+- 实现四: 优化遍历性能
+  - 数组: while | for | forEach() 优于 for-in | keys()&forEach()
   - 对象: for-in 与 keys()&forEach() 差不多
 
 - 编码实现: `src/object/deepClone.js`
 
 ```js
 /* 
-深度克隆
-1). 大众乞丐版
-    问题1: 函数属性会丢失
-    问题2: 循环引用会出错
-2). 面试基础版本
-    解决问题1: 函数属性还没丢失
-3). 面试加强版本
-    解决问题2: 循环引用正常
-4). 面试加强版本2(优化遍历性能)
-    数组: while | for | forEach() 优于 for-in | keys()&forEach() 
-    对象: for-in 与 keys()&forEach() 差不多
-*/
-/* 
-1). 大众乞丐版
-  问题1: 函数属性会丢失
-  问题2: 循环引用会出错
+1). JSON.parse/JSON.stringify
 */
 export function deepClone1(target) {
   return JSON.parse(JSON.stringify(target))
@@ -286,7 +262,7 @@ function getType(data) {
 }
 
 /*
-2). 面试基础版本
+2). 递归循环
   解决问题1: 函数属性还没丢失
 */
 export function deepClone2(target) {
@@ -306,7 +282,7 @@ export function deepClone2(target) {
 }
 
 /* 
-3). 面试加强版本
+3). 递归，借用map解决循环引用
   解决问题2: 循环引用正常
 */
 export function deepClone3(target, map = new Map()) {
@@ -330,7 +306,8 @@ export function deepClone3(target, map = new Map()) {
 }
 
 /* 
-4). 面试加强版本2(优化遍历性能)
+4). 优化遍历性能、
+
     数组: while | for | forEach() 优于 for-in | keys()&forEach() 
     对象: for-in 与 keys()&forEach() 差不多
 */
@@ -428,4 +405,3 @@ export function deepClone4(target, map = new Map()) {
 </body>
 </html>
 ```
-

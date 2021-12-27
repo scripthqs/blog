@@ -14,8 +14,6 @@
   - 语法: bind(fn, obj, ...args)
   - 功能: 给fn绑定this为obj, 并指定参数为后面的n个参数 (功能等同于函数对象的bind方法)
 
-
-
 ### 1.1.2.实现说明
 
 - 区别call()/apply()/bind()
@@ -34,8 +32,6 @@
   - 在新函数内部通过原函数对象的call方法来执行原函数
   - 指定原函数的this为obj
   - 指定参数为bind调用的参数和后面新函数调用的参数
-
-
 
 ### 1.1.3.编码实现
 
@@ -166,8 +162,6 @@ export function bind(fn, obj, ...args) {
 
 ```
 
-
-
 ## 1.2. 函数节流与函数防抖
 
 ### 1.2.1. 相关理解
@@ -182,26 +176,24 @@ export function bind(fn, obj, ...args) {
   - 函数防抖
 - 函数节流(throttle)
 
-  - 理解: 
+  - 理解:
     - 在函数需要频繁触发时: 函数执行一次后，只有大于设定的执行周期后才会执行第二次
     - 适合多次事件按时间做平均分配触发
-  - 场景：    
+  - 场景：
     - 窗口调整（resize）
     - 页面滚动（scroll）
     - DOM 元素的拖拽功能实现（mousemove）
     - 抢购疯狂点击（click）
 - 函数防抖(debounce)
 
-  - 理解:    
-    - 在函数需要频繁触发时: 在规定时间内，只让最后一次生效，前面的不生效。    
+  - 理解:
+    - 在函数需要频繁触发时: 在规定时间内，只让最后一次生效，前面的不生效。
     - 适合多次事件一次响应的情况
   - 场景:
     - 输入框实时搜索联想（keyup/input）
 - 区别函数节流与防抖
 
 ![02_函数防抖与节流](../images/throttle_debounce.jpg)
-
-
 
 ### 1.2.2.API说明
 
@@ -210,9 +202,7 @@ export function bind(fn, obj, ...args) {
   - 功能: 创建一个节流函数，在 wait 毫秒内最多执行 `callback` 一次
 - debounce()  防抖
   - 语法: debounce(callback, wait)
-  - 功能: 创建一个防抖动函数，该函数会从上一次被调用后，延迟 `wait` 毫秒后调用 `callback` 
-
-
+  - 功能: 创建一个防抖动函数，该函数会从上一次被调用后，延迟 `wait` 毫秒后调用 `callback`
 
 ### 1.2.3.编码实现
 
@@ -299,4 +289,3 @@ export function debounce (callback, wait) {
 </body>
 </html>
 ```
-

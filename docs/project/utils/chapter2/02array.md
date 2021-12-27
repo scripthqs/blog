@@ -1,25 +1,24 @@
 # 2. 数组相关
 
 ## 2.1. API列表
+
 1. map()
-2. reduce() 
-3. filter() 
-4. find() 
-5. findIndex() 
-6. every() 
-7. some() 
-8. unique1() / unique2() / unique3() 
-9. concat() 
-10. slice() 
-11. flatten() 
-13. chunk() / chunk2() 
-14. difference()  
-16. pull() 
-17. pullAll() 
-18. drop() 
-19. dropRight() 
-
-
+2. reduce()
+3. filter()
+4. find()
+5. findIndex()
+6. every()
+7. some()
+8. unique1() / unique2() / unique3()
+9. concat()
+10. slice()
+11. flatten()
+12. chunk() / chunk2()
+13. difference()  
+14. pull()
+15. pullAll()
+16. drop()
+17. dropRight()
 
 ## 2.2. 数组声明式系列方法
 
@@ -135,7 +134,7 @@ export function some (array, callback) {
   <title>数组声明式系列方法</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     /* 
     需求:
@@ -163,21 +162,19 @@ export function some (array, callback) {
 
 
     /* 使用自定义工具函数 */
-    console.log(aUtils.map(arr, (item, index) => item + 10))
-    console.log(aUtils.reduce(arr, (preTotal, item, index) => {
+    console.log(utils.map(arr, (item, index) => item + 10))
+    console.log(utils.reduce(arr, (preTotal, item, index) => {
       return preTotal + (item%2===1 ? item : 0)
     }, 0))
-    console.log(aUtils.filter(arr, (item, index) => item>8 && index%2===0))
-    console.log(aUtils.find(arr, (item, index) => item>8 && index%2===0))
-    console.log(aUtils.findIndex(arr, (item, index) => item>8 && index%2===0))
-    console.log(aUtils.every(arr, (item, index) => index%2===1 || item%2===1))
-    console.log(aUtils.some(arr, (item, index) => index%2===0 && item%2===1))
+    console.log(utils.filter(arr, (item, index) => item>8 && index%2===0))
+    console.log(utils.find(arr, (item, index) => item>8 && index%2===0))
+    console.log(utils.findIndex(arr, (item, index) => item>8 && index%2===0))
+    console.log(utils.every(arr, (item, index) => index%2===1 || item%2===1))
+    console.log(utils.some(arr, (item, index) => index%2===0 && item%2===1))
   </script>
 </body>
 </html>
 ```
-
-
 
 ## 2.3.数组去重
 
@@ -231,6 +228,14 @@ export function unique2 (array) {
   return arr
 }
 
+function unique(array){
+  const arr = []
+  const obj = {}
+  array.forEach(item => {
+    
+  })
+}
+
 /*
 方法3: 利用ES6语法
     1). from + Set
@@ -253,25 +258,23 @@ export function unique3 (array) {
     <title>数组去重</title>
   </head>
   <body>
-    <script src="../dist/atguigu-utils.js"></script>
+    <script src="../dist/hqs-utils.js"></script>
     <script>
-      console.log(aUtils.unique1([2, 3, 2, 7, 6, 7]))
-      console.log(aUtils.unique2([2, 3, 2, 7, 6, 7]))
-      console.log(aUtils.unique3([2, 3, 2, 7, 6, 7]))
+      console.log(utils.unique1([2, 3, 2, 7, 6, 7]))
+      console.log(utils.unique2([2, 3, 2, 7, 6, 7]))
+      console.log(utils.unique3([2, 3, 2, 7, 6, 7]))
     </script>
   </body>
 </html>
 ```
-
-
 
 ## 2.4.数组合并与切片
 
 ### 2.4.1. API 说明
 
 - concat(): 合并
-  - 语法: var new_array = concat(array, value1[, value2[, ...[, valueN]]]) 
-  - 功能: 将n个数组或值与当前数组合并生成一个新数组, 原始数组不会被改变 
+  - 语法: var new_array = concat(array, value1[, value2[, ...[, valueN]]])
+  - 功能: 将n个数组或值与当前数组合并生成一个新数组, 原始数组不会被改变
 
 - slice(): 切片
   - 语法: var new_array = slice(array, [begin[, end]])
@@ -298,8 +301,6 @@ export function concat (array, ...values) {
   return arr
 }
 ```
-
-
 
 - `src/array/slice.js`: 自定义数组切片
 
@@ -350,19 +351,17 @@ export function slice (array, begin, end) {
 </head>
 <body>
 
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
-    console.log(aUtils.concat([1, 2], [3, 4], 6))  // [1, 2, 3, 4, 6]
+    console.log(utils.concat([1, 2], [3, 4], 6))  // [1, 2, 3, 4, 6]
 
-    console.log(aUtils.slice([1, 3, 5, 7, 9]))  // [1, 3, 5, 7, 9]
-    console.log(aUtils.slice([1, 3, 5, 7, 9], 1, 3)) // [3, 5]
-    console.log(aUtils.slice([1, 3, 5, 7, 9], 1, 10)) // [3, 5, 7, 9]
+    console.log(utils.slice([1, 3, 5, 7, 9]))  // [1, 3, 5, 7, 9]
+    console.log(utils.slice([1, 3, 5, 7, 9], 1, 3)) // [3, 5]
+    console.log(utils.slice([1, 3, 5, 7, 9], 1, 10)) // [3, 5, 7, 9]
   </script>
 </body>
 </html>
 ```
-
-
 
 ## 2.5.数组扁平化
 
@@ -420,16 +419,14 @@ export function flatten2 (array) {
   <title>数组扁平化</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
-    console.log(aUtils.flatten1([1, [3, [2, 4]]]))
-    console.log(aUtils.flatten2([1, [3, [2, 4]]]))
+    console.log(utils.flatten1([1, [3, [2, 4]]]))
+    console.log(utils.flatten2([1, [3, [2, 4]]]))
   </script>
 </body>
 </html>
 ```
-
-
 
 ## 2.6.数组分块
 
@@ -479,17 +476,15 @@ export function chunk (array, size) {
   <title>数组分块</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
-    console.log(aUtils.chunk([1, 2, 3, 4, 5, 6, 7], 3)) // [[1,2,3], [4,5,6],[7]]
-    console.log(aUtils.chunk([1, 2, 3, 4, 5, 6, 7]))// [[1],[2],[3],[4],[5],[6],[7]]
-    console.log(aUtils.chunk([1, 2, 3, 4, 5, 6, 7], 8))// [[1, 2, 3, 4, 5, 6, 7]]
+    console.log(utils.chunk([1, 2, 3, 4, 5, 6, 7], 3)) // [[1,2,3], [4,5,6],[7]]
+    console.log(utils.chunk([1, 2, 3, 4, 5, 6, 7]))// [[1],[2],[3],[4],[5],[6],[7]]
+    console.log(utils.chunk([1, 2, 3, 4, 5, 6, 7], 8))// [[1, 2, 3, 4, 5, 6, 7]]
   </script>
 </body>
 </html>
 ```
-
-
 
 ## 2.7.数组取差异
 
@@ -528,27 +523,25 @@ export function difference (arr1, arr2) {
   <title>数组取差异</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
-    console.log(aUtils.difference([1,3,5,7], [5, 8]))
+    console.log(utils.difference([1,3,5,7], [5, 8]))
   </script>
 </body>
 </html>
 ```
 
-
-
 ## 2.8.删除数组中部分元素
 
 ### 2.8.1.API相关
 
-- pull(array, ...values): 
+- pull(array, ...values):
   - 删除原数组中与value相同的元素, 返回所有删除元素的数组
   - 说明: 原数组发生了改变
   - 如: pull([1,3,5,3,7], 2, 7, 3, 7) ===> 原数组变为[1, 5], 返回值为[3,3,7]
-- pullAll(array, values): 
+- pullAll(array, values):
   - 功能与pull一致, 只是参数变为数组
-  - 如: pullAll([1,3,5,3,7], [2, 7, 3, 7]) ===> 数组1变为[1, 5], 返回值为[3,3,7] 
+  - 如: pullAll([1,3,5,3,7], [2, 7, 3, 7]) ===> 数组1变为[1, 5], 返回值为[3,3,7]
 
 ### 2.8.2. 编码实现
 
@@ -589,8 +582,6 @@ export function pullAll (array, values) {
 }
 ```
 
-
-
 ### 2.8.3.测试
 
 ```html
@@ -601,18 +592,16 @@ export function pullAll (array, values) {
   <title>删除数组中部分元素</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     var arr = [1,3,5,3,7]
-    console.log(aUtils.pull(arr, 2, 7, 3, 7), arr)
+    console.log(utils.pull(arr, 2, 7, 3, 7), arr)
     var arr2 = [1,3,5,3,7]
-    console.log(aUtils.pullAll(arr2, [2, 7, 3, 7]), arr2)
+    console.log(utils.pullAll(arr2, [2, 7, 3, 7]), arr2)
   </script>
 </body>
 </html>
 ```
-
-
 
 ## 2.9. 得到数组的部分元素
 
@@ -672,17 +661,16 @@ export function dropRight (array, count) {
   <title>得到数组的部分元素</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
-    console.log(aUtils.drop([1,3,5,7], 2))
-    console.log(aUtils.drop([1,3,5,7], 4))
-    console.log(aUtils.drop([1,3,5,7]))
+    console.log(utils.drop([1,3,5,7], 2))
+    console.log(utils.drop([1,3,5,7], 4))
+    console.log(utils.drop([1,3,5,7]))
 
-    console.log(aUtils.dropRight([1,3,5,7], 2))
-    console.log(aUtils.dropRight([1,3,5,7], 4))
-    console.log(aUtils.dropRight([1,3,5,7]))
+    console.log(utils.dropRight([1,3,5,7], 2))
+    console.log(utils.dropRight([1,3,5,7], 4))
+    console.log(utils.dropRight([1,3,5,7]))
   </script>
 </body>
 </html>
 ```
-

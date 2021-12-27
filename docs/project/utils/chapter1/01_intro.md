@@ -2,7 +2,8 @@
 
 ## 1.1.第三方工具函数库: lodash
 
-- 中文文档：<https://www.lodashjs.com/>
+- 本项目自定义实现了各种工具函数，类似流行的工具函数库lodash；
+- lodash中文文档：<https://www.lodashjs.com/>
 - 封装了各种类型数据简化操作的函数
   - 数组
   - 对象

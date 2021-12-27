@@ -305,7 +305,7 @@ next 函数的 **3 种调用方式**:
 
 控制后台主页的访问权限:
 
-```
+```js
 router.beforeEach((to, from, next) => {
  if(to.path==='/main'){
   const token = localStorage.getItem('token')
