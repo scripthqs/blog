@@ -47,7 +47,7 @@ export function newInstance(Fn, ...args) {
   <title>自定义new</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     function Person(name, age) {
       this.name = name
@@ -62,7 +62,7 @@ export function newInstance(Fn, ...args) {
     const p = new Person('tom', 12)
     console.log(p)
 
-    const p2 = aUtils.newInstance(Person, 'Jack', 13)
+    const p2 = utils.newInstance(Person, 'Jack', 13)
     console.log(p2, p2.constructor)
   </script>
 </body>
@@ -110,7 +110,7 @@ export function myInstanceOf(obj, Type) {
   <title>自定义instanceof</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     function Person(name, age) {
       this.name = name
@@ -118,9 +118,9 @@ export function myInstanceOf(obj, Type) {
     }
     const p = new Person('tom', 12)
     
-    console.log(aUtils.myInstanceOf(p, Object), p instanceof Object)
-    console.log(aUtils.myInstanceOf(p, Person), p instanceof Person)
-    console.log(aUtils.myInstanceOf(p, Function), p instanceof Function)
+    console.log(utils.myInstanceOf(p, Object), p instanceof Object)
+    console.log(utils.myInstanceOf(p, Person), p instanceof Person)
+    console.log(utils.myInstanceOf(p, Function), p instanceof Function)
   </script>
 </body>
 </html>
@@ -162,7 +162,7 @@ export function mergeObject(...objs) {
   <title>合并多个对象</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     const object = {
       a: [{ x: 2 }, { y: 4 }],
@@ -173,7 +173,7 @@ export function mergeObject(...objs) {
       b: [2, 3],
       c: 'foo'
     }
-    console.log(aUtils.merge(object, other)) 
+    console.log(utils.merge(object, other)) 
   </script>
 </body>
 </html>
@@ -357,16 +357,16 @@ export function deepClone4(target, map = new Map()) {
         方法一: 利用ES6语法
         方法二: 利用ES5语法: for...in
   -->
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     const obj1 = { x: 'abc', y: {m: 1} }
-    // const obj2 = aUtils.clone1(obj1)
-    const obj2 = aUtils.clone2(obj1)
+    // const obj2 = utils.clone1(obj1)
+    const obj2 = utils.clone2(obj1)
     console.log(obj2, obj2===obj1, obj2.x===obj1.x, obj2.y===obj1.y)
 
     const arr1 = ['abc', {m: 1}]
-    // const arr2 = aUtils.clone1(arr1)
-    const arr2 = aUtils.clone2(arr1)
+    // const arr2 = utils.clone1(arr1)
+    const arr2 = utils.clone2(arr1)
     console.log(arr2, arr2===arr1, arr2[0]===arr1[0], arr2[1]===arr1[1])
   </script>
 </body>
@@ -384,7 +384,7 @@ export function deepClone4(target, map = new Map()) {
 </head>
 <body>
   <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     const obj1 = { 
       a: 1,
@@ -396,10 +396,10 @@ export function deepClone4(target, map = new Map()) {
      obj1.c.j = obj1.b
      
     // const obj2 = _.cloneDeep(obj1)
-    // const obj2 = aUtils.deepClone1(obj1)
-    // const obj2 = aUtils.deepClone2(obj1)
-    // const obj2 = aUtils.deepClone3(obj1)
-    const obj2 = aUtils.deepClone4(obj1)
+    // const obj2 = utils.deepClone1(obj1)
+    // const obj2 = utils.deepClone2(obj1)
+    // const obj2 = utils.deepClone3(obj1)
+    const obj2 = utils.deepClone4(obj1)
     console.log(obj2, obj2.c === obj1.c, obj2.d===obj1.d)
   </script>
 </body>

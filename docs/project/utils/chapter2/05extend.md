@@ -38,7 +38,7 @@ export function extend(Child, Parent) {
   <title>手写继承</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     function Parent(name, age) {
       this.name = name
@@ -53,8 +53,8 @@ export function extend(Child, Parent) {
       this.score = score
     }
     
-	// 实现Child与Parent的继承关系
-    aUtils.extend(Child, Parent)
+ // 实现Child与Parent的继承关系
+    utils.extend(Child, Parent)
     
     Child.prototype.sayScore = function () {
       console.log('score:', this.score)
@@ -73,4 +73,3 @@ export function extend(Child, Parent) {
 
 </html>
 ```
-

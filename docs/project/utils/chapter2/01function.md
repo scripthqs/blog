@@ -114,7 +114,7 @@ export function bind(fn, obj, ...args) {
   <title>函数的call/apply/bind()</title>
 </head>
 <body>
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     var m = 11
     function f(a, b) {
@@ -142,19 +142,19 @@ export function bind(fn, obj, ...args) {
     /* ******************************************************** */
 
     /* 测试自定义call() */
-    // console.log(aUtils.call(f, obj, 1, 2, 3))
-    // console.log(aUtils.call(f, undefined, 1, 2, 3))
+    // console.log(utils.call(f, obj, 1, 2, 3))
+    // console.log(utils.call(f, undefined, 1, 2, 3))
     
     /* 测试自定义apply() */
-    // console.log(aUtils.apply(f, obj, [1, 2, 3]))
-    // console.log(aUtils.apply(f, undefined, [1, 2, 3]))
+    // console.log(utils.apply(f, obj, [1, 2, 3]))
+    // console.log(utils.apply(f, undefined, [1, 2, 3]))
     
     
     /* 测试自定义bind() */
-    console.log(aUtils.bind(f, obj)(1, 2))
-    console.log(aUtils.bind(f, obj, 3)(1, 2))
-    console.log(aUtils.bind(f, obj, 4)(1, 2))
-    console.log(aUtils.bind(f, undefined, 4)(1, 2))
+    console.log(utils.bind(f, obj)(1, 2))
+    console.log(utils.bind(f, obj, 3)(1, 2))
+    console.log(utils.bind(f, obj, 4)(1, 2))
+    console.log(utils.bind(f, undefined, 4)(1, 2))
 
   </script>
 </body>
@@ -273,8 +273,8 @@ export function debounce (callback, wait) {
   <button id="throttle">测试函数节流</button>
   <button id="debounce">测试函数防抖</button>
   
-  <script src="../dist/atguigu-utils.js"></script>
-  <!-- <script src="../node_modules/atguigu-utils/dist/atguigu-utils.js"></script> -->
+  <script src="../dist/hqs-utils.js"></script>
+  <!-- <script src="../node_modules/hqs-utils/dist/hqs-utils.js"></script> -->
   <script>
     /* 处理点击事件的回调函数 */
     function handleClick(event) { // 处理事件的回调
@@ -282,8 +282,8 @@ export function debounce (callback, wait) {
     }
 
     document.getElementById('handle').onclick = handleClick
-    document.getElementById('throttle').onclick = aUtils.throttle(handleClick, 2000)
-    document.getElementById('debounce').onclick = aUtils.debounce(handleClick, 2000)
+    document.getElementById('throttle').onclick = utils.throttle(handleClick, 2000)
+    document.getElementById('debounce').onclick = utils.debounce(handleClick, 2000)
   </script>
 
 </body>

@@ -118,9 +118,9 @@ export default PubSub
   <title>手写消息订阅与发布</title>
 </head>
 <body>
-<script src="../dist/atguigu-utils.js"></script>
+<script src="../dist/hqs-utils.js"></script>
 <script>
-  const { PubSub } = aUtils
+  const { PubSub } = utils
   // 订阅消息
   PubSub.subscribe('add', (data) => {
     console.log('add()...', data)
@@ -149,4 +149,3 @@ export default PubSub
 </body>
 </html>
 ```
-

@@ -64,18 +64,18 @@ export function bindEvent(ele, type, fn, selector) {
   </ul>
 
   <!-- 功能: 点击每行提示对应的文本 -->
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     // 不使用事件委托
     // document.querySelectorAll('li').forEach(li => {
-    //   aUtils.addEventListener(li, 'click', function (event) {
+    //   utils.addEventListener(li, 'click', function (event) {
     //     alert(this.innerText)
     //   })
     // })
 
     // 使用事件委托
     const ul = document.querySelector('ul')
-    aUtils.addEventListener(ul, 'click', function (event) {
+    utils.addEventListener(ul, 'click', function (event) {
       alert(this.innerText)
     }, 'li')
 
@@ -83,4 +83,3 @@ export function bindEvent(ele, type, fn, selector) {
 </body>
 </html>
 ```
-

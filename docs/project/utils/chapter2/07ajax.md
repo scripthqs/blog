@@ -17,10 +17,10 @@
 1. 函数的参数为一个配置对象
 
    {
-   	url: '',   // 请求地址
-   	method: '',   // 请求方式GET/POST/PUT/DELETE
-   	params: {},  // GET/DELETE请求的query参数
-   	data: {}, // POST或DELETE请求的请求体参数 
+    url: '',   // 请求地址
+    method: '',   // 请求方式GET/POST/PUT/DELETE
+    params: {},  // GET/DELETE请求的query参数
+    data: {}, // POST或DELETE请求的请求体参数
    }
 
 2. 返回值: 函数的返回值为promise, 成功的结果为response, 失败的结果为error
@@ -133,7 +133,7 @@ export default axios
   <button onclick="testPut()">发送PUT请求</button><br>
   <button onclick="testDelete()">发送Delete请求</button><br>
     
-<script src="../dist/atguigu-utils.js"></script>
+<script src="../dist/hqs-utils.js"></script>
 <script>
   const { axios } = aUtils
 
@@ -221,4 +221,3 @@ export default axios
 </body>
 </html>
 ```
-

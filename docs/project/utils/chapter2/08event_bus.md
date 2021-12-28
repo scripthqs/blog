@@ -1,4 +1,5 @@
 # 8.手写事件总线
+
 ## 8.1.API说明
 
 1. eventBus: 包含所有功能的事件总线对象
@@ -70,7 +71,7 @@ export default eventBus
 </head>
 <body>
 
-  <script src="../dist/atguigu-utils.js"></script>
+  <script src="../dist/hqs-utils.js"></script>
   <script>
     const { eventBus } = aUtils
     eventBus.on('add', (data) => {
@@ -92,4 +93,3 @@ export default eventBus
 </body>
 </html>
 ```
-

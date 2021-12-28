@@ -260,9 +260,9 @@ export default Promise
 </head>
 <body>
 
-<script src="../dist/atguigu-utils.js"></script>
+<script src="../dist/hqs-utils.js"></script>
 <script>
-  const { Promise } = aUtils
+  const { Promise } = utils
   new Promise((resolve, reject) => {
     // resolve(1)
     // setTimeout(() => {
