@@ -1,8 +1,8 @@
 module.exports = [
-{
-  title: 'Webpack',
-  collapsable: true,
-  children: [
-  ]
+  {
+    title: 'Webpack',
+    collapsable: true,
+    children: [
+    ]
   }
 ]

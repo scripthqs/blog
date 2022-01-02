@@ -9,7 +9,7 @@ module.exports = {
   '/net/db/': require('../../net/db/sidebar'),
   '/project/vuemall/': require('../../project/vuemall/sidebar'),
   '/project/vuecms/': require('../../project/vuecms/sidebar'),
-  '/project/fui/': require('../../project/fui/sidebar'),
+  '/project/hqsui/': require('../../project/hqsui/sidebar'),
   '/project/utils/': require('../../project/utils/sidebar'),
   '/tools/git/': require('../../tools/git/sidebar'),
   '/tools/webpack/': require('../../tools/webpack/sidebar'),

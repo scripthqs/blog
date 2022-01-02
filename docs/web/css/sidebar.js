@@ -23,11 +23,13 @@ module.exports = [
       'css18',
       'css19',
       'css20',
-      'css21',
       'css22',
       'css23',
       'css24',
       'reflow',
-      'total'
+      'total',
+      'css_tip',
+      'less',
+      'scss'
     ]
   }]

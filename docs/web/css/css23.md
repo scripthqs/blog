@@ -6,7 +6,7 @@
 
 ```css
 .father {
-	text-align: center;/*水平居中*/
+ text-align: center;/*水平居中*/
     /*让文字的行高 等于 盒子的高度，可以让单行文本垂直居中*/
     height: 20px;
     line-height: 20px;
@@ -33,11 +33,11 @@
 
 ```css
 .father {
-	position: relative;/*父元素开启相对定位*/
+ position: relative;/*父元素开启相对定位*/
 }
 .son {
-	position: absolute;/*子元素开启绝对定位*/
-	/*脱离文档流后，此时这个属性不能实现水平居中*/
+ position: absolute;/*子元素开启绝对定位*/
+ /*脱离文档流后，此时这个属性不能实现水平居中*/
     /*margin: 0 auto;*/
       left: 50%;
       margin-left: -son.w/2 ;/*负子元素的宽度一半大小*/
@@ -56,11 +56,11 @@
 
 ```
 .father {
-	position: relative;/*父元素开启相对定位*/
+ position: relative;/*父元素开启相对定位*/
 }
 .son {
-	position: absolute;/*子元素开启绝对定位*/
-	/*脱离文档流后，此时这个属性不能实现水平居中*/
+ position: absolute;/*子元素开启绝对定位*/
+ /*脱离文档流后，此时这个属性不能实现水平居中*/
     /*margin: 0 auto;*/
       left: 50%;
       top: 50%;
@@ -69,4 +69,3 @@
 ```
 
 **translate()** 函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的（**动态计算宽高**）。
-

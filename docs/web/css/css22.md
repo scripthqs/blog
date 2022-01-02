@@ -12,9 +12,9 @@ rem（root em)是一个相对单位，类似于em，em是父元素字体的大�
 - 当重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面
 
 ```css
-	@media mediatype and|not|only (media feature){
-		css-code;
-	}
+ @media mediatype and|not|only (media feature){
+  css-code;
+ }
 ```
 
 - @media开头 注意@符号
