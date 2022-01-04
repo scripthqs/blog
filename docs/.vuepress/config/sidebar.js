@@ -14,6 +14,6 @@ module.exports = {
   '/tools/git/': require('../../tools/git/sidebar'),
   '/tools/webpack/': require('../../tools/webpack/sidebar'),
   '/framework/vue/': require('../../framework/vue/sidebar'),
-  '/framework/ui/': require('../../framework/ui/sidebar'),
+  '/framework/notes/': require('../../framework/notes/sidebar'),
 
 }

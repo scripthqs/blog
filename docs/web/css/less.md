@@ -1,4 +1,4 @@
-# less和scss
+# less
 
 ## 1、less介绍
 

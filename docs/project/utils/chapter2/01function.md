@@ -42,13 +42,19 @@
 自定义函数对象的call方法
 */
 export function call(fn, obj, ...args) {
-  console.log('call()')
+  // console.log('call()')
 
   // 如果obj是undefined/null, this指定为window
-  if (obj===undefined || obj===null) {
-    // return fn(...args)
-    obj = window
-  }
+  // if (obj===undefined || obj===null) {
+  //   // return fn(...args)
+  //   obj = window
+  // }
+
+  //在浏览器环境下，globalThis就是window
+  // console.log(window === globalThis)//true
+
+  //更好的写法
+  obj = obj || globalThis
 
   // 给obj添加一个临时方法, 方法指向的函数就是fn
   obj.tempFn = fn
@@ -67,23 +73,19 @@ export function call(fn, obj, ...args) {
 /* 
 自定义函数对象的apply方法
 */
-export function apply(fn, obj, args) {
-  console.log('apply()')
-
-  // 如果obj是undefined/null, this指定为window
-  if (obj===undefined || obj===null) {
-    // return fn(...args)
-    obj = window
-  }
-
-  // 给obj添加一个临时方法, 方法指向的函数就是fn
-  obj.tempFn = fn
-  // 通过obj来调用这个方法 ==> 也就会执行fn函数 ==> 此时fn中的this肯定为obj
-  const result = obj.tempFn(...args)
-  // 删除obj上的临时方法
-  delete obj.tempFn
-  // 返回fn执行的结果
-  return result
+export function apply (fn, obj, args = []) {
+    //判断
+    obj = obj || globalThis
+    //为 obj 添加临时方法
+    obj.temp = fn
+    //判断参数是不是一个数组
+    if (!Array.isArray(args)) {
+        console.error('第三个参数必须传一个数组')
+    } else {
+        let result = obj.temp(...args)
+        delete obj.temp
+        return result
+    }
 }
 ```
 
@@ -137,7 +139,7 @@ export function bind(fn, obj, ...args) {
     // // console.log(f(1, 2)) // bind()并没有改变函数本身, 接收调用原函数是不会有任何变化的
     // f2(3, 4) // 必须调用bind返回的新函数, 原函数中的this才是指定的obj
     // console.log(f.bind(obj, 1)(3, 4))  // 1 3 22 obj   4
-    // console.log(f.bind(obj, 1, 2)(3, 4)) // 1 2, 22 obj  3    注意: 可以暂停视频, 先自己分析一下
+    // console.log(f.bind(obj, 1, 2)(3, 4)) // 1 2, 22 obj  3
 
     /* ******************************************************** */
 
@@ -177,7 +179,7 @@ export function bind(fn, obj, ...args) {
 - 函数节流(throttle)
 
   - 理解:
-    - 在函数需要频繁触发时: 函数执行一次后，只有大于设定的执行周期后才会执行第二次
+    - 函数持续触发时，只有大于规定时间n秒，才会执行一次函数。
     - 适合多次事件按时间做平均分配触发
   - 场景：
     - 窗口调整（resize）
@@ -187,10 +189,11 @@ export function bind(fn, obj, ...args) {
 - 函数防抖(debounce)
 
   - 理解:
-    - 在函数需要频繁触发时: 在规定时间内，只让最后一次生效，前面的不生效。
+    - 在函数被触发后，等待n秒后再执行，如果在这n秒内又被触发，则重新计时
     - 适合多次事件一次响应的情况
   - 场景:
     - 输入框实时搜索联想（keyup/input）
+    - 手机号、邮箱验证输入检测
 - 区别函数节流与防抖
 
 ![02_函数防抖与节流](../images/throttle_debounce.jpg)
