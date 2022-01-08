@@ -10,9 +10,11 @@
 
 对于PC后台管理系统，一般有用户登录、退出登录、用户管理、权限管理、商品管理、订单管理、数据统计等业务。
 
-采用前后端分离的模式，前端是**基于Vue技术栈的SPA项目**。
+本项目采用前后端分离的模式，前端是**基于Vue技术栈的SPA项目**。
 
 前端技术栈：Vue + Vue-router + Element-UI + Axios + Echarts
+
+前端负责**构建用户界面**并通过ajax等技术调用后端提供的接口获得数据。
 
 ## 2 项目初始化
 
@@ -22,6 +24,12 @@
 4. 配置axios
 5. 初始化git
 6. 将项目托管到github或码云等远程仓库
+
+项目开发的具体思路：
+
+总的来说，将基本页面通过element-ui组件库来实现，之后向后端服务器发起请求，获取数据，将获取的数据保存到每个组件的data中，methods方法区实现各模块所需要的基本方法。需要注意：后端返回的数据是什么格式的，与前端的格式是否一致，不一致需要转换。一般来说。
+
+每新建一个路由模块都要在路由配置文件router.js中进行配置，其中还使用了嵌套路由。将组件component映射到路由，使用router-view作为路由的的占位符。
 
 ## 3 如何使用element组件库
 
@@ -70,6 +78,11 @@ Vue.component(Button.name, Button);
 有的需要加的Vue原型上，例如Message
 Vue.prototype.$message = Message
 ```
+
+在实际开发中，可以一次性、**完整导入并注册所有 element-ui组件**，这样存在优缺点：
+
+- **优点**：**所有的 element组件都进行了全局的注册**。在每个组件中，不再需要按需引入并注册组件了。
+- **缺点**：项目中没有用到的组件也会被打包进来，**导致打包体积过大的问题**（此问题在项目发布时，可通过 **CDN 加速**解决）
 
 ## 4  项目准备工作
 
@@ -138,7 +151,7 @@ Vue.prototype.$message = Message
 
 **具体步骤**：
 
-1. 将登录成功后的token，保存到客户端的sessionStorage中
+1. 第一次登录，将登录成功后的token，保存到客户端的sessionStorage中
 
 ```js
 window.sessionStorage.setItem('token', res.data.token)
@@ -155,9 +168,25 @@ this.$router.push('/home')
 - 项目中除了登录之外的其他API接口，必须在登录之后才能访问
 - token只能在当前网站打开期间生效，所以将token保存在sessionStorage中
 
+3. 在完成登录后，后续项目中每次调用后端接口都要在请求头中加入token，也就是在请求头中使用 Authorization 提供token令牌，此时，在项目的全局中**main.js文件下**
+
+```
+import axios from 'axios'
+// 配置请求的根路径
+axios.defaults.baseURL = 'http://ip地址/api/private/v1/'
+// 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
+axios.interceptors.request.use(config => {
+  // console.log(config)
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+// 挂载Vue的原型对象上
+Vue.prototype.$http = axios
+```
+
 ### 5.3 登录路由导航守卫
 
-如果用户没有登录，但是直接通过URL访问特定页面，需要重新导航到登录页面，在路由文件下的index.js中添加
+配置导航守卫全局前置守卫`router.beforeEach`对为登录的客户端进行拦截。如果用户没有登录，跳转至`'/login'`页面，根据的是客户端是否有获取到服务器返回的 token 值进行判断拦截，以此决定是否重定向至`'/login'`页面进行登录，在路由文件下的index.js中添加
 
 ```js
 // 为路由对象，挂载路由导航守卫
@@ -208,7 +237,9 @@ Default: 生产环境下是 true，开发环境下是 false
 
 ## 6 Login组件
 
-1. 背景居中 使用element-ui 设置头像框 使用 `position: abolut`  和 ` transform: translate(-50%, -50%);` 样式居中
+使用element-ui设计登录页面。
+
+1. 背景居中 使用element-ui 设置头像框 使用 `position: absolute和 ` transform: translate(-50%, -50%);` 样式居中
 2. Element-ui 表单按钮的使用 因为设置了按需加载需要在 `plugins`文件夹下的`element.js` 配置引入的 `{Button, Form, FormItem, Input}`
 
 - `<el-form label-width="80px">`(表单默认label属性占位80px) `<el-form-item label="用户名">`(一个项使用label属性左侧文字的显示)
@@ -219,6 +250,8 @@ Default: 生产环境下是 true，开发环境下是 false
     - `required` 必填不能为空 `message` 错误消息提示 `trigger`触发事件 `min/max` 最小/大输入长度
     - 通过`prop`属性`rules`调用验证: 给 `el-form-item` 添加而不是里面的标签 `el-input`: `<el-form-item prop="username">`
     - 表单的重置: 给`<el-form ref='loginForm'>` 绑定一个ref 通过$refs拿到组件对象,通过点击事件使用表单上自带的resetFields()重置方法
+
+输入用户名和密码，调用后端接口进行验证，根据后台返回的响应结果跳转页面，使用axios发起登录请求。由于后端服务器和前端项目存在跨越问题（协议、域名、端口号），所有采用token的方式维持登录状态。可以在项目的全局中**main.js文件下记录token**
 
 ## 7 Home组件
 
@@ -245,6 +278,8 @@ Default: 生产环境下是 true，开发环境下是 false
 
 ## 9 Element-ui
 
+使用element-ui的Container 布局容器对主页进行布局。`  <el-header>`头部区域， `<el-aside>`侧边栏，`<el-menu >`菜单栏
+
 ### Asied
 
 - element-ui 提供的组件,每个组件名都是它自己的类名
@@ -252,29 +287,140 @@ Default: 生产环境下是 true，开发环境下是 false
 - 布局容器: Container Asied Main
   - 右侧菜单(二级可折叠) `el-menu`(最外层包裹菜单) `<el-submenu>`一级菜单 `<el-menu-item>` 二级菜单(里层)  `<template>` 菜单的模板(icon/span)
 
-- 请求拦截器:  登录授权 请求验证是否有 token  需要授权的 API ，必须在请求头中使用 `Authorization` 字段提供 `token` 令牌
+- 请求拦截器:  **登录授权 请求验证是否有 token  需要授权的 API ，必须在请求头中使用 `Authorization` 字段提供 `token` 令牌**
   - login 不需要 token 可以直接登录 登录进去后每次操作/请求都会验证 `Authorization` 的 token令牌
 
+  ```js
+  //在全局环境下的main.js文件中设置拦截器
+  import axios from 'axios'
+  // 配置请求的根路径
+  axios.defaults.baseURL = 'http://ip地址/api/private/v1/'
+  // 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
+  axios.interceptors.request.use(config => {
+    // console.log(config)
+    config.headers.Authorization = window.sessionStorage.getItem('token')
+    return config
+  })
+  // 挂载Vue的原型对象上
+  Vue.prototype.$http = axios
+  ```
+  
 - 创建完成后立即发送 网络请求 请求左侧菜单栏的数据 get
-  - 通过 async 和 await 来获取需要的数据 因为是数组所以可以使用 v-for 来遍历生成数据 第一级的icon不同的解决方法之一:定义一个对象来存放字体图标需要的类名  
+  - 通过 async 和 await 来获取需要的数据 因为是数组所以可以使用 v-for 来遍历生成数据 **第一级的icon不同的解决方法之一:定义一个对象来存放字体图标需要的类名**  
+  
+  ```js
+  //使用async和await，简化promise
+  async getMenuList () {
+  	  //使用解构赋值，对返回的数据进行处理
+        const { data: res } = await this.$http.get('/menus')
+        //判断响应状态码，对数据进行处理
+        if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+        this.$message.success(res.meta.msg)
+        // res.data.unshift(this.welcome)
+        this.menuList = res.data
+        console.log(res, 'menus')
+  }
+  //动态绑定图标样式
+  <i :class="iconsObj[item.id]"></i>
+  //定义一个对象来存放字体图标需要的类名
+  iconsObj: {
+          // 一级菜单的icon图标
+          147: 'el-icon-magic-stick',
+          125: 'iconfont icon-users',
+          103: 'iconfont icon-tijikongjian',
+          101: 'iconfont icon-shangpin',
+          102: 'iconfont icon-danju',
+          145: 'iconfont icon-baobiao'
+        },
+  ```
+  
   - 菜单栏只打开一个的可以给`el-menu` 添加 `unique-opened` 属性(1) 为 `true` |  折叠属性(2): `collapse` | 关闭过渡动画属性(3): `:collapse-transition="false"` |
+  
   - 左侧边栏的宽度变化(Aised): `:width="isCollapse ? '61px' : '200px'"` 利用三元表达式
+  
   - 子菜单的跳转: `el-from` 有router(index属性)默认为false关闭的  index='/login' index做路由跳转
     - 里面的组件都是作为Home的子组件展示的,如果作为一个独立的路由而不是Home的子路由那么左侧的导航栏就销毁没有了
-  - 左侧导航激活的高亮`:default-active="activePath"`: 点击导航-> 使用sessionStorage来保存激活的路径 并赋值给高亮的变量->  当离开再回来created时得到 sessionStorage 的路径 赋值给 高亮变量  (导航守卫.beforeEach)
+    
+    ```
+    {
+        path: '/home',
+        component: Home,
+        redirect: '/welcome',
+        children: [
+          {
+            path: '/welcome',
+            component: Welcome
+          },
+     }
+    ```
+    
+    左侧导航激活的高亮`:default-active="activePath"`: 点击导航-> 使用sessionStorage来保存激活的路径 并赋值给高亮的变量->  当离开再回来created时得到 sessionStorage 的路径赋值给高亮变量  (导航守卫.beforeEach)
 
-### Mian
+### Main
 
 ### 用户管理
 
 - 导航的名称: `el-breadcrumb` 面包屑 : 首页 > 用户管理 > 用户列表
+
 - 卡片搜索框的使用: `el-card` 配合 栅栏布局 使用 input复合框 : 样式配合 Row 和 Col的栅栏配合
+
 - 使用get获取用户数据 参数为 params  { params : {name:'LHJ'} }
+
 - 表格数据: `<el-table :data="数据源" stripe(avtice) border(边框)>` `<el-table-column prop="数据名" label="列的名字">`
-  - 显示按钮使用作用预插槽: 在`<el-table-column>` 添加template模板再使用`v-slot`属性拿到当前槽作用域的布尔值 Boolean 再通过Switch组件显示 而在 `<el-table-column>` 使用了作用域插槽会覆盖当前层的prop所以可以删除prop 按钮使用时需要 插槽作用域
+  - 显示按钮使用作用预插槽: 在`<el-table-column>` 添加template模板再使用`v-slot`属性拿到当前槽作用域的布尔值 Boolean 再通过Switch组件显示 而在 `<el-table-column>` 使用了**作用域插槽**会覆盖当前层的prop所以可以删除prop 按钮使用时需要 插槽作用域
+  
+  ```js
+  <el-table-column label="状态">
+      <template v-slot="scope">
+      	<el-switch v-model="scope.row.mg_state" active-color="#13ce66" inactive-color="#ff4949" 				@change="userStatuChanged(scope.row)"> 
+      	</el-switch>
+      </template>
+  </el-table-column>
+  ```
+  
 - 分页: `pagination`: `page-sizes` 每页显示个数选择器的选项设置 `page-size` 每页显示条目个数，支持 .sync 修饰符 number  `layout`: 显示那些组件 监听改变事件 页码的修改 显示个数的修改 `handleSizeChange(newValue)` 监听显示页数的改变自带参数 是 新的值 `handleCurrentChange`监听页码的改变
+
+**数据的分页显示：**
+
+数据的分页显示有三种思路：
+
+一是把后端的所有查询结果都发到前端，然后由前端进行处理。
+
+二是由后端查询后，由后端来分页，将其分好再发给前端。
+
+三是我需要时再查，每次点击上一页，下一页时发送一个请求，请求包含分页的信息，由后端返回该分页的结果。
+
+根据本项目后台提供的接口，采用第三种方法。每次点击分页请求，后端返回数据。
+
+```js
+    async getUserList () {
+      const { data: res } = await this.$http.get('users', {
+        params: this.queryInfo
+      })
+      if (res.meta.status !== 200) {
+        this.$message.error('获取用户列表失败!')
+      }
+      this.$message.success('获取用户列表成功!')
+      this.userData.userList = res.data.users
+      this.userData.total = res.data.total
+      // console.log(res)
+    },
+    // 监听 pagesize 改变事件 每页显示的个数
+    handleSizeChange (newSize) {
+      // console.log(newSize)
+      this.queryInfo.pagesize = newSize
+      this.getUserList()
+    },
+    // 监听 页码值 改变的事件 当前页面值
+    handleCurrentChange (newPage) {
+      console.log(newPage)
+      this.queryInfo.pagenum = newPage
+      this.getUserList()
+    },
+```
+
 - 按钮状态的修改: 通过Switch的chang改变事件触发回调函数
-- necktick
+- nextTick
 - 搜索功能: 给搜索框双向绑定到 `queryInfo.query` 因为搜索时根据它来的 再搜索按钮绑定点击事件发送用户数据请求,根据query返回对应的参数 , 清空搜索框并清空搜索的内容 element-ui的搜索框有自带的clear事件,点击清楚时再次发送用户数据请求,此时因为query已经清空所以返回的是默认的数据
 - 点击添加用户弹出 `:visible.sync = DialogVisble` 为true显示反之隐藏
 - 添加 **el-form** 项 :model="绑定要显示数据的对象" :rules="绑定校验规则的对象" ref="重置表单数据素要的方法"
@@ -289,75 +435,27 @@ Default: 生产环境下是 true，开发环境下是 false
 ### 权限管理
 
 - 添加两个 home 的子路由 rights/roles
+- 权限列表:  使用卡片再用过table绑定请求来的网络数据，用 `v-if`进行判断展示等级，其它展示数据根据后端获取并渲染到客户端就可以
 
-- 权限列表:  使用卡片再用过table绑定请求来的网络数据
+```js
+<el-table-column label="权限等级">
+          <template v-slot="scope">
+            <el-tag v-if="scope.row.level === '0'">一级</el-tag>
+            <el-tag type="success" v-else-if="scope.row.level === '1'">二级</el-tag>
+            <el-tag type="warning" v-else-if="scope.row.level === '2'">三级</el-tag>
+          </template>
+</el-table-column>
+```
+
+通过权限管理模块可以控制不同的用户进行操作，具体可以通过角色的方式进行控制，即每个用户分配一个特定的角色，角色包括不同的功能权限。
 
 - 角色列表: 使用table 最后一项需要按钮使用作用于插槽  
-
-  - 其table第一个数据是展开项: 需要给el-table-column 绑定一个 expand 属性 此属性是展开卡片 index 索引
-
+- 其table第一个数据是展开项: 需要给el-table-column 绑定一个 expand 属性 此属性是展开卡片 index 索引
 - Dialog 对话框的关闭  表单的清空
 
   - 点击按钮显示框 并获取数据 .点击确认按钮验证表单的 `rules` 规则是否全通过返回 true 就发送相应的 修改/删除等操作
   - Dialog有关闭事件可以清空表单操作
 
-  ```js
-  el-table-column type="expand">
-                <template v-slot="scope">
-                  <el-row
-                    :class="['bdtop', i1 === 0 ? 'bdbottom' : '', 'vcenter']"
-                    v-for="(item1, i1) in scope.row.children"
-                    :key="item1.id"
-                  >
-                    <!-- 渲染一级权限 -->
-                    <el-col :span="5">
-                      <el-tag
-                        closable
-                        @close="removeRightById(scope.row, item1.id)"
-                        >{{ item1.authName }}</el-tag
-                      >
-                      <i class="el-icon-caret-right"></i>
-                    </el-col>
-  
-                    <!-- 渲染二和三级权限 -->
-                    <el-col :span="19">
-                      <!-- 通过 for 嵌套 渲染二级权限 -->
-                      <el-row
-                        v-for="(item2, i2) in item1.children"
-                        :key="item2.id"
-                        :class="[i2 === 0 ? '' : 'bdtop', 'vcenter']"
-                      >
-                        <el-col :span="6">
-                          <el-tag
-                            type="success"
-                            closable
-                            @close="removeRightById(scope.row, item2.id)"
-                          >
-                            {{ item2.authName }}
-                          </el-tag>
-                          <i class="el-icon-caret-right"></i>
-                        </el-col>
-                        <el-col :span="18">
-                          <el-tag
-                            type="warning"
-                            :class="[i3 === 0 ? '' : 'bdtop']"
-                            v-for="(item3, i3) in item2.children"
-                            :key="item3.id"
-                            closable
-                            @close="removeRightById(scope.row, item3.id)"
-                          >
-                            {{ item3.authName }}
-                          </el-tag>
-                        </el-col>
-                      </el-row>
-                    </el-col>
-                  </el-row>
-                  <!-- <pre>
-                    {{ scope.row }}
-                  </pre> -->
-                </template>
-              </el-table-column>
-  ```
 
 ----
 
@@ -570,7 +668,7 @@ Default: 生产环境下是 true，开发环境下是 false
 
   - 默认情况下，通过 import 语法导入的第三方依赖包，最终会被打包合并到同一个文件中，从而导致打包成功后，单文件体积过大的问题。
   - 为了解决上述问题，可以通过 webpack 的 externals 节点，来配置并加载外部的 CDN 资源。凡是声明在externals 中的第三方依赖包，都不会被打包。
-  - 开发时直接下载引瑞
+  - 开发时直接下载引入
     - 发布时把直接引入可以省的包 使用window全局的方式来查找  也就是说 CDN 挂载 通过CDN挂载的方式进行引用
 
 - 路由来加载
