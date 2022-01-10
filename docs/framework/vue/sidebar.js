@@ -38,6 +38,7 @@ module.exports = [
     collapsable: true,
     children: [
       'vuex',
+      'vuex_total',
     ]
   },
   {

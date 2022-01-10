@@ -85,7 +85,54 @@ State 提供**唯一**的**公共**数据源，所有共享的数据都要统一
 this.$store.state.全局数据名称
 ```
 
-### 4.2 actions
+如何修改state，由官方的Vuex原理图可只：在组件中使用dispatch到actions，再使用commit到mutations中修改数据。Vue开发了一个Devtools浏览器插件，可以记录每次修改state的状态。如果直接在组件中修改state就记录不到，但是可以跳过actions直接修改mutations，但是注意，异步操作只能在actions中修改。例如请求后端api的操作，就需要在actions中操作。
+
+### 4.2 mutations
+
+mutations里面定义的函数，可以直接定义形参state，该state就包含state里面的数据。Vuex中的store状态**更新唯一方式就是提交mutations**。**mutation 必须是同步函数**
+
+1. 值是一个对象，包含多个直接更新 state 的方法
+2. 谁能调用 mutations 中的方法？如何调用？
+   - 在 **action 中使用：commit('对应的 mutations 方法名') 触发**
+   - 若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写`dispatch`，直接编写`commit`，即可以**直接在组件中使用commit触发**
+3. mutations 中方法的特点：不能写异步代码、只能单纯的操作 state
+
+```js
+//在vuex中定义mutations
+const mutations = {
+   ADD (state) {
+    console.log('ADD被调用', state)
+    state.sum ++
+   },
+  ADD1 (state, value) {
+    console.log('ADD被调用', state, value)
+    state.sum += value
+  },
+   ADD2(state){
+   setTimeout( () => {
+  		//如果在mutations中异步修改state，页面数据会更新，但是调试工具中state中数据不会更新
+  	 	context.sum ++
+	},1000)
+  }
+}
+//在组件中使用
+this.$store.commit('ADD')
+this.$store.commit('ADD1','自己需要传的参数value')
+```
+
+mutations中的第一个参数是state，第二个参数专业名词叫做payload。
+
+**Vuex的响应式**必须遵循：
+
+- 提前在state中进行初始化的属性，后来加上的不算
+- 当需要给state中的对象添加新的属性时，使用下面的方式：
+  - 使用Vue.set(obj,'newProp‘,123)添加属性
+  - 使用Vue.delete(obj,'newProp')删除属性
+  - 用新对象给旧对象重新赋值
+
+### 4.3 actions
+
+**更新state唯一方式就是提交mutations。**
 
 1. 值为一个对象，包含多个响应用户动作的回调函数
 
@@ -102,29 +149,36 @@ this.$store.dispatch('对应的 action 回调名',传给actions的参数)
 4. 可以包含异步代码（定时器, ajax 等等）
 
 ```js
+//在vuex中定义
 const actions = {
-  add (context, value) {
-    console.log('add被调用', context, value)
-    context.commit('ADD', value)
+    //actions可以传递2个参数，第一个context相当于store,第二个参数是payload
+   add (context, value) {
+    setTimeout(() => {
+    	console.log('add被调用', context, value)
+        context.commit('ADD', value)
+    },1000)
   }
 }
 ```
 
-### 4.3 mutations
-
-1. 值是一个对象，包含多个直接更新 state 的方法
-2. 谁能调用 mutations 中的方法？如何调用？
-   - 在 **action 中使用：commit('对应的 mutations 方法名') 触发**
-   - 若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写`dispatch`，直接编写`commit`，即可以**直接在组件中使用commit触发**
-3. mutations 中方法的特点：不能写异步代码、只能单纯的操作 state
+actions可以搭配promise来使用
 
 ```js
-const mutations = {
-  ADD (state, value) {
-    console.log('ADD被调用', state, value)
-    state.sum += value
+//在vuex中定义
+const actions = {
+    //actions可以传递2个参数，第一个context相当于store,第二个参数是payload
+   add (context, value) {
+       return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+    	console.log('add被调用', context, value)
+        context.commit('ADD', value)
+        resolve('成功')
+    },1000)
+    })
   }
 }
+//在组件中
+this.$store.dispatch('add','我是参数value').then(res=>console.log(res))
 ```
 
 ### 4.4 getters
@@ -132,6 +186,8 @@ const mutations = {
 当state中的数据需要经过加工后再使用时，可以使用getters加工。
 
 值为一个对象，包含多个用于返回数据的函数
+
+getters可以作为参数，也可以传递参数，传递参数返回一个函数就可以了。
 
 ```js
 this.$store.getters.xxx
@@ -143,7 +199,19 @@ this.$store.getters.xxx
 const getters = {
  bigSum(state){
   return state.sum * 10
+ }，
+ //getters可以作为参数，第一个参数是state，第二个参数是getters
+ bigSumA(state,getters){
+     //通过这个getters可以拿到bigSum函数
+     return getters.bigSum + 1
  }
+//getters也可以传递参数
+bigSumB(state){
+   //传递参数返回一个函数就可以
+  return function(value){
+      return state.sum + value
+  }
+}
 }
 
 //创建并暴露store
@@ -157,11 +225,34 @@ export default new Vuex.Store({
 
 ```js
 $store.getters.bigSum
+$store.getters.bigSum(10)//传参
 ```
 
 ### 4.5 modules方法
 
 modules，模块化，因为是单一状态树，如果在state里面写的东西太多，就不好进行查找，那我们可以在我们的modules里面重新定义一个模块，就是相当于一个store，里面也有我们所需要的五个属性，所进行的操作也是一样的。
+
+```
+const moduleA = {
+		state:{
+			message: 'hello wolrd'
+		},
+		gettes:{},
+		mutations:{},
+		actions:{}
+},
+const moduleB = {
+		state:{},
+		gettes:{},
+		mutations:{},
+		actions:{}
+}
+modules:{
+	a:moduleA
+}
+//在组件中
+this.$store.state.a.message//'hello wolrd'
+```
 
 ## 5 四个map方法的使用
 
