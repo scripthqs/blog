@@ -79,8 +79,6 @@ html 文本/json 文本/js/css/图片...
 3. `Content-Type: multipart/form-data`
    用于文件上传请求
 
-
-
 ## 5、常见的响应状态码
 
 `200 OK` 请求成功。一般用于GET 与POST 请求
@@ -124,4 +122,3 @@ URL的组成：
 - scheme://host:port/path?query#fragment
 
 HTTP协议，超文本传输协议，详细规定了浏览器和万维网服务器之间相互通信的规则。协议就是约定，规定。
-
