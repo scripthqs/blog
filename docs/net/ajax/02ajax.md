@@ -2,7 +2,7 @@
 
 ## 1、HTTP 请求
 
-![HTTP](D:\user\Desktop\scripthqs\note\material\ajax\HTTP.png)
+![HTTP](https://gitee.com/scripthqs/assets/raw/master/ajax/HTTP.png)
 
 1. 前端应用从浏览器端向服务器发送HTTP 请求(**请求报文**)
 2. 后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回HTTP响应(**响应报文**)
