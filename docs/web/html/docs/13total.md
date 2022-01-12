@@ -1,10 +1,10 @@
 # HTML问题
 
-## 1、Doctype 的作用
+## 1.Doctype 的作用
 
 Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种规范。`<!DOCTYPE>`声明必须是HTML文档的第一行，位于html标签之前。HTML5 只需要写 `<!DOCTYPE HTML>`
 
-## 2、行内元素和块级元素
+## 2.行内元素和块级元素
 
 行内元素不独占一行，块级元素独占一行
 
@@ -12,7 +12,7 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 块级元素：`div` 、`ul`、 `ol` 、`li`、 `h1~h6` 、`p` 、`table` 等
 
-## 3、HTML语义化的理解
+## 3.HTML语义化的理解
 
 **HTML的职责是描述一块内容是什么（或其意义），而不是它长什么样子；它的外观应该由CSS来决定。**
 
@@ -20,13 +20,13 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 - 同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容。
 - 更好地搜索引擎优化（SEO）。
 
-## 4、浏览器内核
+## 4.浏览器内核
 
 浏览器分成两部分：**渲染引擎（内核）和JS引擎**。
 
 渲染引擎主要负责取得网页的内容、整理讯息、计算网页的显示方式等，JS引擎则是解析 `Javascript` 语言，执行 `javascript` 语言来实现网页的动态效果。
 
-## 5、html5有哪些新特性
+## 5.html5有哪些新特性
 
 - 语义化标签: `header``footer``nav``section``article``aside` 等
 - 增强型表单：`date`(从一个日期选择器选择一个日期) `email`(包含 e-mail 地址的输入域) `number`(数值的输入域) `range`(一定范围内数字值的输入域) `search`(用于搜索域) `tel`(定义输入电话号码字段) 等
@@ -38,7 +38,7 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 - `web storage`: `localStorage``sessionStorage`
 - `WebSocket`: `HTML5` 开始提供的一种在单个 `TCP` 连接上进行全双工通讯的协议
 
-## 6、Web存储
+## 6.Web存储
 
 在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有4kb左右，解析也非常复杂。
 
@@ -71,13 +71,13 @@ Web存储的特性：
 
 1. 设置、读取方便
 2. 容量较大，`sessionStorage`约5M，`localStorage`约20M
-3. 只能存储字符串，可以将对象JSON.stringfy()编码后存储
+3. 只能存储字符串，可以将对象 JSON.stringfy() 编码后存储
 
-**cookie、sessionStorage、localStorage的区别**
+cookie、sessionStorage、localStorage的区别:
 
 cookie是浏览器访问服务器后，服务器返回的一段数据，通常是一段加密的字符串，并且只会在同源HTTP请求中携带，作用是识别用户的身份和记录历史，sessionStorage是浏览器本地存储的一种方式，以键值对的形式进行存储，存储的数据会在浏览器窗口关闭后销毁，localStorage也是浏览器本地存储的一种方式，以键值对的形式进行存储，不过它的数据一般都会一直存在，除非手动删除。
 
-## 7、浏览器内多个标签页之间的通信
+## 7.浏览器内多个标签页之间的通信
 
 - 使用 `localStorage`: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`，一个窗口更新localStorage，另一个窗口监听window对象的'storage'事件，来实现通信
 
@@ -92,12 +92,12 @@ window.addEventListener("storage", function (e) {
 })
 ```
 
-**注：两个页面要同源（URL的协议、域名和端口相同）**
+注：两个页面要同源（URL的协议、域名和端口相同）
 
 - `websocket`协议
 - `webworker`
 
-## 8、src与href的区别
+## 8.src与href的区别
 
 `src` 用于替代这个元素，而 `href` 用于建立这个标签与外部资源之间的关系
 
@@ -115,7 +115,7 @@ window.addEventListener("storage", function (e) {
 
 当浏览器解析到这句代码时，页面的加载和解析都会暂停直到浏览器拿到并执行完这个js文件
 
-## 9、表单提交中Get和Post方式的区别
+## 9.表单提交中Get和Post方式的区别
 
 - `Get` 一般用于从服务器上获取数据，`Post` 向服务器传送数据
 - `Get` 传输的数据是拼接在Url之后的，对用户是可见的；`Post` 的传输数据对用户是不可见的
@@ -123,7 +123,7 @@ window.addEventListener("storage", function (e) {
 - `Get` 安全性非常低，`Post` 安全性较高
 - 在 `FORM` 提交的时候，如果不指定 `Method`，则默认为 `Get` 请求
 
-## 10、script标签中defer和async的区别
+## 10.script标签中defer和async的区别
 
 **defer** 延时、**async**异步
 

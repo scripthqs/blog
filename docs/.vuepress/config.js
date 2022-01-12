@@ -29,7 +29,7 @@ module.exports = {
     nav: navConfig,
     sidebar: sidebarConfig,
     collapsable: true,
-    sidebarDepth: 2,
+    sidebarDepth: 1,
     lastUpdated: '更新时间',
     searchMaxSuggestions: 10,
     docsRepo: 'Scripthqs/scripthqs.github.io',
