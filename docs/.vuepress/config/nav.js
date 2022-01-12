@@ -6,8 +6,8 @@ module.exports = [
   {
     text: '前端基础',
     items: [
-      { text: 'HTML', link: '/web/html/01web' },
-      { text: 'CSS', link: '/web/css/css1' },
+      { text: 'HTML', link: '/web/html/docs/01web' },
+      { text: 'CSS', link: '/web/css/01css' },
       { text: 'JavaScript', link: '/web/js/js1/jsa01' },
     ]
   },
@@ -22,8 +22,8 @@ module.exports = [
   {
     text: '框架学习',
     items: [
-      { text: 'Vue', link: '/framework/vue/01vue' },
-      { text: '记录', link: '/framework/notes/' },
+      { text: 'Vue', link: '/frame/vue/vue2/01vue' },
+      { text: '记录', link: '/frame/notes/' },
     ]
   },
   {

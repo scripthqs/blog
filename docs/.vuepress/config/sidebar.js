@@ -1,6 +1,5 @@
 module.exports = {
   // '/guide/': require('../guide/sidebar'),
-
   '/web/html/': require('../../web/html/sidebar'),
   '/web/css/': require('../../web/css/sidebar'),
   '/web/js/': require('../../web/js/sidebar'),
@@ -13,7 +12,6 @@ module.exports = {
   '/project/utils/': require('../../project/utils/sidebar'),
   '/tools/git/': require('../../tools/git/sidebar'),
   '/tools/webpack/': require('../../tools/webpack/sidebar'),
-  '/framework/vue/': require('../../framework/vue/sidebar'),
-  '/framework/notes/': require('../../framework/notes/sidebar'),
-
+  '/frame/vue/': require('../../frame/vue/sidebar'),
+  '/frame/notes/': require('../../frame/notes/sidebar'),
 }

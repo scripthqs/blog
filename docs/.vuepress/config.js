@@ -4,7 +4,7 @@ const pluginsConfig = require('./config/plugins')
 module.exports = {
   locales: {
     '/': {
-      lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
+      lang: 'zh', // 将会被设置为 <html> 的 lang 属性
     }
   },
   // base: "/docs/",
@@ -12,7 +12,7 @@ module.exports = {
   // description: '记录个人的学习笔记和各种工具',
   dest: './dist',
   head: [
-    ['link', { rel: 'icon', href: '/icon.png' }],
+    ['link', { rel: 'icon', href: '/img/icon.png' }],
     ['link', { rel: 'stylesheet', href: '/style/index.css' }],
     ['link', { rel: 'stylesheet', href: '/style/valine.css' }],
     ['link', { rel: 'stylesheet', href: '/style/code.css' }],
@@ -25,13 +25,13 @@ module.exports = {
   themeConfig: {
     // overrideTheme: { light: [6, 22], dark: [22, 6] },
     // overrideTheme: 'dark',
-    logo: '/logo.png',
+    logo: '/img/logo.png',
     nav: navConfig,
     sidebar: sidebarConfig,
     collapsable: true,
     sidebarDepth: 2,
     lastUpdated: '更新时间',
-    searchMaxSuggestoins: 10,
+    searchMaxSuggestions: 10,
     docsRepo: 'Scripthqs/scripthqs.github.io',
     // 假如文档不是放在仓库的根目录下：
     docsDir: 'docs',

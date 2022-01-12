@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /hero.png
+heroImage: /img/hero.png
 heroText: Welcome
 tagline: 欢迎来到我的个人网站，其中记录了我的学习笔记和各种实用工具
 actionText: 关于我 →
