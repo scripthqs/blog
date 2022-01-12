@@ -1,0 +1,80 @@
+#valine-vuepress-comment {
+  width: 740px;
+  height: 500px;
+  margin: 0 auto;
+  /* font-weight: bold; */
+
+}
+
+@media (max-width:500px) {
+  #valine-vuepress-comment {
+    width: 300px;
+    margin: 0 auto;
+    /* font-weight: bold; */
+    /* border: 2px solid #333; */
+
+  }
+}
+
+#veditor {
+  background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: rgba(255, 255, 255, 0);
+  resize: vertical;
+
+}
+
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vnick.vinput,
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vmail.vinput,
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vlink.vinput {
+  /* width: 31%; */
+  border: 2px solid #dedede;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  font-weight: 300;
+}
+
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vnick.vinput:focus,
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vmail.vinput:focus,
+#valine-vuepress-comment>div.vpanel>div>div.vheader.item3>input.vlink.vinput:focus {
+  border: 2px solid #999;
+}
+
+#veditor:focus {
+  border: 2px solid #eee;
+  background-position-y: 200px;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+#valine-vuepress-comment>div.vpanel>div>div.vedit #vcomments .vcards .vcard {
+  padding: 15px 20px 0 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+  transition: all .3s
+}
+
+img.vimg {
+  transition: all 1s
+    /* 旋转时间为 1s */
+}
+
+img.vimg:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+}
+
+#vcomments .vcards .vcard:hover {
+  box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+}
+
+#vcomments .vcards .vcard .vh .vcard {
+  border: none;
+  box-shadow: none;
+}

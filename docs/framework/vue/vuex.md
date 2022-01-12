@@ -110,9 +110,9 @@ const mutations = {
   },
    ADD2(state){
    setTimeout( () => {
-  		//如果在mutations中异步修改state，页面数据会更新，但是调试工具中state中数据不会更新
-  	 	context.sum ++
-	},1000)
+    //如果在mutations中异步修改state，页面数据会更新，但是调试工具中state中数据不会更新
+     context.sum ++
+ },1000)
   }
 }
 //在组件中使用
@@ -154,7 +154,7 @@ const actions = {
     //actions可以传递2个参数，第一个context相当于store,第二个参数是payload
    add (context, value) {
     setTimeout(() => {
-    	console.log('add被调用', context, value)
+     console.log('add被调用', context, value)
         context.commit('ADD', value)
     },1000)
   }
@@ -170,7 +170,7 @@ const actions = {
    add (context, value) {
        return new Promise((resolve,reject)=>{
         setTimeout(() => {
-    	console.log('add被调用', context, value)
+     console.log('add被调用', context, value)
         context.commit('ADD', value)
         resolve('成功')
     },1000)
@@ -234,21 +234,21 @@ modules，模块化，因为是单一状态树，如果在state里面写的东�
 
 ```
 const moduleA = {
-		state:{
-			message: 'hello wolrd'
-		},
-		gettes:{},
-		mutations:{},
-		actions:{}
+  state:{
+   message: 'hello wolrd'
+  },
+  gettes:{},
+  mutations:{},
+  actions:{}
 },
 const moduleB = {
-		state:{},
-		gettes:{},
-		mutations:{},
-		actions:{}
+  state:{},
+  gettes:{},
+  mutations:{},
+  actions:{}
 }
 modules:{
-	a:moduleA
+ a:moduleA
 }
 //在组件中
 this.$store.state.a.message//'hello wolrd'

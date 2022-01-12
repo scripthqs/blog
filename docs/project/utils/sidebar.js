@@ -3,10 +3,10 @@ module.exports = [
     title: '打包自定义工具库',
     collapsable: true,
     children: [
-      'chapter1/01_intro',
-      'chapter1/02_create',
-      'chapter1/03_npm',
-      'chapter1/04_install',
+      'chapter1/01_install',
+      'chapter1/02_intro',
+      'chapter1/03_create',
+      'chapter1/04_npm',
     ]
   }, {
     title: '各种自定义',

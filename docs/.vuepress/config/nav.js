@@ -39,8 +39,8 @@ module.exports = [
     items: [
       { text: '购物街', link: '/project/vuemall/' },
       { text: '后台管理系统', link: '/project/vuecms/' },
-      { text: '自定义组件库', link: '/project/hqsui/button' },
-      { text: '自定义工具函数库', link: '/project/utils/chapter1/01_intro' },
+      { text: '自定义组件库', link: '/project/hqsui/install/' },
+      { text: '自定义工具函数库', link: '/project/utils/chapter1/01_install' },
     ]
   },
   {
@@ -51,6 +51,7 @@ module.exports = [
       { text: 'Vant', link: 'https://youzan.github.io/vant/#/zh-CN/' },
       { text: 'Element-UI', link: 'https://element.eleme.cn/#/zh-CN' },
       { text: 'VuePress', link: 'https://vuepress.vuejs.org/zh/' },
+      { text: '网道', link: 'https://wangdoc.com/' },
     ]
   },
   {
