@@ -1,25 +1,31 @@
 module.exports = [
   {
-    title: 'Ajax',
+    title: 'HTTP 基础',
     collapsable: true,
     children: [
-      '01ajax',
-      '02ajax',
-      '03ajax',
-      '04ajax',
-      '05ajax',
-      '06ajax',
-      '07ajax',
-      '08ajax',
+      'http/http'
+    ]
+  },
+  {
+    title: 'AJAX',
+    collapsable: true,
+    children: [
+      'docs/01ajax',
+      'docs/03ajax',
+      'docs/04ajax',
+      'docs/05ajax',
+      'docs/06ajax',
+      'docs/07ajax',
+      'docs/08ajax',
     ]
   },
   {
     title: 'Axios',
     collapsable: true,
     children: [
-      'axios01',
-      'axios02',
-      'axios03',
+      'axios/axios01',
+      'axios/axios02',
+      'axios/axios03',
     ]
   }
 ]

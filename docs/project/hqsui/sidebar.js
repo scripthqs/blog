@@ -7,16 +7,16 @@ module.exports = [
   },
   {
     title: 'hqs-ui组件',
-    collapsable: true,
+    collapsable: false,
     children: [
-      '/project/hqsui/button',
-      '/project/hqsui/tabs',
-      '/project/hqsui/input',
-      '/project/hqsui/grid',
-      '/project/hqsui/layout',
-      '/project/hqsui/toast',
-      '/project/hqsui/popover',
-      '/project/hqsui/collapse',
+      '/project/hqsui/docs/button',
+      '/project/hqsui/docs/tabs',
+      '/project/hqsui/docs/input',
+      '/project/hqsui/docs/grid',
+      '/project/hqsui/docs/layout',
+      '/project/hqsui/docs/toast',
+      '/project/hqsui/docs/popover',
+      '/project/hqsui/docs/collapse',
     ]
   }
 ]

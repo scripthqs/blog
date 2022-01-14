@@ -8,15 +8,15 @@ module.exports = [
     items: [
       { text: 'HTML', link: '/web/html/docs/01web' },
       { text: 'CSS', link: '/web/css/docs/01css' },
-      { text: 'JavaScript', link: '/web/js/js1/jsa01' },
+      { text: 'JavaScript', link: '/web/js/docs/jsa01' },
     ]
   },
   {
     text: '服务器知识',
     items: [
-      { text: 'AJAX', link: '/net/ajax/01ajax' },
-      { text: 'Node', link: '/net/node/01node' },
-      { text: '数据库', link: '/net/db/01MongoDB' },
+      { text: 'AJAX', link: '/net/ajax/docs/01ajax' },
+      { text: 'Node', link: '/net/node/docs/01node' },
+      { text: '数据库', link: '/net/db/docs/01MongoDB' },
     ]
   },
   {
@@ -29,8 +29,8 @@ module.exports = [
   {
     text: '实用工具',
     items: [
-      { text: 'Git', link: '/tools/git/' },
-      { text: 'Webpack', link: '/tools/webpack/01webpack' },
+      { text: 'Git', link: '/tools/git/docs/' },
+      { text: 'Webpack', link: '/tools/webpack/docs/01webpack' },
       { text: '内网穿透', link: '/tools/nat/' },
     ]
   },

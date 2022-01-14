@@ -10,7 +10,7 @@ module.exports = [
     ]
   }, {
     title: '各种自定义',
-    collapsable: true,
+    collapsable: false,
     children: [
       'chapter2/01function',
       'chapter2/02array',

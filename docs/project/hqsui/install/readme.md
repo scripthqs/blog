@@ -26,7 +26,6 @@ npm i hqs-ui
 ```js
 import HqsUI from 'hqs-ui'
 Vue.use(HqsUI)
-
 ```
 
 - 在vue项目中按需引入
@@ -55,7 +54,6 @@ Vue.component('h-tabs-pane', TabsPane)
 Vue.component('h-popover', Popover)
 Vue.component('h-collapse', Collapse)
 Vue.component('h-collapse-item', CollapseItem)
-
 ```
 
 - 模块化引用

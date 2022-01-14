@@ -2,7 +2,7 @@
 
 Vuex是一个专门为了Vue.js应用程序开发的状态管理模式。
 
-![vuex](https://next.vuex.vuejs.org/vuex.png)
+![vuex](../images/vuex.png)
 
 ## 1 状态管理
 
