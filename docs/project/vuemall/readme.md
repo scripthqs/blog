@@ -2,17 +2,23 @@
 
 一款基于VueCLI、Vue-router、Vuex、VueLazyLoad、BetterScroll(滚动插件)、Axios等构建的web移动端商城项目。
 
-<a href="http://scripthqs.gitee.io/vuemall/#/home">项目预览</a><OutboundLink/>
+[源码链接](https://github.com/Scripthqs/vuemall)
 
-<a href="https://github.com/Scripthqs/vuemall">源码链接</a><OutboundLink/>
+本项目是移动端项目，推荐手机**扫描二维码预览**
 
-<a href="http://scripthqs.gitee.io/vantmall">使用vant-ui组件库重构的版本</a><OutboundLink/>
+![可手机扫描二维码预览](./images/vuemall.png)
+
+[没有使用组件库的项目预览](http://scripthqs.gitee.io/vuemall/#/home)
+
+![可手机扫描二维码预览](./images/vantmall.png)
+
+[使用 vant-ui 组件库重构的版本](http://scripthqs.gitee.io/vantmall)
 
 ## 1 准备
 
 ### 1.1 划分目录结构
 
-```bash
+```shell
 vue create vuemall
 ```
 
@@ -28,13 +34,13 @@ vue create vuemall
 
 1. 引入normalize.css，npm引入或者直接下载到src/assets/css文件夹中
 
-   ```bash
+   ```shell
    npm install --save normalize.css 
    ```
 
    main.js引入
 
-   ```bash
+   ```shell
     import 'normalize.css/normalize.css
    ```
 
@@ -138,40 +144,40 @@ vue create vuemall
 
 1. 在src/network文件夹中，基于axios框架封装request.js
 
-```javascript
-import axios from 'axios'
-export function request(config) {
-    // 初始化：新建一个axios实例
-    const instance1 = axios.create({
-        //baseURL: 'http://152.136.185.210:7878/api/m5',
-        baseURL: '/api'，//这种方式，配合vue.config.js可以解决跨域问题
-        timeout: 5000
-    })
-    
-    // 拦截：请求request，
-    instance1.interceptors.request.use(config => {
-        //拦截某些网络请求，比如登录token，必须携带一些特殊的信息，跳转到某个地方登录
-        // console.log(config);
-        //拦截后必须返回
-        return config;
-    }, err => {
-        console.log(err);
-    })
-    
-    // 拦截：响应response
-    instance1.interceptors.response.use(res => {
-        //拦截响应，可以对结果进行处理，比如，根据服务器的返回状态码做判断
-        // console.log(res.data);
-        //拦截后必须返回
-        return res.data;
-    },err => {
-        console.log(err);
-    })
-    
-    // 返回：发送真实请求
-    return instance1(config);
-}
-```
+    ```javascript
+    import axios from 'axios'
+    export function request(config) {
+        // 初始化：新建一个axios实例
+        const instance1 = axios.create({
+            //baseURL: 'http://152.136.185.210:7878/api/m5',
+            baseURL: '/api'，//这种方式，配合vue.config.js可以解决跨域问题
+            timeout: 5000
+        })
+        
+        // 拦截：请求request，
+        instance1.interceptors.request.use(config => {
+            //拦截某些网络请求，比如登录token，必须携带一些特殊的信息，跳转到某个地方登录
+            // console.log(config);
+            //拦截后必须返回
+            return config;
+        }, err => {
+            console.log(err);
+        })
+        
+        // 拦截：响应response
+        instance1.interceptors.response.use(res => {
+            //拦截响应，可以对结果进行处理，比如，根据服务器的返回状态码做判断
+            // console.log(res.data);
+            //拦截后必须返回
+            return res.data;
+        },err => {
+            console.log(err);
+        })
+        
+        // 返回：发送真实请求
+        return instance1(config);
+    }
+    ```
 
 2. 将**不同页面**的网络请求分类，分别封装对于的请求文件
 
@@ -204,13 +210,13 @@ export function request(config) {
        proxy: {
          '/api': {
            target: 'http://152.136.185.210:7878/api/m5',
-       pathRewrite:{'^/api':''},//重写api，将地址栏路径中的api用''替代
+           pathRewrite:{'^/api':''},//重写api，将地址栏路径中的api用''替代
            ws: true, //用于支持websocket
            changeOrigin: true //用于控制请求头中的host值
          },
          '/demo': {
            target: 'http://localhost:5001',
-       pathRewrite:{'^/demo':''},
+           pathRewrite:{'^/demo':''},
          }
        }
    }
@@ -431,7 +437,7 @@ npm install @better-scroll/pull-up --save
 npm install @better-scroll/observe-image --save
 ```
 
-2 当content 的高度>父容器wrapper的高度，才能滚动的，当有图片异步请求时，很容易出问题。
+2 当content的高度>父容器wrapper的高度，才能滚动的，当有图片异步请求时，很容易出问题。
 
 ```js
   observeDOM: true
@@ -470,12 +476,12 @@ disableTouch: false
 <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
 ```
 
-> @click.native可以监听组件根元素的点击 
+> @click.native可以监听组件根元素的点击
 
 **监听组件的点击：**
 
-* 组件的点击加上修饰符.native
-* 回到顶部的点击事件功能实现
+- 组件的点击加上修饰符.native
+- 回到顶部的点击事件功能实现
 
 ```js
    backClick () {
@@ -491,7 +497,7 @@ disableTouch: false
     },
 ```
 
-BackTop组件的**显示和隐藏** 
+BackTop组件的**显示和隐藏**
 
 - 监听滚动, 拿到滚动的位置
 
@@ -502,10 +508,10 @@ data(){
   }
 }
 mounted () {
-	window.addEventListener('scroll', this.scrollToTop, true)
+ window.addEventListener('scroll', this.scrollToTop, true)
 },
 destroyed () {
-	window.removeEventListener('scroll', this.scrollToTop, true)
+ window.removeEventListener('scroll', this.scrollToTop, true)
 },
 methods:{
     scrollToTop () {
@@ -526,7 +532,7 @@ methods:{
 
 ```js
     currentType: 'pop',
-	goods: {
+ goods: {
         pop: { page: 0, list: [] },
         new: { page: 0, list: [] },
         sell: { page: 0, list: [] }
@@ -551,7 +557,7 @@ methods:{
     },
 ```
 
-3 更新数据 
+3 更新数据
 
 ```js
     onLoad () {
@@ -574,7 +580,7 @@ methods:{
 
 ### 2.9 让Home保持原来的状态
 
-从home跳到了cetegroy，再返回home后又重新加载home
+从home跳到了category，再返回home后又重新加载home
 
 让Home不要随意销毁掉，使用、
 
@@ -673,7 +679,7 @@ created () {
 
 ### 3.6 商品细节
 
-### 3.7 评论信息 
+### 3.7 评论信息
 
 使用过滤器，将获取到的时间戳转换成对应的时间
 
@@ -798,7 +804,7 @@ export class CartGoods {
 
 传入参数，得到商品信息
 
-```
+```js
 addToCart () {
       const product = new CartGoods(this.itemInfo)
       // this.$store.dispatch("addCart", product);
@@ -813,7 +819,14 @@ addToCart () {
 
 ### 3.12 toast插件的封装
 
+1.仔细看components/common/toast文件夹中的index.js和Toast.vue
+2.导入index.js `import toast from 'components/common/toast/'`
+3.注册toast插件 Vue.use(toast)
+4.此后，都可以通过this.$toast.show(message, duration)来显示message
+  注意，能使用$toast是因为在Vue的原型上添加了$toast，其内部添加了一个show方法
+
 ```js
+//Toast.vue
 show(message, duration) {
       this.isShow = true;
       this.message = message;
@@ -841,7 +854,7 @@ show(message, duration) {
 插件的封装
 
 ```js
-// 这是关于toast插件的封装
+// 这是关于toast插件的封装，index.js
 
 import Toast from "./Toast"
 const obj = {}
@@ -852,9 +865,9 @@ export default obj
 // 在main.js安装插件时，会自动调用该插件的install函数，并自动传入Vue对象
 obj.install = function (Vue) {
   // 1.创建组件构造器
-  const toastContrustor = Vue.extend(Toast);
+  const toastConstructor = Vue.extend(Toast);
   // 2.根据组件构造器，可以创建出一个组件对象
-  const toast = new toastContrustor();
+  const toast = new toastConstructor();
   // 3.将组件对象，手动挂载到某一元素上
   toast.$mount(document.createElement('div'));
   // 4.toast.$el对应的就是div
@@ -941,7 +954,7 @@ obj.install = function (Vue) {
       resolve('已移除该商品！')
     })
   },
-    //  motations.js
+    //  mutations.js
   deleteCart (state, payload) {
     var arrRemoveJson = function (arr, attr, value) {
       if (!arr || arr.length === 0) {
@@ -963,7 +976,7 @@ obj.install = function (Vue) {
 allCheckClick (context) {
     context.commit('changeAllChecked')
  }
-  //  motations.js
+  //  mutations.js
     changeAllChecked (state) {
     if (state.cartList.length !== 0) {
       if (state.cartList.find(item => !item.checked)) {
@@ -1012,4 +1025,3 @@ allCheckClick (context) {
 ## 6 项目的打包优化和发布
 
 ### 6.1 移除console的信息
-
