@@ -1,8 +1,8 @@
-# vue+element后台管理系统
+# 后台管理系统
 
-<a href="http://scripthqs.gitee.io/vuecms" target='_blank'>项目预览</a><OutboundLink/>
+[项目预览](http://scripthqs.gitee.io/vuecms)
 
-<a href="https://github.com/Scripthqs/vuecms" target='_blank'>源码链接</a><OutboundLink/>
+[源码链接](https://github.com/Scripthqs/vuecms)
 
 ## 1 项目概述
 
@@ -18,73 +18,83 @@
 
 ## 2 项目初始化
 
-1. 使用vuecli创建项目
-2. 配置vue路由
-3. 安装element-ui组件库
-4. 配置axios
-5. 初始化git
-6. 将项目托管到github或码云等远程仓库
+1. 使用 vuecli 创建项目
+2. 配置 vue-router 路由
+3. 安装 element-ui 组件库
+4. 配置 axios
+5. 初始化 git
+6. 将项目托管到 github 或码云等远程仓库
 
 项目开发的具体思路：
 
-总的来说，将基本页面通过element-ui组件库来实现，之后向后端服务器发起请求，获取数据，将获取的数据保存到每个组件的data中，methods方法区实现各模块所需要的基本方法。需要注意：后端返回的数据是什么格式的，与前端的格式是否一致，不一致需要转换。一般来说。
+总的来说，将基本页面通过element-ui组件库来实现，之后向后端服务器发起请求，获取数据，将获取的数据保存到每个组件的data中，methods方法区实现各模块所需要的基本方法。需要注意：后端返回的数据是什么格式的，与前端的格式是否一致，不一致需要转换。
 
-每新建一个路由模块都要在路由配置文件router.js中进行配置，其中还使用了嵌套路由。将组件component映射到路由，使用router-view作为路由的的占位符。
+每新建一个路由模块都要在路由配置文件 router.js 中进行配置，其中还使用了嵌套路由。将组件component映射到路由，使用 router-view 作为路由的的占位符。
+
+### 其他配置
+
+- 配置Eslint的检测规则
+  - 在根路径创建一个 格式化 配置的文件 `.prettierrc` 文件是JSON格式 `semi` true加分号/false不加分号 `singleQuote`: true为单引号/false为双引号
+  - `.eslintrc.js`下取消func之间的空格: `'space-before-function-paren': 0` rules里面写
+- 分支的推送: 把 本地分支 login 推送到远程仓库上 `git push -u remote branch`
+  - 如果远程仓库没有本地的分支则可以使用 `git push -u remote user`  在哪个分支上就是那个分支 来推送到远程仓库
+  - 切换分支 -> 提交分支 -> 回到主分支合并分支 -> 推送主分支
+  - pull
 
 ## 3 如何使用element组件库
 
-<a href="https://element.eleme.cn/#/zh-CN/component/installation" target='_blank'>element-ui组件库官方文档</a><OutboundLink/>
+[element-ui组件库官方文档](https://element.eleme.cn/#/zh-CN/component/installation)
 
-1. 安装element
+1. 安装 element
 
-```shell
-npm i element-ui -S
-```
+    ```shell
+    npm i element-ui -S
+    ```
 
 2. 按需引入，安装 babel-plugin-component：
 
-```shell
-npm install babel-plugin-component -D
-```
+    ```shell
+    npm install babel-plugin-component -D
+    ```
 
-3. 官网介绍的是，修改.babelrc文件，但vue-cli3中没有.babelrc，需要在balel.config.js中修改
+3. 官网介绍的是，修改.babelrc文件，但vue-cli3中没有.babelrc，需要在babel.config.js中修改
 
-```js
-module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset',
-    ['@babel/preset-env']
-  ],
-  plugins: [
-    [
-      'component',
-      {
-        libraryName: 'element-ui',
-        styleLibraryName: 'theme-chalk'
-      }
-    ]
-  ]
-}
-```
+    ```js
+    module.exports = {
+      presets: [
+        '@vue/cli-plugin-babel/preset',
+        ['@babel/preset-env']
+      ],
+      plugins: [
+        [
+          'component',
+          {
+            libraryName: 'element-ui',
+            styleLibraryName: 'theme-chalk'
+          }
+        ]
+      ]
+    }
+    ```
 
 4. 在main.js中按需引入
 
-```js
-import { Button } from 'element-ui';
-Vue.component(Button.name, Button);
-/* 或写为
- * Vue.use(Button)
- */
-有的需要加的Vue原型上，例如Message
-Vue.prototype.$message = Message
-```
+      ```js
+      import { Button } from 'element-ui';
+      Vue.component(Button.name, Button);
+      /* 或写为
+      * Vue.use(Button)
+      */
+      有的需要加的Vue原型上，例如Message
+      Vue.prototype.$message = Message
+      ```
 
 在实际开发中，可以一次性、**完整导入并注册所有 element-ui组件**，这样存在优缺点：
 
 - **优点**：**所有的 element组件都进行了全局的注册**。在每个组件中，不再需要按需引入并注册组件了。
 - **缺点**：项目中没有用到的组件也会被打包进来，**导致打包体积过大的问题**（此问题在项目发布时，可通过 **CDN 加速**解决）
 
-## 4  项目准备工作
+## 4 项目准备工作
 
 - 开始项目前创建一个分支来书写 写完成后在合并分支  
 
@@ -153,36 +163,36 @@ Vue.prototype.$message = Message
 
 1. 第一次登录，将登录成功后的token，保存到客户端的sessionStorage中
 
-```js
-window.sessionStorage.setItem('token', res.data.token)
-```
+    ```js
+    window.sessionStorage.setItem('token', res.data.token)
+    ```
 
 2. 通过编程式导航跳转到后台主页，路由地址是/home
 
-```js
-this.$router.push('/home')
-```
+    ```js
+    this.$router.push('/home')
+    ```
 
-注意：
+    注意：
 
-- 项目中除了登录之外的其他API接口，必须在登录之后才能访问
-- token只能在当前网站打开期间生效，所以将token保存在sessionStorage中
+    - 项目中除了登录之外的其他API接口，必须在登录之后才能访问
+    - token只能在当前网站打开期间生效，所以将token保存在sessionStorage中
 
 3. 在完成登录后，后续项目中每次调用后端接口都要在请求头中加入token，也就是在请求头中使用 Authorization 提供token令牌，此时，在项目的全局中**main.js文件下**
 
-```
-import axios from 'axios'
-// 配置请求的根路径
-axios.defaults.baseURL = 'http://ip地址/api/private/v1/'
-// 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
-axios.interceptors.request.use(config => {
-  // console.log(config)
-  config.headers.Authorization = window.sessionStorage.getItem('token')
-  return config
-})
-// 挂载Vue的原型对象上
-Vue.prototype.$http = axios
-```
+    ```js
+    import axios from 'axios'
+    // 配置请求的根路径
+    axios.defaults.baseURL = 'http://ip地址/api/private/v1/'
+    // 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
+    axios.interceptors.request.use(config => {
+      // console.log(config)
+      config.headers.Authorization = window.sessionStorage.getItem('token')
+      return config
+    })
+    // 挂载Vue的原型对象上
+    Vue.prototype.$http = axios
+    ```
 
 ### 5.3 登录路由导航守卫
 
@@ -239,7 +249,7 @@ Default: 生产环境下是 true，开发环境下是 false
 
 使用element-ui设计登录页面。
 
-1. 背景居中 使用element-ui 设置头像框 使用 `position: absolute和 ` transform: translate(-50%, -50%);` 样式居中
+1. 背景居中 使用element-ui 设置头像框 使用 `position: absolute和` transform: translate(-50%, -50%);` 样式居中
 2. Element-ui 表单按钮的使用 因为设置了按需加载需要在 `plugins`文件夹下的`element.js` 配置引入的 `{Button, Form, FormItem, Input}`
 
 - `<el-form label-width="80px">`(表单默认label属性占位80px) `<el-form-item label="用户名">`(一个项使用label属性左侧文字的显示)
@@ -266,25 +276,15 @@ Default: 生产环境下是 true，开发环境下是 false
 - `router.beforeEach((to, from, next) => {})` to 即将跳转到哪里(到那里去) from 在哪里跳转(从哪里来) next 放行枷(给不给走)
 - 退出登录: 在home页面设置按钮 清空token并且跳转到 login
 
-## 8 其他配置
+### 页面布局
 
-- 配置Eslint的检测规则
-  - 在根路径创建一个 格式化 配置的文件 `.prettierrc` 文件是JSON格式 `semi` true加分号/false不加分号 `singleQuote`: true为单引号/false为双引号
-  - `.eslintrc.js`下取消func之间的空格: `'space-before-function-paren': 0` rules里面写
-- 分支的推送: 把 本地分支 login 推送到远程仓库上 `git push -u remote branch`
-  - 如果远程仓库没有本地的分支则可以使用 `git push -u remote user`  在哪个分支上就是那个分支 来推送到远程仓库
-  - 切换分支 -> 提交分支 -> 回到主分支合并分支 -> 推送主分支
-  - pull
+使用element-ui的Container 布局容器对主页进行布局。`<el-header>`头部区域， `<el-aside>`侧边栏，`<el-menu >`菜单栏
 
-## 9 Element-ui
-
-使用element-ui的Container 布局容器对主页进行布局。`  <el-header>`头部区域， `<el-aside>`侧边栏，`<el-menu >`菜单栏
-
-### Asied
+### Aside 侧边栏菜单
 
 - element-ui 提供的组件,每个组件名都是它自己的类名
 
-- 布局容器: Container Asied Main
+- 布局容器: Container Aside Main
   - 右侧菜单(二级可折叠) `el-menu`(最外层包裹菜单) `<el-submenu>`一级菜单 `<el-menu-item>` 二级菜单(里层)  `<template>` 菜单的模板(icon/span)
 
 - 请求拦截器:  **登录授权 请求验证是否有 token  需要授权的 API ，必须在请求头中使用 `Authorization` 字段提供 `token` 令牌**
@@ -311,7 +311,7 @@ Default: 生产环境下是 true，开发环境下是 false
   ```js
   //使用async和await，简化promise
   async getMenuList () {
-  	  //使用解构赋值，对返回的数据进行处理
+     //使用解构赋值，对返回的数据进行处理
         const { data: res } = await this.$http.get('/menus')
         //判断响应状态码，对数据进行处理
         if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
@@ -336,12 +336,12 @@ Default: 生产环境下是 true，开发环境下是 false
   
   - 菜单栏只打开一个的可以给`el-menu` 添加 `unique-opened` 属性(1) 为 `true` |  折叠属性(2): `collapse` | 关闭过渡动画属性(3): `:collapse-transition="false"` |
   
-  - 左侧边栏的宽度变化(Aised): `:width="isCollapse ? '61px' : '200px'"` 利用三元表达式
+  - 左侧边栏的宽度变化(Aside): `:width="isCollapse ? '61px' : '200px'"` 利用三元表达式
   
   - 子菜单的跳转: `el-from` 有router(index属性)默认为false关闭的  index='/login' index做路由跳转
     - 里面的组件都是作为Home的子组件展示的,如果作为一个独立的路由而不是Home的子路由那么左侧的导航栏就销毁没有了
-    
-    ```
+
+    ```js
     {
         path: '/home',
         component: Home,
@@ -353,10 +353,8 @@ Default: 生产环境下是 true，开发环境下是 false
           },
      }
     ```
-    
-    左侧导航激活的高亮`:default-active="activePath"`: 点击导航-> 使用sessionStorage来保存激活的路径 并赋值给高亮的变量->  当离开再回来created时得到 sessionStorage 的路径赋值给高亮变量  (导航守卫.beforeEach)
 
-### Main
+    左侧导航激活的高亮`:default-active="activePath"`: 点击导航-> 使用sessionStorage来保存激活的路径 并赋值给高亮的变量->  当离开再回来created时得到 sessionStorage 的路径赋值给高亮变量  (导航守卫.beforeEach)
 
 ### 用户管理
 
@@ -364,16 +362,16 @@ Default: 生产环境下是 true，开发环境下是 false
 
 - 卡片搜索框的使用: `el-card` 配合 栅栏布局 使用 input复合框 : 样式配合 Row 和 Col的栅栏配合
 
-- 使用get获取用户数据 参数为 params  { params : {name:'LHJ'} }
+- 使用get获取用户数据 参数为 params  { params : {name:'HQS'} }
 
-- 表格数据: `<el-table :data="数据源" stripe(avtice) border(边框)>` `<el-table-column prop="数据名" label="列的名字">`
-  - 显示按钮使用作用预插槽: 在`<el-table-column>` 添加template模板再使用`v-slot`属性拿到当前槽作用域的布尔值 Boolean 再通过Switch组件显示 而在 `<el-table-column>` 使用了**作用域插槽**会覆盖当前层的prop所以可以删除prop 按钮使用时需要 插槽作用域
+- 表格数据: `<el-table :data="数据源" stripe(active) border(边框)>` `<el-table-column prop="数据名" label="列的名字">`
+  - 显示按钮使用作用预插槽: 在`<el-table-column>` 添加template模板再使用`v-slot`属性拿到当前槽作用域的布尔值 Boolean 再通过 Switch 组件显示 而在 `<el-table-column>` 使用了**作用域插槽**会覆盖当前层的prop所以可以删除prop 按钮使用时需要 插槽作用域
   
   ```js
   <el-table-column label="状态">
       <template v-slot="scope">
-      	<el-switch v-model="scope.row.mg_state" active-color="#13ce66" inactive-color="#ff4949" 				@change="userStatuChanged(scope.row)"> 
-      	</el-switch>
+       <el-switch v-model="scope.row.mg_state" active-color="#13ce66" inactive-color="#ff4949" @change="userStatusChanged(scope.row)"> 
+       </el-switch>
       </template>
   </el-table-column>
   ```
@@ -422,9 +420,9 @@ Default: 生产环境下是 true，开发环境下是 false
 - 按钮状态的修改: 通过Switch的chang改变事件触发回调函数
 - nextTick
 - 搜索功能: 给搜索框双向绑定到 `queryInfo.query` 因为搜索时根据它来的 再搜索按钮绑定点击事件发送用户数据请求,根据query返回对应的参数 , 清空搜索框并清空搜索的内容 element-ui的搜索框有自带的clear事件,点击清楚时再次发送用户数据请求,此时因为query已经清空所以返回的是默认的数据
-- 点击添加用户弹出 `:visible.sync = DialogVisble` 为true显示反之隐藏
+- 点击添加用户弹出 `:visible.sync = DialogVisible` 为true显示反之隐藏
 - 添加 **el-form** 项 :model="绑定要显示数据的对象" :rules="绑定校验规则的对象" ref="重置表单数据素要的方法"
-  - 手机和邮箱验证规则: 在data里面与return同级 用变量接收一个箭头函数(ruel, value, callback) 里面时校验的正则表达式 通过直接callback() 不通过则callback(new Error(''))
+  - 手机和邮箱验证规则: 在data里面与return同级 用变量接收一个箭头函数(rule, value, callback) 里面时校验的正则表达式 通过直接callback() 不通过则callback(new Error(''))
   - 使用变量名的方法: `{ validator: checkEmail, trigger: 'blur' }` 在验证规则里面写下`validator: 变量名` 就可以调用正则表达式来验证邮箱或手机号码
 - 调用form的validate属性判断数据是否合法,  值是true就发送网络请求添加用户 否则直接返回结束函数 post 对象 if(res.meta.status) 201为创建成功
   - 对话框的代码可以放到外面,只需要使用点击事件来变换 布尔值 就可以做到显示和隐藏
@@ -439,11 +437,11 @@ Default: 生产环境下是 true，开发环境下是 false
 
 ```js
 <el-table-column label="权限等级">
-          <template v-slot="scope">
-            <el-tag v-if="scope.row.level === '0'">一级</el-tag>
-            <el-tag type="success" v-else-if="scope.row.level === '1'">二级</el-tag>
-            <el-tag type="warning" v-else-if="scope.row.level === '2'">三级</el-tag>
-          </template>
+  <template v-slot="scope">
+    <el-tag v-if="scope.row.level === '0'">一级</el-tag>
+    <el-tag type="success" v-else-if="scope.row.level === '1'">二级</el-tag>
+    <el-tag type="warning" v-else-if="scope.row.level === '2'">三级</el-tag>
+  </template>
 </el-table-column>
 ```
 
@@ -455,7 +453,6 @@ Default: 生产环境下是 true，开发环境下是 false
 
   - 点击按钮显示框 并获取数据 .点击确认按钮验证表单的 `rules` 规则是否全通过返回 true 就发送相应的 修改/删除等操作
   - Dialog有关闭事件可以清空表单操作
-
 
 ----
 
@@ -470,8 +467,9 @@ Default: 生产环境下是 true，开发环境下是 false
 
 ### 商品分类
 
-- 树形表格:由于 element-ui 没有 树形的表格要借助于第三方的 `vue-table-with-tree-grid`   [github地址](https://github.com/MisterTaki/vue-table-with-tree-grid)
-  - columns｛ｌａｂｅｌ    template  type  prop｝   --  show-index   index-text　下面案例
+- 树形表格:由于 element-ui 没有 树形的表格要借助于第三方的 `vue-table-with-tree-grid`
+- [github地址](https://github.com/MisterTaki/vue-table-with-tree-grid)
+  - columns｛label template  type  prop｝-- show-index index-text
 - 分页: 由于获取用户的方法关系,可以每次修改 页码 或 页数 时直接重新发送获取用户请求
 
 - 分类的添加:
@@ -498,7 +496,7 @@ Default: 生产环境下是 true，开发环境下是 false
           <!-- props 用来指定配置对象 expandTrigger: 触发方式 value(id) label(显示的文字) children(下层元素) -->
           <!-- v-model 双向绑定keys -->
           <el-cascader
-            v-model="selectdKeys"
+            v-model="selectedKeys"
             :options="parentCateList"
             :props="{
               expandTrigger: 'hover',
@@ -571,17 +569,17 @@ Default: 生产环境下是 true，开发环境下是 false
 - 级联选择框
 
   ```js
-                <el-cascader
-                  v-model="addForm.goods_cat" 选择出来的keys
-                  :options="cateList" 绑定的数据元
-                  :props="{ expandTrigger: 'hover', ...cateProps  (要显示的东西) }"
-                  @change="handleChange" 选择项发生变化
-                ></el-cascader>
-               cateProps: {
-                      label: 'cat_name', 显示的名字
-                      value: 'cat_id', 双向绑定的id
-                      children: 'children' 显示的子项
-                    }
+      <el-cascader
+        v-model="addForm.goods_cat" 选择出来的keys
+        :options="cateList" 绑定的数据元
+        :props="{ expandTrigger: 'hover', ...cateProps  (要显示的东西) }"
+        @change="handleChange" 选择项发生变化
+      ></el-cascader>
+      cateProps: {
+            label: 'cat_name', 显示的名字
+            value: 'cat_id', 双向绑定的id
+            children: 'children' 显示的子项
+          }
   ```
 
   - 判断双向绑定的 选择数组长度  不等于3表示没有选择对应的三级子级 可以把数组直接赋值为空 把一二级清空
@@ -608,9 +606,9 @@ Default: 生产环境下是 true，开发环境下是 false
 
 - 图片的上传
 
-  - 使用 element-ui的upload  删除操作
+  - 使用 element-ui的 upload 删除操作
 
-  - ```js
+   ```js
     // 处理移除图片的操作
        handleRemove(file) {
          // 1. 获取将要删除的图片的临时路径
@@ -623,61 +621,129 @@ Default: 生产环境下是 true，开发环境下是 false
        }
     ```
 
-- 富文本: **vue-quill-editor**
+- 富文本编辑器: **vue-quill-editor**
 
-# 10 项目优化
+    ```bash
+    npm install vue-quill-editor --save
+    ```
 
-- nprogress 加载时进度条
+## 8 项目优化
 
-  - NProgress.done() 隐藏进度条
-  - NProgress.start() 展示进度条
-    - 其条件可以在 请求拦截器里面设置
+### 1.NProgress 加载时进度条
 
-- 打包是 console的处理:  babel-plugin-transform-remove-console
+- NProgress.done() 隐藏进度条
+- NProgress.start() 展示进度条
+  - 其条件可以在 axios 请求拦截器里面设置
+
+### 2.打包移除console.log
+
+- 打包是 console的处理: babel-plugin-transform-remove-console
+- 需要在 babel.config.js 中添加
 
   - plugins: [ "transform-remove-console"  ]
 
-- 生成打包报告
+### 3.生成打包报告
 
   1. vue-cli-service build --report
   2. UI面版
 
-- 项目优化 配置webpack
+### 4.vue.config.js 修改 webpack
 
-  - 如果程序员有修改 webpack 默认配置的需求，可以在项目根目录中，按需创建 vue.config.js 这个配置文件，从
+- 如果程序员有修改 webpack 默认配置的需求，可以在项目根目录中，按需创建 vue.config.js 这个配置文件，从而对项目的打包发布过程做自定义的配置
+- 具体配置参考 <https://cli.vuejs.org/zh/config/#vue-config-js>。
 
-    而对项目的打包发布过程做自定义的配置（具体配置参考 <https://cli.vuejs.org/zh/config/#vue-config-js>）。
+### 5.configureWebpack和chainWebpack
 
-  - 在 vue.config.js 导出的配置对象中，新增 configureWebpack 或 chainWebpack 节点，来自定义 webpack
+在vue.config.js导出的配置对象中，新增 configureWebpack 或 chainWebpack 节点，用来定义 webpack 的打包配置
 
-    的打包配置。
+在这里：configureWebpack 和 chainWebpack 的作用相同，唯一的区别就是它们修改webpack配置的方式不同：
 
-    在这里， configureWebpack 和 chainWebpack 的作用相同，唯一的区别就是它们修改 webpack 配置的方
+- chainWebpack 通过链式编程的形式，来修改默认的 webpack 配置
 
-    式不同：
-
-    ①  chainWebpack 通过链式编程的形式，来修改默认的 webpack 配置
-
-    ②  configureWebpack 通过操作对象的形式，来修改默认的 webpack 配置
+- chainWebpack 通过操作对象的形式，来修改默认的 webpack 配置
 
     两者具体的使用差异，可参考如下网址：
 
     <https://cli.vuejs.org/zh/guide/webpack.html#webpack-%E7%9B%B8%E5%85%B3>
 
-- **通过 externals 加载外部 CDN 资源**
+### 6.为开发模式与发布模式指定不同的打包入口
 
-  - 默认情况下，通过 import 语法导入的第三方依赖包，最终会被打包合并到同一个文件中，从而导致打包成功后，单文件体积过大的问题。
-  - 为了解决上述问题，可以通过 webpack 的 externals 节点，来配置并加载外部的 CDN 资源。凡是声明在externals 中的第三方依赖包，都不会被打包。
-  - 开发时直接下载引入
-    - 发布时把直接引入可以省的包 使用window全局的方式来查找  也就是说 CDN 挂载 通过CDN挂载的方式进行引用
+默认情况下，vue项目的开发模式与发布模式，功用同一个打包的入口文件（即src/main.js）。为了将项目的开发模式与发布过程分离，
 
-- 路由来加载
+我们可以为两种模式，各自指定打包的入口文件
 
-  ```
+- 开发模式的入口文件为src/main-dev.js
+
+- 发布模式的入口文件为src/main-prod.js
+
+通过chainWebpack自定义打包入口：
+
+```js
+module.exports = {undefined
+chainWebpack: config => {undefined
+config.when(process.env.NODE_ENV === ‘production’, config =>{undefined
+config.entry(‘app’).clear().add(’./src/main-prod.js’)
+})
+config.when(process.env.NODE_ENV === ‘development’, config =>{undefined
+config.entry(‘app’).clear().add(’./src/main-dev.js’)
+})
+}
+}
+```
+
+### 7.通过 externals 加载外部 CDN 资源
+
+- 默认情况下，通过 import 语法导入的第三方依赖包，最终会被打包合并到同一个文件中，从而导致打包成功后，单文件体积过大的问题。
+- 为了解决上述问题，可以通过 webpack 的 externals 节点，来配置并加载外部的 CDN 资源。凡是声明在externals 中的第三方依赖包，都不会被打包。
+- 开发时直接下载引入
+  - 发布时把直接引入可以省的包 使用window全局的方式来查找  也就是说 CDN 挂载 通过CDN挂载的方式进行引用
+
+```js
+//在 vue.config.js 的发布模式的方法快中添加代码
+config.set(‘externals’, {undefined
+// 如果在打包期间，发现import的一个包名为vue，就不会把这个包合并到文件中
+// 而是去window全局查找 Vue 对象，并直接使用
+vue: ‘Vue’,
+‘vue-router’: ‘VueRouter’,
+axios: ‘axios’,
+lodash: ‘_’,
+echarts: ‘echarts’,
+nprogress: ‘NProgress’,
+‘vue-quill-editor’: ‘VueQuillEditor’
+})
+```
+
+把 main-prod.js 文件中引入的样式表删除（只删除导入的样式）
+
+同时，需要在public/index.html文件的头部，添加如下的CDN资源引用：
+
+如果打包后再次运行页面发生页面空白注释掉import VueRouter from ‘vue-router’
+
+### 8.路由懒加载
+
+1. 安装 babel 插件
+
+    ```shell
+      npm install --save-dev @babel/plugin-syntax-dynamic-import
+    ```
+
+2. 修改项目根目录下的 babel.config.js 配置文件，新增 plugins 节点：
+
+    ```js
+    module.exports = {
+      presets: ['@vue/cli-plugin-babel/preset'],
+      // 实现路由组件按需导入的 babel 插件
+      plugins: ['@babel/plugin-syntax-dynamic-import']
+    }
+    ```
+
+3. 在 /src/router/index.js 模块中，基于 const Foo = () => import('./Foo.vue') 语法，改造每个路由组件的导入方式。
+
+  ```js
   // 分组名生成文件
-  const Login = () => import(/* webpackChunkName: "login_home_welome" */ 'components/login/Login')
-  const Home = () => import(/* webpackChunkName: "login_home_welome" */ 'components/home/Home')
-  const Welcome = () => import(/* webpackChunkName: "login_home_welome" */ 'components/home/welcome/Welcome')
+  const Login = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/login/Login')
+  const Home = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/home/Home')
+  const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/home/welcome/Welcome')
   
   const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/home/users/Users')
   const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/home/power/rights/Rights')
@@ -710,6 +776,67 @@ Default: 生产环境下是 true，开发环境下是 false
   const Report = () => import('components/home/report/Report')
   
   ```
+
+### 9.首页内容定制
+
+不同的打包环境下，首页内容可能会有所不同。我们可以通过插件的方式进行定制，插件配置如下
+
+```js
+module.exports = {
+  chainWebpack: config => {
+    // 发布模式
+    config.when(process.env.NODE_ENV === ‘production’, config => { 
+    // 生产环境定制首页内容
+      config.plugin(‘html’).tap(args => {
+      args[0].isProd = true
+      return args
+    })
+    })
+    //开发模式
+    config.when(process.env.NODE_ENV === ‘development’, config => {
+      config.plugin(‘html’).tap(args => {
+      args[0].isProd = false
+      return args
+  })
+  })
+}
+}
+```
+
+在public/index.html首页中，可以根据isProd的值，来决定如何渲染页面结构：
+
+```html
+  <title>
+    <%= htmlWebpackPlugin.options.isProd ? '' : 'dev -' %>电商后台管理系统
+  </title>
+  <% if (htmlWebpackPlugin.options.isProd) {%>
+  <!通过 externals 加载外部 CDN 资源>
+  <% }else{ %>
+  <!通过 externals 加载外部 CDN 资源>
+  <% } %>
+```
+
+//用判断语句把CDN包裹起来，判断是否显示，进行到这一步把之前注释的vue-router打开，因为这里做了判断条件，不会影响显示
+
+## 9 项目上线相关配置
+
+### 1.通过node创建web服务器
+
+创建node项目，并安装express，通过express快速创建web服务器，将vue打包生成的dist文件夹，托管为静态资源即可，
+
+```js
+const express = require(‘express’)
+// 创建 web 服务器
+const app = express()
+// 托管静态资源
+app.use(express.static(’./dist’))
+// 启动 web服务器
+app.listen(80,()=>{undefined
+console.log(’'web server running at http:127.0.01)
+})
+```
+
+### 2.开启gzip配置
 
 - 开启gzip包  compression
 - 开启 HTTPS

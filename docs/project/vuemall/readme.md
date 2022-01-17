@@ -14,6 +14,8 @@
 
 [使用 vant-ui 组件库重构的版本](http://scripthqs.gitee.io/vantmall)
 
+本项目功能模块包含首页轮播、商品详情、商品分类、购物车功能等业务、采用模块化、组件化、工程化的模式开发
+
 ## 1 准备
 
 ### 1.1 划分目录结构
@@ -179,7 +181,7 @@ vue create vuemall
     }
     ```
 
-2. 将**不同页面**的网络请求分类，分别封装对于的请求文件
+2. 将**不同页面**的网络请求分类，分别封装对于的请求文件，例如 home.vue 面向 home.js 开发，可降低耦合度
 
 3. 例如首页的网络的网络请求，可以封装home.js，引入request.js，配置各页面的具体url，
 
@@ -582,7 +584,14 @@ methods:{
 
 从home跳到了category，再返回home后又重新加载home
 
-让Home不要随意销毁掉，使用、
+让Home不要随意销毁掉，使用 keep-alive
+
+- 路由组件会自动 destroyed，要用 keep-alive ,让组件不自动销毁
+- 离开home组件时，保存一个位置信息 saveY，再进来时，将位置设置为原来保存的位置信息即可
+- 利用生命周期函数 activated(){} 和函数 deactivated(){}
+- 进入是触发 activated()，退出时触发 deactivated()
+- 页面第一次进入，钩子的出发顺序是 created -> mounted -> activated，退出时触发deactivated
+- 当再次进入时，只触发 activated
 
 ```vue
     <keep-alive>
@@ -819,24 +828,24 @@ addToCart () {
 
 ### 3.12 toast插件的封装
 
-1.仔细看components/common/toast文件夹中的index.js和Toast.vue
-2.导入index.js `import toast from 'components/common/toast/'`
-3.注册toast插件 Vue.use(toast)
-4.此后，都可以通过this.$toast.show(message, duration)来显示message
-  注意，能使用$toast是因为在Vue的原型上添加了$toast，其内部添加了一个show方法
+1. 仔细看components/common/toast文件夹中的index.js和Toast.vue
+2. 导入index.js `import toast from 'components/common/toast/'`
+3. 注册toast插件 Vue.use(toast)
+4. 此后，都可以通过this.$toast.show(message, duration)来显示message
+  注意，能使用`$toast`是因为在Vue的原型上添加了`$toast`，其内部添加了一个show方法
 
 ```js
 //Toast.vue
 show(message, duration) {
-      this.isShow = true;
-      this.message = message;
-      clearTimeout(this.timer);
-      this.timer = setTimeout(() => {
-        this.isShow = false;
-        this.message = "";
-      }, duration);
-    },
-    
+  this.isShow = true;
+  this.message = message;
+  clearTimeout(this.timer);
+  this.timer = setTimeout(() => {
+    this.isShow = false;
+    this.message = "";
+  }, duration);
+},
+  
 .toast {
   position: fixed;
   z-index: 99999;
@@ -855,13 +864,9 @@ show(message, duration) {
 
 ```js
 // 这是关于toast插件的封装，index.js
-
 import Toast from "./Toast"
 const obj = {}
-
 export default obj
-
-
 // 在main.js安装插件时，会自动调用该插件的install函数，并自动传入Vue对象
 obj.install = function (Vue) {
   // 1.创建组件构造器
@@ -872,7 +877,6 @@ obj.install = function (Vue) {
   toast.$mount(document.createElement('div'));
   // 4.toast.$el对应的就是div
   document.body.appendChild(toast.$el);
-
   // 在Vue原型中定义$toast，方便直接采用$toast使用
   Vue.prototype.$toast = toast;
 }
@@ -1014,6 +1018,22 @@ allCheckClick (context) {
   }
 ```
 
+可以引入vuex 的 mapGetters 做解构引入
+
+```js
+import { mapGetters } from "vuex"
+
+computed: {
+    //   1.普通写法
+    // cartLength () {
+    // //   return this.$store.state.cartList.length  将方法封装到getters之前的写法
+    //   return this.$store.getters.cartLength   封装到getters之后的写法
+    // }
+    // 2.利用mapGetters解构 ， 还可用 mapState , mapActions
+    ...mapGetters(['cartLength'])
+  }
+```
+
 ## 5 分类页面的开发
 
 ### 5.1 导航栏的开发
@@ -1022,6 +1042,129 @@ allCheckClick (context) {
 
 ### 5.3 商品分类的开发
 
-## 6 项目的打包优化和发布
+## 6 项目的优化打包和发布
 
-### 6.1 移除console的信息
+### 6.1 解决移动端点击问题
+
+解决移动端点击300ms延迟问题，引入 FastClick，插件使用的步骤：下载-引入-配置
+
+```js
+import FastClick from 'fastclick'
+// 解决移动端300ms延迟
+FastClick.attach(document.body)
+```
+
+### 6.2 图片懒加载
+
+图片需要显示在屏幕时在加载，使用 vue-lazyload，使用图片的懒加载，并传入 options，这些选项中可以定义图片加载失败要显示的情况，或加载中显示的情况
+
+```js
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad, {
+  loading: require('./assets/img/common/placeholder.png'),
+  error: require('assets/img/common/placeholder.png')
+})
+
+//Home.vue
+ <img v-lazy="showImage" alt="" @load="imageLoad">
+```
+
+### 6.3 配置路由懒加载
+
+1. 安装 babel 插件
+
+    ```shell
+      npm install --save-dev @babel/plugin-syntax-dynamic-import
+    ```
+
+2. 修改项目根目录下的 babel.config.js 配置文件，新增 plugins 节点：
+
+    ```js
+    module.exports = {
+      presets: ['@vue/cli-plugin-babel/preset'],
+      // 实现路由组件按需导入的 babel 插件
+      plugins: ['@babel/plugin-syntax-dynamic-import']
+    }
+    ```
+
+3. 在 /src/router/index.js 模块中，基于 const Foo = () => import('./Foo.vue') 语法，改造每个路由组件的导入方式。例如：
+
+```js
+// 导入 Login 组件
+// import Login from '@/views/Login/Login.vue'
+const Login = () => import('@/views/Login/Login.vue')
+// 导入 Main 组件
+// import Main from '@/views/Main/Main.vue'
+const Main = () => import('@/views/Main/Main.vue')
+```
+
+### 6.3 px2vm
+
+webpack 配置，移动端适配，使用 postcss-px-to-viewport 插件，将css中 px 编译为 vm。
+
+```bash
+    npm i postcss-px-to-viewport --save-dev
+```
+
+安装 postcss-px-to-viewport 插件，该只是开发时依赖，只在打包过程中帮助转化
+
+修改 postcss.config.js 文件
+
+```js
+module.exports = {
+  plugins: {
+    autoprefixer: {}, //  这条不写的话好像不会生效
+    'postcss-px-to-viewport': {
+      // options
+      unitToConvert: 'px',  //  (String) 需要转换的单位，默认为"px"
+      viewportWidth: 320, //  (Number) 设计稿的视口宽度
+      unitPrecision: 5, //  (Number) 单位转换后保留的精度
+      propList: ['*'],  //  (Array) 能转化为vw的属性列表
+      viewportUnit: 'vw', //  (String) 希望使用的视口单位
+      fontViewportUnit: 'vw', //  (String) 字体使用的视口单位
+      selectorBlackList: [],  //  (Array) 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。
+      minPixelValue: 1, //  (Number) 设置最小的转换数值，如果为1的话，只有大于1的值会被转换
+      mediaQuery: false,  //  (Boolean) 媒体查询里的单位是否需要转换单位
+      replace: true,  //  (Boolean) 是否直接更换属性值，而不添加备用属性
+      exclude: undefined, //  (Array or Regexp) 忽略某些文件夹下的文件或特定文件，例如 'node_modules' 下的文件
+      include: undefined, //  (Array or Regexp) 如果设置了include，那将只有匹配到的文件才会被转换，例如只转换 'src/mobile' 下的文件 (include: /\/src\/mobile\//)
+      landscape: false, //  (Boolean) 是否添加根据 landscapeWidth 生成的媒体查询条件 @media (orientation: landscape)
+      landscapeUnit: 'vw',  //  (String) 横屏时使用的单位
+      landscapeWidth: 568 //  (Number) 横屏时使用的视口宽度
+    }
+  }
+}
+```
+
+### 6.4 移除console的信息
+
+在项目打包后，借助 babel-plugin-transform-remove-console 进行去除 console.log 打印信息
+
+1. 安装@babel/plugin-syntax-dynamic-import包
+
+    ```bash
+        npm install --save-dev @babel/plugin-syntax-dynamic-import
+    ```
+
+2. 修改项目根目录下的 babel.config.js 配置文件，新增 plugins 节点：
+
+    ```js
+    module.exports = {
+      presets: ['@vue/cli-plugin-babel/preset'],
+      // 实现路由组件按需导入的 babel 插件
+      plugins: ['@babel/plugin-syntax-dynamic-import']
+    }
+    ```
+
+3. 在 /src/router/index.js 模块中，基于 const Foo = () => import('./Foo.vue') 语法，改造每个路由组件的导入方式
+
+    ```js
+    // 导入 Login 组件
+    // import Login from '@/views/Login/Login.vue'
+    const Login = () => import('@/views/Login/Login.vue')
+
+    // 导入 Main 组件
+    // import Main from '@/views/Main/Main.vue'
+    const Main = () => import('@/views/Main/Main.vue')
+    ```
+  
