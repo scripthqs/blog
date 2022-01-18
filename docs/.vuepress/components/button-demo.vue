@@ -1,6 +1,7 @@
 <template>
   <div>
     <h-button disabled>按钮</h-button>
+    <h-button icon='download' icon-position="right">下载</h-button>
     <h-button :loading="loading1" @click="loading1=!loading1" icon="set">按钮</h-button>
     <h-button :loading="loading2" @click="loading2=!loading2" icon="set" icon-position="right">按钮</h-button>
     <h-button-group>
@@ -22,6 +23,7 @@ export default {
       loading2: false,
       content: `
         data(){loading1: true,loading2: false}
+        <h-button icon='download' icon-position="right">下载</h-button>
         <h-button disabled :loading="loading1" @click="loading1=!loading1">按钮</h-button>
         <h-button :loading="loading2" @click="loading2=!loading2" icon="set">按钮</h-button>
         <h-button :loading="loading3" @click="loading3=!loading3" icon="set" icon-position="right">按钮</h-button>

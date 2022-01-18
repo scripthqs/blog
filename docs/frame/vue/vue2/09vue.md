@@ -36,7 +36,7 @@ export default {
 
 通过 components 注册的是私有子组件。
 
-在**组件 A 的** components 节点下，注册了**组件 F**。 
+在**组件 A 的** components 节点下，注册了**组件 F**。
 
 则组件 **F** 只能用在组件 **A** 中；不能被用在**组件 C** 中
 
@@ -148,7 +148,8 @@ export default {
   props: {
     init: {
       default: 'hello world',
-      type: String
+      type: String,
+      required: true
     }
   },
   data(){
@@ -157,3 +158,28 @@ export default {
  }
 ```
 
+**props 的validator自定义验证函数：**
+
+自定义验证函数会将该 prop 的值作为唯一的参数代入，如果该函数返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。
+
+```js
+props: {
+    // 类型检查 + 其他验证
+    age: {
+      type: Number,
+      default: 0,
+      required: true,
+      validator: value => {
+        return value >= 0
+      }
+    }
+  }
+```
+
+### js中的 Truthy 和 Falsy
+
+Truthy 和 Falsy 并不是拼写错误。
+
+Truthy 不等于 true，指是在Boolean上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。
+
+- falsy: false，0，''，null，undefined和NaN

@@ -5,7 +5,7 @@ title: 快速上手
 
 安装hqs-ui组件库
 
-```shell
+```bash
 npm i hqs-ui
 ```
 
@@ -16,7 +16,7 @@ npm i hqs-ui
 使用本框架前，请在 css 中开启 border-box
 
 ```css
-    *,*::before,*::after{box-sizing:border-box;} 
+*,*::before,*::after{box-sizing:border-box;} 
 ```
 
 2.引用
@@ -66,6 +66,7 @@ import {Button} from 'hqs-ui'
         components: {
             'h-button': Button,
         },
+    }
 ```
 
 组件最外层的元素会自动添加h-*的类名，你也可以在外层添加自己的容器元素包裹组件，并添加自己的类名，覆盖默认样式
@@ -76,10 +77,10 @@ import {Button} from 'hqs-ui'
 
 通过如下步骤可以直接运行项目：
 
-```shell
-    1.git clone https://github.com/Scripthqs/hqs-ui.git
-    2.npm install
-    3.npm run serve
+```bash
+git clone https://github.com/Scripthqs/hqs-ui.git
+npm install
+npm run serve
 ```
 
-运行入口为src/index.js文件，该文件中是各个组件的使用代码，可以在此引用全部组件，自由修改测试
+运行入口为packages/index.js文件，该文件中是各个组件的使用代码，可以在此引用全部组件，自由修改测试
