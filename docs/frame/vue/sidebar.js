@@ -22,6 +22,7 @@ module.exports = [
       'vue2/vue_mixin',
       'vue2/vue_css',
       'vue2/v_total',
+      'vue2/project',
     ]
   },
   {
