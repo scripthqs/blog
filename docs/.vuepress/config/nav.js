@@ -23,7 +23,7 @@ module.exports = [
     text: '框架学习',
     items: [
       { text: 'Vue', link: '/frame/vue/vue2/01vue' },
-      { text: '记录', link: '/frame/notes/' },
+      { text: '数据可视化', link: '/frame/echarts/docs/' },
     ]
   },
   {
