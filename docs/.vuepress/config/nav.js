@@ -9,21 +9,26 @@ module.exports = [
       { text: 'HTML', link: '/web/html/docs/01web' },
       { text: 'CSS', link: '/web/css/docs/01css' },
       { text: 'JavaScript', link: '/web/js/docs/jsa01' },
+      { text: 'TypeScript', link: '/web/ts/docs/01ts' },
     ]
   },
   {
     text: '服务器知识',
     items: [
+      { text: 'HTTP', link: '/net/http/docs/http' },
       { text: 'AJAX', link: '/net/ajax/docs/01ajax' },
+      { text: 'Axios', link: '/net/axios/docs/axios01' },
       { text: 'Node', link: '/net/node/docs/01node' },
-      { text: '数据库', link: '/net/db/docs/01MongoDB' },
+      { text: 'Express', link: '/net/express/docs/01express' },
+      { text: 'MongoDB', link: '/net/db/docs/01MongoDB' },
     ]
   },
   {
     text: '框架学习',
     items: [
       { text: 'Vue', link: '/frame/vue/vue2/01vue' },
-      { text: '数据可视化', link: '/frame/echarts/docs/' },
+      { text: 'ECharts', link: '/frame/echarts/docs/' },
+      { text: 'Uni-App', link: '/frame/uniapp/docs/01app' },
     ]
   },
   {

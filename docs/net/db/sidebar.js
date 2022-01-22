@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: '数据库',
+    title: 'MongoDB',
     collapsable: true,
     children: [
       'docs/01MongoDB',
