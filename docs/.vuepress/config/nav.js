@@ -28,7 +28,7 @@ module.exports = [
     items: [
       { text: 'Vue', link: '/frame/vue/vue2/01vue' },
       { text: 'ECharts', link: '/frame/echarts/docs/' },
-      { text: 'Uni-App', link: '/frame/uniapp/docs/01app' },
+      { text: 'Uni-App', link: '/frame/uniapp/docs/01uni' },
     ]
   },
   {
