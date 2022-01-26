@@ -35,13 +35,13 @@ express中操作的cookie使用cookie-parser模块。
 
 > cookie-parser模块（也是中间件），所以其也会去操作req，res对象；设置cookie是通过`res.cookie(name,value,[选项])`，读cookie的时候需要通过`req.cookies`对象来获取。
 
-~~~shell
+```shell
 npm i -S cookie-parser
-~~~
+```
 
-**示例代码**
+**示例代码:**
 
-~~~javascript
+```javascript
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
@@ -61,7 +61,7 @@ app.get("/", (req, res) => {
     }
 });
 app.listen(8080);
-~~~
+```
 
 ## 3.session
 
@@ -77,13 +77,13 @@ express中操作的session使用cookie-seesion模块
 
 > cookie-session包的对session设置与获取都是基于req请求对象。
 
-~~~shell
+```shell
 npm i -S cookie-session
-~~~
+```
 
-**示例代码**
+**示例代码:**
 
-~~~javascript
+```javascript
 const express = require("express");
 const session = require("cookie-session");
 const app = express();
@@ -105,5 +105,4 @@ app.get("/", (req, res) => {
     res.send(`欢迎您第 ${req.session["view"]} 次访问！`);
 });
 app.listen(8080);
-~~~
-
+```

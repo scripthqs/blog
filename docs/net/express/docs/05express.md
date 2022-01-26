@@ -1,14 +1,13 @@
-# 中间件（重点）
+# 中间件
 
 ## 1.含义
 
-中间件（middleware）可以理解为业务流程的中间处理环节。如生活中吃一般炒青菜，大约分为如下几步骤： 
+中间件（middleware）可以理解为业务流程的中间处理环节。如生活中吃一般炒青菜，大约分为如下几步骤：
 
-![中间件1](D:\user\Desktop\scripthqs\assets\node\中间件1.png)express中，当一个**请求到达的服务器之后，可以在给客户响应之前**连续调用**多个**中间件，来对本次请求和返回响应数据进行**处理**。
+![中间件1](../images/middleware1.png)
+express中，当一个**请求到达的服务器之后，可以在给客户响应之前**连续调用**多个**中间件，来对本次请求和返回响应数据进行**处理**。
 
-
-
-![中间件2](D:\user\Desktop\scripthqs\assets\node\中间件2.png)
+![中间件2](../images/middleware2.png)
 
 ## 2.中间件的分类
 
@@ -41,9 +40,9 @@
 
 express提供了好用的内置中间件，如提供一个静态资源管理的中间件，通过此中间件就可以帮助为我们快速搭建一个静态资源服务器：
 
-~~~javascript
+```javascript
 app.use('前缀',express.static('托管目录地址'))
-~~~
+```
 
 在express中，除了内置的`express.static()`中间件，还内置了另外2个常用的中间件：
 
@@ -72,26 +71,24 @@ app.use('前缀',express.static('托管目录地址'))
 自定义中间件，**其本质就是定义一个处理请求的函数**，只是此函数中除了有request和response参数外还必须包含一个next参数，此参数作用让中间件能够让流程向下执行下去直到匹配到的路由中发送响应给客户端。也可以通过给request对象添加属性来进行中间件数据的向下传递
 
 ```javascript
-function mfn(req,res,next){	
+function mfn(req,res,next){ 
     //. 自己需要定义的逻辑流程
-	// 中间件最后一定要执行此函数，否则程序无法向下执行下去
-	next()
+ // 中间件最后一定要执行此函数，否则程序无法向下执行下去
+ next()
 }
 ```
 
-
-
-~~~javascript
-function mfn(req,res,next){	
+```javascript
+function mfn(req,res,next){ 
     //. 自己需要定义的逻辑流程
-	// 中间件最后一定要执行此函数，否则程序无法向下执行下去
-	next()
+ // 中间件最后一定要执行此函数，否则程序无法向下执行下去
+ next()
 }
-~~~
+```
 
 > 注意：在整个请求链路中，**所有中间件与最终路由共用一份`req`和`res`**
 
-![中间件3](D:\user\Desktop\scripthqs\assets\node\中间件3.png)
+![中间件3](../images/middleware3.png)
 
 **案例：依据上述的共用特性，自定义一个中间件来接收post提交的表单数据**（意义：内置那中间件是不是存在兼容性问题）
 
@@ -109,11 +106,11 @@ function mfn(req,res,next){
 - 将自定义中间件封装为模块（可选，建议做）
   - 为了优化代码的结构，我们可以把自定义的中间件函数封装成独立的模块
 
-**实现代码**
+**实现代码:**
 
 > 独立的自定义中间件模块：cs-body-parse
 
-~~~javascript
+```javascript
 // 引入querystring模块
 const querystring = require("querystring")
 
@@ -134,11 +131,11 @@ var csBodyParse = (req, res, next) => {
 
 // 导出
 module.exports = csBodyParse
-~~~
+```
 
 > 应用入口文件：app.js
 
-~~~javascript
+```javascript
 // 自定义中间件服务器文件（入口文件）
 const express = require('express')
 const app = express()
@@ -156,7 +153,7 @@ app.post('/post',(req,res) => {
 app.listen(3722,() => {
     console.log('Server is running at http://127.0.0.1:3722')
 })
-~~~
+```
 
 ## 5.第三方中间件
 
@@ -175,7 +172,7 @@ app.listen(3722,() => {
 
 > 在使用的时候，`body-parser`库的语法与前面看的express内置的`express.urlencoded`中间件的语法非常相似，原因是内置中间件是基于`body-parser`来实现的。
 
-~~~javascript
+```javascript
 const express = require('express')
 const app = express()
 
@@ -191,7 +188,7 @@ app.post('/post',(req,res) => {
 app.listen(3723,() => {
     console.log("Server is running at http://127.0.0.1:3723")
 })
-~~~
+```
 
 这个中间件已经弃用
 
@@ -214,7 +211,7 @@ app.listen(3723,() => {
 
 **示例代码：**
 
-~~~javascript
+```javascript
 app.get('/',(req,res) => {
     throw new Error('服务器内部发生了致命的错误！')
     res.send('Welcome to my homepage')
@@ -224,7 +221,7 @@ app.use((err,req,res,next) => {
     console.log('发生了错误：' + err.message)
     res.send('Error！' + err.message)
 })
-~~~
+```
 
 **案例：**要求指定一个路径（可能路由对应的文件不存在），读取文件内容，输出给用户。正常的错误显示，既不友好，也不安全。需要处理
 
@@ -266,9 +263,9 @@ app.listen(3724,() => {
 
 **作用：**用于处理404的请求响应
 
-**示例代码**
+**示例代码:**
 
-~~~javascript
+```javascript
 // 假设定义这个路由，但是实际请求的时候请求了/12345，这个时候就会404
 app.post("/1234", (req, res, next) => {
     res.send('你请求成功了')
@@ -281,13 +278,13 @@ app.use((req,res,next) => {
     res.status(404).send('<h1>404</h1>')
     // 先指定404状态码，然后再输出错误信息
 })
-~~~
+```
 
 > 404错误中间件也要求在所有的正常请求路由的后面去声明使用，**不要放在路由的前面，否则会导致后面的路由都是404错误。**
 
 **注意点：**错误级别的中间件，必须在所有路由之后注册，至于404中间件与异常中间件，谁先谁后无所谓。
 
-页面：https://404.life/
+页面：<https://404.life/>
 
 ## 7.中间件的局部使用
 
@@ -297,20 +294,20 @@ app.use((req,res,next) => {
     - 数组，多个中间件的集合
     - 回调函数，用于处理请求给出响应
 
-~~~javascript
+```javascript
 app.post('/',[express.json(),express.urlencoded({extended:false})],(req,res) => {
     
 })
-~~~
+```
 
 - app.请求方法(地址,中间件1,中间件2,.....,回调函数)
   - 至少3个参数，至多N+2（N为中间件的个数）
 
-~~~javascript
+```javascript
 app.post('/',express.json(),express.urlencoded({extended:false}),(req,res) => {
     
 })
-~~~
+```
 
 ## 8.小结
 

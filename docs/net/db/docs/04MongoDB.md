@@ -53,7 +53,7 @@ Schema 是 mongoose 中会用到的一种数据模式，可以理解为数据表
 
 - 建表（也就是说，后期建表不再通过 mongoDB 的命令行的形式产生了，而是通过JavaScript代码实现）
 
-在定义schema的是有使用到相关约束规则，可以查看：http://www.mongoosejs.net/docs/guide.html
+在定义schema的是有使用到相关约束规则，可以查看：<http://www.mongoosejs.net/docs/guide.html>
 
 ~~~javascript
 // 创建用户集合规则
@@ -163,4 +163,3 @@ app.listen(9527,() => {
     console.log('server is running at http://127.0.0.1:9527');
 })
 ~~~
-

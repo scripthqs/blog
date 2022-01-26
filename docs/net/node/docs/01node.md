@@ -1,20 +1,20 @@
-# NodeJS简介
+# NodeJS 简介
 
 相关网址：
 
-- https://nodejs.org/zh-cn/
+- <https://nodejs.org/zh-cn/>
 
-- http://nodejs.cn/
+- <http://nodejs.cn/>
 
-Node.js 是一个开源与跨平台的`JavaScript `运行时环境。它是在浏览器外运行，它是一个事件驱动异步I/O单进程的**服务端**JS环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。它使用新的 ECMAScript标准，不必等待所有用户更新其浏览器，可以通过更改其版本来决定要使用新的标准特性。
+Node.js 是一个开源与跨平台的`JavaScript`运行时环境。它是在浏览器外运行，它是一个事件驱动异步I/O单进程的**服务端**JS环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。它使用新的 ECMAScript标准，不必等待所有用户更新其浏览器，可以通过更改其版本来决定要使用新的标准特性。
 
 注意：
 
 - 浏览器是JS的前端运行环境。
-- Node.js是JS的后端运行环境，在后端中运行无法调用 `DOM 和 BOM 等浏览器内置 API`。
+- Node.js是JS的后端运行环境，在后端中运行无法调用 **DOM 和 BOM 等浏览器内置 API。**
 - nodejs调用服务查看服务器相关api gulp基础node环境
 
-## 1.Node.js运行环境的核心
+## 1.Node.js 运行环境的核心
 
 Node.js 运行环境的核心是V8引擎和libuv库。
 
@@ -23,7 +23,7 @@ Node.js 运行环境的核心是V8引擎和libuv库。
 
 V8 的内存限制：在一般的后端开发语言中，在基本的内存使用上没有什么限制，然而在 Node 中通过 JavaScript 使用内存时就会发现只能使用部分内存（64 位系统下约为 1.4GB，32 位系统下约为 0.7GB）。在这样的限制下，将会导致 Node 无法直接操作大内存对象。
 
-## 2.NodeJS应用场景
+## 2.NodeJS 应用场景
 
 1. BFF中间层
    - 服务于前端的后端（Backend For Frontend）
@@ -76,9 +76,7 @@ ES6标准发布后，module成为标准，标准使用是以export指令导出�
 
 nodejs环境安装非常便捷，直接可通过官网地址，下载对应的安装软件包即可安装使用。
 
-<!-- ![nodejs](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20201122214316624.png) -->
-
-> 注：`尽量下载长期支持版本(LTS，有些软件是Release)`，如果在工作中有多个node环境的切换，可以安装ndoe环境管理工具NVM：https://github.com/coreybutler/nvm-windows/releases
+> 注：`尽量下载长期支持版本(LTS，有些软件是Release)`，如果在工作中有多个node环境的切换，可以安装node环境管理工具NVM：<https://github.com/coreybutler/nvm-windows/releases>
 >
 > nvm可以让你的电脑中有N多个node版本。
 >
@@ -111,8 +109,7 @@ nodejs环境安装非常便捷，直接可通过官网地址，下载对应的�
 
 如果 Node 安装失败，可以在安装路径中找到的settings.txt文件中，新增如下两行，修改镜像源：
 
-````text
+```js
 node_mirror: https://npm.taobao.org/mirrors/node/
 npm_mirror: https://npm.taobao.org/mirrors/npm/
-````
-
+```

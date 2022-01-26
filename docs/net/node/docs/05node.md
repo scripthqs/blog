@@ -1,6 +1,6 @@
 # 常用内置模块
 
-更多内置模块及常用内置模块的更多API用法，可以参考：http://nodejs.cn/api/
+更多内置模块及常用内置模块的更多API用法，可以参考：<http://nodejs.cn/api/>
 
 ## 1.os模块
 
@@ -57,7 +57,7 @@ console.log(path.resolve("/a", "b", "c"));
 
 URL字符串是结构化的字符串，包含多个含义不同的组成部分。 解析字符串后返回的 URL 对象，每个属性对应字符串的各个组成部分。
 
-![url](D:\user\Desktop\scripthqs\assets\node\url.png)
+![url](../images/url.png)
 
 完整的url包含了：协议（https:），//，用户名和密码，域名（@sub.example.com），端口（8080），路径，查询，哈希。
 
@@ -89,7 +89,7 @@ const data = new URL(`${req.url}`,'https://example.org/')
 
 用于**解析和格式化** URL 查询字符串（URL地址的get形式传参）的实用工具。
 
-~~~javascript
+```javascript
 const querystring = require('querystring')
 // query字符串转为对象
 querystring.parse('foo=bar&abc=xyz')
@@ -100,7 +100,7 @@ querystring.decode('foo=bar&abc=xyz')
 querystring.stringify({ foo: 'bar',abc: 'xyz'})
 //encode()是stringify()的别名
 querystring.encode({ foo: 'bar',abc: 'xyz'})
-~~~
+```
 
 ## 5.Buffer(缓冲区)
 
@@ -113,7 +113,7 @@ Buffer的结构和数组很像，操作的方法和数组类似。数组不能�
 - buffer中的一个元素，占用内存的一个字节
 - 一个汉字占3个字节，一个字母占1个字节
 
-**Buffer方法**
+**Buffer**方法
 
 - `Buffer.from(str)`方法将一个字符串转换buffer
 - 使用`Buffer.alloc(size)`方法创建指定大小的Buffer
@@ -159,9 +159,9 @@ let ret = fs.existsSync(path)
 
 // 获取文件信息（异步）
 fs.stat(文件,(err,stats) => {
-	stats.isDirectory() // 是否是目录
-	stats.isFile()       // 是否为文件
-	stats.size            // 文件大小(以字节为单位)
+ stats.isDirectory() // 是否是目录
+ stats.isFile()       // 是否为文件
+ stats.size            // 文件大小(以字节为单位)
 })
 
 // 删除文件（异步）
@@ -170,7 +170,7 @@ fs.unlink(文件路径,err => {})
 
 ### 6.1文件的写入
 
-**同步文件写入**
+**同步文件写入:**
 
 ```js
 //打开文件同步调用,参数：路径，打开文件的操作，设置文件的权限，一般不传，r只读，w可写，a追加,该方法会返回一个文件的描述作为结果，可以通过该描述对文件进行各种操作
@@ -181,9 +181,9 @@ fs.writeSync(fd, string[, position[, encoding]])
 fs.closeSync(fd)
 ```
 
-**异步文件写入**
+异步文件**写入**
 
-```
+```js
 //打开文件
 fs.open(path[, flags[, mode]], callback)
 //写入文件
@@ -192,7 +192,7 @@ fs.write(fd, string[, position[, encoding]], callback)
 fs.close(fd,callback)
 ```
 
-**流式文件写入**
+流式文件**写入**
 
 同步，异步，简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出
 
@@ -212,7 +212,7 @@ on可以为事件绑定一个事件，once会在触发一次以后自动失效
 
 ### 6.2文件的读取
 
-**简单文件读取**
+**简单文件读取:**
 
 ```js
 fs.readFile(path[,option],callback)
@@ -222,9 +222,9 @@ fs.readFileSync(path[,option],callback)
 - 参数：读取的路径，读取的选项，回调函数（返回值err,data会返回一个Buffer）
 - 为什么返回buffer，因为读取的文件有可能是图片，音频
 
-**流式文件读取**
+**流式文件读取:**
 
-```
+```js
 //创建可读流
 fs.createReadStream()
 ```
@@ -245,7 +245,7 @@ rs.on('data',function(data){
 
 ### 6.3文件的其他操作
 
-```
+```js
 //验证路径是否存在
 fs.exists(path,callback) 异步该方法已废弃
 fs.existsSync(path)
@@ -282,4 +282,3 @@ rs.renameSync(oldpath,newpath)
 rs.watchFile(filename,[option],listener)
 - 在回调函数中2个参数curr和prev
 ```
-

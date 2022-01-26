@@ -38,23 +38,23 @@ const express = require('express')
 const app = express()
 
 app.get('/',(req,res) => {
-	res.send('get请求')
+ res.send('get请求')
 })
 
 app.post('/',(req,res) => {
-	res.send('post请求')
+ res.send('post请求')
 })
 
 app.put('/',(req,res) => {
-	res.send('put请求')
+ res.send('put请求')
 })
 
 app.delete('/',(req,res) => {
-	res.send('delete请求')
+ res.send('delete请求')
 })
 
 app.listen(8080,() => {
-	console.log('Server is running at http://127.0.0.1:8080')
+ console.log('Server is running at http://127.0.0.1:8080')
 })
 ~~~
 
@@ -67,4 +67,3 @@ app.listen(8080,() => {
 > ~~~
 >
 > but，这种方式尽量少用！！甚至别用。虽然all的请求方式匹配可以所有的请求类型，但是存在安全隐患。
-

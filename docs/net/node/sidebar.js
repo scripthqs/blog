@@ -9,8 +9,8 @@ module.exports = [
       'docs/04node',
       'docs/05node',
       'docs/06node',
+      'docs/07node',
       'docs/08node',
-      'docs/09node',
     ]
   }
 ]

@@ -13,14 +13,14 @@ Mongodb是一个介于关系数据库和非关系数据库之间的产品(Nosql)
 
 ![数据库1](../images/db1.png)
 
-**mongodb数据体系**
+**mongodb数据体系:**
 
 ![数据库2](../images/db2.png)
 
 上图所表达的含义：
 
-- 一个数据库中可以包含多个collection
-- 一个collection里可以包含多个document
+- 一个数据库中可以包含多个collection（集合或者叫表），例如admin、user
+- 一个collection里可以包含多个document，例如管理员1，管理员2，用户1，用户2
 
 MongoDB数据模型是面向文档的，所谓的文档是一种类似json的结构，简单理解就是MongoDB这个数据库存的就是各种JSON(实际是BSON)。
 
@@ -42,11 +42,13 @@ MongoDB数据库结构:库，表（集合），行（文档），列（字段，
 
 这条命令是开启服务，它会一直运行，只要你要使用Mongodb，这个窗口就不能关）
 
+[最详细的安装教程](https://www.cnblogs.com/TM0831/p/10606624.html)
+
 ## 3.基本操作指令
 
 打开cmd在命令行中输入命令
 
-```
+```bash
 #退出mongoDB使用
 exit
 
@@ -80,9 +82,10 @@ db.dropDatabase()
 > JSON格式数据：不是严格意义上的json数据，key名可以不使用引号包裹
 
 - show dbs：查看数据库列表
-- use db：使用/创建数据库
+- use db：使用/创建数据库，数据库要创建成功，**必须要插入至少一个数据**
 - db：查看当前库名
 - db.表名.insert()：新增数据&可能会创建出一个数据表
 - show tables / show collections：查看当前库中的表列表
 - db.表名.drop()：删除指定的表
 - db.dropDatabase()：删除当前的库
+- cls 清屏

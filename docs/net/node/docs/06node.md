@@ -61,18 +61,18 @@ const server = http.createServer()
 // 绑定监听客户端请求事件request
 server.on('request', (request, response) => {})
 
-//	request: 接受客户端请求对象，它包含了与客户端相关的数据和属性
-//			   request.url      客户端请求的uri地址
-//			   request.method  客户端请求的方式 get或post
-//			   request.headers	  客户端请求头信息(对象)
-//			   ....
-//	response:服务器对客户端的响应对象
-//			  设置响应头信息 ，用于响应时有中文时乱码解决处理
-//			  response.setHeader('content-type', 'text/html;charset=utf-8')
-//			  设置状态码（常见的HTTP状态码有：200，404，301、302、304、403、401、405、500，502）
-//			  response.statusCode = 200
-//			  向客户端发送响应数据,并结束本次请求的处理过程
-//			  response.end('hello world')
+// request: 接受客户端请求对象，它包含了与客户端相关的数据和属性
+//      request.url      客户端请求的uri地址
+//      request.method  客户端请求的方式 get或post
+//      request.headers   客户端请求头信息(对象)
+//      ....
+// response:服务器对客户端的响应对象
+//     设置响应头信息 ，用于响应时有中文时乱码解决处理
+//     response.setHeader('content-type', 'text/html;charset=utf-8')
+//     设置状态码（常见的HTTP状态码有：200，404，301、302、304、403、401、405、500，502）
+//     response.statusCode = 200
+//     向客户端发送响应数据,并结束本次请求的处理过程
+//     response.end('hello world')
 // 启动服务
 server.listen(8080, () => {
     console.log('服务已启动')
@@ -115,15 +115,13 @@ server.listen(8080, () => {
 
 为什么要将静态资源和动态资源分开放，静态资源一般需要高带宽，而后端资源一般不需要较大的资源，主要是为了提升静态资源的访问速度。
 
-### 手写静态资源服务器
-
-**实现思路**：
+**手写静态资源服务器实现思路**：
 
 客户端请求的每个资源uri地址，作为在本机服务器指定目录中的文件。通过相关模块进行读取文件中数据进行响应给客户端，从而实现静态服务器。
 
-![静态资源](D:\user\Desktop\scripthqs\assets\node\静态资源.png)
+![静态资源](../images/static.png)
 
-**实现步骤**
+**实现步骤:**
 
 需求：使用nodejs的http模块创建静态资源服务器，专门存放静态资源展示2张图片
 
@@ -181,7 +179,7 @@ server.listen(8080, () => {
 
 get数据通过地址栏使用query方式进行传递的数据 例
 
-```
+```js
 ?id=1&name=zhangsan
 ```
 
@@ -194,9 +192,9 @@ const url = require('url');
 // 创建实例&监听request事件&监听端口
 http.createServer((req, res) => {
     //  之前第3步中的回调函数
-	// 获取地址栏中 query数据
-	let { query } = url.parse(req.url, true);
-	console.log(query);
+ // 获取地址栏中 query数据
+ let { query } = url.parse(req.url, true);
+ console.log(query);
 }).listen(8080)
 ```
 
@@ -224,4 +222,3 @@ http.createServer((req, res) => {
     });
 }).listen(8080)
 ```
-

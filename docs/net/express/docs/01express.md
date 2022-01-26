@@ -2,7 +2,7 @@
 
 ## 1.介绍
 
-网址：https://www.expressjs.com.cn/
+网址：<https://www.expressjs.com.cn/>
 
 Express 是基于 Node.js 平台，`快速、开放、极简`的 Web 开发框架。**搭建web服务器**
 
@@ -15,7 +15,7 @@ Express 的本质：就是一个 npm 上的第三方包，提供了快速创建 
 在项目目录中，打开cmd命令窗口，执行如下命令：
 
 ```bash
-npm init -y		# 如果没有项目则先初始化
+npm init -y  # 如果没有项目则先初始化
 npm i -S express
 ```
 
@@ -39,8 +39,8 @@ const app = express()
 // req 请求对象
 // res 响应对象
 app.get('请求URI',(req,res)=>{
-	// 向客户端响应数据
-	res.send({id:1,name:'张三'})
+ // 向客户端响应数据
+ res.send({id:1,name:'张三'})
 })
 // ....
 
@@ -59,21 +59,21 @@ app.listen(8080,()=>{})
 > 扩展：查看当前监听的端口`8080`是否启动
 
 - windows平台
-- “|”，管道，变量修饰符，过滤器 
+- “|”，管道，变量修饰符，过滤器
 
-~~~shell
+```shell
 netstat -ano | findStr 8080
-~~~
+```
 
 - Unix系平台（macOS、Linux）
 
-~~~shell
+```shell
 netstat -tnpl | grep 8080
-~~~
+```
 
 **实践**
 
-**手写一个服务器软件，启动后要求用户访问根“/”输出`hello world`，用户访问`/html5`输出`2004`，用于通过post方式访问/post则输出`	post`。**
+**手写一个服务器软件，启动后要求用户访问根“/”输出`hello world`，用户访问`/html5`输出`2004`，用于通过post方式访问/post则输出`post`。**
 
 ```js
 // 1. 导入模块
@@ -104,4 +104,3 @@ app.listen(8080, () => {
 ```
 
 > 地址在匹配的时候是自上而下，必须同时匹配`方法`与`路径`。
-

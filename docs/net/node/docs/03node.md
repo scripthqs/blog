@@ -4,14 +4,14 @@
 
 JavaScript 本身不提供任何与 I/O（输入/输出）相关的 API，都要靠宿主环境（host）提供，所以 JavaScript 只适合嵌入更大型的应用程序环境，去调用宿主环境提供的底层 API。
 
-### 1.1JavaScript宿主环境
+### 1 JavaScript宿主环境
 
 - 浏览器：最常见的环境
 - 服务器环境: Node项目就是服务器环境
 
 各种宿主环境提供额外的 API（即只能在该环境使用的接口），以便 JavaScript 调用。
 
-### 1.2什么是API
+### 2 什么是API
 
 应用程序接口（Application Programming Interface），简称API，是基于编程语言构建的结构，使开发人员更容易地创建复杂的功能。
 
@@ -38,7 +38,7 @@ API抽象了复杂的代码，并提供一些简单的接口规则可以直接�
 
 **第三方API**一般情况下不会内置于浏览器中，通常在第三方程序中。
 
-### 1.3API作用
+### 3 API作用
 
 - 用来操控网站所基于的浏览器与操作系统的不同方面，或是操控由其他网站或服务端传来的数据
 - 操作文档
@@ -69,7 +69,7 @@ API抽象了复杂的代码，并提供一些简单的接口规则可以直接�
 - require：函数，用来引入外部的模块
 - module：module代表是当前模块的本身，exports就是module的属性，既可以使用exports导出，也可以使用module.exports
 - __filename：当前文件的完整路径
-- __firname：当前文件夹的完整路径
+- __dirname：当前文件夹的完整路径
 
 ```js
 console.log(global);
@@ -87,9 +87,17 @@ CommonJS的包规范将一组相关的模块组合在一起，形成一组完整
 包实际就是一个压缩文件，解压以后还原为目录。符合规范的目录，应该包含以下文件：
 
 - package.json：描述文件（必须的）
-- bin：可执行二进制文件
-- lib：js代码
-- doc：文档
+- bin：存放可执行二进制文件的目录
+- lib：存放js代码的目录
+- doc：存放文档的目录
 - test：单元测试
 
 .json文件不能写注释，package.json文件可以自定义脚本
+
+使用
+
+```
+npm init
+```
+
+可以创建package.json文件
