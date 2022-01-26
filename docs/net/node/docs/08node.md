@@ -187,7 +187,7 @@ app.post("/api/v1/user/login", passwdCrypt, async (req, res) => {
 >
 > 有些企业提供的接口jwt所返回的token格式可能会在原有token之前拼接一个`持有者（空格）`的信息，例如用户`zhangsan`获取到的token：
 
-```jwt
+```bash
 zhangsan eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMxMTY3NTA5LCJtb2JpbGUiOiIxODUxMjM0NTY3OCIsImlhdCI6MTYwMjY0OTg2NX0.tVByVZYu4s5dgzLZwR00HHW7QZ0gkYpVXaVNhCdawbU
 ```
 
