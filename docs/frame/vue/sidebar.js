@@ -48,6 +48,11 @@ module.exports = [
       'vue3/vue3_01',
       'vue3/vue3_02',
       'vue3/vue3_03',
+      'vue3/vue3_04',
+      'vue3/vue3_05',
+      'vue3/vue3_06',
+      'vue3/vue3_07',
+
     ]
   }
 ]

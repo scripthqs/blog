@@ -10,6 +10,7 @@ module.exports = [
       { text: 'CSS', link: '/web/css/docs/01css' },
       { text: 'JavaScript', link: '/web/js/docs/jsa01' },
       { text: 'TypeScript', link: '/web/ts/docs/01ts' },
+      { text: '数据结构和算法', link: '/web/algorithm/docs/01al' },
     ]
   },
   {
@@ -28,6 +29,7 @@ module.exports = [
     items: [
       { text: 'Vue', link: '/frame/vue/vue2/01vue' },
       { text: 'ECharts', link: '/frame/echarts/docs/' },
+      { text: '微信小程序', link: '/frame/mini_program/docs/01mini' },
       { text: 'Uni-App', link: '/frame/uniapp/docs/01uni' },
     ]
   },
@@ -46,6 +48,8 @@ module.exports = [
       { text: '后台管理系统', link: '/project/vuecms/' },
       { text: '自定义组件库', link: '/project/hqsui/install/' },
       { text: '自定义工具函数库', link: '/project/utils/chapter1/01_install' },
+      { text: 'SPA 通用项目开发', link: '/project/spa/' },
+
     ]
   },
   {

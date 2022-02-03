@@ -14,7 +14,9 @@
     "libuv",
     "mediatype",
     "monospace",
+    "mpvue",
     "Multidata",
+    "Nerv",
     "noinstall",
     "npmjs",
     "NRMRC",
@@ -37,6 +39,12 @@
     "vuecms",
     "vuemall",
     "vuepress",
-    "webp"
+    "vuer",
+    "webp",
+    "wechat",
+    "Weixin",
+    "wepy",
+    "WXML",
+    "WXSS"
   ]
 }
