@@ -1,8 +1,10 @@
 module.exports = [
   {
-    title: '快速上手',
+    title: '项目开发记录',
     children: [
-      'docs/prepare',
+      'docs/create',
+      'docs/eslint',
+      'docs/integration',
     ]
   }
 ]

@@ -16,6 +16,7 @@ module.exports = {
   '/project/hqsui/': require('../../project/hqsui/sidebar'),
   '/project/utils/': require('../../project/utils/sidebar'),
   '/project/spa/': require('../../project/spa/sidebar'),
+  '/project/record/': require('../../project/record/sidebar'),
   '/tools/git/': require('../../tools/git/sidebar'),
   '/tools/webpack/': require('../../tools/webpack/sidebar'),
   '/frame/vue/': require('../../frame/vue/sidebar'),
