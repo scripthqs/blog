@@ -52,7 +52,15 @@ module.exports = [
       'vue3/vue3_05',
       'vue3/vue3_06',
       'vue3/vue3_07',
-
+      'vue3/vue3_08',
+      'vue3/vue3_09',
+      'vue3/vue3_10',
+      'vue3/vue3_11',
+      'vue3/vue3_12',
+      'vue3/vue3_13',
+      'vue3/vue3_14',
+      'vue3/vue3_15',
+      'vue3/vue3_16',
     ]
   }
 ]
