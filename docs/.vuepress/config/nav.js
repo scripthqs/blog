@@ -48,7 +48,8 @@ module.exports = [
       { text: '后台管理系统', link: '/project/vuecms/' },
       { text: '自定义组件库', link: '/project/hqsui/install/' },
       { text: '自定义工具函数库', link: '/project/utils/chapter1/01_install' },
-      { text: 'SPA 通用项目开发', link: '/project/spa/' },
+      { text: 'SPA Web移动端项目开发', link: '/project/spa/' },
+      { text: '项目开发记录', link: '/project/record/docs/prepare' },
 
     ]
   },
@@ -57,6 +58,10 @@ module.exports = [
     items: [
       { text: 'MDN', link: 'https://developer.mozilla.org/zh-CN/' },
       { text: 'Vue', link: 'https://v3.cn.vuejs.org/' },
+      { text: 'React', link: 'https://zh-hans.reactjs.org/' },
+      { text: '微信小程序', link: 'https://developers.weixin.qq.com/miniprogram/dev/framework/' },
+      { text: 'Uni-App', link: 'https://uniapp.dcloud.net.cn/' },
+      { text: 'Webpack', link: 'https://webpack.docschina.org/concepts/' },
       { text: 'Vant', link: 'https://youzan.github.io/vant/#/zh-CN/' },
       { text: 'Element-UI', link: 'https://element.eleme.cn/#/zh-CN' },
       { text: 'VuePress', link: 'https://vuepress.vuejs.org/zh/' },
@@ -77,7 +82,9 @@ module.exports = [
       {
         text: '在线编辑',
         items: [
-          { text: '图片压缩', link: 'https://tinypng.com/' }
+          { text: '图片压缩', link: 'https://tinypng.com/' },
+          { text: '前端工具箱', link: 'https://tool.lu/' },
+          { text: 'VeryToolz在线工具', link: 'https://verytoolz.com/' }
         ]
       },
       {

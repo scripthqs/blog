@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: 'SPA 项目通用技术',
+    title: 'SPA Web移动端项目',
     collapsable: true,
     children: [
       '/project/spa/',
