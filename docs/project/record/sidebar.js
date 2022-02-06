@@ -5,6 +5,7 @@ module.exports = [
       'docs/create',
       'docs/eslint',
       'docs/integration',
+      'docs/environment',
     ]
   }
 ]

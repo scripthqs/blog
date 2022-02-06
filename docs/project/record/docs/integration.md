@@ -21,21 +21,21 @@ const path = require('path')
 module.exports = {
   //配置方式1：CLI 提供的属性
   outputDir: './build',
-  //配置方式2：和 Webpack 的配置完全一致，最后会进行合并。
-  // configureWebpack: {
-  //   resolve: {
-  //     alias: {
-  //       views: '@/views'
-  //     }
-  //   }
-  // }
-  // configureWebpack: (config) => {
-  //   config.resolve.alias = {
-  //     '@': path.resolve(__dirname, 'src'),
-  //     views: '@/views'
-  //   }
-  // },
-   //配置方式3；链式编程
+  //配置方式2：和 Webpack 的配置完全一致，最后会进行合并。configureWebpack可以是一个对象，也可以是函数
+  configureWebpack: {
+    resolve: {
+      alias: {
+        views: '@/views'
+      }
+    }
+  },
+  configureWebpack: (config) => {
+    config.resolve.alias = {
+      '@': path.resolve(__dirname, 'src'),
+      views: '@/views'
+    }
+  },
+   //配置方式3；是一个函数，支持链式编程
   chainWebpack: (config) => {
     config.resolve.alias.set('@', path.resolve(__dirname, 'src')).set('views', '@/views')
   }
@@ -154,7 +154,7 @@ npm install element-plus
 
 ```js
 import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+import 'element-plus/dist/index.css'
 
 import router from './router'
 import store from './store'
