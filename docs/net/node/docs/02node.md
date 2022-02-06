@@ -168,3 +168,48 @@ nodemon app.js
 ```
 
 应用非常广泛，框架也是这样的应用。
+
+## ni 包管理工具
+
+除了 npm 包管理工具，还有 yarn，cnpm，pnpm等，不同的项目经常会用不用包管理工具。Vue3 的源码刚开始使用 yarn，后来又改用 pnpm，还推荐了一个工具`ni`。
+
+>We also recommend installing ni to help switching between repos using different package managers. ni also provides the handy nr command which running npm scripts easier.
+>
+>我们还建议安装 ni 以帮助使用不同的包管理器在 repos 之间切换。 ni 还提供了方便的 nr 命令，可以更轻松地运行 npm 脚本。
+
+安装 ni
+
+```bash
+npm i -g @antfu/ni
+```
+
+ni 会检测项目中的 yarn.lock / pnpm-lock.yaml / package-lock.json 以了解当前的包管理器，并运行相应的命令。
+
+- 使用 `ni` 在项目中安装依赖时：
+  - 假设你的项目中有锁文件 `yarn.lock`，那么它最终会执行 `yarn install` 命令。
+  - 假设你的项目中有锁文件 `pnpm-lock.yaml`，那么它最终会执行 `pnpm i` 命令。
+  - 假设你的项目中有锁文件 `package-lock.json`，那么它最终会执行 `npm i` 命令。
+- 使用 `ni -g vue-cli` 安装全局依赖时,默认使用 `npm i -g vue-cli`
+- `nr`：run
+- `nx`：execute
+- `nu`：upgrade
+- `nci`：clean install
+- `nrm`：remove
+
+ni相关的命令，都可以在末尾追加`\?`，表示只打印，不是真正执行。
+
+假设项目目录下没有锁文件，默认就会让用户从npm、yarn、pnpm选择，然后执行相应的命令。
+
+但如果在`~/.nirc`文件中，设置了全局默认的配置，则使用默认配置执行对应命令。
+
+```bash
+; ~/.nirc
+
+; fallback when no lock found
+defaultAgent=npm # default "prompt"
+
+; for global installs
+globalAgent=npm
+```
+
+[ni教程](https://segmentfault.com/a/1190000040937835)

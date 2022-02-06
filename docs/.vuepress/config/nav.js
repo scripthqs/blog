@@ -27,7 +27,7 @@ module.exports = [
   {
     text: "框架学习",
     items: [
-      { text: "Vue", link: "/frame/vue/vue2/01vue" },
+      { text: "Vue", link: "/frame/vue/vue3/vue3_01" },
       { text: "ECharts", link: "/frame/echarts/docs/" },
       { text: "微信小程序", link: "/frame/mini_program/docs/01mini" },
       { text: "Uni-App", link: "/frame/uniapp/docs/01uni" },

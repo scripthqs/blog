@@ -23,15 +23,15 @@
 
 1. **数据驱动视图**：
 
-   + 数据的变化**会驱动视图**自动更新
-   + 好处：程序员只管把数据维护好，那么页面结构会被 vue 自动渲染出来！
+   - 数据的变化**会驱动视图**自动更新
+   - 好处：程序员只管把数据维护好，那么页面结构会被 vue 自动渲染出来！
 
 2. **双向数据绑定**：
 
    > 在网页中，form 表单负责**采集数据**，Ajax 负责**提交数据**。
 
-   + js 数据的变化，会被自动渲染到页面上
-   + 页面上表单采集的数据发生变化的时候，会被 vue 自动获取到，并更新到 js 数据中
+   - js 数据的变化，会被自动渲染到页面上
+   - 页面上表单采集的数据发生变化的时候，会被 vue 自动获取到，并更新到 js 数据中
 
 > 注意：数据驱动视图和双向数据绑定的底层原理是 **MVVM**（Mode 数据源、View 视图、ViewModel 就是 vue 的实例）
 
@@ -61,7 +61,7 @@ MVVM 指的是 Model、View 和 ViewModel。**ViewModel** 作为 MVVM 的核心�
 1. data中所有的属性，最后都出现在vm身上
 2. Vue实例身上所有的属性及Vue原型上的所有属性，在Vue模板中都可以直接使用
 
-- 当**Model数据源**发生变化时，会被 ViewModel 监听到，VM 会根据最新的数据源自动更新页面的结构 
+- 当**Model数据源**发生变化时，会被 ViewModel 监听到，VM 会根据最新的数据源自动更新页面的结构
 
 - 当表单元素的值**View**发生变化时，也会被 VM 监听到，VM 会把变化过后最新的值自动同步到 Model 数据源中
 
@@ -74,7 +74,7 @@ MVVM 指的是 Model、View 和 ViewModel。**ViewModel** 作为 MVVM 的核心�
 工作流程：
 
 - `View Model`通过`Data Bindings`让obj的数据实时在DOM中显示。
-- View Model`通过`DOM Listener`来监听`methods`中的操作，来改变obj中的数据。
+- View Model`通过`DOM Listener`来监听`methods中的操作，来改变obj中的数据。
 
 好处：
 
@@ -93,4 +93,5 @@ MVVM 指的是 Model、View 和 ViewModel。**ViewModel** 作为 MVVM 的核心�
 - methods
   - 类型：{[key:string]:Function}
   - 定义属于Vue的一些方法，可以在其他地方调用，也可以在指令中调用
+  - methods 中的函数不能使用箭头函数。箭头函数没有自己的this，指向外层作用域，js中`{}`并不是块级作用域，而是对象，所有会一直指向 Window。0
 - Vue的生命周期函数(钩子)

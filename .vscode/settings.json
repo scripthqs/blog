@@ -15,7 +15,9 @@
     "hqsui",
     "indi",
     "keyframes",
+    "keyup",
     "libuv",
+    "lisi",
     "markdownlint",
     "mediatype",
     "minapp",
@@ -23,10 +25,13 @@
     "monospace",
     "mpvue",
     "Multidata",
+    "MVVM",
     "Nerv",
+    "nirc",
     "noinstall",
     "npmjs",
     "NRMRC",
+    "pnpm",
     "rgba",
     "scripthqs",
     "stringfy",
@@ -56,6 +61,8 @@
     "Weixin",
     "wepy",
     "WXML",
-    "WXSS"
+    "WXSS",
+    "xiaoming",
+    "zhangsan"
   ]
 }

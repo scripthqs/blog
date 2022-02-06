@@ -28,7 +28,7 @@ Vue.js分为开发版本和生产版本。
 3. 通过NPM安装
    - NPM是Node默认的模块管理器，是命令行下的一个软件，用来安装和管理Node模块。
    - NPM不需要单独安装，在默认安装Node的时候，会连带一起安装NPM。
-   - `$ npm install vue`安装最新稳定版
+   - `npm install vue`安装最新稳定版
 
 ## 3.框架和库
 
