@@ -120,14 +120,12 @@
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "octref.vetur"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // 文件夹 icon 图标
   "workbench.iconTheme": "vscode-great-icons",
-  "files.autoSave": "afterDelay",
   // 终端配置
   "terminal.integrated.profiles.windows": {
     "GitBash": {
@@ -139,6 +137,18 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.autoSave": "afterDelay",
+  "prettier.printWidth": 100, // 超过最大值换行
+  "prettier.tabWidth": 2, // 缩进字节数
+  // "prettier.useTabs": false, // 缩进不使用tab，使用空格
+  // "prettier.semi": true, // 句尾添加分号
+  "prettier.singleQuote": true, // 使用单引号代替双引号
+  "prettier.trailingComma": "none", // 在对象或数组最后一个元素后面是否加逗号，不加
+  "prettier.arrowParens": "avoid", // prettier- (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
+  "prettier.bracketSpacing": true //  prettier-在对象，数组括号与文字之间加空格 "{ foo: bar }"
 }
 ```
 
