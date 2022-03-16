@@ -6,6 +6,7 @@ module.exports = [
       'docs/',
       'docs/01echarts',
       'docs/02echarts',
+      'docs/echarts.md',
     ]
   }
 ]

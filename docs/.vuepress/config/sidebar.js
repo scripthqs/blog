@@ -17,6 +17,7 @@ module.exports = {
   "/project/utils/": require("../../project/utils/sidebar"),
   "/project/spa/": require("../../project/spa/sidebar"),
   "/project/record/": require("../../project/record/sidebar"),
+  "/project/antd/": require("../../project/antd/sidebar"),
   "/tools/vscode/": require("../../tools/vscode/sidebar"),
   "/tools/git/": require("../../tools/git/sidebar"),
   "/tools/webpack/": require("../../tools/webpack/sidebar"),
