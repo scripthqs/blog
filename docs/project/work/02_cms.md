@@ -310,3 +310,67 @@ const getExportXlsx = (page: number | string, limit: number) => {
     });
 };
 ```
+
+### 下载文件
+
+```js
+const mimeMap = {
+  xlsx: 'application/vnd.ms-excel',
+  zip: 'application/zip'
+};
+const resolveBlob = (res: any, mimeType: any) => {
+  // 创建a标签，并处理二级制数据
+  const aLink = document.createElement('a');
+  const blob = new Blob([res.data], { type: mimeType });
+  // 生成下载链接
+  const URL = window.URL || window.webkitURL;
+  aLink.href = URL.createObjectURL(blob);
+  // 设置下载文件名称
+  let fileName = '';
+  if (res.headers['content-disposition']) fileName = res.headers['content-disposition'];
+  if (res.headers['Content-Disposition']) fileName = res.headers['Content-Disposition'];
+  aLink.setAttribute('download', fileName);
+  // 下载
+  document.body.appendChild(aLink);
+  aLink.click();
+  // 释放URL对象
+  window.URL.revokeObjectURL(aLink.href);
+  document.body.removeChild(aLink);
+};
+```
+
+```js
+const mimeMap = {
+  xlsx: 'application/vnd.ms-excel',
+  zip: 'application/zip'
+};
+const resolveBlob = (res: any, mimeType: any) => {
+  // 创建a标签，并处理二级制数据
+  const aLink = document.createElement('a');
+  const blob = new Blob([res.data], { type: mimeType });
+
+  // 设置下载文件名称，使用正则取出名称
+  const pat = new RegExp('fileName=([^;]+\\.[^\\.;]+)');
+  let contentDisposition = '';
+  //浏览器问题可能会出现 content-disposition 匹配不到
+  if (res.headers['content-disposition']) contentDisposition = res.headers['content-disposition'];
+  if (res.headers['Content-Disposition']) contentDisposition = res.headers['Content-Disposition'];
+  // console.log(contentDisposition, 'contentDisposition');
+  const result = pat.exec(contentDisposition);
+  let fileName = result && result[1];
+
+  // 如果Content-Disposition没有暴露，给文件一个默认名字
+  if (fileName == null) fileName = '商品查询列表';
+
+  // 生成下载链接
+  const URL = window.URL || window.webkitURL;
+  aLink.href = URL.createObjectURL(blob);
+  aLink.setAttribute('download', fileName);
+  // 下载
+  document.body.appendChild(aLink);
+  aLink.click();
+  // 释放URL对象
+  window.URL.revokeObjectURL(aLink.href);
+  document.body.removeChild(aLink);
+};
+```
