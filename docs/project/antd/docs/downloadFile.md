@@ -177,7 +177,7 @@ download 属性也受同源策略的影响，即非同一端口下不能直接�
 对文件类型判断，如果不是图片、文本文件，上面的方法不用加 download 属性就是有效的，但是对 txt 文件依然没有解决。
 
 ```js
-export function downloadIamge(url, name) {
+export function downloadImage(url, name) {
   let image = new Image();
   // 解决跨域 Canvas 污染问题
   image.setAttribute('crossOrigin', 'anonymous');
