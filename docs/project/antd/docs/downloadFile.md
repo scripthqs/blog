@@ -332,3 +332,143 @@ if (response.status === 200) {
   return response;
 }
 ```
+
+## 使用阿里云 oss，实现上传下载
+
+后端给了 2 个接口
+
+- 一个接口，上传文件后会返回保存文件的阿里云 name，理论上这个 name 就是文件名，但是为了重复，这个文件名采用了时间戳加后缀的格式
+- 一个接口通过文件的 name 请求完整的 url
+
+```js
+  /**
+   * @description 文件上传
+   * @param {file}  上传文件
+   * @param {folder} 上传服务器对应文件夹(如：系统管理：systemManage；人力行政管理：hrManage)
+   * @param {type} 设置文件权限：0(私有)/1(公有)--默认公有
+   * @returns  Promise对象--返回上传文件后服务器响应
+   * @tips  $fn.uploadFile(e.file,"systemManage").then((res:any)=>{console.log(res);})
+   */
+  uploadFile: function (file: any, folder: string, type = 1): any {
+    //设置文件权限
+    const jurisdiction = {
+      0: 'private', //私有
+      1: 'public-read-write', //公共读写
+      2: 'public-read', //公共读
+      3: 'default' //继承Bucket--文件遵循存储空间的访问权限。
+    };
+    //定义上传路径：权限文件夹+模块文件夹
+    folder = jurisdiction[type] + '/' + folder;
+    return new Promise((resolve, reject) => {
+      $axios
+        .post($api.getOss + '?path=' + folder)
+        .then((res: any) => {
+          if (res.data.success) {
+            const fileName = file.name.lastIndexOf('.'); //取到文件名开始到最后一个点的长度
+            const fileNameLength = file.name.length; //取到文件名长度
+            const fileFormat = file.name.substring(fileName, fileNameLength); //截
+            const name = res.data.data.basePath + '/' + new Date().getTime() + fileFormat;//时间戳加文件后缀，为了保证文件名唯一
+            const client = new OSS({
+              endpoint: res.data.data.endPoint,
+              region: res.data.data.region,
+              secure: true,
+              accessKeyId: res.data.data.accessKeyId,
+              accessKeySecret: res.data.data.accessKeySecret,
+              bucket: res.data.data.bucket,
+              stsToken: res.data.data.securityToken
+            });
+            (async () => {
+              //上传文件
+              const ret = await client.multipartUpload(name, file, {});
+              //设置文件权限
+              await client.putACL(name, jurisdiction[type]);
+              //查看文件权限
+              //const result = await client.getACL(name);
+              //console.log(result.acl);
+              resolve(ret);
+            })();
+          } else {
+            reject(res);
+          }
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  },
+```
+
+使用 antd upload 组件
+
+```js
+ <a-upload :customRequest="uploadFile" :file-list="fileList" :showUploadList="false" style="width: 200px">
+    <a-button type="link" class="upload-btn"> 上传电子档 </a-button>
+ </a-upload>
+
+<div class="user-file-list" v-for="item in fileList" :key="item.uid">
+  <file-done-outlined />
+  <a-tooltip :title="item.name">
+    <div class="list-name" @click="downloadFile(item.url, item.name)">
+      {{ item.name }}
+    </div>
+  </a-tooltip>
+  <a-button type="link" @click="removeUpload(item)" class="del-file-btn"> 删除 </a-button>
+</div>
+```
+
+自定义上传方法
+
+```js
+interface FileItem {
+      uid: string; // 文件唯一标识，建议设置为负数，防止和内部产生的 id 冲突
+      name?: string; // 文件名
+      status?: string; // 状态有：uploading done error removed
+      response?: string; // 服务端响应内容
+      url?: string;
+      ossName?: string;
+    }
+    const fileList = ref<FileItem[]>([]);
+
+    //保存上传文件的私有路径
+    let uploadFile = (e: any): void => {
+      console.log(e, 'e*************');
+      $fn.uploadFile(e.file, 'hrManage', 0).then((res1: any) => {
+        console.log(res1, 'res1');
+        //根据返回的name属性获取url
+
+        $axios.get($api.getOssUrl, { params: { objectName: res1.name, } }).then((res2: any) => {
+          console.log(res2, 'res2');
+          fileList.value.push({
+            uid: e.file.uid,
+            name: e.file.name,
+            url: res2.data.data,
+            status: 'done',
+            ossName: res1.name //保存返回name属性
+          });
+        });
+      });
+    };
+
+    //下载文件的方法
+    const downloadFile = (src: any, fileName: any) => {
+      let x = new XMLHttpRequest();
+      x.open('GET', src, true);
+      x.responseType = 'blob';
+
+      x.onload = function () {
+        let url = window.URL.createObjectURL(x.response);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+      };
+      x.send();
+    };
+
+    //删除文件
+    const removeUpload = (file: any) => {
+      fileList.value = fileList.value.filter(item => {
+        return item.uid != file.uid;
+      });
+    };
+```
