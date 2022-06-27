@@ -32,3 +32,16 @@
 - `git stash pop`恢复分支
 
 **git提供的存储功能是独立于分支的，其他分支也可以使用这个命令，注意不要弄错分支**
+
+## 4丶git 分支操作
+
+```bash
+# git fetch 将远程主机的最新内容拉到本地
+# git branch -a 查看所有分支
+# 保证当前分支最新再切换分支
+# git add .
+# git commit -m 描述
+# git checkout dev-1.1.0 切换分支
+# git merge dev-1.0.0 合并分支
+```
+

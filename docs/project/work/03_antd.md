@@ -68,6 +68,9 @@
           showLoading: false
         })
         .then((res: any) => {
+          res.data.data.forEach((item:any)=>{
+            item.isLeaf=item.leaf
+          })
           treeData.data = res.data.data;
           console.log('获取到tree数据', res.data.data);
         });

@@ -90,7 +90,7 @@ const loadData: CascaderProps['loadData'] = selectedOptions => {
           <a-button style="margin: 0 8px" @click="reset">重置</a-button>
         </a-col>
       </a-row>
-      
+
     </a-form>
   </div>
 </template>
@@ -225,7 +225,7 @@ export default defineComponent({
 将返回的数据页码相关信息进行赋值
 
 ```js
-const getTableDate = function (p: Iparams) {
+const getTableDate = function(p: Iparams) {
   $axios.post($api.queryByPage, p).then((res: any) => {
     console.log('分页查询全部商品', res);
     state.data = res.data.data.data;
@@ -245,10 +245,11 @@ const pageChange = (pageObj: pagiationType) => {
   // console.log('当前页码: ' + pageObj.current);
   state.page.current = pageObj.current;
   state.page.pageSize = pageObj.pageSize;
-  formState['pageIndex'] = state.page.current;
-  formState['pageSize'] = state.page.pageSize;
-  // console.log(formState, '切换页码查询传入的参数');
-  getTableDate(formState);
+  const info = {
+    pageIndex: state.page.current,
+    pageSize: state.page.pageSize
+  };
+  getTableData(info);
 };
 ```
 
@@ -282,6 +283,40 @@ const exportPageAll = () => {
 4. 还需要处理，返回的数据有没有被 axios 的拦截器拦截
 
 ```js
+const mimeMap = {
+  xlsx: 'application/vnd.ms-excel',
+  zip: 'application/zip'
+};
+const resolveBlob = (res: any, mimeType: any) => {
+  // 创建a标签，并处理二级制数据
+  const aLink = document.createElement('a');
+  const blob = new Blob([res.data], { type: mimeType });
+
+  // 设置下载文件名称，使用正则取出名称
+  const pat = new RegExp('fileName=([^;]+\\.[^\\.;]+)');
+  let contentDisposition = '';
+  //浏览器问题可能会出现 content-disposition 匹配不到
+  if (res.headers['content-disposition']) contentDisposition = res.headers['content-disposition'];
+  if (res.headers['Content-Disposition']) contentDisposition = res.headers['Content-Disposition'];
+  // console.log(contentDisposition, 'contentDisposition');
+  const result = pat.exec(contentDisposition);
+  let fileName = result && result[1];
+
+  // 如果Content-Disposition没有暴露，给文件一个默认名字
+  if (fileName == null) fileName = '商品查询列表';
+
+  // 生成下载链接
+  const URL = window.URL || window.webkitURL;
+  aLink.href = URL.createObjectURL(blob);
+  aLink.setAttribute('download', fileName);
+  // 下载
+  document.body.appendChild(aLink);
+  aLink.click();
+  // 释放URL对象
+  window.URL.revokeObjectURL(aLink.href);
+  document.body.removeChild(aLink);
+};
+
 const getExportXlsx = (page: number | string, limit: number) => {
   $axios
     .get($api.exportXlsx, {
@@ -290,23 +325,10 @@ const getExportXlsx = (page: number | string, limit: number) => {
     })
     .then((res: any) => {
       console.log(res, '导出文件打印res');
-      const fileName = `${+new Date()}.xlsx`;
-      const blob = new Blob([res.data], { type: 'application/vnd.ms-excel;charset=utf-8' });
-      // console.log(blob, '打印blob');
-      if (blob.size <= 0) {
-        $message.warn('文件下载错误');
-        return;
-      }
-      if ('download' in document.createElement('a')) {
-        //支持a标签download的浏览器
-        const link = document.createElement('a'); //创建a标签
-        link.download = fileName; //a标签添加属性
-        link.style.display = 'none';
-        link.href = URL.createObjectURL(blob); //创建url对象
-        document.body.appendChild(link);
-        link.click(); //执行下载
-        URL.revokeObjectURL(link.href); //释放url
-        document.body.removeChild(link); //释放标签
+      if (res.status === 200) {
+        resolveBlob(res, mimeMap);
+      } else {
+        $message.warn('下载文件失败！');
       }
     });
 };

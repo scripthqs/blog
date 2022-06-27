@@ -21,7 +21,10 @@
 .mr {
   margin-right: 10px;
 }
-//蓝色按钮140px
+.mt {
+  margin-top: 50px;
+}
+//蓝色按钮140px// type="primary"
 .user-btn1 {
   width: 140px;
   height: 40px;
@@ -32,6 +35,16 @@
   font-weight: 600;
   line-height: 23px;
   color: #ffffff;
+  opacity: 1;
+}
+.disabled-btn {
+  width: 140px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 600;
+  line-height: 23px;
   opacity: 1;
 }
 //白色按钮140px
@@ -47,7 +60,7 @@
   color: #6671fa;
   opacity: 1;
 }
-//蓝色按钮90px
+//蓝色按钮90px type="primary"
 .submit-btn {
   width: 90px;
   height: 40px;
@@ -75,8 +88,8 @@
   color: #6671fa;
   opacity: 1;
 }
-//蓝色按钮50px
-.edit-btn {
+//蓝色按钮50px type="primary"
+.edit-btn { 
   // width: 50px;
   // height: 26px;
   background: #6671fa;
