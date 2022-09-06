@@ -61,3 +61,9 @@ Object.keys(obj).length;
 ```js
 <div v-for="(val, key, index) in data" :key="index" :id="key"></div>
 ```
+
+## require.context()函数
+
+```js
+ 是webpack的一个api，通过执行require.context()函数，来获取指定的文件夹内的特定文件，在需要多次从同一个文件夹内倒入的模块，使用这个函数可以自动倒入，不用每个都显示的写import来引入。
+```
