@@ -67,3 +67,12 @@ Object.keys(obj).length;
 ```js
  是webpack的一个api，通过执行require.context()函数，来获取指定的文件夹内的特定文件，在需要多次从同一个文件夹内倒入的模块，使用这个函数可以自动倒入，不用每个都显示的写import来引入。
 ```
+
+## 路由传参
+
+```js
+//使用路由传参
+//1 query传参 参数会跟在url后面，刷新页码不丢失
+//2 params传参 参数不可见 但是刷新页面参数会丢失 ，解决不丢失的方法存在localStorage或sessionStorage中
+// let { data, role, first } = JSON.parse(sessionStorage.getItem('busRecordData') as string);
+```
