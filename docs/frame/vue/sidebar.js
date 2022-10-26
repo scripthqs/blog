@@ -61,6 +61,7 @@ module.exports = [
       'vue3/vue3_14',
       'vue3/vue3_15',
       'vue3/vue3_16',
+      'vue3/vue3_17',
     ]
   }
 ]
