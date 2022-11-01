@@ -7,6 +7,7 @@ module.exports = [
       'docs/01array',
       'docs/02stack',
       'docs/03queue',
+      'docs/linkedList',
       'docs/other',
     ]
   }
