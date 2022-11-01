@@ -63,6 +63,29 @@
  * }
  */
 
+/* 
+  list1 = {
+    val: 1,
+    next: {
+      val: 2,
+      next: {
+        val: 3,
+        next: null
+      }
+    }
+  }; 
+  list2 = {
+    val: 1,
+    next: {
+      val: 3,
+      next: {
+        val: 4,
+        next: null
+      }
+    }
+  }
+*/
+
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
   if (list1 === null) {
     return list2;
