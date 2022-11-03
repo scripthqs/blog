@@ -23,9 +23,10 @@ module.exports = [
       'docs/jsa18',
       'docs/jsa19',
       'docs/jsa20',
-      'docs/jsa21',
+      'docs/jsa21'
     ]
-  }, {
+  },
+  {
     title: 'JavaScript 高级',
     collapsable: true,
     children: [
@@ -38,9 +39,10 @@ module.exports = [
       'JavaScript/jsb07',
       'JavaScript/jsb08',
       'JavaScript/jsb09',
-      'JavaScript/jsb10',
+      'JavaScript/jsb10'
     ]
-  }, {
+  },
+  {
     title: 'ECMAScript 6',
     collapsable: true,
     children: [
@@ -61,7 +63,7 @@ module.exports = [
       'ECMAScript6/jsc15',
       'ECMAScript6/jsc16',
       'ECMAScript6/jsc17',
-      'ECMAScript6/jsc18',
+      'ECMAScript6/jsc18'
     ]
   }
-]
+];

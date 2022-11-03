@@ -1,4 +1,4 @@
-# valueOf 方法
+## valueOf 方法
 
 ```js
 //(a==1 &&a==2&&a==3)为true
@@ -21,4 +21,18 @@ Object.defineProperty(window, 'a', {
     return value++;
   }
 });
+```
+
+## 传入数字获取序列数组
+
+输入 5，获得[0,1,2,3,4]
+
+```js
+[...new Array(20).keys()];
+```
+
+## 获取对象的长度
+
+```js
+Object.keys(obj).length;
 ```
