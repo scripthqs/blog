@@ -1,16 +1,14 @@
 # 树(tree)
 
-- 二叉搜索树
-- AVL 树
-- 红黑树
-- 线段树 - with min/max/sum range queries examples
-- 芬威克树/Fenwick Tree (Binary Indexed Tree)
+树有二叉树、红黑树等各种树。不过所有树的本质都是二叉树。
 
-所有树的本质都是二叉树。
+- 树顶部有个根节点(root)
+- 树的深度取决于祖先节点的数量，有几个祖先节点，深度就是几。
+- 树的高度 = 深度的最大值
 
 ## 二叉搜索树的操作
 
-二叉树可以为空，二叉树有左右之分。二叉查找树的同级左节点<同级右节点。
+二叉树可以为空，二叉树有左右之分。二叉搜索树就是二叉树的一种。二叉搜索树的同级左节点<同级右节点。
 
 ```js
 insert(key)：向树中插入一个新的键。
@@ -23,7 +21,14 @@ max：返回树中最大的值/键。
 remove(key)：从树中移除某个键。
 ```
 
-## 二叉查找树的实现
+## 二叉搜索树的实现
 
 ```js
+class Node {
+  constructor(key) {
+    this.key = key;
+    this.left = null;
+    this.right = null;
+  }
+}
 ```
