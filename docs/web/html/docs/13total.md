@@ -2,7 +2,7 @@
 
 ## 1.Doctype 的作用
 
-Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种规范。`<!DOCTYPE>`声明必须是HTML文档的第一行，位于html标签之前。HTML5 只需要写 `<!DOCTYPE HTML>`
+Doctype 是一种文档声明，目的是说明当前代码用的 HTML 的哪一种规范。`<!DOCTYPE>`声明必须是 HTML 文档的第一行，位于 html 标签之前。HTML5 只需要写 `<!DOCTYPE HTML>`
 
 ## 2.行内元素和块级元素
 
@@ -14,7 +14,7 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 ## 3.HTML 语义化的理解
 
-**HTML的职责是描述一块内容是什么（或其意义），而不是它长什么样子；它的外观应该由CSS来决定。**
+**HTML 的职责是描述一块内容是什么（或其意义），而不是它长什么样子；它的外观应该由 CSS 来决定。**
 
 - 能够便于开发者阅读和写出更优雅的代码。
 - 同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容。
@@ -22,27 +22,27 @@ Doctype是一种文档声明，目的是说明当前代码用的HTML的哪一种
 
 ## 4.浏览器内核
 
-浏览器分成两部分：**渲染引擎（内核）和JS引擎**。
+浏览器分成两部分：**渲染引擎（内核）和 JS 引擎**。
 
-渲染引擎主要负责取得网页的内容、整理讯息、计算网页的显示方式等，JS引擎则是解析 `Javascript` 语言，执行 `javascript` 语言来实现网页的动态效果。
+渲染引擎主要负责取得网页的内容、整理讯息、计算网页的显示方式等，JS 引擎则是解析 `Javascript` 语言，执行 `javascript` 语言来实现网页的动态效果。
 
 ## 5.html5 有哪些新特性
 
-- 语义化标签: `header``footer``nav``section``article``aside` 等
+- 语义化标签: ` header``footer``nav``section``article``aside ` 等
 - 增强型表单：`date`(从一个日期选择器选择一个日期) `email`(包含 e-mail 地址的输入域) `number`(数值的输入域) `range`(一定范围内数字值的输入域) `search`(用于搜索域) `tel`(定义输入电话号码字段) 等
-- 视频和音频：`audio``video`
+- 视频和音频：` audio``video `
 - `Canvas`绘图 `SVG`绘图
 - 地理定位：`Geolocation`
-- 拖放API：`drag`
+- 拖放 API：`drag`
 - `web worker`：是运行在后台的 `JavaScript`，独立于其他脚本，不会影响页面的性能
-- `web storage`: `localStorage``sessionStorage`
+- `web storage`: ` localStorage``sessionStorage `
 - `WebSocket`: `HTML5` 开始提供的一种在单个 `TCP` 连接上进行全双工通讯的协议
 
 ## 6.Web 存储
 
-在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有4kb左右，解析也非常复杂。
+在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有 4kb 左右，解析也非常复杂。
 
-1. Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据（通常是一段**加密的字符串**），并且默认情况下，只会在同源的HTTP请求中携带。（同源：同域名、同端口、同协议）
+1. Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据（通常是一段**加密的字符串**），并且默认情况下，只会在同源的 HTTP 请求中携带。（同源：同域名、同端口、同协议）
 
 2. 浏览器需要保存这段数据，不得轻易删除。
 
@@ -53,9 +53,10 @@ Cookie 一般有两个作用:
 1. **识别用户身份**
 2. **记录历史**
 
-**H5有两种存储方式：**
+**H5 有两种存储方式：**
 
 1. `window.sessionStorage`：会话存储
+
    - 浏览器**本地存储**的一种方式，以**键值对**的形式的进行存储
    - 保存在内存中
    - 生命周期为关闭浏览器窗口，**窗口关闭时浏览器销毁**
@@ -67,37 +68,37 @@ Cookie 一般有两个作用:
    - **永久生效除非手动删除**
    - 可以多串口共享
 
-Web存储的特性：
+Web 存储的特性：
 
 1. 设置、读取方便
-2. 容量较大，`sessionStorage`约5M，`localStorage`约20M
+2. 容量较大，`sessionStorage`约 5M，`localStorage`约 20M
 3. 只能存储字符串，可以将对象 JSON.stringfy() 编码后存储
 
-cookie、sessionStorage、localStorage的区别:
+cookie、sessionStorage、localStorage 的区别:
 
-cookie是浏览器访问服务器后，服务器返回的一段数据，通常是一段加密的字符串，并且只会在同源HTTP请求中携带，作用是识别用户的身份和记录历史，sessionStorage是浏览器本地存储的一种方式，以键值对的形式进行存储，存储的数据会在浏览器窗口关闭后销毁，localStorage也是浏览器本地存储的一种方式，以键值对的形式进行存储，不过它的数据一般都会一直存在，除非手动删除。
+cookie 是浏览器访问服务器后，服务器返回的一段数据，通常是一段加密的字符串，并且只会在同源 HTTP 请求中携带，作用是识别用户的身份和记录历史，sessionStorage 是浏览器本地存储的一种方式，以键值对的形式进行存储，存储的数据会在浏览器窗口关闭后销毁，localStorage 也是浏览器本地存储的一种方式，以键值对的形式进行存储，不过它的数据一般都会一直存在，除非手动删除。
 
 ## 7.浏览器内多个标签页之间的通信
 
-- 使用 `localStorage`: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`，一个窗口更新localStorage，另一个窗口监听window对象的'storage'事件，来实现通信
+- 使用 `localStorage`: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`，一个窗口更新 localStorage，另一个窗口监听 window 对象的'storage'事件，来实现通信
 
 ```js
 // 本窗口的设值代码
-localStorage.setItem('aaa', (Math.random()*10).toString())
+localStorage.setItem('aaa', (Math.random() * 10).toString());
 
 // 其他窗口监听storage事件
-window.addEventListener("storage", function (e) {
-  console.log(e)
-  console.log(e.newValue)
-})
+window.addEventListener('storage', function(e) {
+  console.log(e);
+  console.log(e.newValue);
+});
 ```
 
-注：两个页面要同源（URL的协议、域名和端口相同）
+注：两个页面要同源（URL 的协议、域名和端口相同）
 
 - `websocket`协议
 - `webworker`
 
-## 8.src与href的区别
+## 8.src 与 href 的区别
 
 `src` 用于替代这个元素，而 `href` 用于建立这个标签与外部资源之间的关系
 
@@ -113,12 +114,12 @@ window.addEventListener("storage", function (e) {
 <img src="" alt="">
 ```
 
-当浏览器解析到这句代码时，页面的加载和解析都会暂停直到浏览器拿到并执行完这个js文件
+当浏览器解析到这句代码时，页面的加载和解析都会暂停直到浏览器拿到并执行完这个 js 文件
 
 ## 9.表单提交中 Get 和 Post 方式的区别
 
 - `Get` 一般用于从服务器上获取数据，`Post` 向服务器传送数据
-- `Get` 传输的数据是拼接在Url之后的，对用户是可见的；`Post` 的传输数据对用户是不可见的
+- `Get` 传输的数据是拼接在 Url 之后的，对用户是可见的；`Post` 的传输数据对用户是不可见的
 - `Get` 传送的数据量较小，不能大于 `2KB`。`Post` 传送的数据量较大，一般被默认为不受限制
 - `Get` 安全性非常低，`Post` 安全性较高
 - 在 `FORM` 提交的时候，如果不指定 `Method`，则默认为 `Get` 请求
@@ -127,6 +128,6 @@ window.addEventListener("storage", function (e) {
 
 **defer** 延时、**async**异步
 
-defer 和 async 属性都是去**异步加载外部的JS**脚本文件，它们都不会阻塞页面的解析，区别：
+defer 和 async 属性都是去**异步加载外部的 JS**脚本文件，它们都不会阻塞页面的解析，区别：
 
 - 多个带 async 属性的标签，不能保证加载的顺序；多个带 defer 属性的标签，按照加载顺序执行；

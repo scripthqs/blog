@@ -15,6 +15,7 @@ module.exports = [
       'docs/10font',
       'docs/11img',
       'docs/12html5',
-      'docs/13total',
+      'docs/13total'
     ]
-  }]
+  }
+];

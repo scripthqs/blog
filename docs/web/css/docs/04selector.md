@@ -3,9 +3,9 @@
 css 语法是选择器加上声明块
 
 ```css
-选择器 { 
- 属性名: 属性值; 
- 属性名: 属性值; 
+选择器 {
+  属性名: 属性值;
+  属性名: 属性值;
 }
 /*一个属性有多个值的话，那么多个值用空格隔开*/
 /*css只有这一种注释*/
@@ -19,8 +19,8 @@ css 语法是选择器加上声明块
 
 ```css
 p {
- font-size:16px;
-    color: red;
+  font-size: 16px;
+  color: red;
 }
 ```
 
@@ -32,19 +32,19 @@ p {
 
 ```css
 .box {
- width: 200px;
- height: 200px;
+  width: 200px;
+  height: 200px;
 }
 ```
 
 ### 1.3.ID 选择器
 
-`#`开头，id值不要重复，class可以重复。
+`#`开头，id 值不要重复，class 可以重复。
 
 ```css
 #app {
- width: 100px;
- height: 100px;
+  width: 100px;
+  height: 100px;
 }
 ```
 
@@ -67,15 +67,15 @@ p {
 
 ```css
 div.box1 {
- color: red;
+  color: red;
 }
 div#box2 {
-    color: green;
-    /*这种写法语法上没问题，但是id选择器都是唯一的，没必要*/
+  color: green;
+  /*这种写法语法上没问题，但是id选择器都是唯一的，没必要*/
 }
 .a.b.c {
-    color: black;
-    /*当一个元素同时有a,b,c的class时生效*/
+  color: black;
+  /*当一个元素同时有a,b,c的class时生效*/
 }
 ```
 
@@ -84,8 +84,11 @@ div#box2 {
 同时选择多个选择器对应的元素，多个选择器之间用逗号隔开
 
 ```css
-p,h1,.box1,#id {
-    color: red;
+p,
+h1,
+.box1,
+#id {
+  color: red;
 }
 ```
 
@@ -96,11 +99,11 @@ p,h1,.box1,#id {
 多个选择器之间，使用空格隔开
 
 ```css
-ul li{
- font-size: 16px;
+ul li {
+  font-size: 16px;
 }
 div ul li {
-    font-size: 16px;
+  font-size: 16px;
 }
 ```
 
@@ -110,10 +113,10 @@ div ul li {
 
 ```css
 ul > li {
- color: red;
+  color: red;
 }
 div > span {
- font-size: 16px;
+  font-size: 16px;
 }
 ```
 
@@ -123,7 +126,7 @@ div > span {
 
 ```css
 p + span {
- font-size: 16px;
+  font-size: 16px;
 }
 /*选中p后面相邻的第一个span*/
 ```
@@ -132,7 +135,7 @@ p + span {
 
 ```css
 p ~ span {
- color: red;
+  color: red;
 }
 /*选中的p后面所有的span*/
 ```
@@ -153,22 +156,22 @@ p ~ span {
 
 ```css
 a:link {
- /*超链接点击之前，只能a使用*/
+  /*超链接点击之前，只能a使用*/
 }
 a:visited {
- /*超链接被访问后，只能a使用*/
-    /*由于隐私的原因，这个伪类只能改超链接的颜色*/
+  /*超链接被访问后，只能a使用*/
+  /*由于隐私的原因，这个伪类只能改超链接的颜色*/
 }
 a:hover {
- /*鼠标悬停在标签时*/
+  /*鼠标悬停在标签时*/
 }
 a:active {
- /*鼠标点击标签，但是不松手时*/
+  /*鼠标点击标签，但是不松手时*/
 }
 
 /*下面这伪类a不能使用*/
 :focus {
- /*某个标签获得焦点时的样式（比如某个输入框获得焦点）*/
+  /*某个标签获得焦点时的样式（比如某个输入框获得焦点）*/
 }
 ```
 
@@ -178,7 +181,7 @@ a:active {
 
 - `E:first-child` 匹配父元素的第一个子元素 E。
 - `E:last-child` 匹配父元素的最后一个子元素 E。
-- `E:nth-child(n)` 匹配父元素的第 n 个子元素E。n 的范围是（0~∞）
+- `E:nth-child(n)` 匹配父元素的第 n 个子元素 E。n 的范围是（0~∞）
 - `E:nth-child(odd)` 匹配奇数，或者 2n+1
 - `E:nth-child(even)` 匹配偶数，或者 2n
 - `E:nth-last-child(n)` 匹配父元素的倒数第 n 个子元素 E。
