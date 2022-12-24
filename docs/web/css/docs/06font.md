@@ -8,7 +8,7 @@ css 使用 font-size 属性定义字体大小
 
 ```css
 p {
-    font-size: 16px;
+  font-size: 16px;
 }
 ```
 
@@ -22,9 +22,9 @@ css 使用 font-weight 属性设置文字粗细
 
 ```css
 p {
-    font-weight: normal;/*正常体，默认值*/
-    font-weight: bold;/*粗体，默认值*/
-    font-weight: 400;/*范围是100-900,400是normal，700是bold，不要跟单位*/
+  font-weight: normal; /*正常体，默认值*/
+  font-weight: bold; /*粗体，默认值*/
+  font-weight: 400; /*范围是100-900,400是normal，700是bold，不要跟单位*/
 }
 ```
 
@@ -34,17 +34,17 @@ css 使用 font-style 属性设置文本的风格
 
 ```css
 p {
-    font-style: normal;/*标准字体样式，默认值*/
-    font-style: italic;/*斜体*/
+  font-style: normal; /*标准字体样式，默认值*/
+  font-style: italic; /*斜体*/
 }
 ```
 
 ## 4.font-family
 
 ```css
-    font-family: '微软雅黑';
-    font-family: "Microsoft YaHei";
-    font-family: "Times New Roman","微软雅黑","宋体";
+font-family: '微软雅黑';
+font-family: 'Microsoft YaHei';
+font-family: 'Times New Roman', '微软雅黑', '宋体';
 ```
 
 ### 4.1.常用字体
@@ -52,7 +52,7 @@ p {
 网页中不是所有字体都能用，因为这个字体要看用户的电脑里面装没装。
 
 ```css
-    font-family: "华文彩云";
+font-family: '华文彩云';
 ```
 
 如果用户的 Windows 电脑里面没有这个字体，那么就会变成宋体.
@@ -64,7 +64,7 @@ p {
 为了防止用户电脑里，没有微软雅黑这个字体。就要用英语的逗号，提供备选字体。
 
 ```css
-    font-family: "微软雅黑","宋体";
+font-family: '微软雅黑', '宋体';
 ```
 
 ### 4.3.英文字体
@@ -72,7 +72,7 @@ p {
 需要将英语字体放在最前面，这样所有的中文，就不能匹配英语字体，就自动的变为后面的中文字体。
 
 ```css
-    font-family: "Times New Roman","微软雅黑","宋体";
+font-family: 'Times New Roman', '微软雅黑', '宋体';
 ```
 
 ### 4.4.英语别名
@@ -82,13 +82,13 @@ p {
 - 微软雅黑的英语别名：
 
 ```css
-    font-family: "Microsoft YaHei";
+font-family: 'Microsoft YaHei';
 ```
 
 - 宋体的英语别名：
 
 ```css
-    font-family: "SimSun";
+font-family: 'SimSun';
 ```
 
 ### 4.5.字体族分类
@@ -107,14 +107,14 @@ font-face 可以将服务器中的字体直接提供给用户使用，但是会�
 - 加载速度
 - 版权问题
 
-````css
-@font-family{
-    /*指定字体的名字*/
-    font-family:'myfont';
-    /*服务器中字体的路径*/
-    src:url('./font/自定义字体.tff') format('truetype');
+```css
+@font-family {
+  /*指定字体的名字*/
+  font-family: 'myfont';
+  /*服务器中字体的路径*/
+  src: url('./font/自定义字体.tff') format('truetype');
 }
-````
+```
 
 字体的格式一般都是`.ttf`。
 
@@ -123,8 +123,8 @@ font-face 可以将服务器中的字体直接提供给用户使用，但是会�
 font 属性是字体的简写属性，字体和行高可以连写
 
 ```css
-    font: 字体样式 字重 字体大小/行高 '字体族，字体族';
-    font: italic 400 14px/24px "宋体";
+font: 字体样式 字重 字体大小/行高 '字体族，字体族';
+font: italic 400 14px/24px '宋体';
 ```
 
 - font 属性连写有顺序要求，各个属性以空格隔开

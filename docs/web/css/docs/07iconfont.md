@@ -38,16 +38,16 @@ Font Awesome 是国外的一个图标字体库。
 通过伪元素设置图标字体,一般有两种：
 
 - 找到要设置的图标元素通过 before 或 after 选中
-- 在content中设置字体编码**一定要加反斜杠**（\字体编码）
+- 在 content 中设置字体编码**一定要加反斜杠**（\字体编码）
 - 设置字体的样式，fab 格式或 fas 格式
 
-````css
-   li::before{
-      content:"\字体编码";
-      font-family: 'Font Awesome 5 Brands';/*fab格式，选一种*/
-      font-family: 'Font Awesome 5 Free';/*fas格式，选一种*/
-   }
-````
+```css
+li::before {
+  content: '\字体编码';
+  font-family: 'Font Awesome 5 Brands'; /*fab格式，选一种*/
+  font-family: 'Font Awesome 5 Free'; /*fas格式，选一种*/
+}
+```
 
 ### 2.3.实体使用
 

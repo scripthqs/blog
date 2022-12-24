@@ -35,9 +35,9 @@ div h1-h6 ul li p form dl ol
 
 - 块元素在页面中独占一行
 - 块元素可以设置宽高
-- 如果不设置宽度，那么宽度将默认变为父亲的100%
+- 如果不设置宽度，那么宽度将默认变为父亲的 100%
 - 默认高度被内容撑开
-- 文字类元素（p和h1-h6）里面不能放块元素
+- 文字类元素（p 和 h1-h6）里面不能放块元素
 
 ### 3.2.行内元素
 
@@ -83,18 +83,18 @@ img input td
 
 ```css
 a {
-  display: block;/*转换成块级元素*/
-  width: 200px;/*可以设置宽高*/
-} 
+  display: block; /*转换成块级元素*/
+  width: 200px; /*可以设置宽高*/
+}
 div {
-  display: inline;/*转换成行内元素*/
-  width: 100px;/*设置宽高无效*/
+  display: inline; /*转换成行内元素*/
+  width: 100px; /*设置宽高无效*/
 }
 span {
-  display: inline-block;/*转换成行内块元素*/ 
-  width: 200px;/*可以设置宽高*/
-  display: table;/*将元素设置成表格*/
-  display: none;/*元素不在页面中显示*/
+  display: inline-block; /*转换成行内块元素*/
+  width: 200px; /*可以设置宽高*/
+  display: table; /*将元素设置成表格*/
+  display: none; /*元素不在页面中显示*/
 }
 ```
 
@@ -106,9 +106,9 @@ span {
 - `hidden`：元素在页面中隐藏，不显示但是依然占据页面的位置。
 
 ```css
-  visibility: visible;/*默认值，元素在页面中正常显示*/
-  visibility: hidden;/*元素在页面中隐藏，不显示但是依然占据页面的位置*/
-  display: none;/*元素在页面中隐藏，不显示也不占据页面的位置*/
+visibility: visible; /*默认值，元素在页面中正常显示*/
+visibility: hidden; /*元素在页面中隐藏，不显示但是依然占据页面的位置*/
+display: none; /*元素在页面中隐藏，不显示也不占据页面的位置*/
 ```
 
 ## 6.脱离文档流
@@ -124,7 +124,7 @@ span {
 
 脱离文档流后，**元素就具有行内块元素的特点**
 
-css中一共有三种手段，使一个元素脱离标准文档流：
+css 中一共有三种手段，使一个元素脱离标准文档流：
 
 1. 浮动
 2. 绝对定位
