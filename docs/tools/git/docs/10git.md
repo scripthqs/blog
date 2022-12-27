@@ -67,6 +67,8 @@ https.https://github.com.proxy=socks5://127.0.0.1:10808
 - 在文件中添加以下代码
 
 ```text
+# [http]
+#  sslVerify = false
 [http "https://github.com"]
  proxy = socks5://127.0.0.1:10808
 [https "https://github.com"]
