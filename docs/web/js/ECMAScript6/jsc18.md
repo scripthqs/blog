@@ -41,18 +41,18 @@ node.js 遵循了 CommonJS 的模块化规范。其中：
 - 模块对外共享成员使用 module.exports 对象
 - 模块化的好处： 大家都遵守同样的模块化规范写代码，降低了沟通的成本，极大方便了各个模块之间的相互调用，利人利己
 
-```
+```js
 //导出
-module.exports = { flag,sum }
-exports.fs = fs
+module.exports = { flag, sum };
+exports.fs = fs;
 //导入
-let {flag,sum} = require('./aaa.js')
-const fs = require('fs')
+let { flag, sum } = require('./aaa.js');
+const fs = require('fs');
 ```
 
 ## 5.ES6 模块化实现
 
-**ES6 模块化规范是浏览器端与服务器端通用的模块化开发规范**。它的出现极大的降低了前端开发者的模块化学 习成本，开发者不需再额外学习 AMD、CMD 或 CommonJS 等模块化规范。
+**ES6 模块化规范是浏览器端与服务器端通用的模块化开发规范**。它的出现极大的降低了前端开发者的模块化学习成本，开发者不需再额外学习 AMD、CMD 或 CommonJS 等模块化规范。
 
 ES6 模块化规范中定义：
 
@@ -75,6 +75,26 @@ ES6 的模块化主要包含如下 3 种用法：
 1. 默认导出与默认导入
 2. 按需导出与按需导入
 3. 直接导入并执行模块中的代码
+
+导出的具体方式：
+
+1. 在语句声明前直接加上 export 导出
+2. 将需要导出的标识符，放在 export 后面的`{}`，注意`{}`不是 ES6 的对象字面量增强写法，也不是表示一个对象。`export {name:name}`是错误的写法。
+3. 导出时给标识符起一个别名，通过 `as` 关键字起别名
+
+导入的具体方式：
+
+1. `import {标识符列表 } from 模块`，注意`{}`不是表示一个对象，只是存放导入的标识符列表内容。
+2. 导入时给标识符起别名，也是通过`as`关键字
+3. 通过`*`将模块功能放在模块功能对象上
+
+另外 export 和 import 可以结合使用
+
+```js
+export { sum as barSum } from './bar.js';
+```
+
+**import 函数返回一个 Promise，可以通过 then 获取结果**
 
 ## 8.默认导入导出
 
@@ -122,8 +142,8 @@ import { a, s1 as 新名字 } from './02.module.js';
 
 如果需要导入的变量很多时，使用
 
-```
-import * as 自定义名字 from "./aaa.js"
+```js
+import * as 自定义名字 from './aaa.js';
 ```
 
 ## 10.直接导入并执行
@@ -139,15 +159,15 @@ import './style.css';
 
 require/exports 的用法只有以下三种简单的写法：
 
-```
-const fs = require('fs')
-exports.fs = fs
-module.exports = fs
+```js
+const fs = require('fs');
+exports.fs = fs;
+module.exports = fs;
 ```
 
 import/export 的写法就多种多样
 
-```
+```js
 import fs from 'fs'
 import {default as fs} from 'fs'
 import * as fs from 'fs'
