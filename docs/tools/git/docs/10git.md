@@ -63,7 +63,14 @@ https.https://github.com.proxy=socks5://127.0.0.1:10808
 
 或者找到用户(user)-下面的.gitconfig 文件，直接添加以下代码
 
-```cmd
+```text
+# [http]
+#  sslVerify = false
+[http "https://github.com"]
+ proxy = socks5://127.0.0.1:10808
+[https "https://github.com"]
+ proxy = socks5://127.0.0.1:10808
+``cmd
 [http]
  proxy = socks5://127.0.0.1:10808
 [https]
