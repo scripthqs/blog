@@ -1,5 +1,5 @@
 const navConfig = require("./config/nav");
-const sidebarConfig = require("./config/sidebar");
+const sidebarConfig = require("./sidebar");
 const pluginsConfig = require("./config/plugins");
 module.exports = {
   locales: {
@@ -28,6 +28,8 @@ module.exports = {
     logo: "/img/logo.png",
     nav: navConfig,
     sidebar: sidebarConfig,
+    // sidebar: "auto", //自动生成侧边栏
+    displayAllHeaders: true, // 默认值：false
     collapsable: true,
     sidebarDepth: 2,
     lastUpdated: "更新时间",

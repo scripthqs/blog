@@ -6,7 +6,7 @@ module.exports = [
   {
     text: "前端基础",
     items: [
-      { text: "HTML", link: "/web/html/docs/01web" },
+      { text: "HTML", link: "/web/html/01web" },
       { text: "CSS", link: "/web/css/docs/01css" },
       { text: "JavaScript", link: "/web/js/docs/jsa01" },
       { text: "TypeScript", link: "/web/ts/docs/01ts" },
