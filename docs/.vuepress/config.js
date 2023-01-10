@@ -1,10 +1,10 @@
-const navConfig = require('./config/nav')
-const sidebarConfig = require('./config/sidebar')
-const pluginsConfig = require('./config/plugins')
+const navConfig = require('./config/nav');
+const sidebarConfig = require('./config/sidebar');
+const pluginsConfig = require('./config/plugins');
 module.exports = {
   locales: {
     '/': {
-      lang: 'zh', // 将会被设置为 <html> 的 lang 属性
+      lang: 'zh' // 将会被设置为 <html> 的 lang 属性
     }
   },
   // base: "/docs/",
@@ -41,4 +41,4 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页'
   },
   plugins: pluginsConfig
-}
+};

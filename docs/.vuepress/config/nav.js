@@ -46,7 +46,7 @@ module.exports = [
     text: '开源项目',
     items: [
       { text: '购物街', link: '/project/vuemall/' },
-      { text: '后台管理系统', link: '/project/vuecms/' },
+      { text: '后台管理系统', link: '/project/vuecms/erp' },
       { text: '自定义组件库', link: '/project/hqsui/install/' },
       { text: '自定义工具函数库', link: '/project/utils/chapter1/01_install' },
       { text: 'SPA Web移动端项目开发', link: '/project/spa/' },
