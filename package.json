@@ -25,7 +25,6 @@
     "hqs-ui": "^1.0.2",
     "moment": "^2.29.1",
     "vuepress-plugin-comment": "^0.7.3",
-    "vuepress-sidebar-atuo": "^1.0.4",
     "vuepress-theme-default-prefers-color-scheme": "^2.0.0"
   }
 }
