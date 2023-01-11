@@ -1,18 +1,17 @@
 //侧边栏
-// const autosidebar = require('vuepress-auto-sidebar-doumjun')
+
 const fs = require("fs");
 const path = require("path");
 function getChildren(path, sort = true) {
   let root = [];
   readDirSync(path, root);
   root = root.map((item) => {
-    console.log(item, "item--------------");
-    console.log(item.split("/").length);
+    // console.log(item.split("/"), "item------------");
     if (item.split("/")[5]) {
       return item.split("/")[4] + "/" + item.split("/")[5];
     } else if (item.split("/")[4]) {
       return item.split("/")[3] + "/" + item.split("/")[4];
-    } else {
+    } else if (item.split("/")[3]) {
       return item.split("/")[3];
     }
   });
@@ -34,6 +33,7 @@ function getChildren(path, sort = true) {
       .concat(nosortList);
   }
 
+  // console.log(root, "root");
   return root;
 }
 function readDirSync(path, root) {

@@ -1,5 +1,5 @@
 const navConfig = require("./config/nav");
-const sidebarConfig = require("./sidebar");
+const sidebarConfig = require("./config/sidebar");
 const pluginsConfig = require("./config/plugins");
 module.exports = {
   locales: {
