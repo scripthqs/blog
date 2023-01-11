@@ -219,7 +219,7 @@ ESLint 可以检测不规范的代码
    ```json
    /* eslint-env node */
    require("@rushstack/eslint-patch/modern-module-resolution");
-
+   
    module.exports = {
      root: true,
      extends: [
@@ -251,6 +251,19 @@ ESLint 可以检测不规范的代码
    ```ts
    import "normalize.css";
    ```
+
+### prettier 配置
+
+```json
+  // "prettier.printWidth": 180, // 超过最大值换行
+  // "prettier.tabWidth": 2, // 缩进字节数
+  // "prettier.useTabs": false, // 缩进不使用tab，使用空格
+  // "prettier.semi": true, // 句尾添加分号
+  // "prettier.singleQuote": true, // 使用单引号代替双引号
+  // "prettier.trailingComma": "none", // 在对象或数组最后一个元素后面是否加逗号，不加
+  // "prettier.arrowParens": "avoid", // prettier- (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
+  // "prettier.bracketSpacing": true,
+```
 
 ## 目录结构
 
@@ -299,7 +312,9 @@ ESLint 可以检测不规范的代码
 
 - 新建 service 文件夹
 
-区分开发环境（ development）和生产环境（production ），需要学习 vite 的环境变量
+## 环境变量
+
+在开发中需要，在设置后端接口是通常需要区分开发环境（ development）和生产环境（production ），需要学习 vite 的环境变量
 
 ```ts
 // 1.手动注释，过分依赖人为修改
@@ -319,19 +334,6 @@ console.log(import.meta.env.SSR, "是否是服务器端渲染(server side render
 //创建.env.production 生成环境
 只有以 VITE_ 为前缀的变量才会暴露给经过 vite 处理的代码。
 
-```
-
-### prettier 配置
-
-```json
-  // "prettier.printWidth": 180, // 超过最大值换行
-  // "prettier.tabWidth": 2, // 缩进字节数
-  // "prettier.useTabs": false, // 缩进不使用tab，使用空格
-  // "prettier.semi": true, // 句尾添加分号
-  // "prettier.singleQuote": true, // 使用单引号代替双引号
-  // "prettier.trailingComma": "none", // 在对象或数组最后一个元素后面是否加逗号，不加
-  // "prettier.arrowParens": "avoid", // prettier- (x) => {} 箭头函数参数只有一个时是否要有小括号。avoid：省略括号
-  // "prettier.bracketSpacing": true,
 ```
 
 ## 组件库
@@ -388,4 +390,185 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 此时，vue 中写的 templeate 写的 el 组件，会在 components.d.ts 自动导入。
 
-但是类似 ElMessage 这种写在 script 中的组件不会自动导入。
+但是类似 ElMessage 这种写在 script 中的组件不会自动导入。（好像是导入了没有样式）
+
+```bash
+//需要在vite.config.ts中配置
+import {
+  createStyleImportPlugin,
+  ElementPlusResolve
+} from "vite-plugin-style-import";
+
+
+//这个插件支持很多组件库
+ plugins: [
+     createStyleImportPlugin({
+      resolves: [ElementPlusResolve()],
+      libs: [
+        {
+          libraryName: "element-plus",
+          esModule: true,
+          resolveStyle: (name: string) => {
+            return `element-plus/theme-chalk/${name}.css`;
+          }
+        }
+      ]
+    })
+ ]
+```
+
+> <https://github.com/vbenjs/vite-plugin-style-import/blob/main/README.md>
+
+## cache 封装
+
+封装一个方法，存 localStorage 或者 sessionStorage
+
+```ts
+class Cache {
+  storage: Storage;
+
+  constructor(type: CacheType) {
+    this.storage = type === CacheType.Local ? localStorage : sessionStorage;
+  }
+
+  setCache(key: string, value: any) {
+    this.storage.setItem(key, JSON.stringify(value));
+  }
+
+  getCache(key: string) {
+    const value = this.storage.getItem(key);
+    if (value) {
+      return JSON.parse(value);
+    }
+  }
+
+  removeCache(key: string) {
+    this.storage.removeItem(key);
+  }
+
+  clear() {
+    this.storage.clear();
+  }
+}
+
+const localCache = new Cache(CacheType.Local);
+const sessionCache = new Cache(CacheType.Session);
+
+export { localCache, sessionCache };
+```
+
+## 登录流程
+
+### 判断 token
+
+在路由配置中，`/`重定向到`main`主页面，但是可以判断有无 token，让路由到 login 页面
+
+```ts
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: "/",
+      redirect: "/main",
+    },
+    {
+      path: "/login",
+      component: () => import("@/views/login/Login.vue"),
+    },
+    {
+      path: "/main",
+      component: () => import("@/views/main/Main.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)",
+      component: () => import("@/views/notFound/NotFound.vue"),
+    },
+  ],
+});
+
+//导航守卫
+router.beforeEach((to, from) => {
+  console.log(to, from);
+  const token = localCache.getCache(LOGIN_TOKEN);
+  if (to.path === "/main" && !token) {
+    return "/login";
+  }
+});
+```
+
+### 记住密码
+
+登录的时候判断是否勾选记住密码
+
+```ts
+const loginAction = (isKeep: boolean) => {
+  formRef.value?.validate((valid) => {
+    if (valid) {
+      // 1.获取用户输入的帐号和密码
+      const name = account.name;
+      const password = account.password;
+
+      // 2.向服务器发送网络请求(携带账号和密码)
+      loginStore.loginAction({ name, password }).then((res) => {
+        //3.判段是否需要记住密码
+        if (isKeep) {
+          localCache.setCache("name", name);
+          localCache.setCache("password", password);
+        }
+      });
+    } else {
+      ElMessage.error("Oops, 请您输入正确的格式后再操作~~.");
+    }
+  });
+};
+```
+
+账号和密码是记住了，但是记住密码的勾选状态还是默认 false，使用 watch 将记住密码保存在 localStorage
+
+```ts
+const isKeep = ref<boolean>(localCache.getCache("isKeep"));
+watch(isSave, (newValue) => {
+  localCache.setCache("isKeep", newValue);
+});
+```
+
+经过我测试，发现上述方法有 bug，经排查是封装的 cache 方法有问题
+
+```ts
+setCache(key: string, value: any) {
+  if(value){
+    this.storage.setItem(key, JSON.stringify(value));
+  }
+}
+getCache(key: string) {
+  const value = this.storage.getItem(key);
+  if (value) {
+    return JSON.parse(value);
+  }
+}
+//就是因为这个if(value)，判断有问题，如果外面传一个布尔值类型false,就无法执行setItem方法
+setCache(key: string, value: any) {
+  this.storage.setItem(key, JSON.stringify(value));
+}
+```
+
+可以将 if(value)判断去掉，
+
+- 布尔值的 false，经过 JSON.stringify 将转成字符串的 false，
+- 同样，字符串的 false 经过 JSON.parse 可以转成布尔值的 false
+
+## 角色权限
+
+权限管理：根据登录用户的不同，呈现不同的后台管理系统的内容，具有不同的操作权限。
+
+设计依据：基于后端数据库设计，RBAC(role based access control)基于角色的访问控制。
+
+给用户分配不同的角色：
+
+- 超级管理员
+- 管理员
+- 普通成员
+- ......
+
+
+
