@@ -39,7 +39,7 @@ npm install webpack-dev-server@3.11.2 -D
 
 3.再次运行 npm run dev 命令，重新进行项目的打包
 
-4.在浏览器中访问 `<http://localhost:8080>` 地址，查看自动打包效果
+4.在浏览器中使用 80 端口，查看自动打包效果
 
 5.ctrl+c 按两次就可以停掉
 
