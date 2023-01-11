@@ -41,7 +41,7 @@ npm install webpack-dev-server@3.11.2 -D
 
 4.在浏览器中访问 `<http://localhost:8080>` 地址，查看自动打包效果
 
-5.ctrl+c 按两次就可以挺掉
+5.ctrl+c 按两次就可以停掉
 
 **打包生成的文件哪儿去了**：
 
