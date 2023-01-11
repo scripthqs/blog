@@ -34,7 +34,7 @@ module.exports = {
     sidebarDepth: 2,
     lastUpdated: "更新时间",
     searchMaxSuggestions: 10,
-    docsRepo: "Scripthqs/scripthqs.github.io",
+    docsRepo: "scripthqs/scripthqs.github.io",
     // 假如文档不是放在仓库的根目录下：
     docsDir: "docs",
     // 假如文档放在一个特定的分支下：
