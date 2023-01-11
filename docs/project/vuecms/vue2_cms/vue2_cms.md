@@ -61,16 +61,16 @@
 
    ```js
    module.exports = {
-     presets: ['@vue/cli-plugin-babel/preset', ['@babel/preset-env']],
+     presets: ["@vue/cli-plugin-babel/preset", ["@babel/preset-env"]],
      plugins: [
        [
-         'component',
+         "component",
          {
-           libraryName: 'element-ui',
-           styleLibraryName: 'theme-chalk'
-         }
-       ]
-     ]
+           libraryName: "element-ui",
+           styleLibraryName: "theme-chalk",
+         },
+       ],
+     ],
    };
    ```
 
@@ -113,13 +113,13 @@
    ```js
    const routes = [
      {
-       path: '/',
-       redirect: '/login'
+       path: "/",
+       redirect: "/login",
      },
      {
-       path: '/login',
-       component: Login
-     }
+       path: "/login",
+       component: Login,
+     },
    ];
    ```
 
@@ -161,13 +161,13 @@
 1. 第一次登录，将登录成功后的 token，保存到客户端的 sessionStorage 中
 
    ```js
-   window.sessionStorage.setItem('token', res.data.token);
+   window.sessionStorage.setItem("token", res.data.token);
    ```
 
 2. 通过编程式导航跳转到后台主页，路由地址是/home
 
    ```js
-   this.$router.push('/home');
+   this.$router.push("/home");
    ```
 
    注意：
@@ -178,13 +178,13 @@
 3. 在完成登录后，后续项目中每次调用后端接口都要在请求头中加入 token，也就是在请求头中使用 Authorization 提供 token 令牌，此时，在项目的全局中**main.js 文件下**
 
    ```js
-   import axios from 'axios';
+   import axios from "axios";
    // 配置请求的根路径
-   axios.defaults.baseURL = 'http://ip地址/api/private/v1/';
+   axios.defaults.baseURL = "http://ip地址/api/private/v1/";
    // 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
-   axios.interceptors.request.use(config => {
+   axios.interceptors.request.use((config) => {
      // console.log(config)
-     config.headers.Authorization = window.sessionStorage.getItem('token');
+     config.headers.Authorization = window.sessionStorage.getItem("token");
      return config;
    });
    // 挂载Vue的原型对象上
@@ -202,11 +202,11 @@ router.beforeEach((to, from, next) => {
   // from 代表从哪个路径跳转而来
   // next是一个函数，表示放行
   // next()放行，next('login')强制跳转
-  if (to.path === '/login') return next();
+  if (to.path === "/login") return next();
   // 获取token，判断sessionStorage中获取保存的token值
-  const tokenStr = window.sessionStorage.getItem('token');
+  const tokenStr = window.sessionStorage.getItem("token");
   // 没有token，强制跳转到登录页
-  if (!tokenStr) return next('/login');
+  if (!tokenStr) return next("/login");
   // 有token，放行
   next();
 });
@@ -220,7 +220,7 @@ router.beforeEach((to, from, next) => {
 // 清除token
 window.sessionStorage.clear();
 //跳转路由
-this.$router.push('/login');
+this.$router.push("/login");
 ```
 
 问题
@@ -292,13 +292,13 @@ Default: 生产环境下是 true，开发环境下是 false
 
   ```js
   //在全局环境下的main.js文件中设置拦截器
-  import axios from 'axios';
+  import axios from "axios";
   // 配置请求的根路径
-  axios.defaults.baseURL = 'http://ip地址/api/private/v1/';
+  axios.defaults.baseURL = "http://ip地址/api/private/v1/";
   // 使用请求拦截器，在请求头中使用 Authorization 提供token令牌
-  axios.interceptors.request.use(config => {
+  axios.interceptors.request.use((config) => {
     // console.log(config)
-    config.headers.Authorization = window.sessionStorage.getItem('token');
+    config.headers.Authorization = window.sessionStorage.getItem("token");
     return config;
   });
   // 挂载Vue的原型对象上
@@ -738,9 +738,9 @@ nprogress: ‘NProgress’,
 
    ```js
    module.exports = {
-     presets: ['@vue/cli-plugin-babel/preset'],
+     presets: ["@vue/cli-plugin-babel/preset"],
      // 实现路由组件按需导入的 babel 插件
-     plugins: ['@babel/plugin-syntax-dynamic-import']
+     plugins: ["@babel/plugin-syntax-dynamic-import"],
    };
    ```
 
@@ -748,39 +748,39 @@ nprogress: ‘NProgress’,
 
 ```js
 // 分组名生成文件
-const Login = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/login/Login');
-const Home = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/home/Home');
-const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ 'components/home/welcome/Welcome');
+const Login = () => import(/* webpackChunkName: "login_home_welcome" */ "components/login/Login");
+const Home = () => import(/* webpackChunkName: "login_home_welcome" */ "components/home/Home");
+const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ "components/home/welcome/Welcome");
 
-const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/home/users/Users');
-const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/home/power/rights/Rights');
-const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ 'components/home/power/roles/Roles');
+const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ "components/home/users/Users");
+const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ "components/home/power/rights/Rights");
+const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ "components/home/power/roles/Roles");
 
-const Cate = () => import(/* webpackChunkName: "Cate_Params" */ 'components/home/goods/cate/Cate');
-const Params = () => import(/* webpackChunkName: "Cate_Params" */ 'components/home/goods/params/Params');
+const Cate = () => import(/* webpackChunkName: "Cate_Params" */ "components/home/goods/cate/Cate");
+const Params = () => import(/* webpackChunkName: "Cate_Params" */ "components/home/goods/params/Params");
 
-const GoodsList = () => import(/* webpackChunkName: "GoodsList_Add" */ 'components/home/goods/list/List');
-const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ 'components/home/goods/list/children/Add');
+const GoodsList = () => import(/* webpackChunkName: "GoodsList_Add" */ "components/home/goods/list/List");
+const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ "components/home/goods/list/children/Add");
 
-const Order = () => import(/* webpackChunkName: "Order_Report" */ 'components/home/order/Order');
-const Report = () => import(/* webpackChunkName: "Order_Report" */ 'components/home/report/Report');
+const Order = () => import(/* webpackChunkName: "Order_Report" */ "components/home/order/Order");
+const Report = () => import(/* webpackChunkName: "Order_Report" */ "components/home/report/Report");
 // 独立生成一个文件
-const Login = () => import('components/login/Login');
-const Home = () => import('components/home/Home');
-const Welcome = () => import('components/home/welcome/Welcome');
+const Login = () => import("components/login/Login");
+const Home = () => import("components/home/Home");
+const Welcome = () => import("components/home/welcome/Welcome");
 
-const Users = () => import('components/home/users/Users');
-const Rights = () => import('components/home/power/rights/Rights');
-const Roles = () => import('components/home/power/roles/Roles');
+const Users = () => import("components/home/users/Users");
+const Rights = () => import("components/home/power/rights/Rights");
+const Roles = () => import("components/home/power/roles/Roles");
 
-const Cate = () => import('components/home/goods/cate/Cate');
-const Params = () => import('components/home/goods/params/Params');
+const Cate = () => import("components/home/goods/cate/Cate");
+const Params = () => import("components/home/goods/params/Params");
 
-const GoodsList = () => import('components/home/goods/list/List');
-const Add = () => import('components/home/goods/list/children/Add');
+const GoodsList = () => import("components/home/goods/list/List");
+const Add = () => import("components/home/goods/list/children/Add");
 
-const Order = () => import('components/home/order/Order');
-const Report = () => import('components/home/report/Report');
+const Order = () => import("components/home/order/Order");
+const Report = () => import("components/home/report/Report");
 ```
 
 ### 9.首页内容定制
@@ -811,15 +811,8 @@ module.exports = {
 
 在 public/index.html 首页中，可以根据 isProd 的值，来决定如何渲染页面结构：
 
-```html
-<title>
-  <%= htmlWebpackPlugin.options.isProd ? '' : 'dev -' %>电商后台管理系统
-</title>
-<% if (htmlWebpackPlugin.options.isProd) {%>
-<!通过 externals 加载外部 CDN 资源>
-<% }else{ %>
-<!通过 externals 加载外部 CDN 资源>
-<% } %>
+```js
+htmlWebpackPlugin.options.isProd;
 ```
 
 //用判断语句把 CDN 包裹起来，判断是否显示，进行到这一步把之前注释的 vue-router 打开，因为这里做了判断条件，不会影响显示
@@ -835,10 +828,10 @@ const express = require(‘express’)
 // 创建 web 服务器
 const app = express()
 // 托管静态资源
-app.use(express.static(’./dist’))
+app.use(express.static('./dist'))
 // 启动 web服务器
-app.listen(80,()=>{undefined
-console.log(’'web server running at http:127.0.01)
+app.listen(80,()=>{
+console.log('web server running at http:127.0.01')
 })
 ```
 
@@ -846,7 +839,7 @@ console.log(’'web server running at http:127.0.01)
 
 - 开启 gzip 包 compression
 - 开启 HTTPS
-  - 官网: <https://freessl.org/>
+  - 官网: `<https://freessl.org/>`
   -
 - pm2 关闭命令行窗口依旧执行
   - npm i pm2 -g
