@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "serve": "vuepress dev docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "docs:nav": "vuepress nav docs"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +21,11 @@
   "dependencies": {
     "@mr-hope/vuepress-plugin-theme-color": "0.1.0-rc.8",
     "@oak-tree-house/vuepress-plugin-encrypt": "^1.0.1",
+    "caniuse-lite": "^1.0.30001442",
     "hqs-ui": "^1.0.2",
     "moment": "^2.29.1",
     "vuepress-plugin-comment": "^0.7.3",
+    "vuepress-sidebar-atuo": "^1.0.4",
     "vuepress-theme-default-prefers-color-scheme": "^2.0.0"
   }
 }

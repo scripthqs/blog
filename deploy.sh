@@ -28,10 +28,10 @@ set -e
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-# git push -f git@github.com:Scripthqs/Scripthqs.git master:gh-pages
+git push -f git@github.com:Scripthqs/Scripthqs.git master:gh-pages
 
 echo "进入项目目录"
-cd D:/user/Desktop/scripthqs/blog
+cd C:/user/19411/Desktop/project/scripthqs.github.io
 echo "开始提交"
 git add -A && git commit -m "$now" && git pull &&git push
 echo "提交完成"
