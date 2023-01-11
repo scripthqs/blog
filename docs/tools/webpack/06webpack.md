@@ -1,10 +1,10 @@
-# plugin插件
+# plugin 插件
 
-## 1.plugin简介
+## 1.plugin 简介
 
-plugin是插件的意思，通过安装和配置第三方的插件，**可以拓展 webpack 的能力**，从而让 webpack 用起来更方便。比如打包优化，文件压缩等。
+plugin 是插件的意思，通过安装和配置第三方的插件，**可以拓展 webpack 的能力**，从而让 webpack 用起来更方便。比如打包优化，文件压缩等。
 
-**loader是用于转换某些类型的模块，是一个转换器，plugin是webpack本身的拓展，是一个拓展器。**
+**loader 是用于转换某些类型的模块，是一个转换器，plugin 是 webpack 本身的拓展，是一个拓展器。**
 
 最常用的 webpack 插件有如下两个：
 
@@ -13,7 +13,7 @@ webpack-dev-server
 - 类似于 node.js 阶段用到的 nodemon 工具
 - 每当修改了源代码，webpack 会自动进行项目的打包和构建
 
- html-webpack-plugin
+html-webpack-plugin
 
 - webpack 中的 HTML 插件（类似于一个模板引擎插件）
 - 可以通过此插件自定制 index.html 页面的内
@@ -24,24 +24,24 @@ webpack-dev-server 可以让 webpack **监听项目源代码的变化**，从而
 
 1.安装插件
 
-```
+```bash
 npm install --save-dev webpack-dev-server//安装最新版本
 npm install webpack-dev-server@3.11.2 -D
 ```
 
 2.修改 **package.json -> scripts** 中的 dev 命令如下：
 
-```
+```js
 "scripts": {
-	"dev": "webpack serve"//通过npm run 执行
+ "dev": "webpack serve"//通过npm run 执行
 }
 ```
 
 3.再次运行 npm run dev 命令，重新进行项目的打包
 
-4.在浏览器中访问 http://localhost:8080 地址，查看自动打包效果
+4.在浏览器中访问 `<http://localhost:8080>` 地址，查看自动打包效果
 
-5.ctrl+c按两次就可以挺掉
+5.ctrl+c 按两次就可以挺掉
 
 **打包生成的文件哪儿去了**：
 
@@ -49,7 +49,7 @@ npm install webpack-dev-server@3.11.2 -D
 
 - 严格遵守开发者在 webpack.config.js 中指定配置
 
--  根据 output 节点指定路径进行存放
+- 根据 output 节点指定路径进行存放
 
 配置了 webpack-dev-server 之后，打包生成的文件存放到了内存中
 
@@ -77,25 +77,25 @@ npm install --save-dev html-webpack-plugin
 npm install html-webpack-plugin@5.3.2 -D
 ```
 
-2.在wepack.config.js中配置 html-webpack-plugin
+2.在 wepack.config.js 中配置 html-webpack-plugin
 
 ```js
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const htmlPlugin = new HtmlWebpackPlugin({
-  template: './src/index.html',
-  filename: './index.html'
-})
+  template: "./src/index.html",
+  filename: "./index.html",
+});
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  entry: path.join(__dirname, "./src/index.js"),
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
   },
   plugins: [htmlPlugin],
-  mode: 'development'
-}
+  mode: "development",
+};
 ```
 
 注意：
@@ -107,7 +107,7 @@ module.exports = {
 
 在 webpack.config.js 配置文件中，可以通过 devServer 节点对 webpack-dev-server 插件进行更多的配置，
 
-```
+```js
   devServer: {
     open: true,//自动打开浏览器
     host: '127.0.0.1',
@@ -119,4 +119,4 @@ module.exports = {
 
 - 凡是修改了 webpack.config.js 配置文件，或修改了 package.json 配置文件，必须重启实时打包的服 务器，否则最新的配置文件无法生效。
 
-- 80端口在http协议中，可以省略。
+- 80 端口在 http 协议中，可以省略。
