@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # work
 
 ## 传入数字获取序列数组
@@ -74,3 +70,24 @@ require.context 是 webpack 的一个 api，通过执行 require.context()函数
 
 1. query 传参 参数会跟在 url 后面，刷新页码不丢失
 2. params 传参 参数不可见 但是刷新页面参数会丢失 ，解决不丢失的方法存在 localStorage 或 sessionStorage 中
+
+## antd
+
+表单验证滚动到错误的地方
+
+```js
+const funForm = async () => {
+  setTimeout(() => {
+    const errorList = (document as any).querySelectorAll(".ant-form-item-explain-error");
+    if (errorList && errorList.length != 0) {
+      //由于校验失败ant会自动给失败表单项添加类名，直接获取即可
+      errorList[0].scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
+    }
+  }, 200);
+  await busRef.value.validateFields();
+  return busState.busForm;
+};
+```
