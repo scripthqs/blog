@@ -24,11 +24,11 @@
 
 注意：通过 --model 指定的参数项，会覆盖 webpack.config.js 中的 model 选项
 
-## 3.把js文件统一生成到 js 目录中
+## 3.把 js 文件统一生成到 js 目录中
 
 在 webpack.config.js 配置文件的 output 节点中，进行如下的配置
 
-```
+```js
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'js/bundle.js',
@@ -40,14 +40,12 @@
 修改 webpack.config.js 中的 url-loader 配置项，新增 outputPath 选项即可指定图片文件的输出路径
 
 ```js
-  module: {
-    rules: [
-      { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=8192&outputPath=img' },
-    ]
-  }
+module: {
+  rules: [{ test: /\.(png|jpg|gif)$/, use: "url-loader?limit=8192&outputPath=img" }];
+}
 ```
 
-**注意：url-loader中，多个参数可以用&拼接。**
+**注意：url-loader 中，多个参数可以用&拼接。**
 
 ## 5.自动清理 dist 目录下的旧文件
 
@@ -66,4 +64,3 @@ plugins: [
         new CleanWebpackPlugin(),
     ],
 ```
-

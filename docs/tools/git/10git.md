@@ -56,21 +56,20 @@ socks5 代理协议：
 
 比如我的 config list 中可以看到设置的代码，我的代理端口是 10808，我的代理协议使用 socks5
 
-```cmd
+```bash
 http.https://github.com.proxy=socks5://127.0.0.1:10808
 https.https://github.com.proxy=socks5://127.0.0.1:10808
 ```
 
 或者找到用户(user)-下面的.gitconfig 文件，直接添加以下代码
 
-```text
+```bash
 # [http]
 #  sslVerify = false
 [http "https://github.com"]
  proxy = socks5://127.0.0.1:10808
 [https "https://github.com"]
  proxy = socks5://127.0.0.1:10808
-``cmd
 [http]
  proxy = socks5://127.0.0.1:10808
 [https]
@@ -100,14 +99,14 @@ https.https://github.com.proxy=socks5://127.0.0.1:10808
 
 以上命令针对全局，如果只针对某个网站，使用
 
-```linux
+```bash
 Host github.com
 ProxyCommand "git的安装路径" -S 127.0.0.1:1080 %h %p
 ```
 
 或者
 
-```cmd
+```bash
 Host github.com
 ProxyCommand "git的安装路径" -H 127.0.0.1:1080 %h %p
 ```

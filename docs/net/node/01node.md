@@ -117,7 +117,7 @@ node_mirror: https://npm.taobao.org/mirrors/node/
 npm_mirror: https://npm.taobao.org/mirrors/npm/
 ```
 
-```cmd
+```bash
 nvm version
 nvm -v
 nvm list

@@ -1,25 +1,25 @@
 # Loader
 
-## 1.loader概述
+## 1.loader 概述
 
 在实际开发过程中，webpack 默认只能打包处理以 .js 后缀名结尾的模块。其他**非 .js 后缀名结尾的模块**， webpack 默认处理不了，**需要调用 loader 加载器才可以正常打包**，否则会报错！
 
-例如，当我们需要处理加载css，图片，高级的ES6，TS，less，.vue等等文件时，就需要使用loader
+例如，当我们需要处理加载 css，图片，高级的 ES6，TS，less，.vue 等等文件时，就需要使用 loader
 
 loader 加载器的作用：**协助 webpack 打包处理特定的文件模块**
 
 - css-loader 可以打包处理 .css 相关的文件
--  less-loader 可以打包处理 .less 相关的文件
+- less-loader 可以打包处理 .less 相关的文件
 - babel-loader 可以打包处理 webpack 无法处理的高级 JS 语
 
-注意：在webpack，一切都是模块，需要在index.js中通过import来引入各种文件，**不需要在index.html中引入**
+注意：在 webpack，一切都是模块，需要在 index.js 中通过 import 来引入各种文件，**不需要在 index.html 中引入**
 
-```
+```js
 //index.js
-import './css/index.css'
+import "./css/index.css";
 ```
 
-ES6标准发布后，module成为标准，标准使用是以export指令导出接口，以import引入模块。但是在我们一贯的node模块中，我们依然采用的是CommonJS规范，使用require引入模块，使用module.exports导出接口。
+ES6 标准发布后，module 成为标准，标准使用是以 export 指令导出接口，以 import 引入模块。但是在我们一贯的 node 模块中，我们依然采用的是 CommonJS 规范，使用 require 引入模块，使用 module.exports 导出接口。
 
 ## 2.打包处理 css 文件
 
@@ -27,7 +27,7 @@ ES6标准发布后，module成为标准，标准使用是以export指令导出�
 
 ```bash
 npm i css-loader style-loader -D//安装最新版
-npm i style-loader@3.0.0 css-loader@5.2.6 -D 
+npm i style-loader@3.0.0 css-loader@5.2.6 -D
 ```
 
 > **注意**：可以直接安装最新版，但是不同的版本可能会报各种莫名其妙的错误，做好准备。-D（--save-dev)表示本地需要
@@ -40,11 +40,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ]
-  }
-}
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
 ```
 
 其中，test 表示匹配的文件类型， use 表示对应要调用的 loader
@@ -56,7 +56,7 @@ module.exports = {
 
 ## 3.打包处理 less 文件
 
-1.运行 命令，安装处理 less文件的 loader
+1.运行 命令，安装处理 less 文件的 loader
 
 ```bash
 npm i less-loader less -D//安装最新版本
@@ -73,20 +73,20 @@ module.exports = {
     rules: [
       {
         test: /\.less$/,
-        use: [ 'style-loader', 'css-loader', 'less-loader']
-      }
-    ]
-  }
-}
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
+    ],
+  },
+};
 ```
 
 ## 4.打包处理图片资源
 
-**base图片适用于小图标，不用发送ajax网络请求，大图用url。**转换成后base64后，占用内存变大。	
+**base 图片适用于小图标，不用发送 ajax 网络请求，大图用 url。**转换成后 base64 后，占用内存变大。
 
 图片资源属于与 url 路径相关的文件。
 
-1.运行 命令，安装处理 url文件的 loader
+1.运行 命令，安装处理 url 文件的 loader
 
 ```BASH
 npm i --save-dev url-loader file-loader
@@ -95,7 +95,7 @@ npm i url-loader@4.1.1 file-loader@6.2.0 -D
 
 2.在 webpack.config.js 的 module -> rules 数组中，**添加 loader 规则**如下
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -104,9 +104,9 @@ module.exports = {
 }
 ```
 
-其中 **?**之后的使loader 的参数项
+其中 **?**之后的使 loader 的参数项
 
-- **如果需要调用的loader只有一个，则可以只传递一个字符串**
+- **如果需要调用的 loader 只有一个，则可以只传递一个字符串**
 
 - limit 用来指定图片的大小，单位是字节（byte）
 
@@ -127,29 +127,25 @@ npm i babel-loader@8.2.2 @babel/core@7.14.6 @babel/plugin-proposal-decorators@7.
 
 2.**添加 loader 规则**
 
-```
+```js
 module: {
-  rules: [{ test: /\.js$/, use: 'babel-loader',exclude: /node_modules/}]
+  rules: [{ test: /\.js$/, use: "babel-loader", exclude: /node_modules/ }];
 }
 ```
 
-3.配置 babel-loader，在项目根目录下，具体情况要看使用了哪些babel-loader插件，创建名为 **babel.config.js **配置文件，比如使用组件库element-ui时，就需要配置 如下：
+3.配置 babel-loader，在项目根目录下，具体情况要看使用了哪些 babel-loader 插件，创建名为 **babel.config.js**配置文件，比如使用组件库 element-ui 时，就需要配置 如下：
 
 ```js
 module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset',
-		["@babel/preset-env", { "modules": false }],
-  ],
-	plugins:[
+  presets: ["@vue/cli-plugin-babel/preset", ["@babel/preset-env", { modules: false }]],
+  plugins: [
     [
       "component",
       {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }
-    ]
-  ]
-}
+        libraryName: "element-ui",
+        styleLibraryName: "theme-chalk",
+      },
+    ],
+  ],
+};
 ```
-
