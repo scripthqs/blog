@@ -219,7 +219,7 @@ ESLint 可以检测不规范的代码
    ```json
    /* eslint-env node */
    require("@rushstack/eslint-patch/modern-module-resolution");
-   
+
    module.exports = {
      root: true,
      extends: [
@@ -569,6 +569,3 @@ setCache(key: string, value: any) {
 - 管理员
 - 普通成员
 - ......
-
-
-
