@@ -312,6 +312,44 @@ ESLint 可以检测不规范的代码
 
 - 新建 service 文件夹
 
+### 结构图
+
+```shell
+vue3_erp
+├─ public                 # 静态资源文件（忽略打包）
+├─ src
+│  ├─ assets              # 静态资源文件
+│  ├─ components          # 全局组件
+│  ├─ config              # 全局配置项
+│  ├─ hooks               # 常用 Hooks
+│  ├─ language            # 语言国际化
+│  ├─ layout              # 框架布局
+│  ├─ routers             # 路由管理
+│  ├─ service             # 网络请求接口管理
+│  ├─ store               # pinia store
+│  ├─ styles              # 全局样式
+│  ├─ utils               # 工具库
+│  ├─ views               # 项目所有页面
+│  ├─ App.vue             # 入口页面
+│  └─ main.ts             # 入口文件
+├─ .editorconfig          # 不同编辑器代码格式化文件
+├─ .env                   # vite 常用配置
+├─ .env.development       # 开发环境配置
+├─ .env.production        # 生产环境配置
+├─ .env.test              # 测试环境配置
+├─ .eslintignore          # 忽略 Eslint 校验
+├─ .eslintrc.cjs          # Eslint 校验配置
+├─ .gitignore             # git 提交忽略
+├─ .prettierignore        # 忽略 prettier 格式化
+├─ .prettierrc.config.js  # prettier 配置
+├─ index.html             # 入口 html
+├─ yarn.lock              # 依赖包包版本锁
+├─ package.json           # 依赖包管理
+├─ README.md              # README 介绍
+├─ tsconfig.json          # typescript 全局配置
+└─ vite.config.ts         # vite 配置
+```
+
 ## 环境变量
 
 在开发中需要，在设置后端接口是通常需要区分开发环境（ development）和生产环境（production ），需要学习 vite 的环境变量
@@ -556,6 +594,46 @@ setCache(key: string, value: any) {
 
 - 布尔值的 false，经过 JSON.stringify 将转成字符串的 false，
 - 同样，字符串的 false 经过 JSON.parse 可以转成布尔值的 false
+
+### 携带 token
+
+通常来说，登录接口会返回一个 token，此外的大多数接口，基本都需要携带这个 token，不然会报 401。需要给其他接口添加一个 headers。
+
+```ts
+apiRequest.get({
+  url: `/users/${id}`,
+  headers: {
+    Authorization: "Bearer " + localCache.getCache(LOGIN_TOKEN),
+  },
+});
+```
+
+开发中肯定不可能每个接口都写一次 header，而是在请求拦截时，将 header 放在里面
+
+```ts
+interceptors: {
+  requestSuccessFn: (config) => {
+    console.log(config, "config");
+    const token = localCache.getCache(LOGIN_TOKEN);
+    if (config.headers && token) {
+      config.headers!.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  };
+}
+```
+
+遇到另外一个问题：
+
+```ts
+config.headers!.Authorization = `Bearer ${token}`;
+//这样写，ts会报警告，之前加!非空断言就可以，最新axios的版本不行了，需要换一种写法
+if (config.headers && token) {
+  // config.headers!.Authorization = `Bearer ${token}`;
+  typeof config.headers.set === "function" && 
+    config.headers.set("Authorization", `Bearer ${token}`);
+}
+```
 
 ## 角色权限
 
