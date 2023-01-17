@@ -25,17 +25,19 @@
 变量的赋值
 
 ```js
-	name = 'haha';//变量名=变量值
-	age = 20;
+name = "haha"; //变量名=变量值
+age = 20;
 ```
 
 变量的声明和赋值可以写在一起
 
 ```js
-    var a = 100;
-    const b = 'hello'
-    let b = 'world'
-	var age = 10, name = 'zs',gender = '男'
+var a = 100;
+const b = "hello";
+let b = "world";
+var age = 10,
+  name = "zs",
+  gender = "男";
 ```
 
 声明一个变量并赋值，称为变量的初始化。
@@ -50,24 +52,24 @@
 
 ## 3、区块
 
-JavaScript使用大括号，将多个语句组合起来，称为区块。对于`var`命令，JavaScript的区块不构成单独的作用域（scope）。
+JavaScript 使用大括号，将多个语句组合起来，称为区块。对于`var`命令，JavaScript 的区块不构成单独的作用域（scope）。
 
-````js
-    {
-        var a = 1;
-        const b= 2;
-        let c = 'hello world'
-    }
-    console.log(a);
-    console.log(b);//报错
-    console.log(c);//报错
-````
+```js
+{
+  var a = 1;
+  const b = 2;
+  let c = "hello world";
+}
+console.log(a);
+console.log(b); //报错
+console.log(c); //报错
+```
 
-在区块内部，使用var声明并赋值的变量a，在区块外部依然有效。区块对于var不构成单独的作用域。所以现在都是用let和const声明变量
+在区块内部，使用 var 声明并赋值的变量 a，在区块外部依然有效。区块对于 var 不构成单独的作用域。所以现在都是用 let 和 const 声明变量
 
 ## 4、标识符
 
-标识符：在js中可以由我们自主命名的都可以称为标识符。
+标识符：在 js 中可以由我们自主命名的都可以称为标识符。
 
 变量名、函数名、属性名、参数名都是标识符。我们写代码时取的名字就是标识符。
 
@@ -79,9 +81,8 @@ JavaScript使用大括号，将多个语句组合起来，称为区块。对于`
 
 ## 5、关键字
 
-JS本身已经使用得单词，不能再用来充当变量。
+JS 本身已经使用得单词，不能再用来充当变量。
 
 ## 6、保留字
 
 预备关键字
-
