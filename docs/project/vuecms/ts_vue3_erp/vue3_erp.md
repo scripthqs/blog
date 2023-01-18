@@ -219,7 +219,7 @@ ESLint 可以检测不规范的代码
    ```json
    /* eslint-env node */
    require("@rushstack/eslint-patch/modern-module-resolution");
-
+   
    module.exports = {
      root: true,
      extends: [
@@ -630,8 +630,7 @@ config.headers!.Authorization = `Bearer ${token}`;
 //这样写，ts会报警告，之前加!非空断言就可以，最新axios的版本不行了，需要换一种写法
 if (config.headers && token) {
   // config.headers!.Authorization = `Bearer ${token}`;
-  typeof config.headers.set === "function" && 
-    config.headers.set("Authorization", `Bearer ${token}`);
+  typeof config.headers.set === "function" && config.headers.set("Authorization", `Bearer ${token}`);
 }
 ```
 
@@ -647,3 +646,93 @@ if (config.headers && token) {
 - 管理员
 - 普通成员
 - ......
+
+## 动态组件
+
+```ts
+<el-icon>
+  <component :is="item.icon.split('-icon-')[1]" />
+</el-icon>
+```
+
+## 列表和树转换
+
+```ts
+// 方式1：列表转换成树形结构;
+const setTree = (source: any) => {
+  let cloneData = JSON.parse(JSON.stringify(source)); // 对源数据深度克隆
+  return cloneData.filter((father: any) => {
+    // 循环所有项，并添加children属性
+    let branchArr = cloneData.filter((child: any) => father.departmentId == child.parentId); // 返回每一项的子级数组
+    branchArr.length > 0 ? (father.children = branchArr) : ""; //给父级添加一个children属性，并赋值
+    return father.parentId == "0"; //返回第一层
+  });
+};
+
+// 方式2：列表转换成树形结构;
+const toTree = (data: any) => {
+  //没有父节点的数据
+  let parents = data.filter((val: any) => {
+    return val.parentId == "0";
+  });
+  //有父节点的数据
+  let children = data.filter((val: any) => {
+    return val.parentId > "0";
+  });
+  //定义方法
+  const translator = (parents: any, children: any) => {
+    //遍历父节点数据
+    parents.forEach((item: any) => {
+      //遍历子节点数据
+      children.forEach((current: any, index: number) => {
+        //此时找到父节点下的子节点
+        if (current.parentId == item.departmentId) {
+          let temp: any = JSON.parse(JSON.stringify(children)); //让当前子节点从temp中移除，temp作为新的子节点数据，这里是为了让递归时，子节点的遍历次数更少，如果父子关系的层级越多，越有利
+          temp.splice(index, 1); //让当前子节点作为唯一的父节点，去递归查找其对应的子节点
+          translator([current], temp); //把找到子节点放入父节点的children属性中
+          typeof item.children !== "undefined" ? item.children.push(current) : (item.children = [current]);
+        }
+      });
+    });
+  };
+  translator(parents, children);
+  return parents;
+};
+```
+
+## 动态路由
+
+根据不用用户（菜单）动态的注册应该有的路由，而不是一次性将所有的路由注册到router中。
+
+1. 基于角色（role)动态路由管理
+
+   ```ts
+   const roles = {
+       'superAdmin':所有路由=>router.main,children,
+       'admin':一部分路由=>router.main.childern,
+       'service':少部分路由
+   }
+   ```
+
+   每增加一个角色，都要多一个key/value，前端该代码或者后端返回json
+
+2. 基于菜单(menu)的动态路由管理，将菜单路由映射成路由对象
+
+   ```ts
+   1.获取菜单
+   2.动态获取所有的路由对象，放在数组
+   3.根据菜单去匹配正确的路由
+   ```
+
+动态添加路由
+
+```ts
+    {
+      path: "/main",
+      name: "main",
+      component: () => import("@/layout/layout.vue")
+    },
+    //添加一个name   
+    router.addRoute("main", {path:'',components:()=>import(''));
+```
+
