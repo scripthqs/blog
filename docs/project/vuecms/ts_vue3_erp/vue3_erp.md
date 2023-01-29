@@ -219,7 +219,7 @@ ESLint 可以检测不规范的代码
    ```json
    /* eslint-env node */
    require("@rushstack/eslint-patch/modern-module-resolution");
-   
+
    module.exports = {
      root: true,
      extends: [
@@ -702,19 +702,20 @@ const toTree = (data: any) => {
 
 ## 动态路由
 
-根据不用用户（菜单）动态的注册应该有的路由，而不是一次性将所有的路由注册到router中。
+根据不用用户（菜单）动态的注册应该有的路由，而不是一次性将所有的路由注册到 router 中。
 
 1. 基于角色（role)动态路由管理
 
    ```ts
    const roles = {
-       'superAdmin':所有路由=>router.main,children,
-       'admin':一部分路由=>router.main.childern,
-       'service':少部分路由
-   }
+     superAdmin: (所有路由) => router.main,
+     children,
+     admin: (一部分路由) => router.main.childern,
+     service: 少部分路由,
+   };
    ```
 
-   每增加一个角色，都要多一个key/value，前端该代码或者后端返回json
+   每增加一个角色，都要多一个 key/value，前端该代码或者后端返回 json
 
 2. 基于菜单(menu)的动态路由管理，将菜单路由映射成路由对象
 
@@ -732,7 +733,6 @@ const toTree = (data: any) => {
       name: "main",
       component: () => import("@/layout/layout.vue")
     },
-    //添加一个name   
+    //添加一个name
     router.addRoute("main", {path:'',components:()=>import(''));
 ```
-
