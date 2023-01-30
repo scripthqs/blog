@@ -734,5 +734,5 @@ const toTree = (data: any) => {
       component: () => import("@/layout/layout.vue")
     },
     //添加一个name
-    router.addRoute("main", {path:'',components:()=>import(''));
+    router.addRoute("main", {path:'',components:()=>import('')});
 ```
