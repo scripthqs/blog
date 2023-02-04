@@ -4,7 +4,7 @@
 
 变量：程序向内存申请的一块可以存储数据的空间
 
-- JS中，所有的变量都保存在**栈内存**中的。
+- JS 中，所有的变量都保存在**栈内存**中的。
 - 变量需要的声明和赋值
 - 变量名：查找对应的内存
 - 变量值：内存中保存的数据
@@ -27,15 +27,15 @@
 
 ## 3、数据
 
-数据：存储在内存中的信息，本质是010101····
+数据：存储在内存中的信息，本质是 010101····
 
 - 在计算机中，不同的数据所需的存储空间不同，为了充分利用存储空间，就定义了不同的数据类型
-- JS将数据分为**基本数据类型和引用（对象）数据类型**两大类
+- JS 将数据分为**基本数据类型和引用（对象）数据类型**两大类
 - 数据可传递、可运算
 
 ## 4、栈内存和堆内存
 
-**JS中，所有的变量都保存在栈内存中的**。
+**JS 中，所有的变量都保存在栈内存中的**。
 
 ### 4.1、基本数据类型
 
@@ -59,9 +59,9 @@
 
 ### 5.3、var a = xxx
 
-- xxx是基本数据类型，保存的就是这个数据
-- xxx是引用数据类型，保存的就是对象的地址值
-- xxx是变量，保存的是xxx的内存内容，可能是基本数据，也可能是地址值。
+- xxx 是基本数据类型，保存的就是这个数据
+- xxx 是引用数据类型，保存的就是对象的地址值
+- xxx 是变量，保存的是 xxx 的内存内容，可能是基本数据，也可能是地址值。
 
 **总结：简单类型赋值是 传值 ， 复杂类型赋值是 传址。**
 
@@ -76,44 +76,44 @@
 - 改变变量 obj2 之后会影响到变量 obj1
 
 ```js
-        let obj1 = {
-            name: 'a',
-            fun: function () {
-                this.name = 'c'
-            }
-        }
-        let obj2 = obj1
-        obj2.name = 'b'
-        obj2.fun()
-        console.log(obj1.name);//'c'
-        console.log(obj2.name);//'c'
-        console.log(obj1 === obj2);//true
+let obj1 = {
+  name: "a",
+  fun: function() {
+    this.name = "c";
+  },
+};
+let obj2 = obj1;
+obj2.name = "b";
+obj2.fun();
+console.log(obj1.name); //'c'
+console.log(obj2.name); //'c'
+console.log(obj1 === obj2); //true
 ```
 
 ### 6.2 浅拷贝
 
-1. 一个对象obj1有基本类型属性a和引用类型属性f
-2. 创建一个新对象obj2，这个浅拷贝对象obj2的基本类型a,b和obj1是不同属性，互不影响。
-3. 浅拷贝obj2引用类型 f和obj1.f仍然是同一个，改变之后会对另一个对象产生影响。
+1. 一个对象 obj1 有基本类型属性 a 和引用类型属性 f
+2. 创建一个新对象 obj2，这个浅拷贝对象 obj2 的基本类型 a,b 和 obj1 是不同属性，互不影响。
+3. 浅拷贝 obj2 引用类型 f 和 obj1.f 仍然是同一个，改变之后会对另一个对象产生影响。
 
-**(1) 用for...in 实现浅拷贝**
+**(1) 用 for...in 实现浅拷贝**
 
 ```js
-        const obj1 = {
-            a: 1,
-            b: '2',
-            f: {
-                name: 'hello'
-            }
-        };
-        var obj2 = {};
-        for (let key in obj1) {
-            obj2[key] = obj1[key];
-        }
-        console.log(obj1);
-        console.log(obj2);
-        console.log(obj1 === obj2);//false，
-        obj1.f.name = 'world'
+const obj1 = {
+  a: 1,
+  b: "2",
+  f: {
+    name: "hello",
+  },
+};
+var obj2 = {};
+for (let key in obj1) {
+  obj2[key] = obj1[key];
+}
+console.log(obj1);
+console.log(obj2);
+console.log(obj1 === obj2); //false，
+obj1.f.name = "world";
 ```
 
 在 obj2 中， a 和 b 这两个属性会单独存放在新的内存地址中，和 obj1 没有关系，但是 obj2.f 属性还是和 obj1.f 指向同一个堆内存地址，修改一个会影响另一个。
@@ -123,60 +123,60 @@
 Object.assgin()方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
 
 ```js
-	Object.assign(target, ...sources)
-	Object.assign(目标对象, 源对象1, 源对象2...)
+ Object.assign(target, ...sources)
+ Object.assign(目标对象, 源对象1, 源对象2...)
 ```
 
 如果多个源对象里的属性名相同，会被覆盖
 
 ```js
-        const obj3 = Object.assign({}, obj1)
-        console.log(obj3);
-        const obj4 = Object.assign({}, obj1)
-        console.log(obj3 === obj4)//false
-        const obj51 = {};
-        const obj52 = Object.assign(obj51, obj1);
-        console.log(obj51 === obj52)//true
+const obj3 = Object.assign({}, obj1);
+console.log(obj3);
+const obj4 = Object.assign({}, obj1);
+console.log(obj3 === obj4); //false
+const obj51 = {};
+const obj52 = Object.assign(obj51, obj1);
+console.log(obj51 === obj52); //true
 ```
 
 **(3)展开语法**
 
 ```js
-        let obj6 = { ...obj1 }
-        console.log(obj6);
+let obj6 = { ...obj1 };
+console.log(obj6);
 ```
 
 实际效果和 `Object.assign()` 是一样的
 
 ### 6.3.深拷贝
 
-1. 一个对象obj1有基本类型属性a和引用类型属性f
-2. 创建一个新对象obj2，这个深拷贝对象obj2的所有基本属性和引用属性都一样
+1. 一个对象 obj1 有基本类型属性 a 和引用类型属性 f
+2. 创建一个新对象 obj2，这个深拷贝对象 obj2 的所有基本属性和引用属性都一样
 3. 两个对象相互不会影响
 
 深拷贝其实就是将浅拷贝进行递归。
 
 **（1）用 for in 递归实现深拷贝**
 
-````js
-        function deepCopy(newObj, oldObj) {
-            for (let key in oldObj) {
-                if (oldObj[key] instanceof Array) {
-                    newObj[key] = [];
-                    deepCopy(newObj[key], oldObj[key]);
-                } else if (oldObj[key] instanceof Object) {
-                    newObj[key] = {};
-                    deepCopy(newObj[key], oldObj[key]);
-                } else {
-                    newObj[key] = oldObj[key];
-                }
-            }
-        }
-````
+```js
+function deepCopy(newObj, oldObj) {
+  for (let key in oldObj) {
+    if (oldObj[key] instanceof Array) {
+      newObj[key] = [];
+      deepCopy(newObj[key], oldObj[key]);
+    } else if (oldObj[key] instanceof Object) {
+      newObj[key] = {};
+      deepCopy(newObj[key], oldObj[key]);
+    } else {
+      newObj[key] = oldObj[key];
+    }
+  }
+}
+```
 
-**（2）JSON.parse(  JSON.stringify()  )** 
+**（2）JSON.parse( JSON.stringify() )**
 
-先将需要拷贝的对象进行JSON字符串化，然后再paser解析出来，赋给另一个变量，实现深拷贝。
+先将需要拷贝的对象进行 JSON 字符串化，然后再 paser 解析出来，赋给另一个变量，实现深拷贝。
 
 1、会忽略 `undefined`
 
