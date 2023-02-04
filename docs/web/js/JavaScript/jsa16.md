@@ -15,7 +15,6 @@
 
 面向对象的特性：在面向对象程序开发思想中，每一个对象都是功能中心，具有明确分工，面向对象编程适合多人合作。
 
-JS中的面向对象，是基于原型的面向对象。ES6中，新引入了类(Class)和继承(Extends)来面向对象。
+JS 中的面向对象，是基于原型的面向对象。ES6 中，新引入了类(Class)和继承(Extends)来面向对象。
 
-JS中的对象(Object)是依靠构造器(constructor)和原型(prototype)构造出来的。
-
+JS 中的对象(Object)是依靠构造器(constructor)和原型(prototype)构造出来的。

@@ -13,8 +13,8 @@ JS 为我们提供了三个**基本包装类**：
 代码举例：
 
 ```js
-let str1 = 'abcdefg';
-let str2 = new String('abcdefg');
+let str1 = "abcdefg";
+let str2 = new String("abcdefg");
 
 let num = new Number(3);
 
@@ -52,7 +52,7 @@ if (boo3) {
 举例：
 
 ```js
-var str = 'abcdefghijk';
+var str = "abcdefghijk";
 console.log(str.length); // 打印结果：11
 ```
 
@@ -60,7 +60,7 @@ console.log(str.length); // 打印结果：11
 
 ```js
 // 步骤（1）：把简单数据类型 string 转换为 引用数据类型  String，保存到临时变量中
-var temp = new String('abcdefghijk');
+var temp = new String("abcdefghijk");
 
 // 步骤（2）：把临时变量的值 赋值给 str
 str = temp;
@@ -68,4 +68,3 @@ str = temp;
 //  步骤（3）：销毁临时变量
 temp = null;
 ```
-

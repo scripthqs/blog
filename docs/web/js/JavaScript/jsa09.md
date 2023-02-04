@@ -26,16 +26,16 @@ var arr = new Array(10); //长度为10的空数组
 
 添加属性
 
-```
-    数组[index] = 值;
-    arr[0] = 1
+```js
+数组[index] = 值;
+arr[0] = 1;
 ```
 
 读取属性
 
-```
-    数组[index];
-    arr[2];
+```js
+数组[index];
+arr[2];
 ```
 
 ## 3、数组的长度
@@ -48,7 +48,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 ```
 
-- 数组的长度是元素的个数 l，ength=max(index)+1
+- 数组的长度是元素的个数 l，length=max(index)+1
 - 如果修改的 length>原长度，多的位置会空出来
 - 如果修改的 length<原长度，少的位置会被删除
 
@@ -71,8 +71,8 @@ arr[arr.length] = "yellow";
 
 通过修改索引号，追加数组元素
 
-```
- arr[index] = 'black'
+```js
+arr[index] = "black";
 ```
 
 ## 5、数组的遍历
@@ -164,8 +164,8 @@ Array.isArray(arr);
 
 删除最后一个元素，无参数
 
-```
- arr.pop();
+```js
+arr.pop();
 ```
 
 - 返回被删除的元素
@@ -176,7 +176,7 @@ Array.isArray(arr);
 
 向开头添加一个或多个元素
 
-```
+```js
  arr.unshift('参数');
  arr.unshift('参数1','参数2'...);
 ```
@@ -189,8 +189,8 @@ Array.isArray(arr);
 
 删除第一个元素
 
-```
- arr.shift()
+```js
+arr.shift();
 ```
 
 - 返回被删除的元素
@@ -213,7 +213,7 @@ Array.isArray(arr);
 
 从数组中删除指定的一个或多个元素，也可以替换和插入元素
 
-```
+```js
  array.splice(starti,n);
  splice(开始元素的索引，需要删除几个元素，"添加的元素")
 ```
