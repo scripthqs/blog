@@ -27,8 +27,8 @@ function connect({ host, username, password, port = 8888 }) {
   console.log(port);
 }
 connect({
-  host: 'localhost',
-  username: 'root',
-  password: '123456'
+  host: "localhost",
+  username: "root",
+  password: "123456",
 });
 ```

@@ -25,6 +25,18 @@
   - 计算机底层就是使用时间戳
   - `Date.now()`获取当前时间的时间戳，可以测试代码执行的性能
 
+```js
+//将字符串时间转成时间戳
+let timeString = "2023-01-01";
+let date = new Date(timeString);
+let sjc1 = date.getTime();
+let sjc2 = date.valueOf();
+let scj3 = +date;
+console.log(sjc1, sjc2, scj3);
+let timestamp = Date.parse(timeString);
+console.log(timestamp);
+```
+
 ## 2、Math 对象
 
 - Math 和其他对象不同，不是一个构造函数

@@ -112,14 +112,14 @@ console.log(flag); //false
 
 forEach 是对数组每个数据进行遍历，不会改变原数组。两个参数：**function(currentValue, index, arr)**和**thisValue**
 
-```
+```js
 arr.forEach(function(currentValue, index, arr), thisValue)
 arr.forEach(function(当前元素, 当前元素的索引值, arr), this/undefined)
 ```
 
-```
-       var arr = [1, 2, 3, 4, 5];
-        var a = arr.forEach(function (value, index, arr) {
-            console.log(value + " " + index + " " + arr)
-        })
+``` js
+var arr = [1, 2, 3, 4, 5];
+var a = arr.forEach(function(value, index, arr) {
+  console.log(value + " " + index + " " + arr);
+});
 ```
