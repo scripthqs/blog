@@ -38,12 +38,12 @@ let result = [...new Set(arr)];
 console.log(result);
 //交集
 let arr2 = [4, 5, 6, 5, 6];
-let result2 = [...new Set(arr)].filter(item => new Set(arr2).has(item));
+let result2 = [...new Set(arr)].filter((item) => new Set(arr2).has(item));
 console.log(result2);
 //并集
 let result3 = [...new Set([...arr, ...arr2])];
 console.log(result3);
 //差集
-let result4 = [...new Set(arr)].filter(item => !new Set(arr2).has(item));
+let result4 = [...new Set(arr)].filter((item) => !new Set(arr2).has(item));
 console.log(result4);
 ```
