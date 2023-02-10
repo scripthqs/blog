@@ -5,9 +5,9 @@
 float 浮动属性可以使一个元素向其父元素的左侧或右侧移动
 
 ```css
-    float: none;/*默认值，不浮动*/
-    float: left;/*向左浮动*/ 
-    float: right;/*向右浮动*/ 
+float: none; /*默认值，不浮动*/
+float: left; /*向左浮动*/
+float: right; /*向右浮动*/
 ```
 
 ## 2.浮动的特点
@@ -28,32 +28,38 @@ float 浮动属性可以使一个元素向其父元素的左侧或右侧移动
 
 ## 4.BFC
 
-BFC(Block Formatting Context)：块级格式化环境。BFC 是一个 CSS 的隐含属性，可以为一个元素开启BFC，开启BFC后该区域会变成一个独立的布局区域。
+BFC(Block Formatting Context)：块级格式化环境。BFC 是一个 CSS 的隐含属性，可以为一个元素开启 BFC，开启 BFC 后该区域会变成一个独立的布局区域。
 
-开启**BFC元素的特点**：
+开启**BFC 元素的特点**：
 
-- 开启BFC的元素，不会被浮动元素覆盖。
-- 开启BFC的元素，子元素和父元素外边距不会重叠。
-- 开启BFC的元素，可以包含浮动的子元素。
+- 开启 BFC 的元素，不会被浮动元素覆盖。
+- 开启 BFC 的元素，子元素和父元素外边距不会重叠。
+- 开启 BFC 的元素，可以包含浮动的子元素。
 
-开启**BFC的方法**：
+开启**BFC 的方法**：
 
 1. 设置元素的浮动，但是会脱离文档流（不推荐）
 
    ```css
-      float:left;
+   float: left;
    ```
 
 2. 将元素设置为行内块元素（不推荐）
 
    ```css
-      display: inline-block;
+   display: inline-block;
    ```
 
 3. 将元素的`overflow`设置为一个非`visible`值
 
    ```css
-      overflow: hidden;
+   overflow: hidden;
+   ```
+
+4. 开启绝对定位(fixed 是一种特殊的绝对定位）
+
+   ```css
+   position: absolute/fixed;
    ```
 
 ## 5.清除浮动的影响
@@ -71,71 +77,71 @@ BFC(Block Formatting Context)：块级格式化环境。BFC 是一个 CSS 的隐
 clear 属性可以**清除浮动元素对当前元素**所产生的影响
 
 ```css
-  clear: left;/*清除左侧浮动元素对对当前元素的影响*/
-  clear: right;/*清除左侧浮动元素对对当前元素的影响*/ 
-  clear: both;/*清除浮动元素对对当前元素的影响*/
+clear: left; /*清除左侧浮动元素对对当前元素的影响*/
+clear: right; /*清除左侧浮动元素对对当前元素的影响*/
+clear: both; /*清除浮动元素对对当前元素的影响*/
 ```
 
-但是存在问题：**它所在的标签，margin属性失效了**。
+但是存在问题：**它所在的标签，margin 属性失效了**。
 
 ### 5.3.隔墙法
 
 ```html
-  <div class="father">
-    <div class="son"></div>
-    <div class="wall"></div>
-  </div>
+<div class="father">
+  <div class="son"></div>
+  <div class="wall"></div>
+</div>
 
-  <style>
-    .father {
-      border: 10px red solid;
-    }
-    .son {
-      width: 200px;
-      height: 200px;
-      background-color: #bfa;
-      float: left;
-    }
-    .wall {
-      clear: both;
-    }
-  </style>
+<style>
+  .father {
+    border: 10px red solid;
+  }
+  .son {
+    width: 200px;
+    height: 200px;
+    background-color: #bfa;
+    float: left;
+  }
+  .wall {
+    clear: both;
+  }
+</style>
 ```
 
 隔墙法利用 HTML 解决 CSS 的问题，可以利用伪元素改进：
 
 ```css
- .father::after {
-      content: '';
-      display: block;/*伪元素是行内元素，需要转化行内元素独占一行*/
-      clear: both;
-    }
+.father::after {
+  content: "";
+  display: block; /*伪元素是行内元素，需要转化行内元素独占一行*/
+  clear: both;
+}
 ```
 
 这个方法基本是解决高度塌陷的最好方法。这个方法**也可以解决外边距重叠**问题。
 
 ```html
-    <div class="father">
-        <div class="son"></div>
-    </div>
+<div class="father">
+  <div class="son"></div>
+</div>
 
-    <style>
+<style>
   .father::before {
-            content: '';
-            display: table;
+    content: "";
+    display: table;
   }
-    </style>    
+</style>
 ```
 
-总结：可以使用下面这段代码**同时解决高度塌陷和外边距重叠的问题**，直接给需要的元素加上`clear`的类。出自《CSS权威指南》。
+总结：可以使用下面这段代码**同时解决高度塌陷和外边距重叠的问题**，直接给需要的元素加上`clear`的类。出自《CSS 权威指南》。
 
 ```css
-    .clearfix::before,
-    .clearfix::after{
-      content:'';
-      display:table;
-      clear:both;
-    }
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 ```
 
 将需要解决高度塌陷和外边距重叠的元素加上这个类
@@ -152,11 +158,11 @@ clear 属性可以**清除浮动元素对当前元素**所产生的影响
 
 ```css
 .father {
-    overflow: hidden;
+  overflow: hidden;
 }
 ```
 
-原理就是`overflow: hidden;`可以开启元素的BFC
+原理就是`overflow: hidden;`可以开启元素的 BFC
 
 ## 6.浮动布局
 

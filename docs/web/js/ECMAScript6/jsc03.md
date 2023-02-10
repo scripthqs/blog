@@ -16,14 +16,14 @@ console.log(m); //1
 
 ```js
 const Person = {
-  name: '小明',
-  age: '20',
+  name: "小明",
+  age: "20",
   fun1: function(name) {
     console.log(this.name);
   },
   fun2: function(age) {
     console.log(this.age);
-  }
+  },
 };
 let { age, name, fun2 } = Person;
 console.log(name, age, fun2);
@@ -35,8 +35,8 @@ fun2();
 
 ```js
 const per1 = {
-  msg1: 'hello',
-  arr1: ['吃饭', '睡觉', '喝水', '倒立']
+  msg1: "hello",
+  arr1: ["吃饭", "睡觉", "喝水", "倒立"],
 };
 let { msg1, arr1 } = per1;
 console.log(msg1, arr1);
@@ -45,14 +45,14 @@ console.log(msg1, arr1);
 ```js
 //复杂解构
 let per2 = {
-  msg2: 'world',
+  msg2: "world",
   age: 18,
-  arr2: ['吃饭', '睡觉', '喝水', '倒立'],
-  arr3: [{ name: 'aaa' }, { name: 'bbb' }, { name: 'ccc' }]
+  arr2: ["吃饭", "睡觉", "喝水", "倒立"],
+  arr3: [{ name: "aaa" }, { name: "bbb" }, { name: "ccc" }],
 };
 let {
   arr2: [one, two, three],
-  arr3: [first, second, third]
+  arr3: [first, second, third],
 } = per2;
 console.log(one); //'吃饭'
 console.log(first); //{ name: 'aaa' },

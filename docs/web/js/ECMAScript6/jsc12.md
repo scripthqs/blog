@@ -29,7 +29,7 @@ function* it() {}
 
 ```js
 function* gen() {
-  console.log('1');
+  console.log("1");
 }
 let generator = gen();
 generator.next();
@@ -41,12 +41,12 @@ generator.next();
 
 ```js
 function* gen() {
-  console.log('a');
+  console.log("a");
   yield 1;
-  console.log('b');
-  yield 'hello';
-  console.log('c');
-  yield 'world';
+  console.log("b");
+  yield "hello";
+  console.log("c");
+  yield "world";
 }
 let generator = gen();
 generator.next(); //通过next方法向下执行，a
@@ -98,19 +98,19 @@ generator.next();
 ```js
 function getUser() {
   setTimeout(() => {
-    let data = '用户数据';
+    let data = "用户数据";
     generator.next(data); //传参可以作为上一个yield的返回结果
   }, 1000);
 }
 function getList() {
   setTimeout(() => {
-    let data = '用户列表';
+    let data = "用户列表";
     generator.next(data) / 传参可以作为上一个yield的返回结果;
   }, 1000);
 }
 function getGoods() {
   setTimeout(() => {
-    let data = '商品列表';
+    let data = "商品列表";
     generator.next(data) / 传参可以作为上一个yield的返回结果;
   }, 1000);
 }

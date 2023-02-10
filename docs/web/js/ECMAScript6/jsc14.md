@@ -36,24 +36,24 @@
 //executor:执行器函数,（同步执行）(resolve, reject) => {}
 function Promise(executor) {
   const _this = this; //将当前promise对象保存起来
-  _this.status = 'pending'; //给Promise指定status属性,初始值为pending
+  _this.status = "pending"; //给Promise指定status属性,初始值为pending
   _this.data = undefined; //给Promise指定一个用于存储结果数据的属性
   _this.callbacks = []; //给Promise指定回调函数，存的是对象 每个元素的结构：{onResolved() {}, onRejected() {}}
 
   function resolve(value) {
     //如果当前状态不是pending,直接结束
-    if (_this.status !== 'pending') {
+    if (_this.status !== "pending") {
       return;
     }
     //将状态改为resolved
-    _this.status = 'resolved';
+    _this.status = "resolved";
     //保存value数据
     _this.data = value;
     //如果有待执行的callback函数,立即异步执行回调函数
     if (_this.callbacks.length > 0) {
       setTimeout(() => {
         //放入队列中执行所有的回调
-        _this.callbacks.forEach(callbacksObj => {
+        _this.callbacks.forEach((callbacksObj) => {
           callbacksObj.onResolved(value);
         });
       }, 0);
@@ -62,18 +62,18 @@ function Promise(executor) {
 
   function reject(reason) {
     //如果当前状态不是pending,直接结束
-    if (_this.status !== 'pending') {
+    if (_this.status !== "pending") {
       return;
     }
     //将状态改为rejected
-    _this.status = 'rejected';
+    _this.status = "rejected";
     //保存value数据
     _this.data = reason;
     //如果有待执行的callback函数,立即异步执行回调函数
     if (_this.callbacks.length > 0) {
       setTimeout(() => {
         //放入队列中执行所有的回调
-        _this.callbacks.forEach(callbacksObj => {
+        _this.callbacks.forEach((callbacksObj) => {
           callbacksObj.onRejected(reason);
         });
       }, 0);
@@ -130,7 +130,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
             //如果抛出异常,return的Promise失败,reason就是error
             reject(error);
           }
-        }
+        },
       });
     } else if (_this.status === RESOLVED) {
       //'resolved'
@@ -195,13 +195,13 @@ Promise.prototype.then = function(onResolved, onRejected) {
 //Promise原型上的then方法,指定成功和失败的回调函数,返回一个新的Promise
 Promise.prototype.then = function(onResolved, onRejected) {
   // 指定默认的成功的回调onResolved （向后传递成功的value）
-  if (typeof onResolved !== 'function') {
-    onResolved = value => value;
+  if (typeof onResolved !== "function") {
+    onResolved = (value) => value;
   }
 
   // 指定默认的失败的回调onRejected（向后传递失败的reason 实现错误/异常传透的关键点）
-  if (typeof onRejected !== 'function') {
-    onRejected = reason => {
+  if (typeof onRejected !== "function") {
+    onRejected = (reason) => {
       throw reason;
     };
   }
@@ -254,7 +254,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
         },
         onRejected() {
           handle(onRejected);
-        }
+        },
       });
     }
   });
@@ -308,7 +308,7 @@ Promise.all = function(promises) {
     //遍历获取每个Promise的结果
     promises.forEach((p, index) => {
       Promise.resolve(p).then(
-        value => {
+        (value) => {
           // 防止数组中有不是promise的元素
           resolveCount++; //成功的数量+1
           //p成功时，将成功的value保存values
@@ -318,7 +318,7 @@ Promise.all = function(promises) {
             resolve(values);
           }
         },
-        reason => {
+        (reason) => {
           reject(reason);
         }
       );
@@ -336,11 +336,11 @@ Promise.race = function(promises) {
   return new Promise((resolve, reject) => {
     promises.forEach((p, index) => {
       Promise.resolve(p).then(
-        value => {
+        (value) => {
           //一旦有成功了，将return变为成功
           resolve(value);
         },
-        reason => {
+        (reason) => {
           //一旦有失败了，将return变为失败
           reject(reason);
         }
@@ -354,9 +354,9 @@ Promise.race = function(promises) {
 
 ```js
 (function(window) {
-  const PENDING = 'pending';
-  const RESOLVED = 'resolved';
-  const REJECTED = 'rejected';
+  const PENDING = "pending";
+  const RESOLVED = "resolved";
+  const REJECTED = "rejected";
 
   function Promise(executor) {
     const _this = this;
@@ -370,7 +370,7 @@ Promise.race = function(promises) {
       _this.data = value;
       if (_this.callbacks.length > 0) {
         setTimeout(() => {
-          _this.callbacks.forEach(callbacksObj => {
+          _this.callbacks.forEach((callbacksObj) => {
             callbacksObj.onResolved(value);
           });
         }, 0);
@@ -385,7 +385,7 @@ Promise.race = function(promises) {
       _this.data = reason;
       if (_this.callbacks.length > 0) {
         setTimeout(() => {
-          _this.callbacks.forEach(callbacksObj => {
+          _this.callbacks.forEach((callbacksObj) => {
             callbacksObj.onRejected(reason);
           });
         }, 0);
@@ -400,11 +400,11 @@ Promise.race = function(promises) {
   }
 
   Promise.prototype.then = function(onResolved, onRejected) {
-    onResolved = typeof onResolved === 'function' ? onResolved : value => value;
+    onResolved = typeof onResolved === "function" ? onResolved : (value) => value;
     onRejected =
-      typeof onRejected === 'function'
+      typeof onRejected === "function"
         ? onRejected
-        : reason => {
+        : (reason) => {
             throw reason;
           };
 
@@ -439,7 +439,7 @@ Promise.race = function(promises) {
           },
           onRejected(reason) {
             handle(onRejected);
-          }
+          },
         });
       }
     });
@@ -471,14 +471,14 @@ Promise.race = function(promises) {
     return new Promise((resolve, reject) => {
       promises.forEach((p, index) => {
         Promise.resolve(p).then(
-          value => {
+          (value) => {
             resolveCount++;
             values[index] = value;
             if (resolveCount === promises.length) {
               resolve(values);
             }
           },
-          reason => {
+          (reason) => {
             reject(reason);
           }
         );
@@ -490,10 +490,10 @@ Promise.race = function(promises) {
     return new Promise((resolve, reject) => {
       promises.forEach((p, index) => {
         Promise.resolve(p).then(
-          value => {
+          (value) => {
             resolve(value);
           },
-          reason => {
+          (reason) => {
             reject(reason);
           }
         );

@@ -4,7 +4,7 @@
 
 1. **字符串中可以出现换行符**
 
-2) **可以使用 \${xxx} 形式输出变量**
+2. **可以使用 \${xxx} 形式输出变量**
 
 ```js
 let s = `我是字符串`;
@@ -19,7 +19,7 @@ let str = `
         </ul>`;
 console.log(str);
 //2.拼接变量，使用 ${xxx} 形式输出变量
-let name = '小明';
+let name = "小明";
 let str2 = `姓名：${name}`;
 console.log(str2);
 ```

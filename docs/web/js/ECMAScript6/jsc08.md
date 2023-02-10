@@ -11,7 +11,7 @@ ES6 引入 rest 参数，
 function date() {
   console.log(arguments); //对象，伪数组
 }
-date('a', 'b', 'c');
+date("a", "b", "c");
 
 function d(...args) {
   console.log(args); //数组

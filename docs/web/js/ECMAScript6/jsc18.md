@@ -46,8 +46,8 @@ node.js 遵循了 CommonJS 的模块化规范。其中：
 module.exports = { flag, sum };
 exports.fs = fs;
 //导入
-let { flag, sum } = require('./aaa.js');
-const fs = require('fs');
+let { flag, sum } = require("./aaa.js");
+const fs = require("fs");
 ```
 
 ## 5.ES6 模块化实现
@@ -91,7 +91,7 @@ ES6 的模块化主要包含如下 3 种用法：
 另外 export 和 import 可以结合使用
 
 ```js
-export { sum as barSum } from './bar.js';
+export { sum as barSum } from "./bar.js";
 ```
 
 **import 函数返回一个 Promise，可以通过 then 获取结果**
@@ -108,8 +108,8 @@ export default { a, b, fun };
 **默认导入**
 
 ```js
-import 接收名称 from '模块标识符';
-import m1 from './01.module.js';
+import 接收名称 from "模块标识符";
+import m1 from "./01.module.js";
 ```
 
 - 每个模块中，只允许使用唯一的一次 export default，否则会报错！
@@ -129,10 +129,10 @@ export let s1 = 'hello world'
 **按需导入**
 
 ```js
-import { s1 } from '模块标识符';
-import { a, s1 } from './02.module.js';
-import * as 自定义名字 from './02.module.js';
-import { a, s1 as 新名字 } from './02.module.js';
+import { s1 } from "模块标识符";
+import { a, s1 } from "./02.module.js";
+import * as 自定义名字 from "./02.module.js";
+import { a, s1 as 新名字 } from "./02.module.js";
 ```
 
 1. 每个模块中可以使用**多次**按需导出
@@ -143,7 +143,7 @@ import { a, s1 as 新名字 } from './02.module.js';
 如果需要导入的变量很多时，使用
 
 ```js
-import * as 自定义名字 from './aaa.js';
+import * as 自定义名字 from "./aaa.js";
 ```
 
 ## 10.直接导入并执行
@@ -152,7 +152,7 @@ import * as 自定义名字 from './aaa.js';
 
 ```js
 //直接导入
-import './style.css';
+import "./style.css";
 ```
 
 ## 11.require，import 的区别
@@ -160,7 +160,7 @@ import './style.css';
 require/exports 的用法只有以下三种简单的写法：
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 exports.fs = fs;
 module.exports = fs;
 ```

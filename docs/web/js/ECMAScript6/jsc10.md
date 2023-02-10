@@ -17,15 +17,15 @@ console.log(s); //Symbol()
 console.log(typeof s); //Symbol
 
 //添加标签的Symbol
-let s1 = Symbol('描述字符串');
-let s2 = Symbol('描述字符串');
+let s1 = Symbol("描述字符串");
+let s2 = Symbol("描述字符串");
 console.log(s1);
 console.log(s2);
 console.log(s1 === s2); //false
 
-//使用Symbo for定义
-let s3 = Symbol.for('哈哈');
-let s4 = Symbol.for('哈哈');
+//使用Symbol for定义
+let s3 = Symbol.for("哈哈");
+let s4 = Symbol.for("哈哈");
 console.log(s3 === s4); //true
 ```
 
@@ -37,24 +37,24 @@ Symbol 表示独一无二的值，给对象添加属性和方法。
 
 ```js
 let obj = {
-  up: 'up',
-  down: 'down'
+  up: "up",
+  down: "down",
 };
 let m = {
   up: Symbol(),
-  down: Symbol()
+  down: Symbol(),
 };
 obj[m.up] = () => {
-  console.log('向上');
+  console.log("向上");
 };
 obj[m.down] = () => {
-  console.log('向下');
+  console.log("向下");
 };
 obj[Symbol()] = function() {
-  console.log('hello');
+  console.log("hello");
 };
-obj[Symbol('msg')] = function() {
-  console.log('world');
+obj[Symbol("msg")] = function() {
+  console.log("world");
 };
 console.log(obj);
 ```
@@ -69,7 +69,7 @@ console.log(obj);
 class Person {
   static [Symbol.hasInstance](x) {
     console.log(x);
-    console.log('asdfas');
+    console.log("asdfas");
     return true;
   }
 }

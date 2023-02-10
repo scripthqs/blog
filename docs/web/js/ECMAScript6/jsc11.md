@@ -42,8 +42,8 @@ console.log(i.next()); //{done=true,value=undefined}
 
 ```js
 let obj = {
-  name: '幼儿园',
-  students: ['小明', '小红', '小刚', '小李'],
+  name: "幼儿园",
+  students: ["小明", "小红", "小刚", "小李"],
   [Symbol.iterator]() {
     let i = 0;
     return {
@@ -53,7 +53,7 @@ let obj = {
         if (i < this.students.length) {
           const res = {
             value: this.students[i],
-            done: false
+            done: false,
           };
           //下标自增
           i++;
@@ -62,12 +62,12 @@ let obj = {
         } else {
           return {
             value: undefined,
-            done: true
+            done: true,
           };
         }
-      }
+      },
     };
-  }
+  },
 };
 console.log(obj);
 

@@ -55,7 +55,7 @@ promise 是 ES6 引入的异步编程的新解决方案。(旧方案是单纯使
 //1.创建一个新的Promise对象
 const p = new Promise((resolve, reject) => {
   //执行器函数executor 同步回调
-  console.log('执行executor函数');
+  console.log("执行executor函数");
   //2.执行异步操作任务
   setTimeout(() => {
     const time = Date.now(); //当前时间时偶数代表成功,奇数代表失败
@@ -69,12 +69,12 @@ const p = new Promise((resolve, reject) => {
   }, 1000);
 });
 //4.1接收成功的value数据,onResolved回调函数
-p.then(value => {
-  console.log('成功的回调', value);
+p.then((value) => {
+  console.log("成功的回调", value);
 });
 //4.2接收失败的value数据,onRejected回调函数
-p.catch(reason => {
-  console.log('失败的回调', reason);
+p.catch((reason) => {
+  console.log("失败的回调", reason);
 });
 ```
 
@@ -112,11 +112,11 @@ promise.then(
 ```js
 // 成功的回调函数
 function successCallback(result) {
-  console.log('声音文件创建成功：' + result);
+  console.log("声音文件创建成功：" + result);
 }
 // 失败的回调函数
 function failureCallback(error) {
-  console.log('声音文件创建失败：' + error);
+  console.log("声音文件创建失败：" + error);
 }
 // 必须先指定回调函数，再执行异步任务
 createAudioFileAsync(audioSettings, successCallback, failureCallback); // 回调函数在执行异步任务（函数）前就要指定
@@ -143,7 +143,7 @@ doSomething(function(result) {
       doThirdThing(
         newResult,
         function(finalResult) {
-          console.log('Got the final result:' + finalResult);
+          console.log("Got the final result:" + finalResult);
         },
         failureCallback
       );
@@ -160,10 +160,10 @@ doSomething(function(result) {
 
 ```js
 doSomething()
-  .then(result => doSomethingElse(result))
-  .then(newResult => doThirdThing(newResult))
-  .then(finalResult => {
-    console.log('Got the final result:' + finalResult);
+  .then((result) => doSomethingElse(result))
+  .then((newResult) => doThirdThing(newResult))
+  .then((finalResult) => {
+    console.log("Got the final result:" + finalResult);
   })
   .catch(failureCallback); //所有的异常都传到这里，异常传透
 ```
@@ -176,7 +176,7 @@ async function request() {
     const result = await doSomething();
     const newResult = await doSomethingElse(result);
     const finalResult = await doThirdThing(newResult);
-    console.log('Got the final result:' + finalResult);
+    console.log("Got the final result:" + finalResult);
   } catch (error) {
     failureCallback(error);
   }
@@ -229,11 +229,11 @@ console.log(p1); // Promise {<fulfilled>: 521}
 let p2 = Promise.resolve(
   new Promise((resolve, reject) => {
     // resolve('OK'); // 成功的Promise
-    reject('Error');
+    reject("Error");
   })
 );
 console.log(p2);
-p2.catch(reason => {
+p2.catch((reason) => {
   console.log(reason);
 });
 ```
@@ -242,10 +242,10 @@ p2.catch(reason => {
 
 ```js
 let p = Promise.reject(521);
-let p2 = Promise.reject('hello world');
+let p2 = Promise.reject("hello world");
 let p3 = Promise.reject(
   new Promise((resolve, reject) => {
-    resolve('OK');
+    resolve("OK");
   })
 );
 
@@ -267,13 +267,13 @@ const p1 = Promise.resolve(1);
 const p2 = Promise.resolve(2);
 const p3 = Promise.reject(3);
 
-p1.then(value => {
+p1.then((value) => {
   console.log(value);
 }); // 1
-p2.then(value => {
+p2.then((value) => {
   console.log(value);
 }); // 2
-p3.catch(reason => {
+p3.catch((reason) => {
   console.log(reason);
 }); // 3
 ```
@@ -288,10 +288,10 @@ iterable`：包含 n 个 `promise` 的可迭代对象，如 `Array` 或 `String
 
 ```js
 let p1 = new Promise((resolve, reject) => {
-  resolve('OK');
+  resolve("OK");
 });
-let p2 = Promise.resolve('Success');
-let p3 = Promise.resolve('hello world');
+let p2 = Promise.resolve("Success");
+let p3 = Promise.resolve("hello world");
 
 const result = Promise.all([p1, p2, p3]);
 console.log(result);
@@ -319,11 +319,11 @@ const pRace = Promise.race([p1, p2, p3]);
 // 谁先完成就输出谁(不管是成功还是失败)
 
 pRace.then(
-  value => {
-    console.log('race onResolved()', value);
+  (value) => {
+    console.log("race onResolved()", value);
   },
-  reason => {
-    console.error('race onRejected()', reason); //race onRejected() 2
+  (reason) => {
+    console.error("race onRejected()", reason); //race onRejected() 2
   }
 );
 ```
@@ -346,9 +346,9 @@ const p = new Promise((resolve, reject) => {
   throw 3;
 });
 p.then(
-  value => {},
-  reason => {
-    console.error('reason', reason);
+  (value) => {},
+  (reason) => {
+    console.error("reason", reason);
   } // reason Error:出错了
 );
 ```
@@ -363,15 +363,15 @@ const p = new Promise((resolve, reject) => {
   reject(2);
 });
 p.then(
-  value => {},
-  reason => {
-    console.log('reason', reason);
+  (value) => {},
+  (reason) => {
+    console.log("reason", reason);
   }
 );
 p.then(
-  value => {},
-  reason => {
-    console.error('reason2', reason);
+  (value) => {},
+  (reason) => {
+    console.error("reason2", reason);
   }
 );
 // reason 2
@@ -388,14 +388,14 @@ p.then(
 //先指定回调再改变状态
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('OK'); //2.后改变状态（同时指定数据），异步执行回调函数
+    resolve("OK"); //2.后改变状态（同时指定数据），异步执行回调函数
   }, 1000);
 }).then(
-  value => {
+  (value) => {
     //1.指定回调，(保存当前指定的回调函数)
     console.log(value);
   },
-  reason => {}
+  (reason) => {}
 );
 ```
 
@@ -405,13 +405,13 @@ new Promise((resolve, reject) => {
 
 ```js
 new Promise((resolve, reject) => {
-  resolve('OK'); //1.先改变状态，同时指定数据
+  resolve("OK"); //1.先改变状态，同时指定数据
 }).then(
-  value => {
+  (value) => {
     //2.后指定回调函数，异步执行回调函数
     console.log(value);
   },
-  reason => {}
+  (reason) => {}
 );
 ```
 
@@ -439,14 +439,14 @@ new Promise((resolve, reject) => {
 //先指定回调再改变状态
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('OK'); //2.后改变状态（同时指定数据），异步执行回调函数
+    resolve("OK"); //2.后改变状态（同时指定数据），异步执行回调函数
   }, 1000);
 }).then(
-  value => {
+  (value) => {
     //1.指定回调，(保存当前指定的回调函数)
     console.log(value);
   },
-  reason => {}
+  (reason) => {}
 );
 ```
 
@@ -454,13 +454,13 @@ new Promise((resolve, reject) => {
 
 ```js
 new Promise((resolve, reject) => {
-  resolve('OK'); //1.先改变状态，同时指定数据
+  resolve("OK"); //1.先改变状态，同时指定数据
 }).then(
-  value => {
+  (value) => {
     //2.后指定回调函数，异步执行回调函数
     console.log(value);
   },
-  reason => {}
+  (reason) => {}
 );
 ```
 
@@ -472,26 +472,26 @@ promise.then() 会返回的一个新 promise，但是新 promise 的结果和状
 
 ```js
 new Promise((resolve, reject) => {
-  resolve('ok');
+  resolve("ok");
   // reject('no')
 })
   .then(
-    value => {
+    (value) => {
       console.log(value);
       // return 2
       // return Promise.resolve(3)
       // return Promise.reject(4)
       throw 5;
     },
-    reason => {
+    (reason) => {
       console.warn(reason);
     }
   )
   .then(
-    value => {
+    (value) => {
       console.log(value);
     },
-    reason => {
+    (reason) => {
       console.warn(reason);
     }
   );
@@ -543,18 +543,18 @@ new Promise((resolve, reject) => {
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('OK');
+    resolve("OK");
   }, 1000);
 })
-  .then(value => {
+  .then((value) => {
     return new Promise((resolve, reject) => {
-      resolve('success');
+      resolve("success");
     });
   })
-  .then(value => {
+  .then((value) => {
     console.log(value); // success
   })
-  .then(value => {
+  .then((value) => {
     console.log(value); // undefined
   });
 ```
@@ -564,27 +564,27 @@ new Promise((resolve, reject) => {
 ```js
 new Promise((resolve, reject) => {
   setTimeout(() => {
-    console.log('执行任务1(异步)');
+    console.log("执行任务1(异步)");
     resolve(1);
   }, 1000);
 })
-  .then(value => {
-    console.log('任务1的结果', value);
-    console.log('执行任务2(同步)');
+  .then((value) => {
+    console.log("任务1的结果", value);
+    console.log("执行任务2(同步)");
     return 2; // 同步任务直接return返回结果
   })
-  .then(value => {
-    console.log('任务2的结果', value);
+  .then((value) => {
+    console.log("任务2的结果", value);
     return new Promise((resolve, reject) => {
       // 异步任务需要包裹在Promise对象中
       setTimeout(() => {
-        console.log('执行任务3(异步)');
+        console.log("执行任务3(异步)");
         resolve(3);
       }, 1000);
     });
   })
-  .then(value => {
-    console.log('任务3的结果', value);
+  .then((value) => {
+    console.log("任务3的结果", value);
   });
 
 // 执行任务1(异步)
@@ -608,19 +608,19 @@ new Promise((resolve, reject) => {
   //resolve(1)
   reject(1);
 })
-  .then(value => {
-    console.log('onResolved1()', value);
+  .then((value) => {
+    console.log("onResolved1()", value);
     return 2;
   })
-  .then(value => {
-    console.log('onResolved2()', value);
+  .then((value) => {
+    console.log("onResolved2()", value);
     return 3;
   })
-  .then(value => {
-    console.log('onResolved3()', value);
+  .then((value) => {
+    console.log("onResolved3()", value);
   })
-  .catch(reason => {
-    console.log('onRejected1()', reason); // onRejected1() 1
+  .catch((reason) => {
+    console.log("onRejected1()", reason); // onRejected1() 1
   });
 ```
 
@@ -632,33 +632,33 @@ new Promise((resolve, reject) => {
   reject(1);
 })
   .then(
-    value => {
-      console.log('onResolved1()', value);
+    (value) => {
+      console.log("onResolved1()", value);
       return 2;
     },
-    reason => {
+    (reason) => {
       throw reason;
     } // 抛出失败的结果reason
   )
   .then(
-    value => {
-      console.log('onResolved2()', value);
+    (value) => {
+      console.log("onResolved2()", value);
       return 3;
     },
-    reason => {
+    (reason) => {
       throw reason;
     } // 抛出失败的结果reason
   )
   .then(
-    value => {
-      console.log('onResolved3()', value);
+    (value) => {
+      console.log("onResolved3()", value);
     },
-    reason => {
+    (reason) => {
       throw reason;
     } // 抛出失败的结果reason
   )
-  .catch(reason => {
-    console.log('onRejected1()', reason);
+  .catch((reason) => {
+    console.log("onRejected1()", reason);
   });
 // onRejected1() 1
 ```
@@ -678,26 +678,26 @@ new Promise((resolve, reject) => {
   //resolve(1)
   reject(1);
 })
-  .then(value => {
-    console.log('onResolved1()', value);
+  .then((value) => {
+    console.log("onResolved1()", value);
     return 2;
   })
-  .then(value => {
-    console.log('onResolved2()', value);
+  .then((value) => {
+    console.log("onResolved2()", value);
     return 3;
   })
-  .then(value => {
-    console.log('onResolved3()', value);
+  .then((value) => {
+    console.log("onResolved3()", value);
   })
-  .catch(reason => {
-    console.log('onRejected1()', reason);
+  .catch((reason) => {
+    console.log("onRejected1()", reason);
   })
   .then(
-    value => {
-      console.log('onResolved4()', value);
+    (value) => {
+      console.log("onResolved4()", value);
     },
-    reason => {
-      console.log('onRejected2()', reason);
+    (reason) => {
+      console.log("onRejected2()", reason);
     }
   );
 // onRejected1() 1
@@ -711,27 +711,27 @@ new Promise((resolve, reject) => {
   //resolve(1)
   reject(1);
 })
-  .then(value => {
-    console.log('onResolved1()', value);
+  .then((value) => {
+    console.log("onResolved1()", value);
     return 2;
   })
-  .then(value => {
-    console.log('onResolved2()', value);
+  .then((value) => {
+    console.log("onResolved2()", value);
     return 3;
   })
-  .then(value => {
-    console.log('onResolved3()', value);
+  .then((value) => {
+    console.log("onResolved3()", value);
   })
-  .catch(reason => {
-    console.log('onRejected1()', reason);
+  .catch((reason) => {
+    console.log("onRejected1()", reason);
     return new Promise(() => {}); // 返回一个pending的promise
   })
   .then(
-    value => {
-      console.log('onResolved4()', value);
+    (value) => {
+      console.log("onResolved4()", value);
     },
-    reason => {
-      console.log('onRejected2()', reason);
+    (reason) => {
+      console.log("onRejected2()", reason);
     }
   );
 // onRejected1() 1
@@ -756,10 +756,10 @@ const result = fn1();
 //console.log(result);//Promise:resolved 1
 console.log(result); //Promise:rejected 2
 result
-  .then(value => {
+  .then((value) => {
     console.log(value);
   })
-  .catch(reason => {
+  .catch((reason) => {
     console.error(reason);
   });
 ```
@@ -773,7 +773,7 @@ result
 function fn2() {
   // return Promise.resolve(2)
   // return 2
-  throw 'xxx';
+  throw "xxx";
 }
 async function fn3() {
   const value = await fn2();
@@ -800,7 +800,7 @@ async function fn3() {
     const value = await fn2();
     console.log(value);
   } catch (error) {
-    console.log('得到失败的结果', error);
+    console.log("得到失败的结果", error);
   }
 }
 fn3();
@@ -819,23 +819,23 @@ fn3();
 ```js
 setTimeout(() => {
   //会立即放入宏队列
-  console.log('定时器1');
+  console.log("定时器1");
   Promise.resolve(3).then(
     //会立即放入微队列
-    value => {
-      console.log('Promise1', value);
+    (value) => {
+      console.log("Promise1", value);
     }
   );
 }, 0);
 setTimeout(() => {
   //会立即放入宏队列
-  console.log('定时器2');
+  console.log("定时器2");
 }, 0);
 
 Promise.resolve(4).then(
   //会立即放入微队列
-  value => {
-    console.log('Promise2', value);
+  (value) => {
+    console.log("Promise2", value);
   }
 );
 //Promise2 4

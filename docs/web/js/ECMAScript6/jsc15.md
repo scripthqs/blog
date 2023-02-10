@@ -1,6 +1,6 @@
 # Set
 
-ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯 一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进 行遍历，集合的属性和方法：
+ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for…of…』进 行遍历，集合的属性和方法：
 
 1. size 返回集合的元素个数
 2. add 增加一个新元素，返回当前集合
@@ -38,12 +38,12 @@ let result = [...new Set(arr)];
 console.log(result);
 //交集
 let arr2 = [4, 5, 6, 5, 6];
-let result2 = [...new Set(arr)].filter(item => new Set(arr2).has(item));
+let result2 = [...new Set(arr)].filter((item) => new Set(arr2).has(item));
 console.log(result2);
 //并集
 let result3 = [...new Set([...arr, ...arr2])];
 console.log(result3);
 //差集
-let result4 = [...new Set(arr)].filter(item => !new Set(arr2).has(item));
+let result4 = [...new Set(arr)].filter((item) => !new Set(arr2).has(item));
 console.log(result4);
 ```

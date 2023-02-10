@@ -22,16 +22,20 @@ console.log(fn1(1, 2, 3));
 3. 箭头函数 **this 指向声明时所在作用域下 this 的值** (**静态的**)
 4. 箭头函数**不能作为构造函数**实例化
 5. **不能使用 arguments**
+6. 当箭头函数返回一个空对象时，需要使用`()`将`{}`包起来
 
 ```js
 //2. 省略小括号的情况
-let fn2 = num => {
+let fn2 = (num) => {
   return num * 10;
 };
 console.log(fn2(10));
 
 //3. 省略花括号的情况
-let fn3 = score => score * 20;
+let fn3 = (score) => score * 20;
+
+//6.箭头函数返回空对象
+const fn6 = () => ({});
 ```
 
 ## 2.箭头函数的 this
@@ -39,9 +43,9 @@ let fn3 = score => score * 20;
 注意：箭头函数不会更改 this 指向
 
 ```js
-window.msg = 'hello';
+window.msg = "hello";
 const obj = {
-  msg: 'world'
+  msg: "world",
 };
 function fun1() {
   console.log(this.msg);
@@ -62,14 +66,14 @@ ad.onclick = function() {
   _this = this;
   setTimeout(function() {
     console.log(this); //this指向window
-    _this.style.background = 'blue';
+    _this.style.background = "blue";
   }, 1000);
 };
 
 ad.onclick = function() {
   setTimeout(() => {
     console.log(this); //this指向ad
-    this.style.background = 'blue';
+    this.style.background = "blue";
   }, 1000);
 };
 ```
@@ -84,7 +88,7 @@ const res = arr.filter(function(item) {
   return item % 2 == 0;
 });
 console.log(res);
-const res1 = arr.filter(item => item % 2);
+const res1 = arr.filter((item) => item % 2);
 console.log(res);
 ```
 

@@ -56,9 +56,9 @@ Symbol 是一种在 ES6 中新添加的数据类型，本质上是一种**唯一
 返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值
 
 ```js
-let id = Symbol('id');
+let id = Symbol("id");
 let obj = {
-  [id]: 'symbol'
+  [id]: "symbol",
 };
 let array = Object.getOwnPropertySymbols(obj);
 console.log(array); //[Symbol(id)]
@@ -69,8 +69,8 @@ console.log(obj[array[0]]); //'symbol'
 全局注册并登记，使得相同参数注册的值 symbol 相等。
 
 ```js
-let name1 = Symbol.for('name'); //检测到未创建后新建
-let name2 = Symbol.for('name'); //检测到已创建后返回
+let name1 = Symbol.for("name"); //检测到未创建后新建
+let name2 = Symbol.for("name"); //检测到已创建后返回
 console.log(name1 === name2); // true
 ```
 
@@ -112,7 +112,7 @@ console.log(9007199254740993===9007199254740992) //true
   **2.调用 BigInt()构造函数**
 
   ```js
-  var bigInt = BigInt('9007199254740999'); //传递给BigInt()的参数将自动转换为BigInt:
+  var bigInt = BigInt("9007199254740999"); //传递给BigInt()的参数将自动转换为BigInt:
   console.log(bigInt); //9007199254740999n
   12;
   ```
