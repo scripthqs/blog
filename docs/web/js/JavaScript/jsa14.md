@@ -8,23 +8,23 @@
 
 `setInterval()`循环调用。每隔一段时间执行一次，需要两个参数：
 
-- 参数1：回调函数，该函数会每隔一段时间被调用一次。
-- 参数2：每次调用间隔的时间，单位是毫秒。
+- 参数 1：回调函数，该函数会每隔一段时间被调用一次。
+- 参数 2：每次调用间隔的时间，单位是毫秒。
 
 ```js
-    var timer = setInterval(function() {
-      console.log(1);
-    }, 1000)
+var timer = setInterval(function() {
+  console.log(1);
+}, 1000);
 ```
 
-返回值：返回一个Number类型的数据。这个数字用来作为定时器的唯一标识，方便用来清除定时器。
+返回值：返回一个 Number 类型的数据。这个数字用来作为定时器的唯一标识，方便用来清除定时器。
 
 ## 2、clearInterval()
 
 `clearInterval(返回值)`可以关闭定时器。
 
 ```js
-	clearInterval(timer)
+clearInterval(timer);
 ```
 
 - 返回值可以是任何的参数，如果参数不是一个有效值，则什么都不做。
@@ -33,13 +33,13 @@
 
 `setTimeout()`延时调用，等待一段时间之后再执行。（只执行一次），需要两个参数：
 
-- 参数1：回调函数，等待的间隔时间结束后开始调用。
-- 参数2：调用等待的间隔时间，单位是毫秒。
+- 参数 1：回调函数，等待的间隔时间结束后开始调用。
+- 参数 2：调用等待的间隔时间，单位是毫秒。
 
 ```js
-    var timer = setTimeout(function (a,b) {
-      console.log(a + b);
-    }, 1000);
+var timer = setTimeout(function(a, b) {
+  console.log(a + b);
+}, 1000);
 ```
 
 除了前两个参数，`setTimeout`还允许更多的参数。它们将依次传入推迟执行的函数（回调函数）。
@@ -47,9 +47,14 @@
 举个栗子：
 
 ```js
-    var timer =  setTimeout(function (a,b) {
-      console.log(a + b);
-    }, 1000, 1, 1);
+var timer = setTimeout(
+  function(a, b) {
+    console.log(a + b);
+  },
+  1000,
+  1,
+  1
+);
 ```
 
 ## 4、clearTimeout()
@@ -57,7 +62,7 @@
 clearTimeout()可以关闭定时器。
 
 ```js
-	clearTimeout(timer);
+clearTimeout(timer);
 ```
 
 ## 5、定时器问题
