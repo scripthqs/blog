@@ -1,6 +1,16 @@
 # VSCode 插件
 
-- Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code
+## 中文插件
+
+Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code
+
+## Code Spell Checker
+
+检查拼写插件
+
+## VSCode Great Icons
+
+文件夹图标插件
 
 ## prettier 代码格式化插件
 

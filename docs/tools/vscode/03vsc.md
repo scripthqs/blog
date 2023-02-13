@@ -16,26 +16,25 @@
 
 ```json
 {
-  "create vue": {
-    "prefix": "tem",
+  "vue3 typescript": {
+    "prefix": "tsvue",
     "body": [
       "<template>",
-      "  <div></div>",
+      "  <div class=\"${1:home}\">",
+      "    <h2>${1:home}</h2>",
+      "  </div>",
       "</template>",
       "",
-      "<script>",
-      "export default {",
-      "  name: \"\",",
-      "  setup() {",
-      "    return {};",
-      "  },",
-      "};",
+      "<script setup lang=\"ts\">",
       "</script>",
       "",
       "<style lang=\"less\" scoped>",
+      ".${1:home}{",
+      "  color: red;",
+      "}",
       "</style>"
     ],
-    "description": "create vue"
+    "description": "vue3 typescript"
   }
 }
 ```

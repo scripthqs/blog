@@ -14,13 +14,15 @@
 
 浏览器内核就是渲染引擎，根据 css 渲染不同的样式。渲染引擎是浏览器出现兼容性问题的根本原因。
 
-- chrome 的内核是 Blink
-- firefox 的内核是 Gecko
-- Safari 的内核是 Webkit
-- Opera 的内核是 Blink
+- chrome（谷歌)和 edge(微软)内核是 Blink
+- firefox(火狐) 的内核是 Gecko
+- Safari(苹果) 的内核是 Webkit
+- Opera 的内核开始是 Presto，后面也换成 Blink
 - IE 的内核是 Trident
 
-Blink 其实是 Webkit 内核的分支
+国内的 360、搜狗、百度、UC 等浏览器用的 Trident+Webkit/Blink 双核
+
+Blink 其实是 Webkit 内核的分支，所以其实差不多。
 
 ### 2.2.JS 引擎
 

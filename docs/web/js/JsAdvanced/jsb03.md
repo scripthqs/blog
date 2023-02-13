@@ -113,19 +113,19 @@ console.log(per2.x); //['a']
 
 1. 没有意义的函数，**没有输入，不会变化**，
 
-```
-var test = function( ){
-    console.log("HelloWorld");
+```js
+var test = function() {
+  console.log("HelloWorld");
 };
 ```
 
 2. **通过传参改变数据**------普通的函数
 
-```
-var test = function(string){
-    console.log(string);
+```js
+var test = function(string) {
+  console.log(string);
 };
-test('HelloWorld');
+test("HelloWorld");
 ```
 
 3. **改变算法**——回调函数
@@ -134,18 +134,18 @@ test('HelloWorld');
 
 **1.函数声明**
 
-```
-    function fun1(a, b){
-     return a+b;
-    }
+```js
+function fun1(a, b) {
+  return a + b;
+}
 ```
 
 **2.函数表达式**
 
-```
- const fun2 = function(){
-  console.log('hello world')
- }
+```js
+const fun2 = function() {
+  console.log("hello world");
+};
 ```
 
 **3.以构造函数的方式创建函数**(实际开发不会使用)
@@ -180,7 +180,7 @@ function fn1() {
 - fun() this 永远都是 window
 - new fun() this 就是实例对象
 - obj.fun() this 就是 obj
-- fun.call/apply(obj) this 就是 call/apply 后括号的 obj
+- fun.call/apply(obj) this 就是 call/apply 后括号的 obj，(fun 不能是箭头函数)
 
 - 事件的响应函数，响应函数是给谁绑定的，this 就是谁
 
@@ -228,10 +228,10 @@ function fn1() {
 - 不污染外部命名空间
 - 可以用来编写 js 模块
 
-```
- window.$ = function(){
+```js
+window.$ = function() {
   return {
-   test: test
-  }
- }
+    test: test,
+  };
+};
 ```
