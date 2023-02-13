@@ -160,6 +160,8 @@ async 特性与 defer 有些类似，它也能够让脚本不阻塞页面。可�
 - WebCore：负责 HTML 解析、布局、渲染等等相关的工作；
 - JavaScriptCore：解析、执行 JavaScript 代码；
 
+### V8 引擎
+
 目前最强大的 js 引擎就是 V8 引擎。
 
 V8 是用 C ++编写的 Google 开源高性能 JavaScript 和 WebAssembly 引擎，它用于 Chrome 和 Node.js。
@@ -167,6 +169,17 @@ V8 是用 C ++编写的 Google 开源高性能 JavaScript 和 WebAssembly 引擎
 - V8 可以独立运行，也可以嵌入到任何 C ++应用程序中
 
 代码交给 CPU 执行，源代码转成二进制代码，才能被 CPU 执行，V8 引擎的作用就是将源代码转成二进制代码。
+
+V8 引擎有几个重要的模块：
+
+- Parse 模块会将 JavaScript 代码转换成 AST（抽象语法树）
+- Ignition 是一个解释器，会将 AST 转换成 ByteCode（字节码）
+- TurboFan 是一个编译器，可以将字节码编译为 CPU 可以直接执行的机器码
+
+### Js 的执行原理
+
+- ES3 的主要概念包括 JavaScript 执行原理、作用域、作用域链、闭包。
+- ES5 中的概念包括块级作用域、let、const 等；
 
 ## 浏览器的事件循环（event loop）
 
