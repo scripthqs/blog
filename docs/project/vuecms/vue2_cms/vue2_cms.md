@@ -644,6 +644,7 @@ Default: 生产环境下是 true，开发环境下是 false
 
 ### 2.打包移除 console.log
 
+- `npm install babel-plugin-transform-remove-console --save-dev`
 - 打包是 console 的处理: babel-plugin-transform-remove-console
 - 需要在 babel.config.js 中添加
 
