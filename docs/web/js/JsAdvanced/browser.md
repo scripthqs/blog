@@ -208,8 +208,7 @@ js 引擎会在执行代码之前，会在堆内存中创建一个全局对象�
 
 ### 函数执行上下文
 
-- 在执行的过程中执行到一个函数时，就会根据函数体创建一个函数执行上下文(Functional Execution Context，简称 FEC)，
-  并且压入到 EC Stack 中。
+- 在执行的过程中执行到一个函数时，就会根据函数体创建一个函数执行上下文(Functional Execution Context，简称 FEC)，并且压入到 EC Stack 中。
 - 因为每个执行上下文都会关联一个 VO，那么函数执行上下文关联的 VO 是什么呢
 - 当进入一个函数执行上下文时，会创建一个 AO 对象（Activation Object）
 - 这个 AO 对象会使用 arguments 作为初始化，并且初始值是传入的参数
