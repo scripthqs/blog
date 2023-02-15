@@ -176,7 +176,7 @@ function deepCopy(newObj, oldObj) {
 
 **（2）JSON.parse( JSON.stringify() )**
 
-先将需要拷贝的对象进行 JSON 字符串化，然后再 paser 解析出来，赋给另一个变量，实现深拷贝。
+先将需要拷贝的对象进行 JSON 字符串化，然后再 parse 解析出来，赋给另一个变量，实现深拷贝。
 
 1、会忽略 `undefined`
 
