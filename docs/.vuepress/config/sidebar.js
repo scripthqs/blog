@@ -69,6 +69,7 @@ module.exports = {
   "/frame/echarts/": getChildren("docs/frame/echarts/"),
   "/frame/mini_program/": getChildren("docs/frame/mini_program/"),
   "/frame/uniapp/": getChildren("docs/frame/uniapp/"),
+  "/frame/react/": getChildren("docs/frame/react/"),
 
   //实用工具
   "/tools/vscode/": getChildren("docs/tools/vscode/"),

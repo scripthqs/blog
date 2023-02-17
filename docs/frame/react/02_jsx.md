@@ -32,7 +32,7 @@ JSX 嵌入表达式
 - 三元运算符
 - 执行一个函数
 
-jsx 绑定属性
+JSX 绑定属性
 
 - 元素都会有 title 属性
 - img 元素会有 src 属性
@@ -45,12 +45,29 @@ jsx 绑定属性
 - React 事件的命名采用小驼峰式（camelCase），而不是纯小写
 - 通过`{}`传入一个事件处理函数，这个函数会在事件发生时被执行；
 
+### 相关 js 知识
+
 this 的四种绑定规则:
 
 1. 默认绑定 独立执行 foo()
 2. 隐式绑定 被一个对象执行 obj.foo() -> obj
 3. 显式绑定: call/apply/bind foo.call("aaa") -> String("aaa")
 4. new 绑定: new Foo() -> 创建一个新对象, 并且赋值给 this
+
+super 和 constructor
+
+super 关键字用于访问对象字面量或类的原型（[[Prototype]]）上的属性，或调用父类的构造函数。
+
+1. 作为“函数调用”`super(...args)`
+2. 作为“属性查询”`super.prop 和 super[expr]`
+
+```js
+// 注意：在派生的类中，在你可以使用 'this' 之前，必须先调用 super()。
+// 然后使用 'this' 了，忽略 'this' 将导致引用错误（ReferenceError）
+```
+
+> 在 JavaScript class 中，每次你定义其子类的构造函数时，都需要调用 super 方法。
+> 因此，在所有含有构造函数的的 React 组件中，构造函数必须以 super(props) 开头。
 
 ## React 列表渲染
 
@@ -61,3 +78,25 @@ this 的四种绑定规则:
 - 截取数组中的一部分内容使用 slice 函数
 
 列表展示的 jsx 中也需要添加一个 key，目的是为了提高 diff 算法时的效率。
+
+```js
+Array.prototype.fill();
+// 方法用一个固定值填充一个数组
+fill(value);
+fill(value, start);
+fill(value, start, end);
+// 从起始索引到终止索引内的全部元素。不包括终止索引
+```
+
+## 数据的不可变性
+
+一般来说改变数据有 2 种方式：
+
+1. 直接修改变量的值
+2. 是使用新的一份数据替换旧数据(不直接修改)
+
+最好使用不直接修改数据的方式，好处：
+
+1. 做撤销和恢复
+2. 追踪数据的改变
+3. 

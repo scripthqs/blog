@@ -30,6 +30,7 @@ module.exports = [
       { text: "ECharts", link: "/frame/echarts/00echarts" },
       { text: "微信小程序", link: "/frame/mini_program/01mini" },
       { text: "Uni-App", link: "/frame/uniapp/01uni" },
+      { text: "React", link: "/frame/react/01_react" },
     ],
   },
   {
