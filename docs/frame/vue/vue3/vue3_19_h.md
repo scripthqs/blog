@@ -1,6 +1,6 @@
 # h 函数
 
-Vue 推荐在绝大数情况下使用模板来创建的 HTML，然后一些特殊的场景，需要 JavaScript 的完全编程的能力，这个时候可以使用渲染函数，比模板更接近编译器。h 函数创建虚拟 DOM 节点 (vnode)。
+Vue 推荐在绝大数情况下使用模板来创建的 HTML，然后一些特殊的场景，需要 JavaScript 的完全编程的能力，这个时候可以使用渲染函数，比模板更接近编译器。h 函数创建虚拟 DOM 节点 (vnode)。实际使用场景不多，更推荐使用 jsx。
 
 h 函数接收 3 个参数：
 
@@ -20,6 +20,14 @@ function h(
 import { h } from "vue";
 h("div");
 h("div", { id: "foo" });
+// class 与 style 可以像在模板中一样
+// 用数组或对象的形式书写
+h("div", { class: [foo, { bar }], style: { color: "red" } });
+// 事件监听器应以 onXxx 的形式书写
+h("div", { onClick: () => {} });
+
+// children 数组可以同时包含 vnode 和字符串
+h("div", ["hello", h("span", "hello")]);
 ```
 
 - 如果没有 props，那么通常可以将 children 作为第二个参数传入
@@ -42,4 +50,32 @@ export default {
     return () => h("div", { class: "app" }, "Hello App");
   },
 };
+```
+
+在 setup 语法糖中使用 h 函数
+
+```ts
+<template>
+  <test></test>
+</template>
+
+<script setup lang="ts">
+import { h, ref } from "vue";
+const text = ref("hello world");
+const btnClick = () => {
+  text.value = "屠龙宝刀，点击就送";
+};
+const test = () =>
+  h("div", { className: "hello" }, [
+    h("button", { onClick: btnClick }, "点击"),
+    h("div", null, text.value)
+  ]);
+</script>
+
+<style lang="less" scoped>
+.hello {
+  font-size: 20px;
+  color: red;
+}
+</style>
 ```
