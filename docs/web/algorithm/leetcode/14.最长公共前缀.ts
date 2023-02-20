@@ -47,9 +47,9 @@
 
 // @lc code=start
 function longestCommonPrefix(strs: string[]): string {
-  if (strs.length === 0) return '';
+  if (strs.length === 0) return "";
   if (strs.length === 1) return strs[0];
-  let res = '';
+  let res = "";
   let next = true;
   for (let i = 0; i < strs[0].length; i++) {
     for (let j = 1; j < strs.length; j++) {

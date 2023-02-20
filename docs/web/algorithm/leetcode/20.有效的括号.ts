@@ -63,9 +63,9 @@ function isValid(s: string): boolean {
   //利用栈的数据结构
   if (s.length % 2 == 1) return false;
   const obj = {
-    '(': ')',
-    '[': ']',
-    '{': '}'
+    "(": ")",
+    "[": "]",
+    "{": "}",
   };
   const stack = [] as string[];
   for (let i = 0; i < s.length; i++) {

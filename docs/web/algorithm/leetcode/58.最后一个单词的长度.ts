@@ -57,7 +57,7 @@
 
 // @lc code=start
 function lengthOfLastWord(s: string): number {
-  const words = s.split(' ').filter(v => v);
+  const words = s.split(" ").filter((v) => v);
   const lastWord = words[words.length - 1];
   return lastWord ? lastWord.length : 0;
 }

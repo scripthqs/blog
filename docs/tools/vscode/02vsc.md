@@ -28,5 +28,3 @@ prettier 的 setting.json 配置文件
 ```
 
 ## 快捷键
-
-- ctrl+alt+l console.log()

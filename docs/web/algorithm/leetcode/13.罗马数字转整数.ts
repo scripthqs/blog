@@ -92,13 +92,13 @@
 // @lc code=start
 function romanToInt(s: string): number {
   const m = new Map();
-  m.set('I', 1);
-  m.set('V', 5);
-  m.set('X', 10);
-  m.set('L', 50);
-  m.set('C', 100);
-  m.set('D', 500);
-  m.set('M', 1000);
+  m.set("I", 1);
+  m.set("V", 5);
+  m.set("X", 10);
+  m.set("L", 50);
+  m.set("C", 100);
+  m.set("D", 500);
+  m.set("M", 1000);
   let result = 0;
   for (let i = 0; i < s.length; i++) {
     let value = m.get(s[i]);

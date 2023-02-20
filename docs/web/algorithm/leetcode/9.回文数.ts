@@ -56,9 +56,8 @@
 
 // @lc code=start
 function isPalindrome(x: number): boolean {
-  const arr = String(x).split('');
-  let y = parseInt(arr.reverse().join(''));
-  return x===y
-
+  const arr = String(x).split("");
+  let y = parseInt(arr.reverse().join(""));
+  return x === y;
 }
 // @lc code=end

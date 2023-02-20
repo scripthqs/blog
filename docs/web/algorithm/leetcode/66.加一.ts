@@ -79,7 +79,7 @@ function plusOne(digits: number[]): number[] {
     }
   }
   digits[0] = 1;
-  digits.forEach(element => {
+  digits.forEach((element) => {
     element = 0;
   });
   digits.push(0);
