@@ -84,10 +84,10 @@ cookie 是浏览器访问服务器后，服务器返回的一段数据，通常�
 
 ```js
 // 本窗口的设值代码
-localStorage.setItem('aaa', (Math.random() * 10).toString());
+localStorage.setItem("aaa", (Math.random() * 10).toString());
 
 // 其他窗口监听storage事件
-window.addEventListener('storage', function(e) {
+window.addEventListener("storage", function(e) {
   console.log(e);
   console.log(e.newValue);
 });
@@ -130,4 +130,5 @@ window.addEventListener('storage', function(e) {
 
 defer 和 async 属性都是去**异步加载外部的 JS**脚本文件，它们都不会阻塞页面的解析，区别：
 
-- 多个带 async 属性的标签，不能保证加载的顺序；多个带 defer 属性的标签，按照加载顺序执行；
+- 多个带 async 属性的标签，不能保证加载的顺序；
+- 多个带 defer 属性的标签，按照加载顺序执行；
