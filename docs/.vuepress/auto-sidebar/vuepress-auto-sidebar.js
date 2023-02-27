@@ -27,7 +27,7 @@ function getChildren(path, sort = true) {
       }
     });
     root = sortList
-      .sort(function(a, b) {
+      .sort(function (a, b) {
         return a.replace(".md", "").match(/[^-]*$/) - b.replace(".md", "").match(/[^-]*$/);
       })
       .concat(nosortList);
@@ -38,7 +38,7 @@ function getChildren(path, sort = true) {
 }
 function readDirSync(path, root) {
   var pa = fs.readdirSync(path);
-  pa.forEach(function(ele, index) {
+  pa.forEach(function (ele, index) {
     var info = fs.statSync(path + "/" + ele);
     if (info.isDirectory()) {
       readDirSync(path + ele, root);
