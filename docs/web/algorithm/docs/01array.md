@@ -10,7 +10,7 @@ arr.length;
 for (let i = 0; i < arr.length; i++) {
   alert(arr[i]);
 }
-arr.forEach(item => {
+arr.forEach((item) => {
   alert(item);
 });
 ```

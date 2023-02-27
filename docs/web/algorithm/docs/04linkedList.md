@@ -127,10 +127,10 @@ class LinkedList {
   }
   toString() {
     let curNode = this.head;
-    let result = '';
+    let result = "";
     // 遍历所有的节点，拼接为字符串，直到节点为 null
     while (curNode) {
-      result += curNode.data + ' ';
+      result += curNode.data + " ";
       curNode = curNode.next;
     }
     return result;

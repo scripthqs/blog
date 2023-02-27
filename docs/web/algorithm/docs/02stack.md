@@ -66,13 +66,13 @@ parseInt(num, 2); //2进制转10进制
 ```
 
 ```js
-const dec2bin = num => {
+const dec2bin = (num) => {
   const stack = new Stack();
   while (num > 0) {
     stack.push(num % 2);
     num = Math.floor(num / 2);
   }
-  let bStr = '';
+  let bStr = "";
   if (!stack.isEmpty()) {
     bStr += stack.pop();
   }
