@@ -5,6 +5,7 @@
 ## 我的邮箱
 
 - <1941186772@qq.com>
+- <scripthqs@qq.com>
 - <scripthqs@gmail.com>
 
 ## 欢迎评论留言
