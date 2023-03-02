@@ -8,7 +8,7 @@ module.exports = [
     items: [
       { text: "HTML", link: "/web/html/01web" },
       { text: "CSS", link: "/web/css/01css" },
-      { text: "JavaScript", link: "/web/js/JavaScript/jsa01" },
+      { text: "JavaScript", link: "/web/js/JavaScript/01JavaScript" },
       { text: "TypeScript", link: "/web/ts/01ts" },
       { text: "数据结构和算法", link: "/web/algorithm/docs/01array" },
     ],

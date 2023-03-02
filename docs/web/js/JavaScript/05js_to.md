@@ -24,88 +24,84 @@ console.log(undefined); // 浅灰
 console.log(null); //浅灰
 ```
 
-## 1、String 类型转换
+## String 类型转换
 
-### 1.1、toString()方法
+### toString()方法
 
 调用被转换数据类型的 toString()方法。
 
 - 该方法不会影响原变量，它会将转换的结果返回
-
 - 调用 xxx 的 yyy 方法，就是 xxx.yyy
 
-- ```css
-   var a = a.toString();
-  ```
+```js
+var a = a.toString();
+```
 
-- 注意：null 和 undefined 两者值没有 toString()方法。
+注意：null 和 undefined 两者值没有 toString()方法。
 
-### 1.2、String()函数
+### String()函数
 
 调用 String()函数，并将转换的数据作为参数传递给函数。
 
 - 调用 xxx 函数，就是 xxx();
 
-- ```js
-  var a = String(a);
-  ```
+```js
+var a = String(a);
+```
 
-- 使用 String()函数做强制转换时，对于 Number 和 Boolean 实际上就是调用的 toString()方法，对于 Null 和 Undefined 则是直接转换成"Null"和"Undefined"
+使用 String()函数做强制转换时，对于 Number 和 Boolean 实际上就是调用的 toString()方法，对于 Null 和 Undefined 则是直接转换成"Null"和"Undefined"
 
-### 1.3、隐式转换之’+‘拼接
+### 隐式转换之’+‘拼接
 
 任意数据类型和 String`+`时，结果会变成字符串拼接。
 
-- ```
-  var a = a + ''
-  ```
+```js
+var a = a + "";
+```
 
-- 加上一个空字符串`''`，即可将 a 转换成字符串，这个方法等价于`var a = String(a);`
+加上一个空字符串`''`，即可将 a 转换成字符串，这个方法等价于`var a = String(a);`
 
-## 2、Number 类型转换
+## Number 类型转换
 
-### 2.1、Number()函数
+### Number()函数
 
 调用 Number()函数，并将转换的数据作为参数传递给函数。
 
-- ```js
-  var b = Number(b);
-  ```
+```js
+var b = Number(b);
+```
 
 - 纯数字字符串转换成数字
-
 - 含有非数字内容转换成 NaN
-
 - 空串和全空格转换成 0
-
 - 布尔值 true 转换成 1，false 转换成 0
-
 - null 转换成 0，undefined 转换成 NaN
 
-### 2.2、parseInt()函数
+### parseInt()函数
 
-parseInt()将一个字符串转换成整数，专门处理字符串
+parseInt()将一个字符串转换成整数，专门处理字符串。
 
 - 可以将一个字符串的有效整数取出来
 
-- ```js
-  var c = parseInt(c);
-  var num = parseInt(120px);
-  ```
+```js
+var c = parseInt(c);
+var num = parseInt(120px);
+```
 
-### 2.3、parseFloat()函数
+### parseFloat()函数
 
-parseFloat()将一个字符串转换成小数
+parseFloat()将一个字符串中转换成小数
 
 - 可以将一个字符串的有效小数取出来，专门处理字符串
 
-- ```js
-  var c = parseFloat(1.234);
-  ```
+```js
+var c = parseFloat(1.234); //1.234
+var c = parseFloat("1.234px"); //1.234
+```
 
 - parseInt()和 parseFloat()会将非字符串会先转换字符串再操作
 
-### 2.4、隐式转换之‘- \* /’
+### 隐式转换之‘- \* /’
 
 任意数据类型和 Number`-` 、`*`、`/`都会转换成 Number。
 
@@ -115,31 +111,30 @@ var b = b * 1;
 var b = b / 1;
 ```
 
-更简单的写法
+更简单的写法，将其他类型转成 Number 类型，主要是将字符串数字转成数字。
 
 ```js
 var b = +b;
+console.log(+undefined); //NaN
+console.log(+null); //0
 ```
 
-## 3、Boolean 类型转换
+## Boolean 类型转换
 
-### 3.1、Boolean()函数
+### Boolean()函数
 
 使用 Boolean()函数，并将转换的数据类型作为参数传递给函数。
 
-- ```js
-  var d = Boolean(d);
-  ```
+```js
+var d = Boolean(d);
+```
 
 - Number 类型中，除了 0 和 NaN，其余的都是 true
-
 - String 中，除了空串`''`，其余的都是 true
-
 - null 和 undefined 都会转换成 false
-
 - 对象也会转换成 true
 
-### 3.2、隐式转换之’!'运算
+### 隐式转换之'!'运算
 
 任意数据类型做两次非运算即可转换成 Boolean
 

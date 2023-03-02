@@ -14,7 +14,7 @@
 - 条件分支语句
 - 循环语句
 
-## 1、if 语句
+## if 语句
 
 - 语法 1：
 
@@ -35,35 +35,35 @@ if (条件表达式) {
 ```
 
 ```js
-        if(条件表达式1){
-          语句1；
-        }else if(条件表达式2){
-          语句2；
-        }else{
-          语句3；
-        }
+if(条件表达式1){
+  语句1；
+}else if(条件表达式2){
+  语句2；
+}else{
+  语句3；
+}
 ```
 
 从上到下依次判断，一旦出现条件表达式为`true`的情况，直接结束 if 语句，不管后面的条件表达式。
 
-## 2、switch 语句
+## switch 语句
 
 语法：
 
 ```js
-        switch(条件表达式){
-          case 值1:
-            语句1;
-            break;
-          case 值2:
-            语句2;
-            break;
-            ···
-            ···
-          default:
-            语句n;
-            break;
-        }
+switch(条件表达式){
+  case 值1:
+    语句1;
+    break;
+  case 值2:
+    语句2;
+    break;
+  ···
+  ···
+  default:
+    语句n;
+    break;
+}
 ```
 
 计算出表达式的值，和 case 依次全等比较，比较结果为 true，则从当前 case 处执行代码。
@@ -82,7 +82,7 @@ switch (true) {
 
 js 独有的方式，case 后面可以跟表达式。
 
-## 3、while 语句
+## while 语句
 
 语法：
 
@@ -121,7 +121,7 @@ do...while 语句和 while 语句的区别；
 - do...while 语句先执行后判断
 - while 语句先判断后执行
 
-## 4、for 语句
+## for 语句
 
 语法
 
@@ -165,7 +165,7 @@ for (;;) {
 
 总结：`/`是去除，`%`是留下。
 
-### 4.1、for 嵌套
+### for 嵌套
 
 ```js
 for (var i = 1; i <= 5; i++) {
@@ -196,20 +196,21 @@ for (i = 2; i <= 100; i++) {
 }
 ```
 
-## 5、break 和 continue
+## break 和 continue
 
 - `if语句`不能使用`break`和`continue`，否则会报错。
 
-### 5.1、break
+### break
 
 - `break`关键字可以退出 switch 语句或者循环语句，**立即跳出整个循环**
 - `break`会立即终止离他最近的那个循环语句
-- 可以为循环语句创建一个 label，`lable:循环语句`，来标识当前循环，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。
+- 可以为循环语句创建一个 label，`label:循环语句`，来标识当前循环，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。
 
 ```js
 for (var i = 0; i < 5; i++) {
   if (i == 2) {
-    break; // 注意，虽然在 if 里 使用了 break，但这里的 break 是服务于外面的 for 循环。
+    break;
+    // 注意，虽然在 if 里 使用了 break，但这里的 break 是服务于外面的 for 循环。
   }
   console.log("i的值:" + i);
 }
@@ -226,7 +227,7 @@ outer: for (var i = 0; i < 5; i++) {
 }
 ```
 
-### 5.2、continue
+### continue
 
 - `continue`可以用来跳过当次循环，继续下次循环
 - `continue`默认只会对离他最近的循环起作用

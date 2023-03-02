@@ -6,15 +6,11 @@ JavaScript 有很多方法可以确定值到底是什么类型。
 - instanceof 运算符
 - Object.prototype.toString 方法
 
-## 1、typeof 运算符
+## typeof 运算符
 
-`typepf`运算符可以返回一个值的数据类型。它会将该值的类型以字符串的形式返回。
+`typeof`运算符可以返回一个值的数据类型。它会将该值的类型以字符串的形式返回。
 
 ```js
-// 写法1
-typeof 变量;
-
-// 写法2
 typeof 变量;
 ```
 
@@ -23,7 +19,7 @@ typeof 变量;
 - 布尔值返回 `'boolean'`
 - 函数返回 `'function'`
 - undefined 返回 `'undefined'`
-- null 返回 `'object'` 特殊，因为在 1995 年时，没有考虑 null，把 null 当作 object 的特殊值。
+- null 返回 `'object'` 特殊，因为在 js 设计时，没有考虑 null，把 null 当作 object 的特殊值。
 
 `typeof`可以用来检查一个没有声明的变量，而不报错。
 
@@ -44,14 +40,19 @@ typeof v;
 - 使用 typeof 检查`array`会返回`object`而不是`array`
 - 检查数组必须使用`instanceof`
 
-## 2、instanceof 运算符
+## instanceof 运算符
 
 `instanceof`判断对象的具体类型，`instance`的含义是实例。
 
 - A instanceof B
 - 如果 B 函数的显式原型对象在 A 对象的原型链上，返回 true，否则返回 false。
 
-## 3、===
+```js
+let arr = [];
+arr instanceof Array; //true
+```
+
+## ===
 
 `===` 可以判断 undefined、null
 
