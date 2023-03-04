@@ -1,8 +1,8 @@
 # 函数高级
 
-## 1、原型与原型链
+## 原型与原型链
 
-### 1.1、原型(prototype)
+### 原型(prototype)
 
 - 每个函数对象都有一个 prototype 属性，该属性默认对应一个`{}`(空对象)，称为原型对象。这个空对象`{}`是 Object 的实例对象。
 - 原型对象都有一个 constructor 属性，指向函数对象。
@@ -11,7 +11,7 @@
 
 给原型对象添加属性（方法）===》实例对象可以访问。
 
-### 1.2、显式原型和隐式原型
+### 显式原型和隐式原型
 
 - 每个函数对象都有一个 prototype 属性，称为显式原型属性，默认指向`{}`空实例对象。
 - 每个实例对象都有一个**proto**属性，称为隐式原型属性。
@@ -19,12 +19,11 @@
   - Function 是 new Function()产生的
   - Object 也是 new Function()产生的
 - 所有函数的**proto**都是一样的
-
 - 函数的 prototype 属性：在定义函数时自动添加的，默认值是 Object 空对象。
 - 对象的**proto**属性：创建对象时自动添加的，默认值为构造函数的 prototype 属性值。
 - 不要直接操作隐式原型(ES6 之前)。
 
-### 1.3、原型链
+### 原型链
 
 - 访问一个对象的属性，先在自身寻找，找到返回
 - 找不到沿着**proto**这条链找，找到返回
@@ -33,7 +32,7 @@
 
 作用：查找对象属性（方法）
 
-### 1.4、原型的继承
+### 原型的继承
 
 - 构造函数的实例对象自动拥有构造函数原型对象的属性（方法）
 - 原理：原型链
@@ -41,16 +40,16 @@
 1. 所有函数的显示原型指向的对象是空 Object 实例对象(Object 不满足)
    - `Object.prototype instanceof Object`//false
 2. 所有函数都是 Function 的实例，包括 Function 本身和 Object
-   - `Function.__proto===Function.prototype`
+   - `Function.__proto__===Function.prototype`
 3. Object 的原型对象是原型链的尽头
    - `object.prototype.__proto__`//null
 
-### 1.5、instanceof
+### instanceof
 
 - A instanceof B
 - 如果 B 函数的显式原型对象在 A 对象的原型链上，返回 true，否则返回 false。
 
-## 2、回调函数
+## 回调函数
 
 什么是回调函数？
 
@@ -65,7 +64,7 @@
 - Ajax 请求回调函数
 - 生命周期回调函数
 
-## 3、IIFE
+## IIFE
 
 IIFE；Immediately-Invoked Function Expression（立即调用的函数表达式），也称为`匿名函数自调用`
 
@@ -74,14 +73,14 @@ IIFE；Immediately-Invoked Function Expression（立即调用的函数表达式�
 - 不必为函数命名，避免了污染全局变量
 - IIFE 内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。
 
-## 4、this
+## this
 
 - `fun()`this 是 window
 - `obj.fun()`this 是 obj
 - `var p = new test()`this 是新建的对象 p
 - `p.call(obj)`this 是 obj
 
-## 5、闭包
+## 闭包
 
 闭包产生的条件：
 
@@ -92,25 +91,24 @@ IIFE；Immediately-Invoked Function Expression（立即调用的函数表达式�
 
 - 闭包是一种函数，闭包是一种现象。
 
-### 5.1、常见的闭包
+### 常见的闭包
 
 1. 将一个函数作为另一个函数的返回值
 2. 将函数作为实参传递给另一个函数
 
-### 5.2、闭包的作用
+### 闭包的作用
 
 - 函数执行完后，延长变量的生命周期
 - 让函数外部可以操作内部的数据变量
-
 - 在函数执行完后，函数内部的局部变量一般不会存在，除了闭包中的变量。
 - 函数外部不能访问函数内部的局部变量，但可以通过闭包让外部来操作内部的局部变量。
 
-### 5.3、闭包的产生和死亡
+### 闭包的产生和死亡
 
 - 在嵌套内部函数时就产生了（不是调用）
 - 在嵌套的内部函数成为垃圾对象时死亡 f=null
 
-### 5.4、闭包的应用
+### 闭包的应用
 
 定义 JS 模块
 
@@ -121,12 +119,12 @@ IIFE；Immediately-Invoked Function Expression（立即调用的函数表达式�
 
 如何向外暴露方法：通过 return 或者在函数内部添加 window 的方法
 
-### 5.5、闭包的的缺点
+### 闭包的的缺点
 
 - 函数执行完后，函数内的局部变量没有释放，占用内存时间会变长。
 - 要即使释放`f = null`
 
-### 5.6、内存溢出和内存泄漏
+### 内存溢出和内存泄漏
 
 内存溢出：
 
@@ -142,4 +140,4 @@ IIFE；Immediately-Invoked Function Expression（立即调用的函数表达式�
 
 - 意外的全局变量
 - 没有及时清理的计时器或回调函数
-- 闭包不会导致内存泄漏也有说会
+- 不合理的使用闭包会导致内存泄漏

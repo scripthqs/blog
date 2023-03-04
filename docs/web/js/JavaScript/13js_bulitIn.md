@@ -1,10 +1,8 @@
 # 内置对象
 
-内置对象是由 ES 标准中定义的对象，在任何的 ES 实现中都可以使用。
+除了 String、Number、Boolean 三个基本包装类外，还有很多其他的常用的包装类。
 
-比如：Object、Math、Date、String、Array、Number、Boolean、Function，RegExp 等。
-
-## 1、Date 对象
+## Date 对象
 
 在 JS 中使用 Date 对象来表示时间
 
@@ -37,7 +35,7 @@ let timestamp = Date.parse(timeString);
 console.log(timestamp);
 ```
 
-## 2、Math 对象
+## Math 对象
 
 - Math 和其他对象不同，不是一个构造函数
 - 它属于工具类，不用创建对象，里面封装了数学运算相关的属性和方法
@@ -51,24 +49,25 @@ console.log(timestamp);
 - `Math.min()`获取最小值
 - `Math.pow(x,y)`x 的 y 次幂
 - `Math.sqrt(x)`对一个数开方
+- `Math.PI` 圆周率
 
-## 3、RegExp 对象
+## RegExp 对象
 
 RegExp 即正则表达式
 
 - 正则表达式用于定义一些字符串的规则。
 - 计算机可以根据正则表达式，来检查一个字符串是否符合指定的规则，或者将字符串中符合规则的内容提取出来。
 
-### 3.1、创建正则表达式对象
+### 创建正则表达式对象
 
 1. 使用构造函数创建正则表达式的对象
 
-- `var 变量 = new RegExp("正则表达式","匹配模式") //两个参数都是字符串`
-- `test()`这个方法可以检查一个字符串是否符合正则表达式的规则
-- `reg.test(str)`如果符合则返回 true，否则返回 false
-- 构造函数第二个参数，两个参数都是字符串
-  - i 忽略大小写，ignore
-  - g 全局匹配模式，global
+   - `var 变量 = new RegExp("正则表达式","匹配模式") //两个参数都是字符串`
+   - `test()`这个方法可以检查一个字符串是否符合正则表达式的规则
+   - `reg.test(str)`如果符合则返回 true，否则返回 false
+   - 构造函数第二个参数，两个参数都是字符串
+     - i 忽略大小写，ignore
+     - g 全局匹配模式，global
 
 2. 使用字面量创建正则表达式
 
@@ -79,7 +78,7 @@ RegExp 即正则表达式
 - 构造函数创建时，更加灵活，因为参数中可以传递变量
 - 使用字面量创建更加简单
 
-全局匹配 g 慎用 test()方法:
+全局匹配 g 慎用 test()方法(否则很可能写出一个难以排查的 bug):
 
 - 对于全局的正则表达式，test()只会检测是否存在某个目标字符串，只要存在就为 true
 
@@ -98,7 +97,17 @@ console.log(reg.lastIndex); // 0
 ```
 
 - 全局匹配模式 g 一般用 exec()、match()、replace()等方法。
-- 全局匹配模式 g 如果用于 test()方法会有问题。因为 g 模式会生成一个 lastindex 参数来存储匹配最后一次的位置。
+- 全局匹配模式 g 如果用于 test()方法会有问题。因为 g 模式会生成一个 lastIndex 参数来存储匹配最后一次的位置。`reg.test`可能上一次返回 true，下一次就返回 false 了。
+
+```js
+let reg = /1/g;
+reg.test("123123"); //true
+reg.lastIndex; //1;
+reg.test("123123"); //true;
+reg.lastIndex; //4;
+reg.test("123123"); //false;
+reg.lastIndex; //0;
+```
 
 - 创建一个表达式，检查字符串是否有 a 或 b，使用`|`或者`[]`
   - `var reg = /a|b/`
@@ -111,7 +120,7 @@ console.log(reg.lastIndex); // 0
   - `var reg = /[^ab]/`除了 a 或 b 之外，还有没有其他的字符内容
   - `var reg = /[^0-9]/`除了数字，还有没有其他的字符内容
 
-### 3.2、字符串和正则表达式的方法
+### 字符串和正则表达式的方法
 
 - `split()`可以将一个字符串拆分成一个数组
   - 该方法可以根据任意字母将字符串拆分
@@ -132,7 +141,7 @@ console.log(reg.lastIndex); // 0
   - `str.replace(/[a-z]/ig,'@')`
   - `str.replace(/[a-z]/ig,'')`可以去除字母
 
-### 3.3、正则表达式语法
+### 正则表达式语法
 
 - 创建正则表达式检查字符串是否含有 aaa
   - `var reg = /a{3}/`

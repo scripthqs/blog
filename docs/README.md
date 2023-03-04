@@ -2,7 +2,7 @@
 home: true
 heroImage: /img/hero.png
 heroText: Welcome
-tagline: 欢迎来到我的个人网站
+# tagline: 欢迎来到我的个人网站
 actionText: 关于我 →
 actionLink: /guide/
 features:
