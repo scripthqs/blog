@@ -43,4 +43,11 @@ module.exports = {
     editLinkText: "在 GitHub 上编辑此页",
   },
   plugins: pluginsConfig,
+  devServer: {
+    watchOptions: {
+      ignored: /node_modules/,
+      // 将热更新相关的配置放在 watchOptions 里面
+      poll: 1000,
+    },
+  },
 };

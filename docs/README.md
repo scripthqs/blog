@@ -2,7 +2,7 @@
 home: true
 heroImage: /img/hero.png
 heroText: Welcome
-# tagline: 欢迎来到我的个人网站
+tagline: Welcome to my VuePress site
 actionText: 关于我 →
 actionLink: /guide/
 features:

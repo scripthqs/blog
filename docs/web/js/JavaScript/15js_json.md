@@ -1,6 +1,6 @@
 # JSON
 
-## 1、json 简介
+## json 简介
 
 JSON(JavaScript Object Notation)JS 对象表示法。
 
@@ -10,7 +10,7 @@ JSON(JavaScript Object Notation)JS 对象表示法。
 - JSON 在开发中主要用来数据的交互。
 - JSON 和对象的格式一样，不过 JSON 字符串中的属性名必须加双引号。
 
-## 2、json 分类
+## json 分类
 
 - 对象{}，不能使函数对象
 - 数组[]
@@ -24,7 +24,7 @@ JSON 中允许的值：
 - 对象
 - 数组
 
-## 3、json 转换
+## json 转换
 
 将 JSON 字符串转换成 JS 中的对象
 

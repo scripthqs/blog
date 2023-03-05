@@ -4,7 +4,7 @@
 - `setTimeout()`延时调用。将一段代码，等待一段时间之后再执行。（只执行一次）。
 - 在实际开发中，两者可以根据需要，相互替代。
 
-## 1、setInterval()
+## setInterval()
 
 `setInterval()`循环调用。每隔一段时间执行一次，需要两个参数：
 
@@ -19,7 +19,7 @@ var timer = setInterval(function() {
 
 返回值：返回一个 Number 类型的数据。这个数字用来作为定时器的唯一标识，方便用来清除定时器。
 
-## 2、clearInterval()
+## clearInterval()
 
 `clearInterval(返回值)`可以关闭定时器。
 
@@ -29,7 +29,7 @@ clearInterval(timer);
 
 - 返回值可以是任何的参数，如果参数不是一个有效值，则什么都不做。
 
-## 3、setTimeout()
+## setTimeout()
 
 `setTimeout()`延时调用，等待一段时间之后再执行。（只执行一次），需要两个参数：
 
@@ -57,7 +57,7 @@ var timer = setTimeout(
 );
 ```
 
-## 4、clearTimeout()
+## clearTimeout()
 
 clearTimeout()可以关闭定时器。
 
@@ -65,7 +65,7 @@ clearTimeout()可以关闭定时器。
 clearTimeout(timer);
 ```
 
-## 5、定时器问题
+## 定时器问题
 
 定时器切换图片练习：通过按钮绑定的定时器，我们每点击一次，就会开启一个定时器，点击多次就会开启多个定时器，就是让定时器速度叠加，并且我们只能关闭最后一次开启的定时器。
 
