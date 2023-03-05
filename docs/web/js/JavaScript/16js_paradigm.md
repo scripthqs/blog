@@ -125,10 +125,22 @@ class AssistantCook {
   constructor(name){
     this.name = name;
   }
-  pourIngredients() {//导入
+  pourIngredients() {//倒入配料
     1- Pour flour in a bowl
     2- Pour a couple eggs in the same bowl
     3- Pour some milk in the same bowl
   }
+  chillTheCake() {//放凉
+    7- Let chill
+  }
 }
+
+// 将每一个类实例化
+const cookGod = new Cook('cookGod')
+const littleRich = new AssistantCook('littleRich')
+
+// 调用实例的方法
+littleRich.pourIngredients()
+cookGod.mixAndBake()
+littleRich.chillTheCake()
 ```
