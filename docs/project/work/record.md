@@ -156,3 +156,15 @@ object-fit 属性指定元素的内容应该如何去适应指定容器的高度
 ## Jenkins 的 CI/CD
 
 ## I18N 国际化
+
+## 倒计时
+
+```vue
+<a-statistic-countdown title="倒计时" :value="deadline" format="H 时 m 分 s 秒">
+  <!-- <template #title>
+    <div style="font-size: 24px"></div>
+  </template> -->
+</a-statistic-countdown>
+// Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
+<!-- const deadline = ref(new Date(new Date().setHours(0, 0, 0, 0) + 18.5 * 60 * 60 * 1000 - 1)); -->
+```
