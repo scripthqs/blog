@@ -168,3 +168,29 @@ object-fit 属性指定元素的内容应该如何去适应指定容器的高度
 // Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
 <!-- const deadline = ref(new Date(new Date().setHours(0, 0, 0, 0) + 18.5 * 60 * 60 * 1000 - 1)); -->
 ```
+
+## js 连点
+
+```js
+const pointEl = [];
+const frequency = 500;
+alert("请先点击需要连点的按钮，完成后按下回车键");
+document.onmousedown = (e) => {
+  console.log(e, "获得e元素");
+  pointEl.push(e);
+};
+document.onkeyup = (e) => {
+  if (e.code === "Enter") {
+    if (!pointEl.length) return alert("你还未点击按钮");
+    setInterval(() => {
+      pointEl.forEach((event, index) => {
+        setTimeout(() => {
+          const cc = document.elementFromPoint(event.clientX, event.clientY);
+          console.log(cc);
+          cc.click();
+        }, frequency * index);
+      });
+    }, frequency * pointEl.length);
+  }
+};
+```
