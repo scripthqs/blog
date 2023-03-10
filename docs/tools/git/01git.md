@@ -20,7 +20,7 @@ git 官网下载：<https://git-scm.com/downloads>
 git 安装后需要先配置，使用 git 可以多人协作，可以做到责任分工。
 
 1. 初始化用户名
-   `git config --global user.name 'Scripthqs'`
+   `git config --global user.name 'scripthqs'`
 2. 设置用户名邮箱  
    `git config --global user.email '1941186772@qq.com'`
 3. 查看设置(验证是否初始化成功)  
