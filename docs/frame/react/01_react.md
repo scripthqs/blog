@@ -4,7 +4,7 @@ React 是用于构建用户界面的 JavaScript 库。
 
 ## React 特点
 
-声明式编程
+声明式编程(函数式编程)
 
 - 声明式编程是目前整个大前端开发的模式，例如 Vue、React、Flutter、SwiftUI
 - 开发时只需要维护自己的状态，当状态改变时，React 可以根据最新的状态去渲染的 UI 界面
