@@ -25,3 +25,13 @@
 1. github 主页
 2. 仓库主页
 3. 个人主页
+
+## GitHub pages 搭建
+
+首先你需要注册一个 GitHub 账号，并在个人主界面里选择创建一个新的 Repository 。
+
+1. 进入项目主页，点击 setting
+2. 在 setting 页面中找到 Github pages 下面的选择主题(choose a theme)
+3. Source 下拉框选择 main,最后会得到一个网址
+4. 生成网页
+5. 访问`https://用户名.github.io`

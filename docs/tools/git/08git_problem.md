@@ -1,5 +1,26 @@
 # github 的疑难杂症
 
+## git 修改远程仓库地址
+
+### 方法 1
+
+删除再添加你的远程仓库
+
+```bash
+git remote rm origin
+git remote add origin 你的新远程仓库地址
+git push --set-upstream origin master
+```
+
+### 方法 2
+
+直接修改你本地的.git 文件
+
+这里需要注意的问题是需要进入你的项目目录中
+例如：你的项目名为 test，那么你就进入 test 文件夹。
+
+`.git` 文件是隐藏文件你需要显示隐藏文件才能看见
+
 ## git 报错处理
 
 git push 时报了这个错：fatal: unable to access '<https://github.com/>.......': OpenSSL SSL_read: Connection was reset, errno 10054
