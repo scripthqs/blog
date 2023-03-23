@@ -1,12 +1,12 @@
 <template>
   <div>
+    <button class="btn" @click="generateProv">换一句</button>
     <ul class="my-list">
       <li class="my-list-item-1">{{ currentProverb.data }}</li>
       <li class="my-list-item-2">{{ currentProverb.explain }}</li>
-      <li class="my-list-item-3">{{ currentProverb.a }}</li>
-      <li class="my-list-item-4">{{ currentProverb.b }}</li>
+      <li class="my-list-item-3" v-if="currentProverb.a">{{ currentProverb.a }}</li>
+      <li class="my-list-item-4" v-if="currentProverb.b">{{ currentProverb.b }}</li>
     </ul>
-    <button class="btn" @click="generateProv">换一句</button>
   </div>
 </template>
 
@@ -29,7 +29,6 @@ export default {
   methods: {
     generateProv() {
       let randomProverb = this.getRandomProverb();
-      console.log(randomProverb);
       if (this.proverbs.length === 1) {
         return (this.currentProverb = randomProverb);
       }
@@ -64,11 +63,12 @@ export default {
 
 .my-list-item-1 {
   color: #1f1f1f;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .my-list-item-2 {
-  color: #1f1f1f;
+  color: #9ea4a8;
 }
 
 .my-list-item-3 {

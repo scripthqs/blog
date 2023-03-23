@@ -1,12 +1,28 @@
 {
   "proverb": [
     {
-      "id": "01",
+      "id": "001",
       "keyWord": "idealist",
       "data": "An idealist(n.空想家，理想主义者) is a person who helps other people to be prosperous(adj.成功的).",
       "explain": "理想主义者是那些帮助他人获得成就的人。",
       "a": ".ist 后缀通常是某种信仰者，专家，从事某种职业的人，从事某种研究，与某事物有关的人",
       "b": "pragmatist(n.实用主义者) pessimist(n.悲观主义者) communist(n.共产主义者) economist(n.经济学家)"
+    },
+    {
+      "id": "002",
+      "keyWord": "source",
+      "data": "It is one of my sources of happiness never to desire(v.想要 n.欲望) a knowledge of other people's business(n.事情，商业).",
+      "explain": "我的快乐源泉之一就是不去管别人的闲事。",
+      "a": "",
+      "b": ""
+    },
+    {
+      "id": "003",
+      "keyWord": "confidence",
+      "data": "Confidence has nothing to do with what you look like. If you obsess over that, you'll end up being disappointed in yourself all the time.",
+      "explain": "自信与外表无关，如果你沉溺于此，便会一直对自己失望",
+      "a": "",
+      "b": ""
     }
   ]
 }
