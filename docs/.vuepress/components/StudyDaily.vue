@@ -12,7 +12,6 @@
 
 <script>
 import dataJson from "./study/proverb.json";
-import Vue from "vue";
 export default {
   data() {
     return {
@@ -30,6 +29,10 @@ export default {
   methods: {
     generateProv() {
       let randomProverb = this.getRandomProverb();
+      console.log(randomProverb);
+      if (this.proverbs.length === 1) {
+        return (this.currentProverb = randomProverb);
+      }
       while (randomProverb?.data === this.currentProverb?.data) {
         randomProverb = this.getRandomProverb();
       }
@@ -44,20 +47,6 @@ export default {
   mounted() {
     this.proverbs = dataJson.proverb;
     this.generateProv();
-    // fetch("https://api.wrdan.com/hitokoto")
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.text = data.text;
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   },
 };
 </script>
