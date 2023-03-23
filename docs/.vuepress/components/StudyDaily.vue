@@ -24,6 +24,7 @@ export default {
         a: "",
         b: "",
       },
+      text: "",
     };
   },
   methods: {
@@ -33,7 +34,7 @@ export default {
         randomProverb = this.getRandomProverb();
       }
       this.currentProverb = randomProverb;
-      Vue.prototype.$global.CURRENT_PROVERB = this.currentProverb.data;
+      // Vue.prototype.$global.CURRENT_PROVERB = this.currentProverb.data;
     },
     getRandomProverb() {
       let randomIndex = Math.floor(Math.random() * this.proverbs.length);
@@ -43,6 +44,20 @@ export default {
   mounted() {
     this.proverbs = dataJson.proverb;
     this.generateProv();
+    // fetch("https://api.wrdan.com/hitokoto")
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.text = data.text;
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   },
 };
 </script>
@@ -51,13 +66,11 @@ export default {
 .my-list {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .my-list li {
   padding: 10px;
   border-bottom: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .my-list-item-1 {
@@ -71,10 +84,12 @@ export default {
 
 .my-list-item-3 {
   color: #f9c74f; /* 黄色 */
+  font-size: 14px;
 }
 
 .my-list-item-4 {
   color: #90be6d; /* 绿色 */
+  font-size: 14px;
 }
 .btn {
   margin-top: 20px;
