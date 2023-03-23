@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div class="studyDaily">
     <button class="btn" @click="generateProv">换一句</button>
     <ul class="my-list">
       <li class="my-list-item-1">{{ currentProverb.data }}</li>
       <li class="my-list-item-2">{{ currentProverb.explain }}</li>
-      <li class="my-list-item-3" v-if="currentProverb.a">{{ currentProverb.a }}</li>
-      <li class="my-list-item-4" v-if="currentProverb.b">{{ currentProverb.b }}</li>
+      <li class="my-list-item-4" v-if="currentProverb.a">{{ currentProverb.a }}</li>
+      <li class="my-list-item-3" v-for="item in currentProverb.words">
+        <span class="word">{{ item.word }}</span>
+        <span>&nbsp;</span>
+        <span>{{ item.explain }}</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -20,6 +24,7 @@ export default {
         keyWord: "",
         data: "",
         explain: "",
+        words: [],
         a: "",
         b: "",
       },
@@ -72,13 +77,22 @@ export default {
 }
 
 .my-list-item-3 {
-  color: #f9c74f; /* 黄色 */
-  font-size: 14px;
+  color: #90be6d; /* 绿色 */
 }
 
 .my-list-item-4 {
-  color: #90be6d; /* 绿色 */
+  color: #f8961e; /* 橙色 */
   font-size: 14px;
+}
+
+.word {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1f1f1f;
+}
+
+.studyDaily {
+  position: relative;
 }
 .btn {
   margin-top: 20px;
@@ -90,6 +104,9 @@ export default {
   color: #fff;
   border: none;
   outline: none;
+  position: absolute;
+  top: -60px;
+  right: 0;
 }
 .btn:hover {
   background-color: #006687;
