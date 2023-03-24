@@ -1,7 +1,7 @@
 const { getChildren } = require("../auto-sidebar/vuepress-auto-sidebar");
 
 module.exports = {
-  // '/guide/': require('../guide/sidebar'),
+  // "/guide/": require("docs/guide/"),
 
   //前端基础
   "/web/html/": getChildren("docs/web/html/"),
