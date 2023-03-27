@@ -80,6 +80,14 @@ git 有 3 个工作区域：
 - `git commit -m 描述` 提交到仓库，每次提交一定要写描述
 - `git log` 查看提交状态，每一次提交都会有一个唯一的提交 ID
 
+git 默认配置忽略了文件的大小写，我选择打开
+
+```bash
+git config core.ignorecase
+# true为忽略了大小写，false为不忽略大小写
+git config core.ignorecase false
+```
+
 ## Git 的撤销
 
 ### 情况 1
