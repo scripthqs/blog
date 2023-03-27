@@ -29,7 +29,6 @@ shouldComponentUpdate(newProps, nextState) {
 ```js
 // vscode快捷键rpc
 import React, { PureComponent } from "react";
-
 export default class Home extends PureComponent {
   render() {
     return <div>Home</div>;
@@ -57,7 +56,6 @@ this.setState({ lists: lists });
 
 ```js
 import { memo } from "react";
-
 const MemoComponent = memo(function(props) {
   console.log("MemoComponent render");
   return <h2>{props.message}</h2>;

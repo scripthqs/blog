@@ -2,30 +2,13 @@
   "proverb": [
     {
       "id": "",
-      "keyWord": "accomplish",
-      "data": "Never give up on a dream just because of the time it will take to accomplish it.The time will pass anyway.",
-      "explain": "永远不要因为梦想需要太长时间实现而放弃。时间总会逝去。",
+      "keyWord": "happened",
+      "data": "I am not what happened to me, I am what I choose to become.",
+      "explain": "成全我的不是生活，而是我的选择",
       "words": [
         {
-          "word": "accomplish",
-          "explain": "v.实现"
-        }
-      ],
-      "a": ""
-    },
-    {
-      "id": "",
-      "keyWord": "fable",
-      "data": "Life is like a fable. Its values lies not in its length,but in its content.",
-      "explain": "生命如寓言，其价值不在于长短，而在于内容",
-      "words": [
-        {
-          "word": "fable",
-          "explain": "n.寓言 v.谎言"
-        },
-        {
-          "word": "lies",
-          "explain": "n.说谎 v.躺下 在于 "
+          "word": "happened",
+          "explain": "v.发生"
         }
       ],
       "a": ""
@@ -114,6 +97,75 @@
         {
           "word": "disappointed",
           "explain": "adv.失望地"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "fable",
+      "data": "Life is like a fable. Its values lies not in its length,but in its content.",
+      "explain": "生命如寓言，其价值不在于长短，而在于内容",
+      "words": [
+        {
+          "word": "fable",
+          "explain": "n.寓言 v.谎言"
+        },
+        {
+          "word": "lies",
+          "explain": "n.说谎 v.躺下 在于 "
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "accomplish",
+      "data": "Never give up on a dream just because of the time it will take to accomplish it.The time will pass anyway.",
+      "explain": "永远不要因为梦想需要太长时间实现而放弃。时间总会逝去。",
+      "words": [
+        {
+          "word": "accomplish",
+          "explain": "v.实现"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "limit",
+      "data": "I'm not going to limit myself just because people  won't accept the fact that I can do something else.",
+      "explain": "我不会因为人们不接受我可以做其他事而限制自己。",
+      "words": [
+        {
+          "word": "limit",
+          "explain": "v.限制 n.限度"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "deserve",
+      "data": "I now deserve love,romance,and joy-and all the good that life has to offer me.",
+      "explain": "我现在值得得到爱，浪漫和快乐，以及生活中所有的美好。",
+      "words": [
+        {
+          "word": "deserve ",
+          "explain": "v.值得"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "effort",
+      "data": "People choose to read,and it takes effort.It's not one of those bobbies that asks nothing of the person who is doing it.It's more that hobbies.",
+      "explain": "人们选择阅读，这需要努力。阅读不是对正在做这件事的人们一项毫无要求的爱好。这不仅仅是一项爱好。",
+      "words": [
+        {
+          "word": "effort",
+          "explain": "n.努力"
         }
       ],
       "a": ""

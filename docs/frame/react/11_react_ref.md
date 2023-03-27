@@ -51,7 +51,7 @@ export class App extends PureComponent {
 export default App;
 ```
 
-## ref 的类型
+## forwardRef
 
 ref 的值根据节点的类型会有所不同
 
