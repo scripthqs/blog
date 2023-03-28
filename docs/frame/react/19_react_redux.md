@@ -173,7 +173,7 @@ redux 和 react 没有直接关系，可以在其他框架中使用。redux 和 
 npm i react-redux
 ```
 
-里面 4 个核心的概念
+主要使用里面的概念
 
 1. Provider
 2. connect
@@ -240,7 +240,7 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(About);
 ```
 
-## 异步操作
+### react-redux 异步操作(redux-thunk)
 
 redux 保存的很多数据可能来自服务器，需要进行异步请求，再将数据保存到 redux 中。
 
@@ -273,4 +273,174 @@ export const fetchInfoAction = () => {
     dispatch(changeInfoAction(info));
   };
 };
+```
+
+### 合并 reducer(combineReducers)
+
+可以将不同页面的状态处理，放在不同的文件夹下，拆分成不同的 reducer 中
+
+```js
+// store文件
+// store/home/ 文件
+actionCreators.js;
+constants.js;
+index.js;
+reducer.js;
+// store/about 文件
+actionCreators.js;
+constants.js;
+index.js;
+reducer.js;
+// store/
+index.js;
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import thunk from "redux-thunk";
+
+import counterReducer from "./counter";
+import homeReducer from "./home";
+import userReducer from "./user";
+
+// 正常情况下 store.dispatch(object)
+// 想要派发函数 store.dispatch(function)
+
+// 将两个reducer合并在一起
+const reducer = combineReducers({
+  counter: counterReducer,
+  home: homeReducer,
+  user: userReducer,
+});
+
+// combineReducers实现原理
+// function reducer(state = {}, action) {
+//   // 返回一个对象, store的state
+//   return {
+//     counter: counterReducer(state.counter, action),
+//     home: homeReducer(state.home, action),
+//     user: userReducer(state.user, action)
+//   }
+// }
+
+// redux-devtools
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true }) || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+export default store;
+```
+
+## Redux ToolKit
+
+Redux ToolKit 是官方推荐编写 Redux 逻辑的方法，简称 RTK。
+
+- configureStore：包括了 createStore 默认的配置，提供了默认的 redux-thunk 中间件，并开启了 Redux DevTools
+- createSlice：接受 reducer 函数对象，自动生成切片 reducer，并带有相应的 actions
+  - name
+  - initialState
+  - reducers
+  - extraReducers
+- createAsyncThunk：接受一个动作类型字符串和一个返回承诺的函数，进行网络请求异步操作
+
+```bash
+npm i @reduxjs/toolkit react-redux
+```
+
+```js
+// store/index.js
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./features/counter";
+import homeReducer from "./features/home";
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+    home: homeReducer,
+  },
+});
+export default store;
+
+//store/features/counters.js
+import { createSlice } from "@reduxjs/toolkit";
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: {
+    counter: 888,
+  },
+  reducers: {
+    addNumber(state, { payload }) {
+      state.counter = state.counter + payload;
+    },
+    subNumber(state, { payload }) {
+      state.counter = state.counter - payload;
+    },
+  },
+});
+
+export const { addNumber, subNumber } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+### Redux ToolKit 异步操作(createAsyncThunk)
+
+Redux ToolKit 异步操作,createAsyncThunk 创建出来的 action 被 dispatch 时会有 3 种状态
+
+- pending:action 被发出，但是没有获得最终的结果
+- fulfilled:获取最终的结果，有返回值的结果
+- rejected:执行过程中有错误或者抛出异常
+
+```js
+//store/features/home.js
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchHomeMultidataAction = createAsyncThunk("fetch/homeMultidata", async (extraInfo, { dispatch, getState }) => {
+  // console.log(extraInfo, dispatch, getState)
+  // 1.发送网络请求, 获取数据
+  const res = await axios.get("http://123.207.32.32:8000/home/multidata");
+  // 2.取出数据, 并且在此处直接dispatch操作(可以不做),使用extraReducers来处理
+  // const banners = res.data.data.banner.list;
+  // const recommends = res.data.data.recommend.list;
+  // dispatch(changeBanners(banners));
+  // dispatch(changeRecommends(recommends));
+
+  // 3.返回结果, 那么action状态会变成fulfilled状态
+  return res.data;
+});
+
+const homeSlice = createSlice({
+  name: "home",
+  initialState: {
+    banners: [],
+    recommends: [],
+  },
+  reducers: {
+    changeBanners(state, { payload }) {
+      state.banners = payload;
+    },
+    changeRecommends(state, { payload }) {
+      state.recommends = payload;
+    },
+  },
+  extraReducers: {
+    [fetchHomeMultidataAction.pending](state, action) {
+      console.log("fetchHomeMultidataAction pending");
+    },
+    [fetchHomeMultidataAction.fulfilled](state, { payload }) {
+      state.banners = payload.data.banner.list;
+      state.recommends = payload.data.recommend.list;
+    },
+    [fetchHomeMultidataAction.rejected](state, action) {
+      console.log("fetchHomeMultidataAction rejected");
+    },
+  },
+  // extraReducers 另外的一种写法
+  // extraReducers: (builder) => {
+  // builder.addCase(fetchHomeMultidataAction.pending, (state, action) => {
+  //   console.log("fetchHomeMultidataAction pending")
+  // }).addCase(fetchHomeMultidataAction.fulfilled, (state, { payload }) => {
+  //   state.banners = payload.data.banner.list
+  //   state.recommends = payload.data.recommend.list
+  // })
+  // },
+});
+
+export const { changeBanners, changeRecommends } = homeSlice.actions;
+export default homeSlice.reducer;
 ```
