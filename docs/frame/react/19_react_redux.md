@@ -136,7 +136,7 @@ module.exports = {
 const { ADD_NUMBER, CHANGE_NAME } = require("./constants");
 // 初始化的数据
 const initialState = {
-  name: "why",
+  name: "hello",
   counter: 100,
 };
 function reducer(state = initialState, action) {
@@ -167,3 +167,110 @@ module.exports = store;
 
 ## react-redux
 
+redux 和 react 没有直接关系，可以在其他框架中使用。redux 和 react 结合得更好，通过 state 函数描述界面状态.
+
+```bash
+npm i react-redux
+```
+
+里面 4 个核心的概念
+
+1. Provider
+2. connect
+
+react-redux 的 connect 用法
+
+```js
+// 1.需要在index.js页面引入
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./store";
+//编写React代码，并且通过React渲染出对应的内容
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+// 2.使用connect
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { incrementAction, decrementAction } from "../store/actionCreators";
+
+export class About extends PureComponent {
+  calcNumber(num, isAdd) {
+    if (isAdd) {
+      console.log("add");
+      this.props.addNumber(num);
+    } else {
+      console.log("sub");
+      this.props.subNumber(num);
+    }
+  }
+  render() {
+    const { counter } = this.props;
+    return (
+      <div>
+        <div className="title">About{counter}</div>
+        <button onClick={(e) => this.calcNumber(1, true)}>+1</button>
+        <button onClick={(e) => this.calcNumber(5, true)}>+5</button>
+        <button onClick={(e) => this.calcNumber(5, false)}>-5</button>
+        <button onClick={(e) => this.calcNumber(10, false)}>-10</button>
+      </div>
+    );
+  }
+}
+// connect的返回值是一个高阶函数
+// function mapStateToProps(state) {
+//   return {
+//     counter: state.counter,
+//   };
+// }
+const mapStateToProps = (state) => ({
+  counter: state.counter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addNumber: (num) => dispatch(incrementAction(num)),
+  subNumber: (num) => dispatch(decrementAction(num)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);
+```
+
+## 异步操作
+
+redux 保存的很多数据可能来自服务器，需要进行异步请求，再将数据保存到 redux 中。
+
+可以在网络请求的异步代码放在组件的生命周期来完成，但是网络请求到的数据也属于状态管理的一部分，更好的方式也是交给 redux 来管理。
+
+- 在默认情况下，dispatch(action)，action 需要是一个 js 对象
+- 需要安装 redux-thunk，让 dispatch 的 action 可以是一个函数
+- 该函数会被调用，并且传递给这个函数一个 dispatch 函数和 getState 函数
+- dispatch 函数用于之后再次派发 action
+- getState 函数用于获取之前的一些状态
+
+```js
+// 1.安装redux-thunk，是一个中间件
+// 2.创建store时传入应用middleware的enhance函数
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import reducer from "./reducer";
+// 正常情况下 store.dispatch(object)
+// 想要派发函数 store.dispatch(function)
+// redux-devtools //使用redux-devtools
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true }) || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+export default store;
+// 3.定义返回的action
+export const fetchInfoAction = () => {
+  return async (dispatch, getState) => {
+    let res = await axios.get("https://v.api.aa1.cn/api/yiyan/index.php");
+    console.log(res.data);
+    const info = res.data;
+    dispatch(changeInfoAction(info));
+  };
+};
+```

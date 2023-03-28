@@ -2,6 +2,32 @@
   "proverb": [
     {
       "id": "",
+      "keyWord": "wish",
+      "data": "A year from now you may wish you had started today.",
+      "explain": "明年今日，你会希望此时此刻自己已经开始行动。",
+      "words": [
+        {
+          "word": "wish",
+          "explain": "v.想要 n.希望"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "tie",
+      "data": "If you want to  live a happy life,tie it to a goal,not people or things.",
+      "explain": "明年今日，你会希望此时此刻自己已经开始行动。",
+      "words": [
+        {
+          "word": "tie",
+          "explain": "v.寄托 n.领带"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
       "keyWord": "happened",
       "data": "I am not what happened to me, I am what I choose to become.",
       "explain": "成全我的不是生活，而是我的选择",
