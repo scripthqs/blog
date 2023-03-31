@@ -2,6 +2,40 @@
   "proverb": [
     {
       "id": "",
+      "keyWord": "cure",
+      "data": "The cure for boredom is curiosity.There is no cure for curiosity.",
+      "explain": "无聊的解药是好奇心，而好奇心没有解药。",
+      "words": [
+        {
+          "word": "cure",
+          "explain": "n.药物 疗法 v.治愈"
+        },
+        {
+          "word": "boredom",
+          "explain": "n.厌倦"
+        },
+        {
+          "word": "curiosity",
+          "explain": "n.好奇心"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
+      "keyWord": "master",
+      "data": "The master has failed more times than the beginner has even tried.",
+      "explain": "大师失败的次数比初学者尝试的次数还有多。",
+      "words": [
+        {
+          "word": "master",
+          "explain": "n.大师 能手 v.精通"
+        }
+      ],
+      "a": ""
+    },
+    {
+      "id": "",
       "keyWord": "wish",
       "data": "A year from now you may wish you had started today.",
       "explain": "明年今日，你会希望此时此刻自己已经开始行动。",
@@ -17,7 +51,7 @@
       "id": "",
       "keyWord": "tie",
       "data": "If you want to  live a happy life,tie it to a goal,not people or things.",
-      "explain": "明年今日，你会希望此时此刻自己已经开始行动。",
+      "explain": "如果你想要拥有幸福的生活，制定一个目标，而不要把希望寄托在别的人或事上。",
       "words": [
         {
           "word": "tie",
@@ -186,7 +220,7 @@
     {
       "id": "",
       "keyWord": "effort",
-      "data": "People choose to read,and it takes effort.It's not one of those bobbies that asks nothing of the person who is doing it.It's more that hobbies.",
+      "data": "People choose to read,and it takes effort.It's not one of those bobbies that asks nothing of the person who is doing it.It's more than a hobby.",
       "explain": "人们选择阅读，这需要努力。阅读不是对正在做这件事的人们一项毫无要求的爱好。这不仅仅是一项爱好。",
       "words": [
         {

@@ -114,5 +114,6 @@ module.exports = {
       children: getChildren("docs/project/utils/chapter2/"),
     },
   ],
+  "/project/reactTest/": getChildren("docs/project/reactTest/"),
   "/project/work/": getChildren("docs/project/work/"),
 };

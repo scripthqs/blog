@@ -90,7 +90,7 @@ Navigate 用于路由的重定向，当这个组件出现时，就会执行跳�
 <Outlet></Outlet>
 ```
 
-## 手动路由跳转
+## 手动路由跳转并传参
 
 有时候不想通过 Link 或者 NavLink 来跳转，想用 js 跳转
 
@@ -110,4 +110,161 @@ export function App(props) {
     </div>
   );
 }
+```
+
+在类组件中，封装一个 withRouter 高阶组件
+
+- `<Link to="/user?name=hello&age=20">用户</Link>`
+- `<Route path='/detail/:id' element={<Detail/>}/>`
+
+```js
+import { useState } from "react";
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
+
+// 高阶组件: 函数
+function withRouter(WrapperComponent) {
+  return function(props) {
+    // 1.导航
+    const navigate = useNavigate();
+
+    // 2.动态路由的参数: /detail/:id
+    const params = useParams();
+
+    // 3.查询字符串的参数: /user?name=hello&age=18
+    const location = useLocation();
+    const [searchParams] = useSearchParams();
+    const query = Object.fromEntries(searchParams);
+
+    const router = { navigate, params, location, query };
+
+    return <WrapperComponent {...props} router={router} />;
+  };
+}
+
+export default withRouter;
+```
+
+## 配置 routes
+
+- 在 Router5.x 中，需要借助于 react-router-config 完成
+- 在 Router6.x 中，为我们提供了 useRoutes API 可以完成相关的配置
+
+```js
+{
+  /* <Routes>
+  <Route path='/' element={<Navigate to="/home"/>}/>
+  <Route path='/home' element={<Home/>}>
+    <Route path='/home' element={<Navigate to="/home/recommend"/>}/>
+    <Route path='/home/recommend' element={<HomeRecommend/>}/>
+    <Route path='/home/ranking' element={<HomeRanking/>}/>
+    <Route path='/home/songmenu' element={<HomeSongMenu/>}/>
+  </Route>
+  <Route path='/about' element={<About/>}/>
+  <Route path='/login' element={<Login/>}/>
+  <Route path='/category' element={<Category/>}/>
+  <Route path='/order' element={<Order/>}/>
+  <Route path='/detail/:id' element={<Detail/>}/>
+  <Route path='/user' element={<User/>}/>
+  <Route path='*' element={<NotFound/>}/>
+</Routes> */
+}
+<div>{useRoutes(routes)}</div>;
+
+//router/index.js
+import Home from "../pages/Home";
+import HomeRecommend from "../pages/HomeRecommend";
+import HomeRanking from "../pages/HomeRanking";
+import HomeSongMenu from "../pages/HomeSongMenu";
+// import About from "../pages/About"
+// import Login from "../pages/Login"
+import Category from "../pages/Category";
+import Order from "../pages/Order";
+import NotFound from "../pages/NotFound";
+import Detail from "../pages/Detail";
+import User from "../pages/User";
+import { Navigate } from "react-router-dom";
+import React from "react";
+
+const About = React.lazy(() => import("../pages/About"));
+const Login = React.lazy(() => import("../pages/Login"));
+
+const routes = [
+  {
+    path: "/",
+    element: <Navigate to="/home" />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+    children: [
+      {
+        path: "/home",
+        element: <Navigate to="/home/recommend" />,
+      },
+      {
+        path: "/home/recommend",
+        element: <HomeRecommend />,
+      },
+      {
+        path: "/home/ranking",
+        element: <HomeRanking />,
+      },
+      {
+        path: "/home/songmenu",
+        element: <HomeSongMenu />,
+      },
+    ],
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/category",
+    element: <Category />,
+  },
+  {
+    path: "/order",
+    element: <Order />,
+  },
+  {
+    path: "/detail/:id",
+    element: <Detail />,
+  },
+  {
+    path: "/user",
+    element: <User />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+];
+
+export default routes;
+```
+
+对某些组件进行了异步加载（懒加载），那么需要使用 Suspense 进行包裹
+
+```js
+// import { StrictMode } from "react"
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { HashRouter } from "react-router-dom";
+import { Suspense } from "react";
+
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(
+  // <StrictMode>
+  <HashRouter>
+    <Suspense fallback={<h3>Loading...</h3>}>
+      <App />
+    </Suspense>
+  </HashRouter>
+  // </StrictMode>
+);
 ```
