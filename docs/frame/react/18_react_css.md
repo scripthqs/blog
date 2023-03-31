@@ -51,9 +51,9 @@ export default class ReactStyle extends PureComponent {
     return (
       <div>
         <h2>ReactStyle</h2>
-        <div style={{ color: "red", fontSize: "20px" }}>标题</div>
+        {/* <div style={{ color: "red", fontSize: "20px" }}>标题</div>
         <div style={{ color: "green", fontSize: `${fSize}px` }}>内容</div>
-        <button onClick={(e) => this.changeSize(e)}>变大</button>
+        <button onClick={(e) => this.changeSize(e)}>变大</button> */}
       </div>
     );
   }
