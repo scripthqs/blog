@@ -78,9 +78,9 @@ export class App extends PureComponent {
   render() {
     return (
       <div>
-        <ThemeContext.Provider value={{ color: "red", size: 30 }}>
+        {/* <ThemeContext.Provider value={{ color: "red", size: 30 }}>
           <Home />
-        </ThemeContext.Provider>
+        </ThemeContext.Provider> */}
       </div>
     );
   }
