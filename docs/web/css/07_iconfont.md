@@ -1,14 +1,14 @@
 # 图标字体
 
-## 1.图标字体简介
+## 图标字体简介
 
 图标字体(iconfont)：在页面中使用一些图标，可以将图标直接设置为字体，通过`font-face`的形式来对字体引入，可以使用字体的形式使用图标。
 
-## 2.Font Awesome
+## Font Awesome
 
 Font Awesome 是国外的一个图标字体库。
 
-### 2.1.基本使用
+### 基本使用
 
 使用步骤：
 
@@ -21,21 +21,21 @@ Font Awesome 是国外的一个图标字体库。
 4. 使用 link 将 all.css 引入网页
 
    ```css
-      <link rel="stylesheet" href="./fa/css/all.css"
+   <link rel="stylesheet" href="./fa/css/all.css"
    ```
 
 5. 直接通过类名使用图标字体，一般有两种，在两种格式中尝试。
 
    ```css
-      /*fas格式*/
-      <i class="fas fa-bell"></i>
-      /*fab格式*/
-      <i class="fab fa-bell"></i>
+   /*fas格式*/
+   <i class="fas fa-bell"></i>
+   /*fab格式*/
+   <i class="fab fa-bell"></i>
    ```
 
-### 2.2.伪元素使用
+### 伪元素使用
 
-通过伪元素设置图标字体,一般有两种：
+通过伪元素设置图标字体，一般有两种：
 
 - 找到要设置的图标元素通过 before 或 after 选中
 - 在 content 中设置字体编码**一定要加反斜杠**（\字体编码）
@@ -43,18 +43,18 @@ Font Awesome 是国外的一个图标字体库。
 
 ```css
 li::before {
-  content: '\字体编码';
-  font-family: 'Font Awesome 5 Brands'; /*fab格式，选一种*/
-  font-family: 'Font Awesome 5 Free'; /*fas格式，选一种*/
+  content: "\字体编码";
+  font-family: "Font Awesome 5 Brands"; /*fab格式，选一种*/
+  font-family: "Font Awesome 5 Free"; /*fas格式，选一种*/
 }
 ```
 
-### 2.3.实体使用
+### 实体使用
 
 通过实体来使用图标字体，语法：
 
 ```css
-   &#x字体编码;
+&#x字体编码;
 ```
 
 对于 Font Awesome 图标字体库，也需要区分 fas 或 fas

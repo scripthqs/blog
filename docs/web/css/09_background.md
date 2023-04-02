@@ -1,6 +1,6 @@
 # 背景属性
 
-## 1.background-color
+## background-color
 
 background-color 属性设置**背景颜色**
 
@@ -11,13 +11,13 @@ background-color: rgb(255, 0, 0); /*使用rgb*/
 background-color: #f00; /*十六进制*/
 ```
 
-## 2.background-image
+## background-image
 
 background-image 属性设置**背景图片**，属性值需要写**url()**中写路径
 
 ```css
 background-image: url(../img/图片.jpg);
-background-image: url('../img/图片.jpg'); /*加不加引号好像都可以*/
+background-image: url("../img/图片.jpg"); /*加不加引号好像都可以*/
 ```
 
 - 设置背景颜色可以成为背景图片背景色，但是背景图片不透明时会盖住颜色
@@ -39,7 +39,7 @@ background-image: radial-gradient(ellipse, yellow, green); /*椭圆形渐变*/
 background-image: repeating-linear-gradient(red 0px, yellow 50px); /*重复渐变*/
 ```
 
-## 3.background-repeat
+## background-repeat
 
 background-repeat 属性对背景图像进行**平铺**
 
@@ -50,7 +50,7 @@ background-repeat: repeat-x; /*横向平铺*/
 background-repeat: repeat-y; /*纵向平铺*/
 ```
 
-## 4.background-position
+## background-position
 
 background-position 属性可以改变图片在背景中的位置
 
@@ -70,7 +70,7 @@ background-position: left; /*只写一个值时，另一个默认center*/
 
 这个属性是雪碧图的原理。
 
-## 5.background-attachment
+## background-attachment
 
 background-attachment 属性设置图片**固定或者滚动**
 
@@ -79,7 +79,7 @@ background-attachment: scroll; /*默认值，滚动*/
 background-attachment: fixed; /*固定*/
 ```
 
-## 6.background-clip
+## background-clip
 
 background-clip 设置元素的背景（颜色或图片）是否**延伸到边框下边**
 
@@ -89,7 +89,7 @@ background-clip: padding-box; /*超出 padding-box 的部分，将裁剪掉*/
 background-clip: content-box; /*超出 content-box 的部分，将裁剪掉*/
 ```
 
-## 7.background-origin
+## background-origin
 
 background-origin 属性控制背景从**什么地方开始显示**
 
@@ -99,7 +99,7 @@ background-origin: border-box; /*从边框开始显示*/
 background-origin: content-box; /*从内容区开始显示*/
 ```
 
-## 8.background-size
+## background-size
 
 background-size 属性设置背景图片的**尺寸**
 
@@ -111,7 +111,7 @@ background-size: cover; /* 图片始终填充满容器，且保证长宽比不�
 background-size: contain; /* 图片完整地显示在容器中，且保证长宽比不变。可能会导致容器的部分区域为空白。*/
 ```
 
-## 9.background
+## background
 
 background 是背景的简写综合属性，没有特定的书写顺序，一般常用的属性：
 
@@ -120,7 +120,7 @@ background: 背景颜色 背景图片地址 背景平铺 背景图像滚动 背�
 background: color url(img.jpg) no-repeat fixed top;
 ```
 
-## 10.雪碧图
+## 雪碧图
 
 图片属于外部资源，外部资源都需要浏览器单独发送请求加载，浏览器加载外部资源是按需加载的，用则加载，不用则不加载。图片会出现短暂的闪烁。
 
@@ -134,7 +134,7 @@ background: color url(img.jpg) no-repeat fixed top;
 
 雪碧图特点：降低请求次数，加快访问速度，提升用户体验。
 
-## 11.clip-path
+## clip-path
 
 `clip-path`虽然不是背景属性，但常常和背景属性搭配使用。即使做了任何裁剪，容器的占位是一样的。
 

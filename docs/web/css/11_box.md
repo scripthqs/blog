@@ -1,23 +1,19 @@
 # 盒模型
 
-## 1.盒模型简介
+## 盒模型简介
 
 盒模型（box model），无论是 div、span、a 都是盒模型。图片和表单看作文本，并不是盒子。
 
-## 2.盒模型组成
+## 盒模型组成
 
 盒模型由边框(border)、外边距(margin)、内边距(padding)和内容(content)四个部分组成。
-
-![标准盒模型](https://gitee.com/scripthqs/assets/raw/master/html/content_box.jpeg)
-
-![IE盒模型](https://gitee.com/scripthqs/assets/raw/master/html/border_box.jpeg)
 
 - **标准盒子模型**中，width 和 height 指的是**内容区域 content** 的宽度和高度。
 - **IE 盒子模型**（怪异盒模型）中，width 和 height 指的是**内容区域 content + border + padding**的宽度和高度。
 
 通俗来讲，使用 IE 盒模型，设置宽高就是直接设置可见框大小。使用 IE 盒模型开发比较方便。
 
-## 3.box-sizing
+## box-sizing
 
 默认情况下，盒子可见框的大小由内容区、内边距和边框共同决定。
 
@@ -35,7 +31,7 @@ div {
 }
 ```
 
-## 4.border
+## border
 
 border 边框属性可以设置元素的**边框**，border 由 3 部分组成：**边框宽度**、**边框样式**、**边框颜色**。
 
@@ -57,18 +53,18 @@ border-left-width/color/style: ; /*左边框*/
 border 边框属性的简写：
 
 ```css
-    border: 1px solid red /*没有顺序要求*/
-    border-top: 1px double #f00;
-    border-left: none;/*取消左边框*/
+border: 1px solid red /*没有顺序要求*/
+border-top: 1px double #f00;
+border-left: none;/*取消左边框*/
 ```
 
 表格细线边框：
 
 ```css
 table,td,th {
-    border； 1px solid red;
-    border-collapse: collapse;/*合并表格相邻的边框*/
-    text-align: center;/*表格内容居中*/
+  border； 1px solid red;
+  border-collapse: collapse;/*合并表格相邻的边框*/
+  text-align: center;/*表格内容居中*/
 }
 ```
 
@@ -96,7 +92,7 @@ div {
 
 border **也会影响盒子的实际大小**。
 
-## 5.border-radius
+## border-radius
 
 `border-radius`属性可以设置**圆角**，可以设置四个值，设置 4 个圆角。一般都值设置一个。设置 50%可以设置为圆形。
 
@@ -109,9 +105,9 @@ div {
 }
 ```
 
-## 6.padding
+## padding
 
-padding 内边距属性可以设置**内边距**，即边框和内容的距离 。padding 有 4 个方向。
+padding 内边距属性可以设置**内边距**，即边框和内容的距离。padding 有 4 个方向。
 
 ```css
 padding-top: 30px; /*上内边距*/
@@ -128,7 +124,7 @@ padding: 30px 20px 40px 100px; /*(上、右、下、左)（顺时针方向，用
 
 padding **也会影响盒子的实际大小**
 
-## 7.margin
+## margin
 
 margin 外边距属性可以设置**外边距**，即控制盒子于盒子之间的距离。
 
@@ -142,10 +138,12 @@ margin-left: 100px; /*左外边距*/
 margin 外边距的简写：
 
 ```css
-margin: 30px 20px 40px 100px; /*(上、右、下、左)（顺时针方向，用空格隔开*/
+margin: 30px 20px 40px 100px; /*(上、右、下、左)顺时针方向，用空格隔开*/
+margin: 20px 40px 60px; /*(上 20、左右40、下60)3个值时，其实也是顺时针方向，左=右*/
+margin: 20px 40px; /*(上下 20、左右40)2个值时，其实也是顺时针方向，上=下，左=右 */
 ```
 
-## 8.outline
+## outline
 
 outline 属性用来元素的**轮廓**，用法和 border 一样，但不会影响布局。
 
@@ -165,21 +163,21 @@ border-radius: 10px;
 outline: 1px solid red;
 ```
 
-## 9.box-shadow
+## box-shadow
 
 `box-shadow`属性用来设置元素的**阴影效果**，也不会影响布局。
 
 ```css
-box-shadow: 10px 10px 50px 10px rgba; //水平偏移量 垂直偏移量  阴影的模糊半径 阴影尺寸 阴影颜色`
+box-shadow: 10px 10px 50px 10px rgba; /*水平偏移量 垂直偏移量  阴影的模糊半径 阴影尺寸 阴影颜色*/
 ```
 
-box-shadow 支持逗号分割语法，可以创建任意数量的投影
+box-shadow 支持逗号分割语法，可以创建任意数量的投影。
 
 ```css
 box-shadow: 0 0 0 10px #655, 0 0 0 15px red;
 ```
 
-## 10.margin 布局
+## margin 布局
 
 **在标准流的盒子**，margin 外边距可以让块级盒子水平居中，需要满足：
 
@@ -210,7 +208,7 @@ div {
 
 **行内元素不会独占一行，所以设置`padding`、`border`和`margin`不会影响垂直页面布局**
 
-## 11.外边距重叠
+## 外边距重叠
 
 **标准文档流中**，相邻的**垂直方向**外边距会发生**重叠现象**。
 
@@ -224,7 +222,7 @@ div {
 - 只有竖直方向的`margin`才会有塌陷（叠加）现象。
 - 当元素脱离文档流后，`margin`塌陷（叠加）现象会消失。兄弟元素的外边距始终会相加。
 
-## 12.overflow
+## overflow
 
 子元素的大小超过了父元素，则子元素会从父元素中溢出。
 
@@ -239,11 +237,10 @@ div {
 overflow: hidden; /*可以解决外边距重叠*/
 ```
 
-## 13.浏览器默认样式
+## 浏览器默认样式
 
 通常情况下，浏览器会为元素设置默认样式。默认样式的存在会影响页面的布局，通常情况下编写（PC 端）网页时必须去除浏览器的默认样式。
 
 - 通配选择器同时设置`margin:0;`和`padding:0;`可以去除大多数默认样式。
-
 - 引入 reset.css 重置样式表
 - 引入[normalize.css](https://github.com/necolas/normalize.css)重置样式表(移动端)

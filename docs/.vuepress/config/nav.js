@@ -6,11 +6,11 @@ module.exports = [
   {
     text: "前端基础",
     items: [
-      { text: "HTML", link: "/web/html/01web" },
-      { text: "CSS", link: "/web/css/01css" },
-      { text: "JavaScript", link: "/web/js/JavaScript/01JavaScript" },
-      { text: "TypeScript", link: "/web/ts/01ts" },
-      { text: "数据结构和算法", link: "/web/algorithm/docs/01array" },
+      { text: "HTML", link: "/web/html/01_web" },
+      { text: "CSS", link: "/web/css/01_css" },
+      { text: "JavaScript", link: "/web/js/JavaScript/01_JavaScript" },
+      { text: "TypeScript", link: "/web/ts/01_ts" },
+      { text: "数据结构和算法", link: "/web/algorithm/docs/01_array" },
     ],
   },
   {

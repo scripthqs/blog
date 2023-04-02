@@ -6,7 +6,7 @@ HTML5 定义了一系列新元素，如新语义标签、智能表单、多媒�
 
 - 富客户端：具有很强的交互性和体验的客户端程序。比如说，浏览博客，是比较简单的客户端；一个在线听歌的网站、即时聊天网站就是富客户端。
 
-## 1.HTML 的应用场景
+## HTML 的应用场景
 
 1. 极具表现力的网页：内容简约而不简单。
 2. 网页应用程序：
@@ -16,7 +16,7 @@ HTML5 定义了一系列新元素，如新语义标签、智能表单、多媒�
 3. 混合式本地应用。
 4. 简单的游戏。
 
-## 2.语义化的作用
+## 语义化的作用
 
 - 能够便于开发者阅读和写出更优雅的代码。
 - 同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容。
@@ -28,7 +28,7 @@ HTML5 增加了大量有意义的语义标签，更有利于搜索引擎或辅�
 
 最常见的 css+div 传统经典布局：
 
-![传统布局](https://gitee.com/scripthqs/assets/raw/master/html/traditional_layout.png)
+![传统布局](https://raw.githubusercontent.com/scripthqs/assets/master/blog/traditional_layout.png)
 
 ```html
 <!-- 头部 -->
@@ -50,7 +50,7 @@ HTML5 增加了大量有意义的语义标签，更有利于搜索引擎或辅�
 
 html5 经典布局：
 
-![html5经典布局](https://gitee.com/scripthqs/assets/raw/master/html/h5_layout.png)
+![html5经典布局](https://raw.githubusercontent.com/scripthqs/assets/master/blog/h5_layout.png)
 
 ```html
 <!-- 头部 -->
@@ -70,11 +70,11 @@ html5 经典布局：
 <footer></footer>
 ```
 
-## 3.浏览器兼容性
+## 浏览器兼容性
 
 IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览器的兼容性了。
 
-## 4.新增的表单类型
+## 新增的表单类型
 
 `<input>`有以下属性：
 
@@ -93,7 +93,7 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 
 上面的部分类型是针对移动设备生效的，且具有一定的兼容性，在实际应用当中可选择性的使用。
 
-## 5.表单元素（标签）
+## 表单元素（标签）
 
 - `<datalist>` :数据列表
 
@@ -125,7 +125,7 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 <meter value="81" min="0" max="100" low="60" high="80" />
 ```
 
-## 6.表单属性
+## 表单属性
 
 - placeholder 占位符（提示文字）
 - autofocus 自动获取焦点
@@ -136,12 +136,12 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 - required 表示必填项
 - pattern 自定义正则，验证表单
 
-## 7.表单事件
+## 表单事件
 
 - oninput()：用户输入内容时触发，可用于输入字数统计。
 - oninvalid()：验证不通过时触发。比如，如果验证不通过时，想弹出一段提示文字，就可以用到它。
 
-## 8.DOM 操作
+## DOM 操作
 
 获取元素
 
@@ -155,14 +155,14 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 - `Node.classList.add("class")` 添加 class
 - `Node.classList.remove("class")` 移除 class
 - `Node.classList.toggle("class")` 切换 class，有则移除，无则添加
-- `Node.classList.contains("class"`) 检测是否存在 class
+- `Node.classList.contains("class")`检测是否存在 class
 
 自定义属性
 
 - js 里可以通过 box1.index=100; box1.title 来自定义属性和获取属性。
 - H5 可以直接在标签里添加自定义属性，但必须以 data- 开头。(**图片懒加载会使用到**)
 
-## 9.拖拽属性
+## 拖拽属性
 
 在 HTML5 的规范中，我们可以通过为元素增加 draggable="true" 来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启拖拽的。
 
@@ -173,7 +173,7 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 - `ondragend` 当拖拽结束时调用
 - `ondrag` 整个拖拽过程都会调用
 
-## 10.目标元素
+### 目标元素
 
 比如说，你想把元素 A 拖拽到元素 B 里，那么元素 B 就是目标元素。页面中任何一个元素都可以成为目标元素。
 
@@ -184,9 +184,9 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 - `ondrop` 当在目标元素上松开鼠标时调用
 - `ondragleave` 当鼠标离开目标元素时调用
 
-## 11.历史
+## 历史
 
-界面上所有的 JS 操作不会被浏览器记住，就无法回到之前的状态，在 HTML5 中可以通过`window.history`对象操作访问历史状态，让一个页面可以有多个历史状态。
+界面上所有的 JS 操作不会被浏览器记住，无法回到之前的状态，在 HTML5 中可以通过`window.history`对象操作访问历史状态，让一个页面可以有多个历史状态。
 `window.history`可以让我们管理历史记录，用于单页面应用(Single Page Application)，可以无刷新改变网页内容。
 
 - `windows.history.forward();`:前进
@@ -194,7 +194,7 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 - `window.history.go();` :刷新
 - `window.history.go(n);`: //n=1 表示前进；n=-1 后退；n=0s 刷新。如果移动的位置超出了访问历史的边界，会静默失败，但不会报错。
 
-## 12.地理定位
+## 地理定位
 
 我们可以基于用户位置开发互联网应用，即基于位置服务 LBS (Location Base Service)。获取地理信息的方式：
 
@@ -206,7 +206,7 @@ IE 浏览器已经退出历史的舞台，现在基本不需要考虑 IE 浏览�
 
 浏览器会自动以最优方式去获取用户地理信息。HTML5 Geolocation（地理位置定位）规范提供了一套保护用户隐私的机制，必须先得到用户明确许可，可能获得用户的位置信息。
 
-## 13.全屏
+## 全屏
 
 HTML5 规范允许用户自定义网页上任一元素全屏显示。
 
@@ -227,7 +227,7 @@ HTML5 规范允许用户自定义网页上任一元素全屏显示。
 
 比如说，当元素处于全屏状态时，改变它的样式。这时就可以用到伪类。
 
-## 14.Web 存储
+## Web 存储
 
 在网页中，会经常性在本地存储大量的数据，传统方式我们以`document.cookie`来进行存储，但是存储大小只有 4kb 左右，解析也非常复杂，H5 有两种存储方式：
 
@@ -249,3 +249,11 @@ Web 存储的特性：
 3. 只能存储字符串，可以将对象 JSON.stringfy() 编码后存储
 
 JSON.stringify() 方法将一个 JavaScript 对象或值转换为 JSON 字符串。
+
+## Canvas 绘图
+
+可以使用 js 在其中绘制图像
+
+```html
+<canvas id="tutorial" width="300" height="300"></canvas>
+```

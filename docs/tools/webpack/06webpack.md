@@ -1,6 +1,6 @@
 # Plugin 插件
 
-## 1.plugin 简介
+## plugin 简介
 
 plugin 是插件的意思，通过安装和配置第三方的插件，**可以拓展 webpack 的能力**，从而让 webpack 用起来更方便。比如打包优化，文件压缩等。
 
@@ -18,7 +18,7 @@ plugin 是插件的意思，通过安装和配置第三方的插件，**可以�
 - webpack 中的 HTML 插件（类似于一个模板引擎插件）
 - 可以通过此插件自定制 index.html 页面的内
 
-## 2.webpack-dev-server
+## webpack-dev-server
 
 `webpack-dev-server` 可以让 webpack **监听项目源代码的变化**，从而进行**自动打包构建**
 
@@ -64,7 +64,7 @@ webpack-dev-server 生成到内存中的文件，默认放到了项目的根目�
 - 可以直接用 `/` 表示项目根目录，后面跟上要访问的文件名称，即可访问内存中的文件
 - 例如 `/bundle.js` 就表示要访问 `webpack-dev-server` 生成到内存中的 `bundle.js` 文件
 
-## 3.html-webpack-plugin
+## html-webpack-plugin
 
 `html-webpack-plugin` 是 webpack 中的 HTML 插件，可以通过此插件自定制 index.html 页面的内容。
 
@@ -79,7 +79,7 @@ npm install html-webpack-plugin@5.3.2 -D
 
 2.在 webpack.config.js 中配置 html-webpack-plugin
 
-```js
+```json
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
@@ -103,16 +103,16 @@ module.exports = {
 - 通过 HTML 插件复制到项目根目录中的 index.html 页面，也被放到了内存中
 - HTML 插件在生成的 index.html 页面，**自动注入了打包的 bundle.js 文件**
 
-## 4.devServer 节点
+## devServer 节点
 
 在 webpack.config.js 配置文件中，可以通过 devServer 节点对 webpack-dev-server 插件进行更多的配置，
 
-```js
-  devServer: {
-    open: true,//自动打开浏览器
-    host: '127.0.0.1',
-    port: 9999
-  }
+```json
+devServer: {
+  open: true,//自动打开浏览器
+  host: '127.0.0.1',
+  port: 9999
+}
 ```
 
 注意：
