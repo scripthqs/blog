@@ -44,7 +44,7 @@ const newObj = { name: "aaa", id: "3" };
 // 在PureComponent是不能引入重新渲染(re-render)
 this.state.lists.push(newObj);
 this.setState({ lists: this.state.lists });
-// 2.赋值一份lists, 在新的lists中修改, 设置新的lists
+// 2.赋值一份lists, 在新的lists中修改, 设置新的lists(正确写法)
 const lists = [...this.state.lists];
 lists.push(newObj);
 this.setState({ lists: lists });
