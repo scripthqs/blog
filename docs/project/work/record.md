@@ -137,10 +137,6 @@ const funForm = async () => {
 };
 ```
 
-```json
-
-```
-
 ## object-fit
 
 object-fit 属性指定元素的内容应该如何去适应指定容器的高度与宽度。
@@ -148,14 +144,6 @@ object-fit 属性指定元素的内容应该如何去适应指定容器的高度
 - contain 保持原有尺寸比例。内容被缩放。
 - fill 默认，不保证保持原有的比例，内容拉伸填充整个内容容器
 - cover 保持原有尺寸比例。但部分内容可能被剪切。
-
-## 供应商和采购商
-
-三种角色，采购商、供应商、二者都是。供应商可以买东西，采购商只能买东西。然后作为供应商时，可以取买东西，但是在管理系统中，发现该供应商没有采购商 id，导致接口报错。
-
-## Jenkins 的 CI/CD
-
-## I18N 国际化
 
 ## 倒计时
 
@@ -205,4 +193,68 @@ const itemEls = document.querySelectorAll(".item");
 for (const item of itemEls) {
   item.style.backgroundColor = getRandomColor();
 }
+```
+
+## dayjs 格式化时间 UTC
+
+```js
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
+
+//北京时间加 8小时
+export function formatUTC(utcString: string, format: string = "YYYY/MM/DD HH:mm:ss") {
+  const resultTime = dayjs
+    .utc(utcString)
+    .utcOffset(8)
+    .format(format);
+  return resultTime;
+}
+```
+
+## 封装 storage
+
+```js
+enum CacheType {
+  Local,
+  Session
+}
+
+class Cache {
+  storage: Storage
+
+  constructor(type: CacheType) {
+    this.storage = type === CacheType.Local ? localStorage : sessionStorage
+  }
+
+  setCache(key: string, value: any) {
+    if (value) {
+      this.storage.setItem(key, JSON.stringify(value))
+    }
+  }
+
+  getCache(key: string) {
+    const value = this.storage.getItem(key)
+    if (value) {
+      return JSON.parse(value)
+    }
+  }
+
+  removeCache(key: string) {
+    this.storage.removeItem(key)
+  }
+
+  clear() {
+    this.storage.clear()
+  }
+}
+
+const localCache = new Cache(CacheType.Local)
+const sessionCache = new Cache(CacheType.Session)
+
+export { localCache, sessionCache }
+
+// import { localCache ,sessionCache} from '@/utils/cache'
+
 ```

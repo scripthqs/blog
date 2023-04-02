@@ -39,7 +39,7 @@ html 将所有标签分为两种：
 - 文本级标签：p、span、a 等，文本级标签只能放文字、图片、表单元素等，a 标签不能放 a 和 input 。
 - 容器级标签：div、h、li、dt、dd 等，容器级标签可以放任何东西。
 
-![标签分类](https://gitee.com/scripthqs/assets/raw/master/html/element.png)
+![标签分类](https://raw.githubusercontent.com/scripthqs/assets/master/blog/element.png)
 
 ## 属性
 

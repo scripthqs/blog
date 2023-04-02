@@ -3,7 +3,7 @@
 ## 创建 React 项目
 
 ```bash
-create-react-app projectName
+npx create-react-app projectName
 ```
 
 ## 项目配置
@@ -43,24 +43,27 @@ create-react-app projectName
       },
     },
   };
+
+  //修改package.json script
+  "dev": "craco start"
   ```
 
 - css 样式重置： normalize.css 和 reset.css
 
-```js
-//npm i normalize.css
-import "normalize.css"
+  ```js
+  //npm i normalize.css
+  import "normalize.css"
 
-//index.less
-@import "./reset.less";
-```
+  //index.less
+  @import "./reset.less";
+  ```
 
 - 安装 classnames 库
 
-```js
-//  npm i classnames
-import classNames from "classnames";
-```
+  ```js
+  //  npm i classnames
+  import classNames from "classnames";
+  ```
 
 ## Router 路由配置
 
@@ -254,4 +257,10 @@ export default theme;
 
 //-------------------------------------------------
 color: ${(props) => props.theme.color.primaryColor};
+```
+
+## 创建 React + TypeScript 项目
+
+```bash
+npx create-react-app projectName --template typescipt
 ```

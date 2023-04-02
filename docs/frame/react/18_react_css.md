@@ -32,7 +32,7 @@ Vue 的 css 编写方法好于 React
 - 某些样式没有提示
 - 大量的样式，代码混乱
 
-```js
+```jsx
 import React, { PureComponent } from "react";
 export default class ReactStyle extends PureComponent {
   constructor() {
