@@ -68,7 +68,7 @@ EditorConfig 有助于为不同 IDE 编辑器上处理同一项目的多个开�
 - 这个文件默认配置是没有的，可以手动新建`.editorconfig`文件
 - VSCode 需要安装一个插件：EditorConfig for VS Code
 
-```yam
+```json
 # http://editorconfig.org
 
 root = true

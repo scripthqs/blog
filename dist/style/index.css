@@ -2,7 +2,7 @@
   font-family: "Times New Roman";
 }
 
-#app>div.theme-container.no-sidebar>main>header>p.action>a {
+#app > div.theme-container.no-sidebar > main > header > p.action > a {
   border: 2px solid #f00;
   border-radius: 15px;
   background-color: #f00;
