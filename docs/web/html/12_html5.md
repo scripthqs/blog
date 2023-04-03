@@ -257,3 +257,16 @@ JSON.stringify() 方法将一个 JavaScript 对象或值转换为 JSON 字符串
 ```html
 <canvas id="tutorial" width="300" height="300"></canvas>
 ```
+
+## Data 属性
+
+```html
+<div class="box" age="20" data-name="abcd" data-age="25" data-mes="hell world"></div>
+<h1 class="title"></h1>
+
+<script>
+  const boxEl = document.querySelector(".box");
+  console.log(boxEl);
+  console.log(boxEl.dataset); //可以拿到data对象里面的数据
+</script>
+```

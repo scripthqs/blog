@@ -26,12 +26,34 @@ html 的单位只有像素 px 一种，可以省略不写。CSS 默认没有单�
 2. font-size 相对于父元素的 font-size 来计算，如果父元素（以及它的祖先元素）未显式设置`font-size`值的话，将会以浏览器的默认值`16px`为基准。
 3. `line-height`取值为`%`时，它的计算方式是基于元素自身的`font-size`的值来计算。如果元素自身未显式设置`font-size`，则会基于元素继承过来的`font-size`的值计算
 
-## 222em
+## em
 
 em 是相对于父元素的字体大小来计算的，具有继承的特点。如果自身定义了 font-size 按自身来计算（浏览器默认字体是 16px），整个页面内 1em 不是一个固定的值。
 
 - 1em = 1font-size
 - em 会根据字体的大小改变而改变
+
+```css
+.container {
+  font-size: 15px;
+}
+
+.box {
+  /* font-size: 20px; */
+  /* 如果自己没有设置, 那么会继承父元素的font-size */
+
+  /* 
+      如果font-size中有写em单位, 可以理解成相对于父元素
+      但是更准确的理解依然是相对于自己的
+       */
+  /* font-size: 1em; */
+
+  /* 1.em: 相对自己的font-size */
+  width: 10em;
+  height: 5em;
+  background-color: orange;
+}
+```
 
 ## rem
 

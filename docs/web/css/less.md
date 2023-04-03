@@ -1,12 +1,12 @@
 # less
 
-## 1.less 介绍
+## less 介绍
 
 less 是一门 css 预处理语言，less 是 css 增强版，通过 less 可以编写更少的代码实现更强大的样式。
 
 常见的 css 预处理器：sass、less、stylus
 
-## 2.less 变量
+## less 变量
 
 变量时指没有固定的值，可以改变的。因为 css 中的一些颜色和数值经常使用。
 
@@ -48,14 +48,14 @@ less 中添加了许多的新特性，语法大体和 css 一致，但是 less �
 - `.map`
 
 ```less
-      "less.compile": {
-        "compress": false, // true => remove surplus whitespace
-        "sourceMap": true, // true => generate source maps (.css.map files)
-        "out": true // false => DON'T output .css files (overridable per-file, see below)
-    }
+"less.compile": {
+  "compress": false, // true => remove surplus whitespace
+  "sourceMap": true, // true => generate source maps (.css.map files)
+  "out": true // false => DON'T output .css files (overridable per-file, see below)
+}
 ```
 
-## 3.mixin 混合函数
+## mixin 混合函数
 
 在混合函数中可以直接设置变量
 
@@ -91,4 +91,185 @@ div {
 div {
   .test(200px);
 }
+```
+
+## less 样式
+
+less 兼容 less，支持变量、嵌套
+
+```less
+// 1.兼容CSS代码
+// .box {
+//   width: 100px;
+//   height: 100px;
+//   background-color: orange;
+//   font-size: 20px;
+//   color: #fff;
+// }
+
+// 2.定义变量
+@mainColor: #a40011;
+
+@smallFontSize: 12px;
+@normalFontSize: 14px;
+@bigFontSize: 18px;
+
+// .box .pel {
+//   color: @mainColor;
+//   font-size: @normalFontSize;
+// }
+
+// .box h1 .keyword .section .list .item a .desc {
+//   color: @mainColor;
+//   font-size: @bigFontSize;
+// }
+
+// .box p .link {
+//   color: @mainColor;
+//   font-size: @smallFontSize;
+// }
+
+// 3.选择器的嵌套
+.box {
+  .pel {
+    color: @mainColor;
+    font-size: @normalFontSize;
+  }
+
+  h1 {
+    .keyword {
+      color: @mainColor;
+      font-size: @bigFontSize;
+    }
+  }
+
+  p {
+    a.link {
+      color: @mainColor;
+      font-size: @smallFontSize;
+
+      background-color: #0f0;
+
+      &:hover {
+        color: #00f;
+      }
+    }
+  }
+}
+
+// &符号的练习
+.list {
+  .item {
+    font-size: 20px;
+
+    &:hover {
+      color: @mainColor;
+    }
+
+    &:nth-child(1) {
+      color: orange;
+    }
+
+    &:nth-child(2) {
+      color: #00f;
+    }
+  }
+}
+```
+
+less 混入可以像定义函数一样
+
+```less
+// 1.运算
+// .box {
+//   font-size: 20px;
+//   width: 10% + 50px;
+//   height: 100px;
+//   background-color: #ff0000 + #00ff00;
+// }
+
+// px to rem
+
+// 2.混入
+// 2.1. 混入的基本使用
+.nowrap_ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 2.2.混入是可以传递参数(定义变量)的
+.box_border(@borderWidth: 5px, @borderColor: purple) {
+  border: @borderWidth solid @borderColor;
+}
+
+// 2.3.混入和映射(Map)结合使用
+// 作用: 弥补less中不能自定义函数的缺陷
+.box_size {
+  width: 100px;
+  height: 100px;
+}
+
+.box1 {
+  width: .box_size() [width];
+  background-color: #f00;
+
+  .nowrap_ellipsis();
+  .box_border();
+}
+
+.box2 {
+  width: 150px;
+  background-color: #0f0;
+
+  .nowrap_ellipsis();
+  .box_border(10px, orange);
+}
+```
+
+less 像 js 一样，支持继承，函数，导入等功能
+
+```less
+// 1.extend
+// .box_border {
+//   border: 5px solid #f00;
+// }
+
+// .box {
+//   width: 100px;
+//   background-color: orange;
+
+//   // .box_border();
+//   &:extend(.box_border);
+// }
+
+// 2.内置函数
+// .box {
+//   color: color(skyblue);
+//   width: convert(100px, "in");
+//   font-size: ceil(18.5px);
+//   background-color: orange;
+// }
+
+// 3.作用域(scope)
+@mainColor: #f00;
+
+.box_mixin {
+  @mainColor: orange;
+}
+
+.box {
+  // @mainColor: #0f0;
+  .item {
+    span {
+      color: @mainColor;
+      .box_mixin();
+      // @mainColor: #00f;
+    }
+  }
+}
+
+// 4.注释(comment)
+// 单行注释
+/* 多行注释 */
 ```

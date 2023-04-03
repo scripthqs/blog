@@ -20,15 +20,14 @@ js 数字类型既可以用来保存整数值，也可以保存小数（浮点�
 几个特殊的数字：
 
 ```js
-    +Infinity 正无穷，超过最大值返回
-    -Infinity 负无穷
-    NaN 非数值，Not-a-Number
-    Number.MAX_VALUE js可表示的最大值
-    Number.MIN_VALUE js可表示的最小正值
++Infinity 正无穷，超过最大值返回
+-Infinity 负无穷
+NaN 非数值，Not-a-Number
+Number.MAX_VALUE js可表示的最大值
+Number.MIN_VALUE js可表示的最小正值
 ```
 
-- NaN 与任何值都不相等，包括 NaN 本身，Undefined 和任何数值计算的结果都是 NaN。
-
+- NaN 与任何值都不相等，包括 NaN 本身，Undefined 和任何数值计算的结果都是 NaN
 - `+0 === -0`但是做分母是，返回值不一样
 
 ### 数字进制

@@ -17,9 +17,9 @@
 声明/定义变量
 
 ```js
-     var name; //声明一个名为`name`的变量。ES6之前都用`var`
-     const name;//定义一个常量
-     let age;//定义一个变量
+var name; //声明一个名为`name`的变量。ES6之前都用`var`
+const name;//定义一个常量
+let age;//定义一个变量
 ```
 
 变量的赋值

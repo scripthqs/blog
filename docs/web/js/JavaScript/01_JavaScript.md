@@ -63,7 +63,7 @@ vscode 输入`/**`就会自动补全文档注释
 - 表单动态校验（密码强度检测）**js 最初的目的**
 - 网页特效
 - 服务端开发（node.js）
-- 桌面应用程序（Electron)
+- 桌面应用程序（Electron）
 - App（Cordova）
 - 控制硬件-物联网（Ruff）
 - 游戏开发（cocos2d-js）
