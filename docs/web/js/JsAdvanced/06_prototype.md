@@ -1,11 +1,9 @@
 # 原型与原型链
 
-## 1、构造函数
+## 构造函数
 
 - 构造函数习惯**首字母大写**
-
 - 构造函数内部使用**this 对象**，来指向将要**生成的对象实例**。
-
 - **使用 new 操作符来调用构造函数，并返回对象实例**
 
 ```js
@@ -22,13 +20,13 @@ console.log(per.name); //'Tom'
 console.log(this.name); //'Tom'
 ```
 
-## 2.`prototype`
+## `prototype`
 
 - 每一个**构造函数**都有一个**prototype**属性，这个属性就是对象实例的**原型对象**。
 
 ```js
- Person.prototype是new Person的原型对象
- console.log(Person.prototype)
+Person.prototype是new Person的原型对象
+console.log(Person.prototype)
 ```
 
 - 原型对象中有一个属性 constructor，指向构造函数
@@ -48,9 +46,9 @@ console.log(per.test);
 per.fun();
 ```
 
-**原型对象的作用，就是定义所有对象实例所共享的属性和方法。**
+**原型对象的作用，就是定义所有对象实例所共享的属性和方法**。
 
-## 3.`__proto__`
+## `__proto__`
 
 每一个**构造函数**都有一个**prototype**属性，称为显式原型属性。
 
@@ -100,55 +98,55 @@ function Person() {
 Person.prototype === per.__proto__;
 ```
 
-![显示原型和隐式原型](https://gitee.com/scripthqs/assets/raw/master/js/%E6%98%BE%E7%A4%BA%E5%8E%9F%E5%9E%8B%E5%92%8C%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png)
+![显示原型和隐式原型](https://raw.githubusercontent.com/scripthqs/assets/master/blog/%E6%98%BE%E7%A4%BA%E5%8E%9F%E5%9E%8B%E5%92%8C%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B.png)
 
-## 4.原型链
+## 原型链
 
 为什么实例对象 fn 可以访问到构造函数 Fun 定义到原型对象的方法？
 
 1. 访问一个对象的属性，先在自身寻找，找到返回
-
 2. 找不到沿着`__proto__`这条链找，找到返回
-
 3. 最终没找到，**返回 undefined**
 
 所以**原型链是隐式原型链**，作用：查找对象属性（方法）
 
-<img src="https://gitee.com/scripthqs/assets/raw/master/js/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt="原型链" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/scripthqs/assets/master/blog/%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt="原型链" style="zoom:80%;" />
+
+<!-- ![](https://raw.githubusercontent.com/scripthqs/assets/master/blog/%E5%8E%9F%E5%9E%8B%E9%93%BE.png) -->
 
 1. **构造函数的显示原型的值===实例对象的隐式原型的值**
 
-```js
-Foo.prototype === f1.__proto__;
-Objcet.prototype === o1.__proto__;
-```
+   ```js
+   Foo.prototype === f1.__proto__;
+   Object.prototype === o1.__proto__;
+   ```
 
 2. 所有**原型对象和实例对象**都是**Object**的实例(**除 Object 的原型对象外，它是指向 null**)
 
-```js
-((Function.prototype.__proto__ === o1.__proto__) === f1.__proto__.__proto__) === Object.prototype;
-Function.prototype.__proto__ === Object.prototype;
-Foo.prototype.__proto__ === Object.prototype; //所有原型对象都是Object的实例对象
-Object.prototype.__proto__ === null; //Object函数的原型对象是原型链的尽头
-```
+   ```js
+   ((Function.prototype.__proto__ === o1.__proto__) === f1.__proto__.__proto__) === Object.prototype;
+   Function.prototype.__proto__ === Object.prototype;
+   Foo.prototype.__proto__ === Object.prototype; //所有原型对象都是Object的实例对象
+   Object.prototype.__proto__ === null; //Object函数的原型对象是原型链的尽头
+   ```
 
 3. **所有的函数都是 Function 的实例**
 
-```js
-Function.prototype === Function.__proto__; //Function是new Function()产生的
-Function.prototype === Object.__proto__; //Object也是new Function()产生的
-Function.prototype === Foo.__proto__; //所有函数都是Function的实例对象
-(Function.__proto__ === Object.__proto__) === Foo.__proto__; //所有函数的隐式原型的值都相等
-Function的实例对象和原型对象是同一个;
-```
+   ```js
+   Function.prototype === Function.__proto__; //Function是new Function()产生的
+   Function.prototype === Object.__proto__; //Object也是new Function()产生的
+   Function.prototype === Foo.__proto__; //所有函数都是Function的实例对象
+   (Function.__proto__ === Object.__proto__) === Foo.__proto__; //所有函数的隐式原型的值都相等
+   Function的实例对象和原型对象是同一个;
+   ```
 
 4. **所有原型对象都有一个 constructor 属性，指向函数对象。**
 
-```js
-Function.prototype.constructor = Function;
-Object.prototype.constructor = Object;
-Foo.prototype.constructor = Foo;
-```
+   ```js
+   Function.prototype.constructor = Function;
+   Object.prototype.constructor = Object;
+   Foo.prototype.constructor = Foo;
+   ```
 
 - 由图可知，只要在 Object 原型对象添加方法，所有的构造函数和实例对象都能够访问。
 
@@ -166,13 +164,13 @@ Function.hqs();
 Object.hqs();
 ```
 
-## 5.原型继承
+## 原型继承
 
 构造函数的实例对象自动拥有构造函数原型对象的属性（方法）。
 
 - 原理：原型链
 
-## 6.instanceof
+## instanceof
 
 - A instanceof B
 - instance 是实例的意思，判断 A 是否是 B 的实例，返回 true，否则返回 false。
@@ -200,19 +198,19 @@ function myInstanceof(left, right) {
 
 **[语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf#语法)**
 
-```
-Object.getPrototypeOf(object)
+```js
+Object.getPrototypeOf(object);
 ```
 
-**参数**
+**参数**:
 
 - obj，要返回其原型的对象。
 
-**返回值**
+**返回值**:
 
 - 给定对象的原型。如果没有继承属性，则返回 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)
 
-## 7.constructor
+## constructor
 
 实例对象中会存在一个 constructor 属性，这个属性指向创造它的构造函数(沿着原型链找到的)，原型对象中也有一个 constructor 属性，指向函数对象。
 
@@ -223,7 +221,7 @@ P1.__proto__.constructor === Person;
 Person.prototype.constructor = Person;
 ```
 
-**constructor 记录该对象引用了哪个构造函数**
+**constructor 记录该对象引用了哪个构造函数**。
 
 很多时候，需要手动使用 constructor 属性指回原来的构造函数
 
@@ -245,8 +243,7 @@ console.log(Person.prototype.constructor); //如果不使用constructor属性，
 `constructor`有两个作用
 
 1. 判断数据的类型，
-
-2. 对象实例通过 `constrcutor` 对象访问它的构造函数。
+2. 对象实例通过 `constructor` 对象访问它的构造函数。
 
 ```js
 console.log((2).constructor === Number); // true
@@ -267,7 +264,7 @@ console.log(f.constructor === Fn); // false
 console.log(f.constructor === Array); // true
 ```
 
-## 8.Object.prototype.toString.call()
+## Object.prototype.toString.call()
 
 `Object.prototype.toString.call()` 使用 Object 对象的原型方法 toString 来判断数据类型：
 
@@ -287,17 +284,16 @@ console.log(a.call(/\d/)); //[object RegExp]
 
 RegExp、Array、function 等**类型作为 Object 的实例，都重写了 toString 方法**
 
-## 9.hasOwnProperty()
+## hasOwnProperty()
 
 使用`hasOwnProperty()`方法来判断属性是否属于原型链的属性：
 
-```
-function iterate(obj){
-   var res=[];
-   for(var key in obj){
-        if(obj.hasOwnProperty(key))
-           res.push(key+': '+obj[key]);
-   }
-   return res;
+```js
+function iterate(obj) {
+  var res = [];
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) res.push(key + ": " + obj[key]);
+  }
+  return res;
 }
 ```

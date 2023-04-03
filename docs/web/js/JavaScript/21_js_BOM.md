@@ -6,7 +6,7 @@ JavaScript 基础分为三个部分：
 - **DOM**：文档对象模型，操作**网页上的元素**的 API。比如让盒子移动、变色、轮播图等。
 - **BOM**：浏览器对象模型，操作**浏览器部分功能**的 API。比如让浏览器自动滚动。
 
-## 1、BOM 简介
+## BOM 简介
 
 浏览器对象模型（Browser Object Model），操作浏览器部分功能的 API。比如让浏览器自动滚动。
 
@@ -15,7 +15,7 @@ JavaScript 基础分为三个部分：
 
 **BOM 结构图：**
 
-![BOM](https://gitee.com/scripthqs/assets/raw/master/js/BOM.png)
+![BOM](https://raw.githubusercontent.com/scripthqs/assets/master/blog/BOM.png)
 
 - **window 对象是 BOM 的顶层(核心)对象**，所有对象都是通过它延伸出来的，也可以称为 window 的子对象。
 - DOM 也是 BOM 的一部分。
@@ -32,7 +32,7 @@ JavaScript 基础分为三个部分：
 
 这些对象都是作为`window`对象的属性保存的，可以通过`window`对象来使用，也可以直接使用。
 
-## 2、window
+## window
 
 - **window 对象是 JavaScript 中的顶级对象**。
 - 全局变量、自定义函数也是 window 对象的属性和方法。
@@ -40,16 +40,16 @@ JavaScript 基础分为三个部分：
 
 浏览器的三种弹窗，都是 window 的方法：alert()是 window.alert()的简写
 
-```
- alert();
- confirm();
- prompt();
+```js
+alert();
+confirm();
+prompt();
 ```
 
 1、打开窗口：
 
-```
- window.open(url,target,param)
+```js
+window.open(url, target, param);
 ```
 
 **参数解释：**
@@ -81,42 +81,42 @@ JavaScript 基础分为三个部分：
 
 2、关闭窗口：window.close()
 
-```js
+```html
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
+  <head lang="en">
+    <meta charset="UTF-8" />
     <title>窗口</title>
-</head>
-<body>
-<a href="javascript:;">点击我打开一个新的页面</a>
-<a href="javascript:;">点击我关闭本页面</a>
-<script>
-    var a1 = document.getElementsByTagName("a")[0];
-    var a2 = document.getElementsByTagName("a")[1];
-    a1.onclick = function () {
+  </head>
+  <body>
+    <a href="javascript:;">点击我打开一个新的页面</a>
+    <a href="javascript:;">点击我关闭本页面</a>
+    <script>
+      var a1 = document.getElementsByTagName("a")[0];
+      var a2 = document.getElementsByTagName("a")[1];
+      a1.onclick = function() {
         var json = {
-            "name": "helloworld",
-            "fullscreen": "no",
-            "location": "no",
-            "width": "100px",
-            "height": "100px",
-            "top": "100px",
-            "left": "100px"
+          name: "helloworld",
+          fullscreen: "no",
+          location: "no",
+          width: "100px",
+          height: "100px",
+          top: "100px",
+          left: "100px",
         };
         //新窗口 = window.open(地址,是否开新窗口,新窗口的各种参数);
         window.open("http://www.baidu.com", "_blank", json);
-    }
-    a2.onclick = function () {
+      };
+      a2.onclick = function() {
         //关闭本页面
         window.close();
-    }
-</script>
-</body>
+      };
+    </script>
+  </body>
 </html>
 ```
 
-## 3、location
+## location
 
 `window.location`可以简写成 location。location 相当于浏览器地址栏，可以将 url 解析成独立的片段。
 
@@ -128,15 +128,13 @@ JavaScript 基础分为三个部分：
 - `location.replace();`使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用「后退按钮」后退。
 
 ```js
-<script>
- //5秒后自动跳转到百度。
-    setTimeout(function () {
-        location.href = "http://www.baidu.com";
-    }, 5000);
-</script>
+//5秒后自动跳转到百度。
+setTimeout(function() {
+  location.href = "http://www.baidu.com";
+}, 5000);
 ```
 
-## 4、navigator
+## navigator
 
 `navigator.userAgent`可以获取浏览器的信息。
 
@@ -150,7 +148,7 @@ console.log(navigator.userAgent);
 console.log(navigator.platform);
 ```
 
-## 5、history
+## history
 
 - `history.length`获取浏览器历史列表中的 url 数量。注意，只是统计当次的数量，如果浏览器关了，数量会重置为 1。
 - `history.back();`用来回退到上一个页面，作用和浏览器的回退按钮一样。

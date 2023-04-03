@@ -1,6 +1,6 @@
 # DOM 事件
 
-## 1、事件的简介
+## 事件的简介
 
 用户和浏览器之间的交互行为。点击某个元素、鼠标移动，关闭弹窗等等。
 
@@ -18,7 +18,7 @@ JavaScript 是以事件驱动为核心的语言。js 和 html 之间的交互是
    - box.onclick = function(){alert("box 被点击")};
 3. 书写事件驱动程序：关于 DOM 的操作
 
-## 2、事件对象 event
+## 事件对象 event
 
 当事件的响应函数被触发时，会产生一个事件对象 event。浏览器每次都会将这个事件 event 作为实参传递给之前的响应函数。
 
@@ -40,27 +40,27 @@ JavaScript 是以事件驱动为核心的语言。js 和 html 之间的交互是
 - `clientX`和`clientY`光标在可视区域的距离
 - `screenX`和`screenY`光标相对于浏览器的距离
 
-## 3、事件的冒泡 Bubble
+## 事件的冒泡 Bubble
 
 - 指事件的向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发。
 - `div -> body -> html -> document -> window`
 - 从开发的角度，冒泡多数情况是有用的。
 - `event.cancelBubble = true;`可以取消冒泡
 
-## 4、事件的委派（委托）
+## 事件的委派（委托）
 
 - 将事件统一绑定给元素的共同祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先元素，通过祖先元素的响应函数来处理事件。
 - 事件的委派利用了冒泡的原理，通过委派减少事件的绑定次数，提高程序的性能。
 - 如果触发事件的对象是我们期望的元素，则执行,否则不执行。
 - event 中的 target 表示触发事件的对象。
 
-## 5、事件的绑定（注册）
+## 事件的绑定（注册）
 
 绑定（注册）事件的两种方式：
 
 - `onclick`
 
-  - `element.onclick = functon(){}`
+  - `element.onclick = function(){}`
   - `DOM对象.事件 = 函数`的这种绑定事件的方式，一个元素的一个事件只能绑定一个响应函数。绑定多个时，后者会覆盖前者。
 
 - `addEventListener`
@@ -79,7 +79,7 @@ JavaScript 是以事件驱动为核心的语言。js 和 html 之间的交互是
   - 注意：执行顺序是，后绑定的先执行。
   - attachEvent()中的 this，是 window
 
-## 6、事件的传播
+## 事件的传播
 
 事件的传播有 3 个阶段：事件捕获、冒泡、目标。
 
@@ -94,7 +94,7 @@ JavaScript 是以事件驱动为核心的语言。js 和 html 之间的交互是
 - 第一个接收到事件的对象是 window
 - js 中设计到 DOM 对象时，有两个对象最常用：window、document。它们两个是最先获取到事件的。
 
-## 7、鼠标事件
+## 鼠标事件
 
 鼠标拖拽事件：
 
@@ -137,7 +137,7 @@ document.addEventListener(
 
 - 通过 addEventLister()方法绑定的响应函数，取消默认行为不能使用`return false`，而是使用`event.preventDefault();`
 
-## 8、键盘事件
+## 键盘事件
 
 - `onkeydown`按键被按下
 - `onkeyup`按键被松开

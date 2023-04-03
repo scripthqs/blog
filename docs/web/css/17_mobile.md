@@ -78,3 +78,181 @@ background-size: contain; /* 图片完整地显示在容器中，且保证长宽
   ```
 
   此时，width 和 height 用来设置内容区 content + padding + border 和的大小。即**设置 padding 和 border 不再撑大盒子**
+
+## rem
+
+rem（root em）是一个相对单位，类似于 em，em 是父元素字体的大小。不同的是 rem 的基准是相对于 html 元素的字体大小。
+
+```css
+.container {
+  font-size: 15px;
+}
+
+.box {
+  /* font-size: 20px; */
+  /* 如果自己没有设置, 那么会继承父元素的font-size */
+
+  /* 
+      如果font-size中有写em单位, 可以理解成相对于父元素
+      但是更准确的理解依然是相对于自己的
+       */
+  /* font-size: 1em; */
+
+  /* 1.em: 相对自己的font-size */
+  width: 10em;
+  height: 5em;
+  background-color: orange;
+}
+
+/* <div class="container">
+    <div class="box">我是box</div>
+  </div> */
+```
+
+## 媒体查询
+
+- 使用媒体查询（media query）可以根据不同的媒体类型定义不同的样式
+- @media 可以针对不同的屏幕尺寸设置不同的样式
+- 当重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面
+
+```css
+@media mediatype and|not|only (media feature){
+    css-code;
+}
+```
+
+- @media 开头 注意@符号
+- mediatype 媒体类型
+- 关键字 and not only
+- media feature 媒体特性 必须有小括号包含
+
+### mediatype
+
+将不同的终端设备划分成不同的类型。称为媒体类型
+
+- all：用于所有设备
+- print：用于打印机和打印预览
+- screen：用于电脑屏幕、平板电脑、智能手机
+
+### 关键字
+
+关键字将媒体类型或多个媒体特性连接到一起作为媒体查询的条件。
+
+- and：可以将多个媒体特性连接到一起，相当于“且”
+- not：排除某个媒体特性，相当于“非”，可以省略
+- only：指定某个特定的媒体类型，可以省略
+
+### 媒体查询用法
+
+```css
+/* @import是可以和媒体查询结合来使用 */
+@import url(./css/body_bgc.css) (max-width: 800px);
+
+/* link元素可以配合媒体查询 */
+<link rel="stylesheet" media="screen and (max-width: 800px)" href="./css/body_bgc.css" > @media 
+
+/* @media 可以针对不同的屏幕尺寸设置不同的样式 */
+(max-width: 800px) {
+  body {
+    background-color: orange;
+  }
+}
+
+@media screen {
+}
+
+/* 媒体查询可以使用逻辑运算符号 */
+@media (min-width: 500px) and (max-width: 800px) {
+  body {
+    background-color: orange;
+  }
+}
+```
+
+## font-size 配合媒体查询
+
+```css
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background-color: orange;
+}
+```
+
+## js 动态计算
+
+```js
+// 1.获取html的元素
+const htmlEl = document.documentElement;
+
+function setRemUnit() {
+  // 2.获取html的宽度(视口的宽度)
+  const htmlWidth = htmlEl.clientWidth;
+  // 3.根据宽度计算一个html的font-size的大小
+  const htmlFontSize = htmlWidth / 10;
+  // 4.将font-size设置到html上
+  htmlEl.style.fontSize = htmlFontSize + "px";
+}
+// 保证第一次进来时, 可以设置一次font-size
+setRemUnit();
+
+// 当屏幕尺寸发生变化时, 实时来修改html的font-size
+window.addEventListener("resize", setRemUnit);
+```
+
+## 适配方案 vw
+
+vw 相比于 rem 的优势：
+
+1. 不需要去计算 html 的 font-size 大小，也不需要给 html 设置这样一个 font-size；
+2. 不会因为设置 html 的 font-size 大小，而必须给 body 再设置一个 font-size，防止继承；
+3. 因为不依赖 font-size 的尺寸，所以不用担心某些原因 html 的 font-size 尺寸被篡改，页面尺寸混乱；
+4. vw 相比于 rem 更加语义化，1vw 刚才是 1/100 的 viewport 的大小;
+5. 可以具备 rem 之前所有的优点；
+
+如何转换成 vw
+
+1. 手动计算
+
+   - 1 个在 375px 屏幕上，100px 宽度和高度的盒子
+   - 将 100px 转成对应的 vw 值
+   - 100/3.75=26.667，其他也是相同的方法计算即可
+
+2. less/scss 函数
+
+   ```less
+   @vwUnit: 3.75;
+   .pxToVw(@px) {
+     result: (@px / @vwUnit) * 1vw;
+   }
+   .box{
+    width:.pxToVw:(100)[result];
+    height.pxToVw:(100)[result]
+   }
+   ```
+
+3. px to vw 插件

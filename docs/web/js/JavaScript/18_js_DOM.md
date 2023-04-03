@@ -1,6 +1,6 @@
 # DOM 操作
 
-## 1、DOM 查询
+## DOM 查询
 
 - `innerHTML` 这个属性可以获取到元素内部的 html 代码，对于自结束标签没有意义
 - 如果需要读取元素节点属性：`元素.id` `元素.name` `元素.value`
@@ -14,17 +14,17 @@
 - `.innerHTML`和`.innerText`的区别，innerText 没有标签，只有文本
 - 在事件的响应函数中，响应函数是给谁绑定的，this 就是谁
 
-## 2、获取 html 文档
+## 获取 html 文档
 
 - `document.title` 获取文档标题
 - `document.head` 获取文档的头标签
 - `document.documentElement;`获取 html 根标签
 - `document.body;`获取 body 标签
-- `documment.all;`获取页面中所有元素
+- `document.all;`获取页面中所有元素
 - `var div = document.querySelector(".box1 div");`这个方法总会返回第一个元素，兼容 IE8 及以上
 - `var div = document.querySelectorAll(".box1 div");`这个方法会返回符合条件的数组，兼容 IE8 及以上
 
-## 3、DOM 的增删改
+## DOM 的增删改
 
 - `createElement()`创建元素节点
 - `createTextNode()`创建文本节点
@@ -40,7 +40,7 @@
 - 在响应函数的末尾加`return false;`可以取消默认行为
 - `confirm("确认删除吗?")`可以弹出确认取消框
 
-## 4、DOM 操作 CSS
+## DOM 操作 CSS
 
 通过 JS 修改元素的样式
 
@@ -48,7 +48,6 @@
   - `元素.style.样式名 = "样式值"`
   - 如果 CSS 中的样式名中含有`-`，比如`background-color`，需要将这种样式名修改为驼峰命名法,`backgroundColor`
   - `border-top-width`修改为`borderTopWidth`
-  - w3cschool 中 css 的参考手册可以查到
   - 通过这种方法设置的样式是内联样式，具有较高的优先级
   - 通过`元素.style.样式名`可以读取内联样式的属性值
   - `元素.style["属性"];`这种方法读取更加灵活

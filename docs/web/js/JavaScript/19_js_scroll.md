@@ -1,6 +1,6 @@
 # offset、scroll、client
 
-## 1、offset 系列
+## offset 系列
 
 offset：偏移、补偿、位移，offset 系列是 js 中的一套**获取元素尺寸**的便捷办法。
 
@@ -13,7 +13,7 @@ offset：偏移、补偿、位移，offset 系列是 js 中的一套**获取元�
 - 上面 4 个方法是只读的,`.style`才可以赋值
 - `offsetParent`获取当前元素的包含块。
 
-## 2、scroll 系列
+## scroll 系列
 
 - `scrollWidth` 获取元素整个滚动区域的宽度。包括 width 和 padding，不包括 border 和 margin。
 - `scrollHeight` 获取元素整个滚动区域的高度。包括 width 和 padding，不包括 border 和 margin。
@@ -26,7 +26,7 @@ offset：偏移、补偿、位移，offset 系列是 js 中的一套**获取元�
 
 在谷歌浏览器中，上面的等式似乎有些问题，清除浏览器默认样式后，将`==`改成`<=`，等式才能成立，也可以说明滚动条滚到底。
 
-## 3、client 系列
+## client 系列
 
 - `clientHeight` 返回元素的可见高度（width + padding）。
 - `clientWidth` 返回元素的可见宽度（height + padding）。

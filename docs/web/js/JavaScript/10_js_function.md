@@ -169,7 +169,7 @@ setInterval(function() {
 - 根据函数的调用的方式不同，this 会指向不同的对象
 - 以函数的形式调用时，this 永远都是 window
 - 以方法的形式调用时，this 就是调用这个方法的对象
-- 以构造函数的形式调用时，this 就是实例，即`var per = new Penson();`的`per`
+- 以构造函数的形式调用时，this 就是实例，即`var per = new Person();`的`per`
 - 以 call()和 apply()调用时，this 是指定的那个对象，即`fun.call(obj1)和fun.apply(obj2);`中的 obj1 和 obj2
 - 在事件的响应函数中，响应函数是给谁绑定的，this 就是谁，即`btn.onclick = function () {console.log(this);}`，此时，this 是 btn
 
@@ -200,11 +200,11 @@ setInterval(function() {
 
 ## 构造函数创建对象
 
-- 创建一个构造函数，专门创建 Person 对象（Penson 类）
+- 创建一个构造函数，专门创建 Person 对象（Person 类）
 - 构造函数就是一个普通的函数，创建方式和普通函数没什么区别
 - 不同的是构造函数习惯首字母大写
 - 构造函数和普通函数的区别就是调用的方式不同
-- 普通函数直接调用，构造函数需要使用 new 关键字调用`var per = new Penson;`
+- 普通函数直接调用，构造函数需要使用 new 关键字调用`var per = new Person;`
 - 使用同一类构造函数创建的对象，我们称为一类对象，也将一个构造函数称为一个类（Person 类），创建的对象称为该类的实例，或者该构造函数的实例。`per是Person类的实例`
 
 构造函数的执行流程：

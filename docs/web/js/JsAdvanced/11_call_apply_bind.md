@@ -1,67 +1,63 @@
 # call、apply、bind
 
-## 1.call()
+## call()
 
 call()是函数对象的方法，需要通过函数对象来调用。
 
 函数调用 call()时，函数会立即**执行**
 
 ```js
- func.call(参数1[, 参数2[, 参数3[, ...]]])
+func.call(参数1[, 参数2[, 参数3[, ...]]])
 ```
 
 - 可以用来改变函数的 this 对象的指向。
-
 - 第一个参数都是 this 要指向的对象（函数执行时，this 将指向这个对象）
 - 后续参数用来传实参
 
-**显式绑定 this**
+**显式绑定 this**:
 
 JS 提供的绝大多数函数以及我们自己创建的所有函数，都可以使用 call()方法。
 
 - 第一个参数是一个对象。因为你可以直接指定 this 绑定的对象，因此我们称之为显式绑定。
 
+```js
+function foo() {
+  console.log(this.a);
+}
+
+var obj = {
+  a: 2,
+};
+
+// 将 this 指向 obj
+foo.apply(obj); //打印结果：2
 ```
-    function foo() {
-        console.log(this.a);
-    }
 
-    var obj = {
-        a: 2
-    };
+**第一个参数的传递**:
 
-    // 将 this 指向 obj
-    foo.apply(obj); //打印结果：2
-```
+1. 参数 1 不传或者为 null、undefined 时，函数中的 this 会指向 window 对象（非严格模式）。
+2. 传递一个别的函数名时，函数中的 this 将指向这个**函数的引用**。
+3. 传递的值为数字、布尔值、字符串时，this 会指向这些基本类型的包装对象 Number、Boolean、String。
+4. 传递一个对象时，函数中的 this 则指向传递的这个对象。
 
-**第一个参数的传递**
-
-1、参数 1 不传或者为 null、undefined 时，函数中的 this 会指向 window 对象（非严格模式）。
-
-2、传递一个别的函数名时，函数中的 this 将指向这个**函数的引用**。
-
-3、传递的值为数字、布尔值、字符串时，this 会指向这些基本类型的包装对象 Number、Boolean、String。
-
-4、传递一个对象时，函数中的 this 则指向传递的这个对象。
-
-## 2.apply()
+## apply()
 
 call()方法的作用和 apply() 方法类似，区别就是`call()`方法接受的是**参数列表**，而`apply()`方法接受的是**一个参数数组**。
 
 语法：
 
-```
- func.apply(参数1, [参数2,参数3,参数n])
+```js
+func.apply(参数1, [参数2, 参数3, 参数n]);
 ```
 
 call()和 apply() 都可以将实参在对象之后依次传递，但是 apply()方法需要将实参封装到一个**数组**中统一传递（即使只有实参只有一个，也要放到数组中）。
 
-**call()和 apply()的作用**
+**call()和 apply()的作用**：
 
 - 改变 this 的指向
 - 实现继承。Father.call(this)
 
-## 3.bind()
+## bind()
 
 - 都能改变 this 的指向
 - call()/apply()是**立即调用函数**
@@ -69,11 +65,11 @@ call()和 apply() 都可以将实参在对象之后依次传递，但是 apply()
 
 bind()传参的方式与 call()相同。
 
-```
- func.bind(参数1[, 参数2[, 参数3[, ...]]])
+```js
+func.bind(参数1[, 参数2[, 参数3[, ...]]])
 ```
 
-## 4.区别
+## 区别
 
 ```js
 const per1 = {
@@ -97,9 +93,9 @@ per1.fun.bind(per2, 1, 2, 3, "bind")(); //是函数，需要调用
 - apply() 第一个参数：借用方法的对象 ，允许传递第二参数必须是数组
 - bind() 第一个参数：借用方法的对象 ，可以传递多个参数，但是返回值是函数必须调用
 
-## 5.应用
+## 应用
 
-**1.将伪数组转换成真数组**
+**1.将伪数组转换成真数组**:
 
 伪数组：具备 length 属性，但是不能使用真数组的方法。
 
@@ -108,7 +104,6 @@ per1.fun.bind(per2, 1, 2, 3, "bind")(); //是函数，需要调用
 - document.querySelectorAll
 - document.getElementsByClassName
 - document.getElementsByTagName
-
 - arguments
 
 ```js
@@ -123,7 +118,7 @@ function fun() {
 fun(1, 2, 3);
 ```
 
-**2.无侵入无序数组求最大值**
+**2.无侵入无序数组求最大值**:
 
 ```js
 const arr = [1, 23, 4, 3, 254, 45, 125, 6, 123];
@@ -133,7 +128,7 @@ console.log(res1);
 console.log(res2);
 ```
 
-**3.实现继承**
+**3.实现继承**:
 
 ```js
 function Father(name, age) {
@@ -148,7 +143,7 @@ var s = new Son("hello", 20, 1.81);
 console.log(s.name, s.age, s.height);
 ```
 
-## 6.手写
+## 手写
 
 call()的手写：
 

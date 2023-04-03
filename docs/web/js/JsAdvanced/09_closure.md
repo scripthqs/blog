@@ -1,11 +1,10 @@
 # 闭包
 
-## 1.闭包是什么
+## 闭包是什么
 
 闭包可以是一种函数，闭包也是一种现象。
 
 1. 函数：**闭包是指有权访问另一个函数作用域中变量的函数**
-
 2. 现象：**一个内层函数中访问到其外层函数的作用域，就会产生闭包。**
 
 闭包产生的条件：
@@ -16,40 +15,39 @@
 
 通过 chrome 调试工具可以查看闭包
 
-## 2. 常见的闭包
+## 常见的闭包
 
 1. 将一个函数作为另一个函数的返回值
 
-```js
-function fn1() {
-  var a = 2;
-  function fn2() {
-    a++;
-    console.log(a);
-  }
-  return fn2;
-}
-var f = fn1();
-f();
-```
+   ```js
+   function fn1() {
+     var a = 2;
+     function fn2() {
+       a++;
+       console.log(a);
+     }
+     return fn2;
+   }
+   var f = fn1();
+   f();
+   ```
 
 2. 将函数作为实参传递给另一个函数
 
-```js
-function showDelay(msg, time) {
-  setTimeout(() => {
-    alert(msg);
-  }, time);
-}
-showDelay("hello world", 1000);
-```
+   ```js
+   function showDelay(msg, time) {
+     setTimeout(() => {
+       alert(msg);
+     }, time);
+   }
+   showDelay("hello world", 1000);
+   ```
 
-## 3.闭包的作用
+## 闭包的作用
 
 闭包有两个常用的用途
 
 1. 函数执行完后，延长变量的生命周期
-
 2. 通过闭包让函数外部操作内部的数据变量
 
 问题 1：函数执行完后，内部声明的局部变量还存在吗？
@@ -60,7 +58,7 @@ showDelay("hello world", 1000);
 
 - 函数外部不能访问函数内部的局部变量，但可以通过闭包让外部来操作内部的局部变量。
 
-## 4.闭包的产生和死亡
+## 闭包的产生和死亡
 
 - 在嵌套内部函数时就产生了（不是调用？），不过我打开控制台事件觉得是**return 或者调用内部函数**
 - 在嵌套的内部函数成为垃圾对象时死亡
@@ -79,7 +77,7 @@ f();
 f = null; //闭包死亡
 ```
 
-## 5.闭包的应用
+## 闭包的应用
 
 定义 JS 模块
 
@@ -133,7 +131,7 @@ hqs.fn1();
 hqs.fn2();
 ```
 
-## 5.闭包的的缺点
+## 闭包的的缺点
 
 - 函数执行完后，函数内的局部变量没有释放，占用内存时间会变长。
 - 要即使释放
@@ -142,7 +140,7 @@ hqs.fn2();
 f = null;
 ```
 
-## 6.内存溢出和内存泄漏
+## 内存溢出和内存泄漏
 
 内存溢出：
 
@@ -158,43 +156,43 @@ f = null;
 
 1.**意外的全局变量：** 由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。
 
-```
- function fn(){
-  a = 3//没有使用var/let/const定义变量，意外的全局变量
-  console.log(a)
- }
- fn()
+```js
+function fn() {
+  a = 3; //没有使用var/let/const定义变量，意外的全局变量
+  console.log(a);
+}
+fn();
 ```
 
 2.**被遗忘的计时器或回调函数：** 设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。
 
-```
- var intervalId = setInterval(function() {
-  console.log('------')
- },1000)
- //clearInterval(intervalId)
- //忘记取消定时器
+```js
+var intervalId = setInterval(function() {
+  console.log("------");
+}, 1000);
+//clearInterval(intervalId)
+//忘记取消定时器
 ```
 
 3.**脱离 DOM 的引用：** 获取一个 DOM 元素的引用，而后面这个元素被删除，由于一直保留了对这个元素的引用，所以它也无法被回收。
 
 4.**闭包：** 不合理的使用闭包，从而导致某些变量一直被留在内存当中。
 
-```
- function fn1(){
-  var a = 4
-  function fn2(){
-   console.log(++a)
+```js
+function fn1() {
+  var a = 4;
+  function fn2() {
+    console.log(++a);
   }
-  return fn2
- }
- var f = fn1()
- f()
- //f = null
- //如果不让f=null,则a会一直留在内存中
+  return fn2;
+}
+var f = fn1();
+f();
+//f = null
+//如果不让f=null,则a会一直留在内存中
 ```
 
-## 7.考察闭包
+## 考察闭包
 
 问题 1：
 
