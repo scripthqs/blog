@@ -50,7 +50,7 @@ const obj = new Object();
 const obj = Object.create(null);
 ```
 
-- 在 Object 中， key 必须是简单数据类型（整数，字符串或者是 symbol)
+- 在 Object 中， key 必须是简单数据类型（整数，字符串或者是 symbol）
 - 在 Map 中则可以是 JavaScript 支持的所有数据类型，也就是说可以用一个 Object 来当做一个 Map 元素的 key
 - Map 元素的顺序遵循插入的顺序，而 Object 的则没有这一特性
 - Map 继承自 Object 对象
@@ -65,3 +65,11 @@ const m = new Map([
 ]);
 m.get("Michael"); // 95
 ```
+
+## WeakMap
+
+与 map 的区别：
+
+1. WeakMap 的 key 只能使用对象，不接受其他的类型作为 key
+2. WeakMap 的 key 对对象的引用是弱引用，如果没有其他引用引用这个对象，那么 GC 可以回收该对象
+3. WeakMap 不能遍历

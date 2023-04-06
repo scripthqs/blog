@@ -1,6 +1,6 @@
 # Symbol
 
-## 1.Symbol 的基本使用
+## Symbol 的基本使用
 
 ES6 引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是 JavaScript 语言的第七种数据类型，是一种类似于字符串的数据类型。
 
@@ -29,9 +29,9 @@ let s4 = Symbol.for("哈哈");
 console.log(s3 === s4); //true
 ```
 
-**遇到唯一性的场景时要想到 Symbol**
+**遇到唯一性的场景时要想到 Symbol**。
 
-## 2.Symbol 的作用
+## Symbol 的作用
 
 Symbol 表示独一无二的值，给对象添加属性和方法。
 
@@ -59,7 +59,7 @@ obj[Symbol("msg")] = function() {
 console.log(obj);
 ```
 
-## 3.Symbol 内置值
+## Symbol 内置值
 
 除了定义自己使用的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值(Symbol 的属性)，指向语言内部使用的方法。可以称这些方法为魔术方法，因为它们会在特定的场景下自动执行。
 
