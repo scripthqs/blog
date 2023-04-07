@@ -54,7 +54,7 @@ DOM 由节点组成，在 HTML 中，一切都是节点。
 - `console.log(document)` 文档对象
 - 通过 document 对象找到元素节点
 - `var div1 = document.getElementById("box1");`通过 id 获取 一个 元素节点（为什么是一个呢？因为 id 是唯一的）
-- `var div2 = douument.getElementsByTagName("div")`通过 标签名 获取 元素节点数组，所以有 s
+- `var div2 = document.getElementsByTagName("div")`通过 标签名 获取 元素节点数组，所以有 s
   - 这个方法会给我返回一个类数组对象，所有查询的元素都会封装到对象中。
 - `var div3 = document.getElementsByClassName("haha")` //方式三：通过 类名 获取 元素节点数组，所以有 s，ie8 及以下不支持
 - 都是通过 document 调用的

@@ -121,7 +121,7 @@ Person.prototype === per.__proto__;
    Object.prototype === o1.__proto__;
    ```
 
-2. 所有**原型对象和实例对象**都是**Object**的实例(**除 Object 的原型对象外，它是指向 null**)
+2. 所有**原型对象**都是**Object**的实例(**除 Object 的原型对象外，它是指向 null**)
 
    ```js
    ((Function.prototype.__proto__ === o1.__proto__) === f1.__proto__.__proto__) === Object.prototype;

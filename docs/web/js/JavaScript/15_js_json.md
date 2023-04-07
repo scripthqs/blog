@@ -33,6 +33,6 @@ JSON 中允许的值：
 - `JSON.parse()`
   - 可以将 JSON 字符串转换成 JS 对象。
   - 需要一个 JSON 字符串作为参数，会将该 JSON 字符串装换成对象。
-- `JSONstringify()`
+- `JSON.stringify()`
   - 可以将一个 JS 对象转换成 JSON 字符串。
   - 需要一个 JS 对象作为参数，会返回一个 JSON 字符串。
