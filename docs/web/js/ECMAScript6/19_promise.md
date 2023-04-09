@@ -1,14 +1,14 @@
 # Promise
 
-## 1.Promise 简介
+## Promise 简介
 
 promise 是 ES6 引入的异步编程的新解决方案。(旧方案是单纯使用回调函数)。语法上 Promise 是一个**构造函数**，用来**封装异步操作**并可以**获取其成功或失败**的结果。
 
-1. Promise 构造函数: Promise (excutor) {}
+1. Promise 构造函数: Promise (executor) {}
 2. Promise.prototype.then
 3. Promise.prototype.catch 方法
 
-异步编程 ①fs 文件操作 ② 数据库操作 ③Ajax ④ 定时器
+异步编程:fs 文件操作 、数据库操作 、Ajax 、定时器
 
 - async：异步
 - sync：同步
@@ -16,15 +16,30 @@ promise 是 ES6 引入的异步编程的新解决方案。(旧方案是单纯使
 - `Promise`是一个构造函数 (自己身上有`all`、`reject`、`resolve`这几个方法，原型上有`then`、`catch`等方法)
 - `promise`对象用来封装一个异步操作并可以获取其成功/失败的结果值
 
-## 2.异步事件的应用场景
+## JS 中的 Error
+
+1. 错误的类型
+   Error: 所有错误的父类型
+   ReferenceError: 引用的变量不存在
+   TypeError: 数据类型不正确的错误
+   RangeError: 数据值不在其所允许的范围内
+   SyntaxError: 语法错误
+2. 错误处理
+   捕获错误: try ... catch
+   抛出错误: throw error
+3. 错误对象
+   message 属性: 错误相关信息
+   stack 属性: 函数调用栈记录信息
+
+## 异步事件的应用场景
 
 一个很常用的场景就是网络请求，封装一个网络请求函数，因为不能立即拿到结果，所以我们往往会传入另一个函数，在数据请求成功时，将数据通过传入的函数调回去。一个简单的网络请求时，这方案问题不大，当网络请求复杂时，就会出现回调地狱。
 
 有异步操作时，使用 promise 对异步操作进行包装。
 
-在 new Promise()时，会传入两个参数，resolve 和 reject，resovle 和 reject 本身也是函数。
+在 new Promise()时，会传入两个参数，resolve 和 reject。resolve 和 reject 本身也是函数。
 
-## 3.Promise 的状态
+## Promise 的状态
 
 `Promise`对象代表一个异步操作，异步操作之后会出现**3 种状态**：
 
@@ -45,9 +60,9 @@ promise 是 ES6 引入的异步编程的新解决方案。(旧方案是单纯使
 
 无论成功还是失败，都会有一个结果数据，成功的结果数据称为 value(data)，失败的结果数据一般称为 reason(error)
 
-![Promise](https://gitee.com/scripthqs/assets/raw/master/js/Promise.png)
+![Promise](https://raw.githubusercontent.com/scripthqs/assets/master/blog/Promise.png)
 
-## 4.Promsie 的使用
+## Promise 的使用
 
 `Promise`构造函数接受一个函数作为参数，该函数的两个参数分别是`resolve`和`reject`，这个**两个参数也是函数**
 
@@ -103,7 +118,7 @@ promise.then(
 
 `then`方法可以接受两个回调函数作为参数。第一个回调函数是`Promise`对象的状态变为`resolved`时调用，第二个回调函数是`Promise`对象的状态变为`rejected`时调用。这两个函数都是可选的，不一定要提供。它们都接受`Promise`对象传出的值作为参数。
 
-## 5.Promise 的优点
+## Promise 的优点
 
 1.**指定回调函数的方式更加灵活**
 
@@ -183,7 +198,7 @@ async function request() {
 }
 ```
 
-## 6.Promise 的 API
+## Promise 的 API
 
 **1. Promise 构造函数：`Promise(executor) {}`**
 
@@ -218,10 +233,10 @@ async function request() {
 
 1. 如果传入的参数为 非 Promise 类型的对象, 则返回的结果为成功 promise 对象
 
-```js
-let p1 = Promise.resolve(521);
-console.log(p1); // Promise {<fulfilled>: 521}
-```
+   ```js
+   let p1 = Promise.resolve(521);
+   console.log(p1); // Promise {<fulfilled>: 521}
+   ```
 
 2. 如果传入的参数为 Promise 对象, 则参数的结果决定了 resolve 的结果
 
@@ -280,7 +295,7 @@ p3.catch((reason) => {
 
 **6. Promise.all 方法：`Promise.all(iterable)`**
 
-```
+```js
 iterable`：包含 n 个 `promise` 的可迭代对象，如 `Array` 或 `String
 ```
 
@@ -299,7 +314,7 @@ console.log(result);
 
 **7.Promise.race 方法：`Promise.race(iterable)`**
 
-```
+```js
 iterable`：包含 n 个 `promise` 的可迭代对象，如 `Array` 或 `String
 ```
 
@@ -328,9 +343,9 @@ pRace.then(
 );
 ```
 
-## 7.Promise 问题
+## Promise 问题
 
-### 1.如何改变 promise 的状态
+### 如何改变 promise 的状态
 
 (1)`resolve(value)`：如果当前是 `pending` 就会变为 `resolved`
 
@@ -353,7 +368,7 @@ p.then(
 );
 ```
 
-### 2.一个 promise 指定多个成功/失败回调函数
+### 一个 promise 指定多个成功/失败回调函数
 
 当 `promise` **改变**为对应状态时**都会调用**
 
@@ -378,7 +393,7 @@ p.then(
 // reason2 2
 ```
 
-### 3.改变 promise 状态和指定回调函数谁先谁后
+### 改变 promise 状态和指定回调函数谁先谁后
 
 都有可能，常规是先指定回调再改变状态，但也可以先改状态再指定回调
 
@@ -418,17 +433,17 @@ new Promise((resolve, reject) => {
 (2)延迟更长时间才调用 `then()`
 
 ```js
- cosnt p = new Promise((resolve, reject) => {
-      setTimeout(() => {
-          resolve('OK');//1.先改变状态，同时指定数据
-       }, 1000);
-    })
+const p = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("OK"); //1.先改变状态，同时指定数据
+  }, 1000);
+});
 
-    setTimeout(() => {
-     p.then(value => {
-      console.log(value)////2.后指定回调函数，异步执行回调函数
-     })
-    },1100)
+setTimeout(() => {
+  p.then((value) => {
+    console.log(value); ////2.后指定回调函数，异步执行回调函数
+  });
+}, 1100);
 ```
 
 - **什么时候才能得到数据？**
@@ -464,7 +479,7 @@ new Promise((resolve, reject) => {
 );
 ```
 
-### 4.promise.then() 返回的新 promise 的结果状态由什么决定？
+### promise.then() 返回的新 promise 的结果状态由什么决定？
 
 promise.then() 会返回的一个新 promise，但是新 promise 的结果和状态时什么呢？
 
@@ -536,7 +551,7 @@ new Promise((resolve, reject) => {
  })
 ```
 
-### 5.promise 如何串联多个操作任务？
+### promise 如何串联多个操作任务？
 
 (1)`promise` 的 `then()` 返回一个新的 `promise`，可以并成 `then()` 的链式调用
 
@@ -595,9 +610,9 @@ new Promise((resolve, reject) => {
 // 任务3的结果 3
 ```
 
-**同步任务直接 return 返回结果，异步任务需要包裹在 Promise 对象中**
+**同步任务直接 return 返回结果，异步任务需要包裹在 Promise 对象中**。
 
-### 6.Promise 异常穿透(传透)
+### Promise 异常穿透(传透)
 
 (1)当使用 `promise` 的 `then` 链式调用时，可以在最后指定失败的回调
 
@@ -667,7 +682,7 @@ new Promise((resolve, reject) => {
 
 或者，将 `reason => {throw reason}` 替换为 `reason => Promise.reject(reason)` 也是一样的
 
-### 7.中断 promise 链？
+### 中断 promise 链？
 
 当使用 `promise` 的 `then` 链式调用时，在中间中断，不再调用后面的回调函数
 
@@ -743,28 +758,29 @@ new Promise((resolve, reject) => {
 
 这就实现了中断 `promise链`的效果。
 
-## 8.async 和 await
+## async 和 await
 
 1. async 函数返回值是一个 Promise 对象，promise 对象的结果由 async 函数执行的返回值决定。和 then 方法一样
 
-```js
-async function fn1() {
-  //return 1
-  throw 2;
-}
-const result = fn1();
-//console.log(result);//Promise:resolved 1
-console.log(result); //Promise:rejected 2
-result
-  .then((value) => {
-    console.log(value);
-  })
-  .catch((reason) => {
-    console.error(reason);
-  });
-```
+   ```js
+   async function fn1() {
+     //return 1
+     throw 2;
+   }
+   const result = fn1();
+   //console.log(result);//Promise:resolved 1
+   console.log(result); //Promise:rejected 2
+   result
+     .then((value) => {
+       console.log(value);
+     })
+     .catch((reason) => {
+       console.error(reason);
+     });
+   ```
 
 2. await 右侧的表达式一般为 promise 对象，但也可以是其他的值
+
    - 如果表达式是 Promise 对象，await 返回的是**Promise 成功的值**
    - 如果表达式是其他值，直接将此值作为 await 的返回值
    - 如果是失败的值，用 try...catch 捕获
@@ -806,9 +822,9 @@ async function fn3() {
 fn3();
 ```
 
-## 9.js 异步之宏队列和微队列
+## js 异步之宏队列和微队列
 
-![宏队列和微队列](https://gitee.com/scripthqs/assets/raw/master/js/%E5%AE%8F%E9%98%9F%E5%88%97%E5%92%8C%E5%BE%AE%E9%98%9F%E5%88%97.png)
+![宏队列和微队列](https://raw.githubusercontent.com/scripthqs/assets/master/blog/%E5%AE%8F%E9%98%9F%E5%88%97%E5%92%8C%E5%BE%AE%E9%98%9F%E5%88%97.png)
 
 1. 宏列队: 用来保存待执行的宏任务(回调), 比如: 定时器回调/DOM 事件回调/ajax 回调
 2. 微列队: 用来保存待执行的微任务(回调), 比如: promise 的回调/MutationObserver 的回调
