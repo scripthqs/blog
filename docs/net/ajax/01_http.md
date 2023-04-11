@@ -6,7 +6,7 @@
 
 web 页面使用 HTTP 协议作为规范，完成客户端（浏览器）和服务器端之间通信过程。
 
-## 1.TCP/IP
+## TCP/IP
 
 为了了解 HTTP，有必要先了解下 TCP/IP 协议族。我们使用的网络包括互联网，都是 TCP/IP 协议族的基础上运行的，HTTP 属于 TCP/IP 内部的子集。
 
@@ -49,7 +49,7 @@ TCP/IP 协议族采用分层管理：应用层、传输层、网络层、数据�
 
 简而言之，输入网站域名，先获取到 index.html 文件，遇到 link 元素，下载 css 文件，遇到 script 元素下载 js 文件。
 
-## 2.HTTP 请求
+## HTTP 请求
 
 ![HTTP](./images/HTTP.png)
 
@@ -57,9 +57,9 @@ TCP/IP 协议族采用分层管理：应用层、传输层、网络层、数据�
 2. 后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP 响应(**响应报文**)
 3. 浏览器端接收到响应, 解析显示响应体/调用监视回调
 
-## 3.HTTP 请求报文
+## HTTP 请求报文
 
-### 1.请求行
+### 请求行
 
 ```js
 method url
@@ -67,7 +67,7 @@ GET /product_detail?id=2
 POST /login
 ```
 
-### 2.多个请求头
+### 多个请求头
 
 ```js
 Host: www.baidu.com
@@ -75,49 +75,49 @@ Cookie: BAIDUID=AD3B0FA706E; BIDUPSID=AD3B0FA706;`
 Content-Type: application/x-www-form-urlencoded 或者application/json
 ```
 
-### 3.请求体
+### 请求体
 
 ```js
 username=tom&pwd=123
 {"username": "tom", "pwd": 123}
 ```
 
-### 4.请求报文
+### 请求报文
 
 - 行：GET/URL/HTTP1.1
 - 头：Host:Cookie:Content-type:User-Agent：
 - 空行:
 - 体:get 请求为空，username=admin&password=admin
 
-## 4.HTTP 响应报文
+## HTTP 响应报文
 
-### 1.响应状态行
+### 响应状态行
 
 ```js
 status statusText
 ```
 
-### 2.多个响应头
+### 多个响应头
 
 ```js
 Content-Type: text/html;charset=utf-8
 Set-Cookie: BD_CK_SAM=1;path=/
 ```
 
-### 3.响应体
+### 响应体
 
 ```js
 html 文本/json 文本/js/css/图片...
 ```
 
-### 4.响应报文
+### 响应报文
 
 - 行：HTTP/1.1 200（OK） 404（找不到） 403（被禁止）401（未授权）
 - 头：content-type：content-length content-encoding
 - 空行
 - 体:HTML 的内容
 
-## 5.post 请求体参数格式
+## post 请求体参数格式
 
 1. `Content-Type: application/x-www-form-urlencoded;charset=utf-8`
    用于键值对参数，参数的键值用=连接, 参数之间用&连接
@@ -128,7 +128,7 @@ html 文本/json 文本/js/css/图片...
 3. `Content-Type: multipart/form-data`
    用于文件上传请求
 
-## 6.常见的响应状态码
+## 常见的响应状态码
 
 - `200 OK` 请求成功。一般用于 GET 与 POST 请求
 - `201 Created` 已创建。成功请求并创建了新的资源
@@ -140,14 +140,14 @@ html 文本/json 文本/js/css/图片...
 
 ![响应状态码](./images/status.png)
 
-## 7.不同类型的请求及其作用
+## 不同类型的请求及其作用
 
 1. `GET`: 从服务器端**读取**数据（查）
 2. `POST`: 向服务器端**添加**新数据 （增）
 3. `PUT`: **更新**服务器端已经数据 （改）
 4. `DELETE`: **删除**服务器端数据 （删）
 
-## 8.API 的分类
+## API 的分类
 
 1. REST API: restful （Representational State Transfer (资源)表现层状态转化）
 
@@ -160,7 +160,7 @@ html 文本/json 文本/js/css/图片...
    - 一个请求路径只对应一个操作
    - 一般只有 GET/POST
 
-## 9.区别一般 http 请求 与 ajax 请求
+## 区别一般 http 请求 与 ajax 请求
 
 1. ajax 请求是一种特别的 http 请求
 2. 对服务器端来说, 没有任何区别, 区别在**浏览器端**
@@ -169,7 +169,7 @@ html 文本/json 文本/js/css/图片...
    - 一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
    - ajax 请求: 浏览器不会对界面进行任何更新操作, 只是**调用监视的回调函数**并**传入响应相关数据**
 
-## 10.HTTP 协议
+## HTTP 协议
 
 URL 的组成：
 
