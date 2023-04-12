@@ -1,18 +1,18 @@
 # 模块化开发
 
-## 1.为什么使用模块化
+## 为什么使用模块化
 
 - 解决全局变量命名冲突问题
 - 解决 js 文件必须按照一定顺序引入的问题
 
-## 2.如何使用模块化
+## 如何使用模块化
 
 - 使用匿名函数，还需要使用一个模块作为出口，暴露函数里面的变量
 - 在匿名函数中定义一个对象
 - 给对象添加各种需要暴露的属性和方法
-- 最后将这个对象返回，并且在外面使用一个 MoudleA 接收
+- 最后将这个对象返回，并且在外面使用一个 ModuleA 接收
 
-## 3.常见的模块化规范
+## 常见的模块化规范
 
 ES6 之前，js 没有模块化，JavaScript 社区已经尝试并提出了 AMD、CMD、CommonJS 等模块化规范。
 
@@ -22,7 +22,7 @@ ES6 之前，js 没有模块化，JavaScript 社区已经尝试并提出了 AMD�
 
 模块化已经有很多既有的规范和对应的实现方案，常见的模块化规范：
 
-- CommonJS）**node 和 webpack 使用，适用于服务器端**
+- CommonJS**node 和 webpack 使用，适用于服务器端**
 - AMD **适用浏览器端**
 - CMD**适用浏览器端**
 
@@ -32,7 +32,7 @@ ES6 的 Modules **vuecli 脚手架中可以使用，ES6 语法，js 文件中都
 
 模块化两个核心：**导出和导入**
 
-## 4.CommonJS 模块化的导出和导入
+## CommonJS 模块化的导出和导入
 
 node.js 遵循了 CommonJS 的模块化规范。其中：
 
@@ -50,7 +50,7 @@ let { flag, sum } = require("./aaa.js");
 const fs = require("fs");
 ```
 
-## 5.ES6 模块化实现
+## ES6 模块化实现
 
 **ES6 模块化规范是浏览器端与服务器端通用的模块化开发规范**。它的出现极大的降低了前端开发者的模块化学习成本，开发者不需再额外学习 AMD、CMD 或 CommonJS 等模块化规范。
 
@@ -60,7 +60,7 @@ ES6 模块化规范中定义：
 - **导入**其它模块成员使用 **import 关键字**
 - **导出**模块成员使用 **export 关键字**
 
-## 6.在 node.js 中体验 ES6 模块化
+## 在 node.js 中体验 ES6 模块化
 
 node.js 中默认仅支持 CommonJS 模块化规范，若想基于 node.js 体验与学习 ES6 的模块化语法，可以按照 如下两个步骤进行配置：
 
@@ -68,7 +68,7 @@ node.js 中默认仅支持 CommonJS 模块化规范，若想基于 node.js 体�
 
 - 在 package.json 的根节点中添加 "type": "module" 节点
 
-## 7.ES6 模块化的基本语法
+## ES6 模块化的基本语法
 
 ES6 的模块化主要包含如下 3 种用法：
 
@@ -94,18 +94,18 @@ ES6 的模块化主要包含如下 3 种用法：
 export { sum as barSum } from "./bar.js";
 ```
 
-**import 函数返回一个 Promise，可以通过 then 获取结果**
+**import 函数返回一个 Promise，可以通过 then 获取结果**。
 
-## 8.默认导入导出
+## 默认导入导出
 
-**默认导出**
+**默认导出**：
 
 ```js
 export default 默认导出的成员;
 export default { a, b, fun };
 ```
 
-**默认导入**
+**默认导入**：
 
 ```js
 import 接收名称 from "模块标识符";
@@ -116,9 +116,9 @@ import m1 from "./01.module.js";
 
 - 默认导入时的接收名称可以任意名称，只要是合法的成员名称即可
 
-## 9.按需导入导出
+## 按需导入导出
 
-**按需导出**
+**按需导出**：
 
 ```js
 export 按需导出的成员
@@ -126,7 +126,7 @@ export let a = 1
 export let s1 = 'hello world'
 ```
 
-**按需导入**
+**按需导入**：
 
 ```js
 import { s1 } from "模块标识符";
@@ -146,7 +146,7 @@ import { a, s1 as 新名字 } from "./02.module.js";
 import * as 自定义名字 from "./aaa.js";
 ```
 
-## 10.直接导入并执行
+## 直接导入并执行
 
 如果只想单纯地执行某个模块中的代码，并不需要得到模块中向外共享的成员。此时，可以直接导入并执行模 块代码
 
@@ -155,7 +155,7 @@ import * as 自定义名字 from "./aaa.js";
 import "./style.css";
 ```
 
-## 11.require，import 的区别
+## require，import 的区别
 
 require/exports 的用法只有以下三种简单的写法：
 
