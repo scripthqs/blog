@@ -88,7 +88,7 @@ HTTP 有不同的请求方法，表示要对给定资源执行不同的操作。
 
 ## 请求头
 
-http 请求的 header 就是 http 的请求头，里面一些字段的作用：
+http 请求的 header 就是 http 的请求头，键值对组成，里面一些字段的作用：
 
 - content-type：请求携带的数据类型
 
@@ -106,10 +106,15 @@ http 请求的 header 就是 http 的请求头，里面一些字段的作用：
 
 ### 请求行
 
+- 请求方法字段
+- URL 字段
+- HTTP 协议版本字段
+
 ```js
 method url
 GET /product_detail?id=2
 POST /login
+GET/index.html HTTP/1.1
 ```
 
 ### 请求体
@@ -130,8 +135,11 @@ username=tom&pwd=123
 
 ### 响应状态行
 
+由协议版本 状态码 状态码的原因短语组成
+
 ```js
 status statusText
+HTTP/1.1 200 OK
 ```
 
 ### 多个响应头
@@ -171,6 +179,7 @@ html 文本/json 文本/js/css/图片...
 - `201 Created` 已创建。成功请求并创建了新的资源
 - `301` 重定向
 - `401 Unauthorized` 未授权/请求要求用户的身份认证
+- `403` 没有权限访问
 - `404 Not Found` 服务器无法根据客户端的请求找到资源
 - `405` 请求方法不对
 - `429` 请求过于频繁

@@ -17,7 +17,7 @@ module.exports = [
     text: "服务器知识",
     items: [
       { text: "AJAX", link: "/net/ajax/01_ssr" },
-      { text: "Axios", link: "/net/axios/axios01" },
+      { text: "Axios", link: "/net/axios/01_axios" },
       { text: "Node", link: "/net/node/01node" },
       { text: "Express", link: "/net/express/01express" },
       { text: "MongoDB", link: "/net/db/01MongoDB" },

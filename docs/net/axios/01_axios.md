@@ -1,6 +1,6 @@
 # axios 基础
 
-## 1、axios 简介
+## axios 简介
 
 1. 前端最流行的 ajax 请求库
 2. react/vue 官方都推荐使用 axios 发 ajax 请求
@@ -8,7 +8,7 @@
 
 调用 axios 方法，**返回的是一个 promise 对象**
 
-## 2、axios 特点
+## axios 特点
 
 1. 基于 xhr + promise 的异步 ajax 请求库
 2. 浏览器端/node 端都可以使用
@@ -17,7 +17,7 @@
 5. 请求/响应数据转换
 6. 批量发送多个请求
 
-## 3、axios 常用语法
+## axios 常用语法
 
 `axios(config)`: 通用/最本质的发任意类型请求的方式
 `axios(url[, config])`: 可以只指定 url 发 get 请求
@@ -26,13 +26,10 @@
 `axios.delete(url[, config])`: 发 delete 请求
 `axios.post(url[, data, config])`: 发 post 请求
 `axios.put(url[, data, config])`: 发 put 请求
-
 `axios.defaults.xxx`: 请求的默认全局配置（method\baseURL\params\timeout…）
 `axios.interceptors.request.use()`: 添加请求拦截器
 `axios.interceptors.response.use()`: 添加响应拦截器
-
 `axios.create([config])`: 创建一个新的 axios(它没有下面的功能)
-
 `axios.Cancel()`: 用于创建取消请求的错误对象
 `axios.CancelToken()`: 用于创建取消请求的 token 对象
 `axios.isCancel()`: 是否是一个取消请求的错误
@@ -43,9 +40,9 @@
 
 ![axios](./images/axios.png)
 
-## 4、axios 的基本使用
+## axios 的基本使用
 
-### 4.1 axios 发送 get 请求
+### axios 发送 get 请求
 
 发起 GET 请求：**通过 params 传参**
 
@@ -87,16 +84,15 @@ axios("https://autumnfish.cn/top/playlist", {
 get 请求传递 2 个参数：
 
 1. 请求的地址
-
 2. 表示配置信息，
 
-   - params 表示传递到服务器的数据，以 url 参数的形式拼接
-
-   ```js
-   https://autumnfish.cn/top/playlist?limit=10&order=new
-   ```
-
 ```js
+//  方式1
+axios.get("https://autumnfish.cn/top/playlist?limit=10&order=new").then(function(result) {
+  console.log(result);
+});
+
+// 方式2
 axios
   .get("https://autumnfish.cn/top/playlist", {
     // URL 中的查询参数
@@ -110,7 +106,7 @@ axios
   });
 ```
 
-### 4.2 axios 发送 post 请求
+### axios 发送 post 请求
 
 发起 POST 请求：**通过 data 传参**，**上面的前两种方法，get 和 post 都可以使用。**
 
