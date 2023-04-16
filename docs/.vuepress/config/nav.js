@@ -9,7 +9,7 @@ module.exports = [
       { text: "HTML", link: "/web/html/01_web" },
       { text: "CSS", link: "/web/css/01_css" },
       { text: "JavaScript", link: "/web/js/JavaScript/01_JavaScript" },
-      { text: "TypeScript", link: "/web/ts/01_ts" },
+      { text: "TypeScript", link: "/web/ts/01_TypeScript" },
       { text: "数据结构和算法", link: "/web/algorithm/docs/01_array" },
     ],
   },
@@ -18,9 +18,9 @@ module.exports = [
     items: [
       { text: "AJAX", link: "/net/ajax/01_ssr" },
       { text: "Axios", link: "/net/axios/01_axios" },
-      { text: "Node", link: "/net/node/01node" },
-      { text: "Express", link: "/net/express/01express" },
-      { text: "MongoDB", link: "/net/db/01MongoDB" },
+      { text: "Node", link: "/net/node/01_node" },
+      { text: "Express", link: "/net/express/01_express" },
+      { text: "数据库", link: "/net/db/01_database" },
     ],
   },
   {
@@ -37,8 +37,8 @@ module.exports = [
     text: "实用工具",
     items: [
       { text: "VSCode", link: "/tools/vscode/01vsc" },
-      { text: "Git", link: "/tools/git/01git" },
-      { text: "Webpack", link: "/tools/webpack/01webpack" },
+      { text: "Git", link: "/tools/git/01_git" },
+      { text: "Webpack", link: "/tools/webpack/01_webpack" },
       { text: "内网穿透", link: "/tools/nat/" },
     ],
   },

@@ -37,8 +37,7 @@ ES6 的 Modules **vuecli 脚手架中可以使用，ES6 语法，js 文件中都
 node.js 遵循了 CommonJS 的模块化规范。其中：
 
 - 导入其它模块使用 require() 方法
-
-- 模块对外共享成员使用 module.exports 对象
+- 模块对外共享成员使用 module.exports 对象或者 exports
 - 模块化的好处： 大家都遵守同样的模块化规范写代码，降低了沟通的成本，极大方便了各个模块之间的相互调用，利人利己
 
 ```js
@@ -50,6 +49,101 @@ let { flag, sum } = require("./aaa.js");
 const fs = require("fs");
 ```
 
+### exports
+
+exports 是一个对象，可以在这个对象中添加很多个属性，添加的属性会导出
+
+```js
+//bar.js
+exports.name = "aaa";
+export.age = 20
+//index.js
+const bar = require('./bar.js')
+// 此时的bar变量等于exports对象
+```
+
+### module.exports
+
+在 Node 中真正用于导出的其实根本不是 exports，而是 module.exports，是因为 module 对象的 exports 属性是 exports 对象的一个引用
+
+```js
+console.log(exports === module.exports); //true
+```
+
+- 通过 exports 只能使用.的方式来向外暴露内部变量
+- module.exports 既可以使用.的形式，也可以直接赋值
+
+```js
+const name = "foo";
+const age = 18;
+function sayHello() {
+  console.log("sayHello");
+}
+// 1.在开发中使用的很少
+exports.name = name;
+exports.age = age;
+exports.sayHello = sayHello;
+
+// 2.将模块中内容导出
+// 结论: Node导出的本质是在导出module.exports对象
+module.exports.name = name;
+module.exports.age = age;
+module.exports.sayHello = sayHello;
+
+// console.log(exports.name, "----")
+// console.log(exports.age, "----")
+// console.log(exports.sayHello, "----")
+console.log(exports === module.exports);
+
+// 3.开发中常见的写法
+module.exports = {
+  name,
+  age,
+  sayHello,
+};
+```
+
+### require
+
+require 是一个函数，可以帮助我们引入一个文件（模块）中导出的对象
+
+```js
+require(x);
+/**
+ * X是一个Node核心模块，比如path、http
+ * 直接返回核心模块，并且停止查找
+ */
+const path = require("path");
+const http = require("http");
+console.log(path, http);
+/**
+ * X是以 ./ 或 ../ 或 /（根目录）开头的
+ * 将X当做一个文件在对应的目录下查找
+ * 没有找到对应的文件，将X作为一个目录
+ * 没有找到，那么报错：not found
+ */
+const utils = require("./utils");
+const foo = require("./foo");
+console.log(utils.formatDate());
+
+/**
+ *  名称不是路径, 也不是一个内置模块
+ *  找node_modules
+ */
+const aaa = require("aaa");
+console.log(aaa);
+const axios = require("axios");
+console.log(axios);
+```
+
+### CommonJS 的特点
+
+CommonJS 加载模块是同步的，只有等到对应的模块加载完毕，当前模块中的内容才能被运行。
+
+- 服务器加载的 js 文件都是本地文件，加载速度非常快，所以服务器加载没问题
+
+但是在浏览器中，同步加载可能会影响 js 代码的正常运行，所有通常不使用 CommonJS 规范。早期浏览器使用模块化是 AMD 或者 CMD，现在都是用 ES Modules，并且 webpack 等工具可以对 CommonJS 或者 ES Modules 的转化
+
 ## ES6 模块化实现
 
 **ES6 模块化规范是浏览器端与服务器端通用的模块化开发规范**。它的出现极大的降低了前端开发者的模块化学习成本，开发者不需再额外学习 AMD、CMD 或 CommonJS 等模块化规范。
@@ -60,7 +154,7 @@ ES6 模块化规范中定义：
 - **导入**其它模块成员使用 **import 关键字**
 - **导出**模块成员使用 **export 关键字**
 
-## 在 node.js 中体验 ES6 模块化
+### 在 node.js 中体验 ES6 模块化
 
 node.js 中默认仅支持 CommonJS 模块化规范，若想基于 node.js 体验与学习 ES6 的模块化语法，可以按照 如下两个步骤进行配置：
 
@@ -68,19 +162,19 @@ node.js 中默认仅支持 CommonJS 模块化规范，若想基于 node.js 体�
 
 - 在 package.json 的根节点中添加 "type": "module" 节点
 
-## ES6 模块化的基本语法
+### ES6 exports
 
-ES6 的模块化主要包含如下 3 种用法：
+export 关键字将一个模块中的变量、函数、类等导出。
 
-1. 默认导出与默认导入
-2. 按需导出与按需导入
-3. 直接导入并执行模块中的代码
-
-导出的具体方式：
+导出的具体方式有 3 种：
 
 1. 在语句声明前直接加上 export 导出
 2. 将需要导出的标识符，放在 export 后面的`{}`，注意`{}`不是 ES6 的对象字面量增强写法，也不是表示一个对象。`export {name:name}`是错误的写法。
 3. 导出时给标识符起一个别名，通过 `as` 关键字起别名
+
+### ES6 import
+
+import 关键字负责从另外一个模块中导入内容
 
 导入的具体方式：
 
@@ -96,7 +190,7 @@ export { sum as barSum } from "./bar.js";
 
 **import 函数返回一个 Promise，可以通过 then 获取结果**。
 
-## 默认导入导出
+### 默认导入导出
 
 **默认导出**：
 
@@ -113,10 +207,10 @@ import m1 from "./01.module.js";
 ```
 
 - 每个模块中，只允许使用唯一的一次 export default，否则会报错！
-
 - 默认导入时的接收名称可以任意名称，只要是合法的成员名称即可
+- 在导入时不需要使用 {}，并且可以自己来指定名字
 
-## 按需导入导出
+### 按需导入导出
 
 **按需导出**：
 
@@ -146,7 +240,7 @@ import { a, s1 as 新名字 } from "./02.module.js";
 import * as 自定义名字 from "./aaa.js";
 ```
 
-## 直接导入并执行
+### 直接导入并执行
 
 如果只想单纯地执行某个模块中的代码，并不需要得到模块中向外共享的成员。此时，可以直接导入并执行模 块代码
 
