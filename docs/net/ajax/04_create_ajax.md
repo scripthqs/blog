@@ -10,6 +10,8 @@
 
 该构造函数用于初始化一个 `XMLHttpRequest` 实例对象，AJAX 的所有操作都是通过该对象进行的
 
+> 接口测试网站<https://httpbin.org/#/>
+
 ## XHR 使用步骤
 
 1. 创建网络请求的 ajax 对象，使用 XMLHttpRequest

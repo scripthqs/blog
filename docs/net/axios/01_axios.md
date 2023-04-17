@@ -8,6 +8,8 @@
 
 调用 axios 方法，**返回的是一个 promise 对象**
 
+> 接口测试网站<https://httpbin.org/#/>
+
 ## axios 特点
 
 1. 基于 xhr + promise 的异步 ajax 请求库
@@ -46,65 +48,65 @@
 
 发起 GET 请求：**通过 params 传参**
 
-1.通过`axios({})`通用方式发送
+1. 通过`axios({})`通用方式发送
 
-```js
-axios({
-  // 请求方式
-  method: "GET",
-  // 请求的地址
-  url: "https://autumnfish.cn/top/playlist",
-  // URL 中的查询参数
-  params: {
-    limit: 10,
-    order: "new",
-  },
-}).then(function(result) {
-  console.log(result);
-});
-```
+   ```js
+   axios({
+     // 请求方式
+     method: "GET",
+     // 请求的地址
+     url: "https://autumnfish.cn/top/playlist",
+     // URL 中的查询参数
+     params: {
+       limit: 10,
+       order: "new",
+     },
+   }).then(function(result) {
+     console.log(result);
+   });
+   ```
 
-2.通过`axios('url',{})`发送
+2. 通过`axios('url',{})`发送
 
-```js
-axios("https://autumnfish.cn/top/playlist", {
-  // 请求方式
-  method: "GET",
-  params: {
-    limit: 10,
-    order: "new",
-  },
-}).then(function(result) {
-  console.log(result);
-});
-```
+   ```js
+   axios("https://autumnfish.cn/top/playlist", {
+     // 请求方式
+     method: "GET",
+     params: {
+       limit: 10,
+       order: "new",
+     },
+   }).then(function(result) {
+     console.log(result);
+   });
+   ```
 
-3.通过`axios.get('url',{})`发送
+3. 通过`axios.get('url',{})`发送
 
-get 请求传递 2 个参数：
+   get 请求传递 2 个参数：
 
-1. 请求的地址
-2. 表示配置信息，
+   1. 请求的地址
+   2. 表示配置信息，
 
-```js
-//  方式1
-axios.get("https://autumnfish.cn/top/playlist?limit=10&order=new").then(function(result) {
-  console.log(result);
-});
+   ```js
+   //  方式1
+   axios.get("https://autumnfish.cn/top/playlist?limit=10&order=new").then(function(result) {
+     console.log(result);
+   });
 
-// 方式2
-axios
-  .get("https://autumnfish.cn/top/playlist", {
-    // URL 中的查询参数
-    params: {
-      limit: 10,
-      order: "new",
-    },
-  })
-  .then(function(result) {
-    console.log(result);
-  });
-```
+   // 方式2，开发中，这种使用最多
+   axios
+     .get("https://autumnfish.cn/top/playlist", {
+       // URL 中的查询参数
+       params: {
+         limit: 10,
+         order: "new",
+       },
+     })
+     .then(function(result) {
+       console.log(result);
+     });
+   ```
 
 ### axios 发送 post 请求
 
@@ -123,12 +125,25 @@ post 请求传递 3 个参数，
 3. 配置的信息，header 等
 
 ```js
+// 方式1
+axios
+  .post("https://httpbin.org/post", {
+    data: {
+      pageIndex: 2,
+      pageSize: 10,
+    },
+  })
+  .then((res) => {
+    console.log(res, "post-res--");
+  });
+
+//方式2，开发中，这种使用最多
 axios
   .post(
-    "https://autumnfish.cn/login/cellphone",
+    "https://httpbin.org/post",
     {
-      phone: "15588889999",
-      password: "123456789",
+      pageIndex: 2,
+      pageSize: 10,
     },
     {}
   )
