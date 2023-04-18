@@ -235,24 +235,18 @@ class Request {
     // 每个instance实例都添加响应拦截器
     this.instance.interceptors.response.use(
       (res) => {
+        // 此时接口已经请求成功，response里面便是请求成功后返回的响应体
         // 1.结束loading的动画
         // 2.对数据进行转化, 再返回数据
 
         /**
-         * 
+         * 1. 一般情况下会在这里进行一次数据的剥离。这样真正发起请求的地方就可以少写一层
+         * 2. response里存在data对象，status，statusText，headers，config，request，可以解构出来
+         * 3. 项目里一般会存在文件请求，此时返回的response是二进制文件流,要做个判断
+         * const { responseType } = config; if(responseType == 'blob') return response; return data;
+         * 4. 根据code进行相关前后端协商后的相关配置
+         * code是404，则跳转到404页面，也可以引入Element实例然后弹出错误或者警告信息框。
          */
-        // 此时接口已经请求成功，response里面便是请求成功后返回的响应体
-        // 一般情况下会在这里进行一次数据的剥离。这样真正发起请求的地方就可以少写一层
-
-    //  response里存在data对象，status，statusText，headers对象，config对象，request对象。
-    //  此时我们只需要data和config： const { data, config } = response;
-
-    //  项目里一般会存在文件请求，此时返回的response是二进制文件流,要做个判断：
-    //  const { responseType } = config; if(responseType == 'blob') return response; return data;
-
-    // 有时虽然请求是200，但是实际接口返回的可能不是正常数据，而是自定义的错误code，这时可以在这里进行相关
-    // 前后端协商后的相关配置。比如：code是404，则跳转到404页面。code是502，则跳转到502页面。
-    // code 是401，则跳转到401当然也不一定非要跳转页面，也可以引入Element实例然后弹出错误或者警告信息框。
         return res.data;
       },
       (err) => {
