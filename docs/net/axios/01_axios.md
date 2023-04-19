@@ -38,9 +38,9 @@
 `axios.all(promises)`: 用于批量执行多个异步请求
 `axios.spread()`: 用来指定接收所有成功数据的回调函数的方法
 
-<!-- <img src="D:\user\Desktop\scripthqs\note\material\ajax\axios图解.png" alt="axios图解" style="zoom: 67%;" /> -->
+<!-- ![axios](./images/axios.png) -->
 
-![axios](./images/axios.png)
+![axios](https://raw.githubusercontent.com/scripthqs/assets/master/blog/axios.png)
 
 ## axios 的基本使用
 

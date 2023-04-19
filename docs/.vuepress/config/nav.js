@@ -26,7 +26,7 @@ module.exports = [
   {
     text: "框架学习",
     items: [
-      { text: "Vue", link: "/frame/vue/vue3/vue3_01" },
+      { text: "Vue", link: "/frame/vue/vue3/01_vue3" },
       { text: "ECharts", link: "/frame/echarts/00echarts" },
       { text: "微信小程序", link: "/frame/mini_program/01mini" },
       { text: "Uni-App", link: "/frame/uniapp/01uni" },
@@ -39,7 +39,6 @@ module.exports = [
       { text: "VSCode", link: "/tools/vscode/01vsc" },
       { text: "Git", link: "/tools/git/01_git" },
       { text: "Webpack", link: "/tools/webpack/01_webpack" },
-      { text: "内网穿透", link: "/tools/nat/" },
     ],
   },
   {

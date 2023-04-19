@@ -1,5 +1,11 @@
 # work
 
+## js 中的 Truthy 和 Falsy
+
+Truthy 和 Falsy 并不是拼写错误。Truthy 不等于 true，指是在 Boolean 上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。
+
+- falsy: false，0，''，null，undefined 和 NaN
+
 ## list to tree
 
 ```ts
@@ -114,7 +120,7 @@ require.context 是 webpack 的一个 api，通过执行 require.context()函数
 ## 路由传参
 
 1. query 传参 参数会跟在 url 后面，刷新页码不丢失
-2. params 传参 参数不可见 但是刷新页面参数会丢失 ，解决不丢失的方法存在 localStorage 或 sessionStorage 中
+2. params 传参 参数不可见 但是刷新页面参数会丢失，解决不丢失的方法存在 localStorage 或 sessionStorage 中
 
 ## antd
 

@@ -278,3 +278,214 @@ div {
   border-right: 50px solid transparent;
 }
 ```
+
+# Vue 重点
+
+## Vue 的组件通信方法
+
+### 1.props/\$emit
+
+`props/$emit`属性可以实现父子组件之间的通信，父组件可以通过**自定义属性 props**向子组件传递数据，子组件可以通过**自定义事件\$emit**向父组件传递数据。
+
+### 2.$emit/$on
+
+eventBus 事件总线`$emit/$on`适用于**各种组件**之间传递数据。步骤：
+
+1. 新建 event-bus.js 模块文件，向外共享一个 Vue 实例对象
+2. 在数据的发送方，使用自定义事件，调用**bus.\$emit('事件名称',发送的数据)**
+3. 在数据的接收方，组测自定义事件，**bus.\$on('自定义事件名称',事件处理函数)**
+
+```js
+//eventBus.js
+import Vue from 'vue'
+export default new Vue()
+
+//Left.vue,发送方
+import bus from 'eventBus.js'
+methods: {
+    send () {
+      bus.$emit('share', this.str)
+    }
+  }
+
+//Right.vue，接受方
+import bus from 'eventBus.js'
+created () {
+    bus.$on('share', (val) => {
+      this.msg = val
+    })
+ }
+```
+
+或者将事件总线添加到 Vue 的原型。
+
+1.在 Vue 的原型上添加一个\$bus 的属性让其等于一个新的 Vue 实例
+
+2.发射全局监听事件，和常规\$emit 一样也可以传递参数
+
+3.监听全局事件
+
+```js
+//在vue中的main.js文件中
+Vue.prototype.$bus = new Vue();
+//或者
+Vue.prototype.$bus = this;
+
+//数据发送方
+this.$bus.$emit("itemImageLoad");
+
+//数据接收方
+this.$bus.$on("itemImageLoad", () => {});
+```
+
+### 3.ref/\$refs
+
+`ref/$refs`可以实现**父子组件**之间的通信。
+
+ref 属性使用到组件上，就指向组件引用的实例，可以通过实例方法组件的属性和方法。
+
+```vue
+// 子组件 data(){ return { message: 'hello' } }, methods:{ fun(){ console.log('world') } } // 父组件
+<Son ref="child"></Son>
+mounted(){ console.log(this.$refs.child.message)//hello this.$refs.child.fun()//world }
+```
+
+### 4.$parent/$children
+
+使用`$parent`可以让组件访问父组件的实例，使用`$children`可以让组件访问子组件的实例。
+
+```vue
+//在子组件中，$parent是一个对象 this.$parent.msg //在父组件中,$children是一个数组 this.$children[0].msg
+```
+
+### 5.$attrs/$listeners
+
+`$attrs和$listeners`使用于**父子、隔代组件之间的通信**。`$attrs`属性继承了父组件的所有属性（除了 props 传递的属性,class,style），`$listeners`是一个对象，包含了父组件的各种事件方法。可以使用`v-bind='$attr'`继续向子组件中传递属性。
+
+### 6.provide/inject
+
+依赖注入`provide/inject`可以用于**父子、隔代组件的通信**。provide 和 inject 是 Vue 的钩子函数，provide 用来发送数据，inject 使用接收数据。
+
+```vue
+//在父组件中，provide书写方式和data一样 provide(){ return { msg: 'hello' } } //在子组件中 inject:['msg']
+```
+
+注意：provide 提供的属性有点像一个全局的变量，有可能造成变量的污染，而且依赖注入提供的属性是**非响应式**的。
+
+### 7.vuex
+
+当数据比较复杂时，可以使用 vuex，将一些公共的数据抽离出来，作为全局变量进行管理，其他组件可以对这个公共数据进行读写操作。
+
+### 8.离线存储
+
+可以使用浏览器的离线存储机制
+
+```vue
+//组件a created(){ localStorage.setItem('data','a数据') } //组件b created(){ console.log(localStorage.getItem('data')) }
+```
+
+## Vue 的生命周期
+
+### Vue 的生命周期函数
+
+Vue 实例有一个完整的生命周期，主要分为 3 个阶段，创建、运行和销毁。
+
+1.创建阶段
+
+- beforeCreate 创建前，**data/methods**属性都处于**不可用**状态
+- created 创建后，data/methods 属性可用，但是组件的模板并未生产，不能访问`$el`属性，**不能操作 DOM**，可以发送 ajax 请求
+- beforeMount 挂载前，将要把编译好的模板渲染到浏览器中，此时浏览器器中还没有 DOM 结构，**不能操作 DOM**
+- mounted 挂载后，浏览器有当前组件的 DOM 结构，**可以操作 DOM**
+
+  2.运行阶段
+
+- beforeUpdate 更新前，将要根据最新的属性重新渲染模板，**data 数据最新的，DOM 结构是旧的**
+- updated 更新后，已经根据最新的数据重新渲染了模板，**data 数据是最新的，DOM 结构也是最新的**
+
+  3.销毁阶段
+
+- beforeDestroy 销毁前，将要销毁组件，**组件还处于正常工作状态**
+- destroyed 销毁后，**DOM 结构已经完全移除**
+
+### 哪个生命周期请求异步数据
+
+可以在 created,beforeMount,mounted 钩子函数中请求 ajax 等异步数据，一般都在 created 中请求数据。
+
+### keep-alive 的生命周期
+
+keep-alive 可以将组件进行缓存，而不是销毁组件，此时组件会多两个生命周期，activated 和 deactivated
+
+- 当组件被缓存时，会触发 deactivated 生命周期函数
+- 当组件被激活时，会触发 activated 生命周期函数
+
+```vue
+deactivated(){ console.log('组件被缓存') } activated(){ console.log('组件被激活') }
+```
+
+## Vue 其他问题
+
+### v-if 和 v-show
+
+v-if 和 v-show 都可以控制元素的显示和隐藏。
+
+- v-if 是真正的条件渲染，在显示隐藏过程中有 DOM 的添加和删除
+- v-show 只是切换 css，相当于设置 display 属性
+
+如何需要非常频繁的切换，可以考虑使用 v-show
+
+### \$nextTick 的作用
+
+`$nextTick`将回调函数推迟到下一次 DOM 更新后执行，在 created 生命周期函数中，需要进行 DOM 操作，就一定要放在 nextTick 函数中。
+
+### computed 和 watch
+
+- computed 是计算属性，依赖于其他属性计算而来的，有缓存机制
+- watch 是监听其他属性的变化，支持异步，不支持缓存
+
+# Vue-router 重点
+
+## Vue-router 的懒加载
+
+当路由被加载时才访问对应的组件
+
+- 使用箭头函数+import 的方式
+
+```js
+import list from "@/components/list.vue"; //非懒加载
+const list = () => import("@/components/list.vue"); //懒加载
+const router = new VueRouter({
+  routes: [{ path: "list", component: list }],
+});
+```
+
+## 路由的 hash 模式和 history 模式
+
+- 默认是 hash 模式，浏览器地址栏的 URL 会带一个`#`，兼容性更好
+- history 模式需要后台支持，没有支持就会访问 404
+
+```js
+const router = new VueRouter({
+  mode: 'history',
+  routes: [...]
+})
+```
+
+## 获取页面的 hash 模式
+
+- 监听\$route 参数对象的变化
+- window.location.hash 读取#值
+
+## $route和$router
+
+- \$route 是参数对象，包含了 path,params,hash,query 等路由参数信息
+- \$router 是路由实例对象，包含了路由跳转的方法，push,go,back,beforeEach 导航守卫
+
+## 动态路由
+
+路径/后面是路径参数 params，?后面是查询参数 query
+
+使用英文:的方法实现动态路由
+
+## 路由导航
+
+全局前置守卫，beforeEach 参数是回调函数，可以根据 token 判断是否登录跳转
