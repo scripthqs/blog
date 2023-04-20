@@ -148,6 +148,26 @@ console.log(navigator.userAgent);
 console.log(navigator.platform);
 ```
 
+`navigator.geolocation`可以获取用户设备的地理位置
+
+获取用户地理位置信息需要得到用户的明确授权，因此在使用该 API 时，应该尊重用户的隐私权，清楚告知用户使用他们的位置信息的目的，并且只在必要的情况下获取用户的地理位置信息。
+
+```js
+navigator.geolocation.getCurrentPosition(
+  (res) => {
+    console.log("获取位置成功:", res);
+  },
+  (err) => {
+    console.log("获取位置失败:", err);
+  },
+  {
+    enableHighAccuracy: true, //尽可能使用最准确的位置源获取位置信息
+    timeout: 5000,
+    maximumAge: 0,
+  }
+);
+```
+
 ## history
 
 - `history.length`获取浏览器历史列表中的 url 数量。注意，只是统计当次的数量，如果浏览器关了，数量会重置为 1。

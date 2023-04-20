@@ -219,6 +219,35 @@ flex: 0 0;
 
 ## 常见用法
 
+## flex 两端分布
+
+```html
+<div class="container">
+  <span class="item item1">1</span>
+  <span class="item item2">2</span>
+</div>
+<style>
+  /* 写法1 */
+  .container {
+    display: flex;
+    align-items: center;
+    /* 利用 */
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 20px;
+    background-color: orange;
+  }
+  .item {
+    width: 20px;
+    height: 40px;
+  }
+  /* 写法2 */
+  .item1 {
+    flex: 1;
+  }
+</style>
+```
+
 ### flex 和 margin
 
 有三个元素，前两个靠左，第三个靠右，将第三个的元素的 margin-left:auto，即可实现该功能。

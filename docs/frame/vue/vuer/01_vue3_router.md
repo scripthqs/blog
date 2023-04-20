@@ -286,6 +286,17 @@ if (isAdmin) {
 console.log(router.getRoutes());
 ```
 
+删除路由有以下三种方式：
+
+- 方式一：添加一个 name 相同的路由
+- 方式二：通过 removeRoute 方法，传入路由的名称
+- 方式三：通过 addRoute 方法的返回值回调
+
+路由的其他方法补充：
+
+- router.hasRoute()：检查路由是否存在
+- router.getRoutes()：获取一个包含所有路由记录的数组
+
 ## 编程式导航
 
 ### 路由跳转
@@ -301,6 +312,19 @@ console.log(router.getRoutes());
 - go(number)
 
 ## 路由守卫
+
+全局的前置守卫 beforeEach 是在导航触发时会被回调的，有两个参数：
+
+- to：即将进入的路由 Route 对象
+- from：即将离开的路由 Route 对象
+
+有返回值：
+
+- false：取消当前导航
+- 不返回或者 undefined：进行默认导航
+- 返回一个路由地址：
+  - 可以是一个 string 类型的路径
+  - 可以是一个对象，对象中包含 path、query、params 等信息
 
 ```js
 // 路由导航守卫
@@ -320,4 +344,15 @@ router.beforeEach((to, from) => {
     return "/login";
   }
 });
+```
+
+## keep-alive
+
+```html
+<!-- name属性 -->
+<router-view v-slot="props">
+  <keep-alive include="home">
+    <component :is="props.Component"></component>
+  </keep-alive>
+</router-view>
 ```
