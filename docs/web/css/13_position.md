@@ -86,7 +86,7 @@ position: sticky;
 top: 10px; /*距离上端10px时固定*/
 ```
 
-## sz-index
+## z-index
 
 对于**开启定位**的元素，可以通过`z-index`属性来指定元素的层级，`z-index`需要一个整数作为参数。
 

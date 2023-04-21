@@ -11,6 +11,12 @@ background-color: rgb(255, 0, 0); /*使用rgb*/
 background-color: #f00; /*十六进制*/
 ```
 
+通过这个属性设置蒙版效果
+
+```css
+background-color: rgba(0, 0, 0, 0.2);
+```
+
 ## background-image
 
 background-image 属性设置**背景图片**，属性值需要写**url()**中写路径
@@ -133,6 +139,17 @@ background: color url(img.jpg) no-repeat fixed top;
 - 设置偏移量以显示正确的图片
 
 雪碧图特点：降低请求次数，加快访问速度，提升用户体验。
+
+```css
+.icon-search {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  /* background-image: url(sprite.png); */
+  background-position: -29px -151px;
+  background-size: 207px 192px;
+}
+```
 
 ## clip-path
 

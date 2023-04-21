@@ -170,12 +170,16 @@ const name = getObjectProperty(info, "name");
 
 ## 映射类型
 
-一个类型需要基于另外一个类型，但是你又不想拷贝一份，这个时候可以考虑使用映射类型
+一个类型需要基于另外一个类型，但是你又不想拷贝一份，这个时候可以考虑使用映射类型 `MapType`
 
 - 大部分内置的工具都是通过映射类型来实现的
 - 大多数类型体操的题目也是通过映射类型完成的
 
-映射类型建立在索引签名的语法上，配合 keyof 创建，映射类型不能使用 interface 定义，只能使用 type
+映射类型建立在索引签名的语法上，
+
+- 配合 `keyof` 创建
+- 映射类型不能使用 interface 定义，只能使用 type
+- 可以添加修饰符`?`、`readonly`、`-`
 
 ```ts
 // 写法1：拷贝一份IPerson
@@ -191,23 +195,54 @@ interface NewPerson {
 
 //写法2：映射类型
 type MapPerson<T> = {
-  // 索引类型以此进行使用
-  [aaa in keyof T]: T[aaa];
+  // 索引类型依次进行使用
+  [K in keyof T]: T[K];
 };
+
+// 类似一个函数
 type NewPerson = MapPerson<IPerson>;
+//  等价于
+interface NewPerson {
+  name: string;
+  age: number;
+}
+
+//可以添加修饰符?等
+type MapPerson<T> = {
+  [K in keyof T]?: T[K];
+};
+
+//可以添加readonly等
+type MapPerson<T> = {
+  readonly [K in keyof T]?: T[K];
+};
+
+//可以添加-等
+type MapPerson<T> = {
+  readonly [K in keyof T]-?: T[K];
+};
+
+type MapPerson<T> = {
+  -readonly [K in keyof T]?: T[K];
+};
 ```
 
 ## 条件类型
 
 很多时候，日常开发中我们需要基于输入的值的类型来决定输出的值的类型，可以使用条件类型判断。
 
+- `SomeType extends OtherType ? TrueType : FalseType;`
+
 ```ts
 type IDType = number | string;
 
 // 判断number是否是extends IDType
 // const res = 2 > 3? true: false
-type ResType = boolean extends IDType ? true : false;
+type ResType = boolean extends IDType ? true : false; // ResType是false
+type TestType = number extends IDType ? true : false; // TestType是true
 
+// 错误的做法: 类型扩大化
+// function sum(num1: string|number, num2: string|number): string
 function sum<T extends number | string>(num1: T, num2: T): T extends number ? number : string;
 function sum(num1, num2) {
   return num1 + num2;
@@ -215,4 +250,91 @@ function sum(num1, num2) {
 
 const res = sum(20, 30);
 const res2 = sum("abc", "cba");
+```
+
+### 条件类型推断
+
+条件类型提供了 infer 关键字，可以从正在比较的类型中推断类型，然后在 true 分支里引用该推断结果
+
+```ts
+//实现内置工具ReturnType，获取函数返回值类型
+type MyReturnType<T extends (...args: any[]) => any> = T extends (...args: any[]) => infer R ? R : never;
+```
+
+## 内置的类型工具
+
+### `Partial<Type>`
+
+用于构造一个 Type 下面的所有属性都设置为可选的类型
+
+```ts
+interface IPerson {
+  name: string;
+  age: number;
+  address?: string;
+}
+type aa = Partial<IPerson>;
+// 等价于
+type aa = {
+  name?: string | undefined;
+  age?: number | undefined;
+  address?: string | undefined;
+};
+
+// Partial原理(类型体操)
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+```
+
+### `Required<Type>`
+
+用于构造一个 Type 下面的所有属性全都设置为必填的类型，这个工具类型跟 Partial 相反
+
+```ts
+// Required类型体操
+type Required<T> = {
+  [P in keyof T]-?: T[P];
+};
+```
+
+### `Readonly<Type>`
+
+用于构造一个 Type 下面的所有属性全都设置为只读的类型，意味着这个类型的所有的属性全都不可以重新赋值。
+
+```ts
+// 类型体操
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+```
+
+### `Record<Keys, Type>`
+
+用于构造一个对象类型，它所有的 key(键)都是 Keys 类型，它所有的 value(值)都是 Type 类型。
+
+```ts
+type t1 = Record<number, string>;
+// 等价于
+type t1 = {
+  [x: number]: string;
+};
+
+type a1 = "a" | "b" | "c";
+type t2 = Record<a1, string>;
+// 等价于
+type aa = {
+  a: string;
+  b: string;
+  c: string;
+};
+```
+
+### ReturnType
+
+获取一个函数的返回值类型: 内置工具
+
+```ts
+type CalcFnType = (num1: number, num2: string) => number;
+type CalcReturnType = ReturnType<CalcFnType>; // number类型
 ```

@@ -102,3 +102,20 @@ calc() 函数可以在执行 css 属性值时执行一些计算。calc() 内部�
 
 /* <div class="box"></div> */
 ```
+
+## 配置 css 变量
+
+```css
+:root {
+  --primary-color: #ff9854;
+  --line-color: #faf8f9;
+  --theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
+
+  /* 全局修改: 任何地方只要用到-van-tabbar-item-icon-size都会被修改掉 */
+  /* --van-tabbar-item-icon-size: 30px !important; */
+
+  /* 全局修改: 修改search样式 */
+  --van-primary-color: var(--primary-color);
+  --van-search-left-icon-color: var(--primary-color) !important;
+}
+```

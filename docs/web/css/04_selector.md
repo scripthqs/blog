@@ -219,3 +219,23 @@ p::after{
 - `::first-letter`：表示第一个字母
 - `::first-line`：表示第一行
 - `p::selection`：表示选中的内容
+
+## 利用伪元素画三角
+
+```css
+.end::after {
+  content: " ";
+  width: 0;
+  height: 0;
+  border: 4px solid #666;
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #666;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  bottom: 0px;
+  right: -12px;
+}
+```

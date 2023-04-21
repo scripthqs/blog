@@ -123,3 +123,13 @@ white-space: nowrap; /*强制一行显示文本*/
 overflow: hidden; /*超出部分隐藏*/
 text-overflow: ellipsis; /*文字用省略号替代超出部分*/
 ```
+
+两行显示
+
+```css
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```

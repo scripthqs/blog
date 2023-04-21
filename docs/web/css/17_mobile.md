@@ -256,3 +256,15 @@ vw 相比于 rem 的优势：
    ```
 
 3. px to vw 插件
+
+## 让页面占满屏幕
+
+```css
+.top-page {
+  position: relative;
+  z-index: 9;
+  height: 100vh;
+  background-color: #fff;
+  overflow-y: auto;
+}
+```

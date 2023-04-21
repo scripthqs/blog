@@ -205,6 +205,8 @@ function goAboutClick() {
       age: 20,
     },
   });
+  // 跳转到Detail页面params 传参
+  router.push("/detail/" + detailId);
 }
 ```
 
