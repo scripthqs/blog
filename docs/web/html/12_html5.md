@@ -250,6 +250,52 @@ Web 存储的特性：
 
 JSON.stringify() 方法将一个 JavaScript 对象或值转换为 JSON 字符串。
 
+封装 storage
+
+```js
+enum CacheType {
+  Local,
+  Session
+}
+
+class Cache {
+  storage: Storage
+
+  constructor(type: CacheType) {
+    this.storage = type === CacheType.Local ? localStorage : sessionStorage
+  }
+
+  setCache(key: string, value: any) {
+    if (value) {
+      this.storage.setItem(key, JSON.stringify(value))
+    }
+  }
+
+  getCache(key: string) {
+    const value = this.storage.getItem(key)
+    if (value) {
+      return JSON.parse(value)
+    }
+  }
+
+  removeCache(key: string) {
+    this.storage.removeItem(key)
+  }
+
+  clear() {
+    this.storage.clear()
+  }
+}
+
+const localCache = new Cache(CacheType.Local)
+const sessionCache = new Cache(CacheType.Session)
+
+export { localCache, sessionCache }
+
+// import { localCache ,sessionCache} from '@/utils/cache'
+
+```
+
 ## Canvas 绘图
 
 可以使用 js 在其中绘制图像

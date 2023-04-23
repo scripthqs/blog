@@ -2,6 +2,9 @@
 
 在 React 中，HTML 表单的处理方式和普通的 DOM 元素不太一样，表单元素通常会保存在一些内部的 state
 
+- 在受控组件中，表单数据是由 React 组件来管理的
+- 非受控组件中，表单数据将交由 DOM 节点来处理
+
 ```js
 inputChange(event) {
   console.log("inputChange:", event.target.value)
@@ -14,6 +17,12 @@ const { username } = this.state
 /* 非受控组件 */
 <input type="text" />
 <h2>username: {username}</h2>
+
+// this.messageRef.current.value
+// 在非受控组件中通常使用defaultValue来设置默认值
+render(){
+    <input type="text" defaultValue={message} ref={this.messageRef} />
+}
 ```
 
 多个表单使用同一函数

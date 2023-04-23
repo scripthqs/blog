@@ -114,7 +114,7 @@ export default function useScroll() {
     scrollTop.value = document.documentElement.scrollTop;
     scrollHeight.value = document.documentElement.scrollHeight;
 
-    if (clientHeight.value + scrollTop.value >= scrollHeight.value) {
+    if (scrollHeight.value - scrollTop.value <= clientHeight.value) {
       // 滚动到底部触发
       isReachBottom.value = true;
     }
@@ -153,7 +153,7 @@ export default function useScroll(elRef) {
       scrollTop.value = el.scrollTop;
       scrollHeight.value = el.scrollHeight;
     }
-    if (clientHeight.value + scrollTop.value >= scrollHeight.value) {
+    if (scrollHeight.value - scrollTop.value <= clientHeight.value) {
       console.log("滚动到底部了");
       isReachBottom.value = true;
     }

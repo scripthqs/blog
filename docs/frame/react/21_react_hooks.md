@@ -283,6 +283,50 @@ const App = memo(() => {
 export default App;
 ```
 
+## useCallback
+
+当需要将一个函数传递给子组件时, 最好使用 useCallback 进行优化, 将优化之后的函数, 传递给子组件
+
+- useCallback 会返回一个函数的 memoized（记忆的） 值
+- 在依赖不变的情况下，多次定义的时候，返回的值是相同的；
+
+通常使用 useCallback 的目的是不希望子组件进行多次渲染，并不是为了函数进行缓存
+
+## useMemo
+
+- useMemo 返回的也是一个 memoized（记忆的） 值
+- 在依赖不变的情况下，多次定义的时候，返回的值是相同的
+
+## useRef
+
+useRef 返回一个 ref 对象，返回的 ref 对象在组件的整个生命周期保持不变。用法：
+
+- 引入 DOM（或者组件，但是需要是 class 组件）元素
+- 保存一个数据，这个对象在整个生命周期中可以保存不变
+
+## useImperativeHandle
+
+对于 ref 和 forwardRef 结合使用
+
+- 通过 forwardRef 可以将 ref 转发到子组件
+- 子组件拿到父组件中创建的 ref，绑定到自己的某一个元素中
+
+这样的做法将子组件的 DOM 直接暴露给了父组件，会有一些问题
+
+- 直接暴露给父组件不可控
+- 父组件可以拿到 DOM 后进行任意的操作
+
+useImperativeHandle 可以只暴露固定的操作
+
+## useLayoutEffect
+
+和 useEffect 非常的相似
+
+- useEffect 会在渲染的内容更新到 DOM 上后执行，不会阻塞 DOM 的更新
+- useLayoutEffect 会在渲染的内容更新到 DOM 上之前执行，会阻塞 DOM 的更新
+
+希望在某些操作发生之后再更新 DOM，那么应该将这个操作放到 useLayoutEffect。
+
 ## redux hooks
 
 为了让组件和 redux 结合起来，需要使用 react-redux 的 connect
@@ -307,7 +351,7 @@ useDispatch 直接获取 dispatch 函数，之后在组件中直接使用即可
 
 ## 自定义 hooks
 
-自定义 hook 本质式函数代码逻辑的抽取
+自定义 hook 本质式函数代码逻辑的抽取，不是只有 React 可以写，Vue3 也可以写 hooks 了
 
 ```js
 //打印生命周期

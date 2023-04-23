@@ -26,7 +26,7 @@ export class App extends PureComponent {
   }
 
   getNativeDOM() {
-    // 1.方式一: 在React元素上绑定一个ref字符串
+    // 1.方式一: 在React元素上绑定一个ref字符串(不推荐了)
     console.log(this.refs.ref1);
 
     // 2.方式二: 提前创建好ref对象, createRef(), 将创建出来的对象绑定到元素

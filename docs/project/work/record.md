@@ -1,5 +1,57 @@
 # work
 
+## 处理数据
+
+```js
+let arr = [
+  { id: 1, type: 2 },
+  { id: 2, type: 2 },
+  { id: 3, type: 2 },
+  { id: 4, type: 3 },
+  { id: 5, type: 3 },
+  { id: 6, type: 4 },
+];
+// 根据type分组成下面这种
+let obj = {
+  2: [
+    { id: 1, type: 2 },
+    { id: 2, type: 2 },
+    { id: 3, type: 2 },
+  ],
+  3: [
+    { id: 4, type: 3 },
+    { id: 5, type: 3 },
+  ],
+  4: [{ id: 6, type: 4 }],
+};
+//方法1，两次循环
+let obj = {};
+for (const item of arr) {
+  obj[item.type] = [];
+}
+for (const item of arr) {
+  obj[item.type].push(item);
+}
+// 方法2，一次循环
+let obj = {};
+for (const item of arr) {
+  obj[item.type] = obj[item.type] ?? [];
+  obj[item.type].push(item);
+  // let v = obj[item.type];
+  // if (!v) {
+  //   v = [];
+  //   obj[item.type] = v;
+  // }
+  // v.push(item);
+}
+
+//forEach
+arr.forEach((item) => {
+  obj[item.type] = obj[item.type] ?? [];
+  obj[item.type].push(item);
+});
+```
+
 ## js 中的 Truthy 和 Falsy
 
 Truthy 和 Falsy 并不是拼写错误。Truthy 不等于 true，指是在 Boolean 上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。

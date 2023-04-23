@@ -21,11 +21,6 @@ offset：偏移、补偿、位移，offset 系列是 js 中的一套**获取元�
 - `scrollTop`获取垂直滚动条滚动的距离。
 - 同样上面的方法返回值都是数字，不带单位
 
-- 当某个元素满足 scrollHeight - scrollTop == clientHeight 时，说明垂直滚动条滚动到底了。
-- 当某个元素满足 scrollWidth - scrollLeft == clientWidth 时，说明水平滚动条滚动到底了。
-
-在谷歌浏览器中，上面的等式似乎有些问题，清除浏览器默认样式后，将`==`改成`<=`，等式才能成立，也可以说明滚动条滚到底。
-
 ## client 系列
 
 - `clientHeight` 返回元素的可见高度（width + padding）。
@@ -37,3 +32,8 @@ offset：偏移、补偿、位移，offset 系列是 js 中的一套**获取元�
 - `clientLeft` 盒子的左 border。
 - `pageX = clientX + scrollLeft`(IE 不支持)
 - `pageY = clientY + scrollTop`(IE 不支持)
+
+## 判断滚动到底部
+
+- 当某个元素满足 `scrollHeight - scrollTop <= clientHeight` 时，说明垂直滚动条滚动到底了。
+- 当某个元素满足 `scrollWidth - scrollLeft <= clientWidth` 时，说明水平滚动条滚动到底了。
