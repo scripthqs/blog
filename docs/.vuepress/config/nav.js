@@ -45,11 +45,11 @@ module.exports = [
     text: "开源项目",
     items: [
       { text: "购物街", link: "/project/vuemall/vue2_h5" },
-      { text: "后台管理系统", link: "/project/vuecms/ts_vue3_erp/vue3_erp" },
+      { text: "Vue项目搭建", link: "/project/vuecms/ts_vue3_erp/vue3_erp" },
       { text: "自定义组件库", link: "/project/hqsui/install/npm_use" },
       { text: "自定义工具函数库", link: "/project/utils/chapter1/01_install" },
-      { text: "ReactTest", link: "/project/reactTest/01_react" },
-      { text: "Work", link: "/project/work/record/" },
+      { text: "React项目搭建", link: "/project/reactTest/01_react" },
+      { text: "Work", link: "/project/work/cssStyle" },
     ],
   },
   {

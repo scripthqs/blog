@@ -1,6 +1,6 @@
-# work
+# 处理数据
 
-## 处理数据
+## 分组
 
 ```js
 let arr = [
@@ -51,12 +51,6 @@ arr.forEach((item) => {
   obj[item.type].push(item);
 });
 ```
-
-## js 中的 Truthy 和 Falsy
-
-Truthy 和 Falsy 并不是拼写错误。Truthy 不等于 true，指是在 Boolean 上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。
-
-- falsy: false，0，''，null，undefined 和 NaN
 
 ## list to tree
 
@@ -117,53 +111,11 @@ const toTree = (data: any) => {
 Object.keys(obj).length;
 ```
 
-## 锚点滚动效果
+## js 中的 Truthy 和 Falsy
 
-```js
-  <div id='item'></div>
-  const click = () =>{
-    (document.getElementById(item) as any).scrollIntoView({ behavior: 'smooth' });
-  }
-```
+Truthy 和 Falsy 并不是拼写错误。Truthy 不等于 true，指是在 Boolean 上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。
 
-## 点击闪烁效果
-
-- vue 配合动态绑定 css
-
-```html
-<div :class="{ tableFade: a===b }"></div>
-<div :class="{ tableFade: true }"></div>
-```
-
-```css
-@keyframes fade {
-  from {
-    border: none;
-    background: #fff;
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-  to {
-    background: #f84726;
-    border: 1px #f84726 solid;
-    opacity: 1;
-  }
-}
-
-.tableFade {
-  animation: fade 500ms 2;
-}
-```
-
-## vue v-for 遍历对象
-
-- 能够获取到键名、键值和索引
-
-```js
-<div v-for="(val, key, index) in data" :key="index" :id="key"></div>
-```
+- falsy: false，0，''，null，undefined 和 NaN
 
 ## require.context()函数
 
@@ -173,47 +125,6 @@ require.context 是 webpack 的一个 api，通过执行 require.context()函数
 
 1. query 传参 参数会跟在 url 后面，刷新页码不丢失
 2. params 传参 参数不可见 但是刷新页面参数会丢失，解决不丢失的方法存在 localStorage 或 sessionStorage 中
-
-## antd
-
-表单验证滚动到错误的地方
-
-```js
-const funForm = async () => {
-  setTimeout(() => {
-    const errorList = (document as any).querySelectorAll(".ant-form-item-explain-error");
-    if (errorList && errorList.length != 0) {
-      //由于校验失败ant会自动给失败表单项添加类名，直接获取即可
-      errorList[0].scrollIntoView({
-        block: "center",
-        behavior: "smooth",
-      });
-    }
-  }, 200);
-  await busRef.value.validateFields();
-  return busState.busForm;
-};
-```
-
-## object-fit
-
-object-fit 属性指定元素的内容应该如何去适应指定容器的高度与宽度。
-
-- contain 保持原有尺寸比例。内容被缩放。
-- fill 默认，不保证保持原有的比例，内容拉伸填充整个内容容器
-- cover 保持原有尺寸比例。但部分内容可能被剪切。
-
-## 倒计时
-
-```vue
-<a-statistic-countdown title="倒计时" :value="deadline" format="H 时 m 分 s 秒">
-  <!-- <template #title>
-    <div style="font-size: 24px"></div>
-  </template> -->
-</a-statistic-countdown>
-// Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
-<!-- const deadline = ref(new Date(new Date().setHours(0, 0, 0, 0) + 18.5 * 60 * 60 * 1000 - 1)); -->
-```
 
 ## js 连点
 
