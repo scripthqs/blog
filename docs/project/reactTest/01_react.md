@@ -264,3 +264,11 @@ color: ${(props) => props.theme.color.primaryColor};
 ```bash
 npx create-react-app projectName --template typescipt
 ```
+
+### FC
+
+```ts
+const FunComponent: React.FunctionComponent<IProp> = () => {};
+// 简写
+const FunComponent: FC<IProps> = () => {};
+```
