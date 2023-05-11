@@ -66,8 +66,8 @@ function isValid(s: string): boolean {
     "(": ")",
     "[": "]",
     "{": "}",
-  };
-  const stack = [] as string[];
+  } as any;
+  const stack: string[] = [];
   for (let i = 0; i < s.length; i++) {
     const v = obj[s[i]];
     if (v) {
@@ -81,4 +81,6 @@ function isValid(s: string): boolean {
   }
   return stack.length === 0;
 }
+
+isValid("([{[]}])[]{}");
 // @lc code=end

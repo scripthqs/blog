@@ -64,13 +64,25 @@
 // return max;
 
 function maxArea(height: number[]): number {
+  //test1
+  // let maxA = 0; //保存存放盛水最大容器的最终结果
+  // for (let i = 0; i < height.length; i++) {
+  //   for (let j = i + 1; j < height.length; j++) {
+  //     // 遍历每一种结果取最大值
+  //     maxA = Math.max(maxA, Math.min(height[i], height[j]) * (j - i));
+  //   }
+  // }
+  // return maxA;
+  //test2
   let i = 0;
   let j = height.length - 1;
   let max = 0;
   while (i < j) {
     let minHeight = height[i] > height[j] ? height[j--] : height[i++];
+    console.log(minHeight);
     max = Math.max(max, (j - i + 1) * minHeight);
   }
   return max;
 }
+maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
 // @lc code=end
