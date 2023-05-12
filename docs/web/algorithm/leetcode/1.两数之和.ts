@@ -72,11 +72,16 @@ function twoSum(nums: number[], target: number): number[] {
   // test2
   const map = new Map();
   for (let i = 0; i < nums.length; i++) {
+    //遍历数组，获取每项
     const num = nums[i];
+    //目标项-每项 = 差值
     const diff = target - num;
+    // 判断map中有没有差值
     if (map.has(diff)) {
+      //有差值，返回
       return [map.get(diff), i];
     } else {
+      //没有差值
       map.set(num, i);
     }
   }

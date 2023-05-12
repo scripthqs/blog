@@ -65,7 +65,7 @@ function pow(x, n) {
 
 ```js
 //迭代求斐波那契数列
-const fibonacci = (n) => {  80
+const fibonacci = (n) => {
   if (n < 1) return 0;
   if (n <= 2) return 1;
   let f1 = 0;
@@ -84,4 +84,38 @@ const fibonacci = (n) => {
   if (n <= 2) return 1;
   return fibonacci(n - 1) + fibonacci(n - 2);
 };
+```
+
+## 递归加缓存
+
+暴力递归会让大量的子问题被重复计算，影响性能，可以将子问题缓存起来进行优化
+
+```js
+let memoArr = [];
+const fibonacci = (n) => {
+  if (n === 1) return 0;
+  if (n === 2) return 1;
+  if (!memoArr[n - 1]) {
+    memoArr[n - 1] = fibonacci(n - 1);
+  }
+  if (!memoArr[n - 2]) {
+    memoArr[n - 2] = fibonacci(n - 2);
+  }
+  return memoArr[n - 1] + memoArr[n - 2];
+};
+```
+
+## 动态规划
+
+```js
+const fib = (n) => {
+  const arr = [0, 1];
+  if (n === 1) return [0];
+  if (n === 2) return [0, 1];
+  for (let i = 2; i < n; i++) {
+    arr[i] = arr[i - 1] + arr[i - 2];
+  }
+  return arr;
+};
+console.log(fib(50));
 ```

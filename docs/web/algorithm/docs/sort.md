@@ -24,6 +24,7 @@ function bubbleSort(arr) {
 //优化
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
+    // 根据外层for循环的 i，逐渐减少内层 for循环的次数
     for (let j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];

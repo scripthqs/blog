@@ -1,10 +1,49 @@
 # 链表(Linked List)
 
-数组必须是连续的内存空间，链表不必。
+数组必须是连续的内存空间，链表不必。js 中的原型链就是链表解构。
 
 - 链表访问任意位置的元素时，都需要从头开始访问。
 - 无法通过下标访问
 - 单向链表和双向链表
+
+## 用 js 写链表
+
+```js
+function Node(value) {
+  this.value = value;
+  this.next = null;
+}
+let a = new Node(1);
+let b = new Node(2);
+let c = new Node(3);
+let d = new Node(4);
+a.next = b;
+b.next = c;
+c.next = d;
+
+//普通遍历
+function whileNode(root) {
+  let temp = root;
+  while (temp) {
+    console.log(temp.value);
+    temp = temp.next;
+  }
+}
+//递归遍历
+function nextNode(root) {
+  if (!root) return;
+  console.log(root.value);
+  nextNode(root.next);
+}
+
+//插入元素
+let m = new Node(5);
+b.next = m;
+m.next = c;
+
+//删除元素
+b.next = c;
+```
 
 ## 链表的操作
 

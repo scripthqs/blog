@@ -55,52 +55,12 @@
 
 // @lc code=start
 function searchInsert(nums: number[], target: number): number {
-  //test1
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] >= target) {
       return i;
     }
   }
   return nums.length;
-  //test2
-  // let min = 0;
-  // let max = nums.length - 1;
-  // while (true) {
-  //   const middle = Math.floor((min + max) / 2);
-  //   const num = nums[middle];
-  //   if (max - min <= 1) {
-  //     if (target <= nums[min]) {
-  //       return min;
-  //     } else if (target <= nums[max]) {
-  //       return max;
-  //     } else {
-  //       return max + 1;
-  //     }
-  //   }
-  //   if (num > target) {
-  //     max = middle;
-  //   } else if (num < target) {
-  //     min = middle;
-  //   } else {
-  //     return middle;
-  //   }
-  // }
-
-  //test3
-  // let head = 0,
-  //   tail = nums.length - 1,
-  //   mid;
-  // while (tail - head > 3) {
-  //   mid = head + Math.floor((tail - head) / 2);
-  //   if (nums[mid] >= target) tail = mid;
-  //   else {
-  //     head = mid + 1;
-  //   }
-  // }
-  // for (let i = head; i <= tail; i++) {
-  //   if (nums[i] >= target) return i;
-  // }
-  // return nums.length;
 }
 
 // @lc code=end

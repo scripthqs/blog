@@ -60,6 +60,15 @@
 // @lc code=start
 
 function isValid(s: string): boolean {
+  //消消乐
+  // if (s.length % 2 !== 0) return false;
+  // let length = s.length / 2;
+  // for (let i = 0; i < length; i++) {
+  //   s = s.replace("()", "");
+  //   s = s.replace("[]", "");
+  //   s = s.replace("{}", "");
+  // }
+  // return s.length === 0;
   //利用栈的数据结构
   if (s.length % 2 == 1) return false;
   const obj = {
@@ -68,13 +77,13 @@ function isValid(s: string): boolean {
     "{": "}",
   } as any;
   const stack: string[] = [];
-  for (let i = 0; i < s.length; i++) {
-    const v = obj[s[i]];
-    if (v) {
-      stack.push(v);
+  for (let v of s) {
+    let k = obj[v];
+    if (k) {
+      stack.push(k);
     } else {
-      const p = stack.pop();
-      if (p !== s[i]) {
+      let p = stack.pop();
+      if (p !== v) {
         return false;
       }
     }
@@ -82,5 +91,4 @@ function isValid(s: string): boolean {
   return stack.length === 0;
 }
 
-isValid("([{[]}])[]{}");
 // @lc code=end
