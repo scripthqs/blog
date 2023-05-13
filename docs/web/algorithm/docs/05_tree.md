@@ -10,25 +10,30 @@
 
 ```js
 {
-  id:1,
-  name:'a'
-  children:[
-    {
-      id:'1-1',
-      name:'b'
-    },
-    {
-      id:'1-2',
-      name:'c'
-    },
-    {
-      id:'1-3',
-      name:'d',
-      children:[
-        {id:'1-3-1'}
-      ]
-    }
-  ]
+    "id": 1,
+    "name": "1",
+    "pid": 0,
+    "children": [
+        {
+            "id": 2,
+            "name": "2",
+            "pid": 1,
+            "children": []
+        },
+        {
+            "id": 3,
+            "name": "3",
+            "pid": 1,
+            "children": [
+                {
+                  "id": 4,
+                  "name": "4",
+                  "pid": 3,
+                  "children": []
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -36,8 +41,66 @@
 
 树的遍历有深度优先遍历和广度优先遍历
 
-- 优先优先遍历：从根出发，尽可能深的搜索树的节点
-- 广度优先遍历：
+深度优先遍历：从根出发，尽可能深的搜索树的节点
+
+1. 访问根节点
+2. 对根节点的 children 挨个进行深度搜索
+
+广度优先遍历：从根出发，优先访问离根节点最近的节点
+
+1. 新建一个队列，把根节点入队
+2. 把队头出队
+3. 把对头的 children 挨个入队
+4. 重复 2 和 3，直到队列为空
+
+```js
+//深度优先遍历
+const fun1 = (root) => {
+  // console.log(root.name);
+  root.children.forEach(fun1);
+};
+
+//广度优先遍历
+const fun2 = (root) => {
+  const arr = [root];
+  while (arr.length > 0) {
+    const o = arr.shift();
+    o.children.forEach((item) => {
+      arr.push(item);
+    });
+  }
+};
+```
+
+## 二叉树的结构
+
+```js
+const tree = {
+  id: 1,
+  left: {
+    id: 2,
+    left: {
+      id: 3,
+      left: null,
+      right: null,
+    },
+    right: {
+      id: 4,
+      left: null,
+      right: null,
+    },
+  },
+  right: {
+    id: 5,
+    left: null,
+    right: null,
+  },
+};
+```
+
+## 二叉树的遍历
+
+树的遍历有前序遍历和先序遍历
 
 ## 二叉搜索树的操作
 
