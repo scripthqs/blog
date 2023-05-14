@@ -111,6 +111,31 @@ const toTree = (data: any) => {
 Object.keys(obj).length;
 ```
 
+## valueOf 方法
+
+```js
+//(a==1 &&a==2&&a==3)为true
+//==会触发隐式转换，所以可以使用valueOf或者toString方法
+class A {
+  constructor(value) {
+    this.value = value;
+  }
+  valueOf() {
+    return this.value++;
+  }
+}
+const a = new A(1);
+//(a===1 &&a===2&&a===3)为true
+//===不会触发隐式转换，Object.defineProperty 数据劫持的方法来实现
+
+let value = 1;
+Object.defineProperty(window, "a", {
+  get() {
+    return value++;
+  },
+});
+```
+
 ## js 中的 Truthy 和 Falsy
 
 Truthy 和 Falsy 并不是拼写错误。Truthy 不等于 true，指是在 Boolean 上下文中转换后的值为真的值。即在 javascript 中所有表达式为 true 的值。同理 Falsy 指的是在 javascript 中所有表达式为 false 的值。

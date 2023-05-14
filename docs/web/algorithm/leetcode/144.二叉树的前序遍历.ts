@@ -107,7 +107,10 @@ function preorderTraversal(root: TreeNode | null): number[] {
     node.left && stack.push(node.left);
   }
   return arr;
-  // 6 4 2 1 8 7
-  //5 4 1 2 6 7 8
+  //   1
+  // 2   3
+  //4 5 6 7
+  // arr  1 2 4 5 3 6 7
+  // stack 1 3 2 5 4 7 6
 }
 // @lc code=end

@@ -82,15 +82,30 @@ function inorderTraversal(root: TreeNode | null): number[] {
   //使用栈
   const arr: number[] = [];
   const stack: any[] = [];
-  while (root || stack.length) {
-    while (root) {
-      stack.push(root);
-      root = root.left;
+
+  // 能压栈的左子节点都压进来
+  while (root) {
+    stack.push(root);
+    root = root.left;
+  }
+  // 此时所有的左节点都入栈，开始出栈
+  while (stack.length) {
+    let node = stack.pop();
+    arr.push(node.val);
+    //出栈的时候将它的右节点入栈
+    node = node.right;
+    while (node) {
+      // 右子树存在，执行while循环
+      stack.push(node); // 压入当前root
+      node = node.left; // 不断压入左子节点
     }
-    root = stack.pop();
-    arr.push(root.value);
-    root = root.right;
   }
   return arr;
+
+  //   1
+  // 2   3
+  //4 5 6 7
+  // arr  4 2 5 1 6 3 7
+  // stack 1 2 4 5 3 6 7  
 }
 // @lc code=end
