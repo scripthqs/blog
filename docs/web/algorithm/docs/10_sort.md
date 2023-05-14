@@ -39,6 +39,27 @@ function bubbleSort(arr) {
 
 ## 选择排序
 
-- 把第一个没有排序的元素设置为最小值
-- 遍历，如果有元素<现在的最小值，该元素将成为新的最小值
+- 先假定第一个没有排序的数为最小值
+- 遍历，如果假定值 < 某个值，该元素将成为新的最小值
 - 将两者交换
+
+```js
+function sortMin(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    // 预设最小数的索引为当前循环的索引;
+    let minIndex = i;
+    // 在后面的数中寻找更小的数
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        // 如果找到更小的数，记录它的索引
+        minIndex = j;
+      }
+    }
+    // 如果当前循环的索引不是最小数的索引，交换它们
+    if (i !== minIndex) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+  }
+  return arr;
+}
+```
