@@ -65,6 +65,7 @@ function uniqueOccurrences(arr: number[]): boolean {
   for (let [key, value] of map) {
     set.add(value);
   }
+  console.log(map,set)
   return set.size === map.size;
 }
 // @lc code=end
