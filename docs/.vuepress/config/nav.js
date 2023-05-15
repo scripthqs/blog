@@ -48,7 +48,7 @@ module.exports = [
       { text: "React项目搭建", link: "/project/reactTest/01_react" },
       { text: "自定义组件库", link: "/project/hqsui/install/npm_use" },
       { text: "自定义工具函数库", link: "/project/utils/chapter1/01_install" },
-      { text: "购物街", link: "/project/vuemall/vue2_h5" },
+      { text: "H5移动端", link: "/project/vuemall/vue2_h5" },
       { text: "Work", link: "/project/work/cssStyle" },
     ],
   },
