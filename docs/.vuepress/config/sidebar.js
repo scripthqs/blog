@@ -77,43 +77,44 @@ module.exports = {
   "/tools/webpack/": getChildren("docs/tools/webpack/"),
 
   // 开源项目
-  "/project/vuemall/": getChildren("docs/project/vuemall/"),
-  "/project/vuecms/": [
+  "/project/h5/": getChildren("docs/project/h5/vue2_h5/"),
+  "/project/vue/": [
     {
-      title: "Vue3_Ts_ERP",
+      title: "Vue3_TS_ERP",
       collapsable: true,
-      children: getChildren("docs/project/vuecms/ts_vue3_erp/"),
+      children: getChildren("docs/project/vue/vue3_ts/"),
     },
     {
       title: "Vue2_CMS",
       collapsable: true,
-      children: getChildren("docs/project/vuecms/vue2_cms/"),
+      children: getChildren("docs/project/vue/vue2_cms/"),
     },
   ],
-  "/project/hqsui/": [
+  "/project/react/": getChildren("docs/project/react/react_test/"),
+  "/project/hqsUi/": [
     {
       title: "快速上手",
       collapsable: true,
-      children: getChildren("docs/project/hqsui/install/"),
+      children: getChildren("docs/project/hqsUi/install/"),
     },
     {
       title: "UI组件",
       collapsable: true,
-      children: getChildren("docs/project/hqsui/docs/"),
+      children: getChildren("docs/project/hqsUi/docs/"),
     },
   ],
-  "/project/utils/": [
+  "/project/hqsUtils/": [
     {
       title: "打包自定义工具库",
       collapsable: true,
-      children: getChildren("docs/project/utils/chapter1/"),
+      children: getChildren("docs/project/hqsUtils/chapter1/"),
     },
     {
       title: "各种自定义",
       collapsable: true,
-      children: getChildren("docs/project/utils/chapter2/"),
+      children: getChildren("docs/project/hqsUtils/chapter2/"),
     },
   ],
-  "/project/reactTest/": getChildren("docs/project/reactTest/"),
+
   "/project/work/": getChildren("docs/project/work/"),
 };

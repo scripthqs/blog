@@ -10,7 +10,6 @@
   border-radius: 25px;
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
-
 ```
 
 ## object-fit
