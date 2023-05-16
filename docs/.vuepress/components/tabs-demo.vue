@@ -32,11 +32,10 @@
   </div>
 </template>
 <script>
-
 export default {
-  data () {
+  data() {
     return {
-      selectedTabs: 'sport',
+      selectedTabs: "sport",
       content: `
 data(){selectedTabs: 'sport'}
 <h-tabs :selected.sync="selectedTabs">
@@ -66,8 +65,10 @@ data(){selectedTabs: 'sport'}
             </h-tabs-pane>
         </h-tabs-body>
     </h-tabs>
-      `.replace(/\s{2,}/, '').trim()
-    }
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
+    };
   },
-}
+};
 </script>

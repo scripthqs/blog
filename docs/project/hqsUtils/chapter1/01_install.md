@@ -1,21 +1,21 @@
 # 1.使用自定义工具包
 
-## 1.1.下载工具包
+## 下载工具包
 
 ```shell
 npm install hqs-utils
 ```
 
-## 1.2.网页中引入并使用
+## 网页中引入并使用
 
 ```html
 <script src="./node_modules/hqs-utils/dist/hqs-utils.js"></script>
 <script>
-  utils.test()
+  utils.test();
 </script>
 ```
 
-## 1.3.模块化引入并使用
+## 模块化引入并使用
 
 ```js
 // 使用ESM引入

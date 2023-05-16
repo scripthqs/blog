@@ -46,8 +46,8 @@ module.exports = [
     items: [
       { text: "Vue项目搭建", link: "/project/vuecms/ts_vue3_erp/vue3_erp" },
       { text: "React项目搭建", link: "/project/reactTest/01_react" },
-      { text: "自定义组件库", link: "/project/hqsui/install/npm_use" },
-      { text: "自定义工具函数库", link: "/project/utils/chapter1/01_install" },
+      { text: "自定义组件库", link: "/project/hqsUi/install/npm_use" },
+      { text: "自定义工具函数库", link: "/project/hqsUtils/chapter1/01_install" },
       { text: "H5移动端", link: "/project/vuemall/vue2_h5" },
       { text: "Work", link: "/project/work/cssStyle" },
     ],

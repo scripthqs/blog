@@ -1,8 +1,8 @@
-# 1. 函数相关
+# 1 函数相关
 
-## 1.1. call()& apply()& bind()
+## 1.1 call()& apply()& bind()
 
-### 1.1.1. API 说明
+### 1.1.1 API 说明
 
 - call()
   - 语法: call(fn, obj, ...args)
@@ -14,7 +14,7 @@
   - 语法: bind(fn, obj, ...args)
   - 功能: 给 fn 绑定 this 为 obj, 并指定参数为后面的 n 个参数 (功能等同于函数对象的 bind 方法)
 
-### 1.1.2.实现说明
+### 1.1.2 实现说明
 
 - 区别 call()/apply()/bind()
   - call(obj)/apply(obj): 调用函数, 指定函数中的 this 为第一个参数的值
@@ -33,7 +33,7 @@
   - 指定原函数的 this 为 obj
   - 指定参数为 bind 调用的参数和后面新函数调用的参数
 
-### 1.1.3.编码实现
+### 1.1.3 编码实现
 
 - 自定义函数对象的 call 方法: `src/function/call.js`
 
@@ -106,7 +106,7 @@ export function bind(fn, obj, ...args) {
 }
 ```
 
-### 1.1.4.测试
+### 1.1.4 测试
 
 ```html
 <!DOCTYPE html>
@@ -161,13 +161,13 @@ export function bind(fn, obj, ...args) {
 </html>
 ```
 
-## 1.2. 函数节流与函数防抖
+## 1.2 函数节流与函数防抖
 
-### 1.2.1. 相关理解
+### 1.2.1 相关理解
 
 - 事件频繁触发可能造成的问题?
 
-  - 一些浏览器事件:window.onresize、window.mousemove 等，触发的频率非常高，会造成界面卡顿
+  - 一些浏览器事件:window.onresize、window.mousemove、滚动事件等，触发的频率非常高，会造成界面卡顿
   - 如果向后台发送请求，频繁触发，对服务器造成不必要的压力
 
 - 如何限制事件处理函数频繁调用
@@ -196,10 +196,10 @@ export function bind(fn, obj, ...args) {
     - 手机号、邮箱验证输入检测
 
 - 区别函数节流与防抖
+  - 节流类似放技能，释放后需要 n 秒的 cd，必须能 cd 好才能再次释放
+  - 防抖类似回城，回城需要 n 秒，被打断再一次将重新计时
 
-![02_函数防抖与节流](../images/throttle_debounce.jpg)
-
-### 1.2.2.API 说明
+### 1.2.2 API 说明
 
 - throttle() 节流
   - 语法: throttle(callback, wait)
@@ -208,7 +208,7 @@ export function bind(fn, obj, ...args) {
   - 语法: debounce(callback, wait)
   - 功能: 创建一个防抖动函数，该函数会从上一次被调用后，延迟 `wait` 毫秒后调用 `callback`
 
-### 1.2.3.编码实现
+### 1.2.3 编码实现
 
 - `src/function/throttle.js`: 函数节流
 
@@ -262,7 +262,7 @@ export function debounce(callback, wait) {
 }
 ```
 
-### 1.2.4.测试
+### 1.2.4 测试
 
 ```html
 <!DOCTYPE html>

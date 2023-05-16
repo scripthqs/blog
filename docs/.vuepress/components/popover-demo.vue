@@ -28,9 +28,9 @@
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
 
-    <br>
+    <br />
     <h3>将触发方式改为 hover</h3>
-    <hr>
+    <hr />
     <h4>预览</h4>
     <h-popover trigger="hover">
       <h-button>上方弹出</h-button>
@@ -62,7 +62,7 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       content: `
         <h-popover>
@@ -89,7 +89,9 @@ export default {
                 弹出内容
             </template>
         </h-popover>
-      `.replace(/\s{2,}/, '').trim(),
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
       content1: `
                 <h-popover trigger="hover">
             <h-button>上方弹出</h-button>
@@ -115,8 +117,10 @@ export default {
                 弹出内容
             </template>
         </h-popover>
-                `.replace(/\s{2,}/, '').trim()
-    }
+                `
+        .replace(/\s{2,}/, "")
+        .trim(),
+    };
   },
-}
+};
 </script>

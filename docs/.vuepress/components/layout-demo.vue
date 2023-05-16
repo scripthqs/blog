@@ -13,9 +13,9 @@
     </h-layout>
     <h4>代码</h4>
     <pre><code>{{content}}</code></pre>
-    <br>
+    <br />
     <h3>内部分栏布局</h3>
-    <hr>
+    <hr />
     <h4>预览</h4>
     <h-layout style="color: white; overflow:hidden; margin-bottom:50px;">
       <h-header style="height: 50px; background:lightskyblue;">
@@ -35,9 +35,9 @@
     </h-layout>
     <h4>代码</h4>
     <pre><code>{{content1}}</code></pre>
-    <br>
+    <br />
     <h3>左右分栏布局</h3>
-    <hr>
+    <hr />
     <h4>预览</h4>
     <h-layout style="color: white; overflow:hidden; margin-bottom:50px;">
       <h-sider style=" background:#ddd; width:200px; color: black;">
@@ -60,9 +60,8 @@
   </div>
 </template>
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       content: `
          <h-layout style="color: white; margin-bottom:50px;">
@@ -76,7 +75,9 @@ export default {
                 footer
             </h-footer>
         </h-layout>
-      `.replace(/\s{2,}/, '').trim(),
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
       content1: `
         <h-layout style="color: white; overflow:hidden; margin-bottom:50px;">
             <h-header style="height: 50px; background:lightskyblue;">
@@ -94,7 +95,9 @@ export default {
                 footer
             </h-footer>
         </h-layout>
-                `.replace(/\s{2,}/, '').trim(),
+                `
+        .replace(/\s{2,}/, "")
+        .trim(),
       content2: `
         <h-layout style="color: white; overflow:hidden; margin-bottom:50px;">
             <h-sider style=" background:#ddd; width:200px; color: black;">
@@ -112,8 +115,8 @@ export default {
                 </h-footer>
             </h-layout>
         </h-layout>
-                `
-    }
+                `,
+    };
   },
-}
+};
 </script>

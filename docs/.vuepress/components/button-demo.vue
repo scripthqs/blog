@@ -1,9 +1,9 @@
 <template>
   <div>
     <h-button disabled>按钮</h-button>
-    <h-button icon='download' icon-position="right">下载</h-button>
-    <h-button :loading="loading1" @click="loading1=!loading1" icon="set">按钮</h-button>
-    <h-button :loading="loading2" @click="loading2=!loading2" icon="set" icon-position="right">按钮</h-button>
+    <h-button icon="download" icon-position="right">下载</h-button>
+    <h-button :loading="loading1" @click="loading1 = !loading1" icon="set">按钮</h-button>
+    <h-button :loading="loading2" @click="loading2 = !loading2" icon="set" icon-position="right">按钮</h-button>
     <h-button-group>
       <h-button icon="left">上一页</h-button>
       <h-button>更多</h-button>
@@ -15,9 +15,8 @@
   </div>
 </template>
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       loading1: true,
       loading2: false,
@@ -32,10 +31,11 @@ export default {
             <h-button>更多</h-button>
             <h-button icon="right" icon-position="right">下一页</h-button>
         </h-button-group>
-      `.replace(/\s{2,}/, '').trim()
-    }
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
+    };
   },
-}
+};
 </script>
-<style>
-</style>
+<style></style>

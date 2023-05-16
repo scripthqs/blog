@@ -11,13 +11,13 @@
 <script>
 export default {
   methods: {
-    showToast (position) {
-      this.$toast('hello Toast', {
+    showToast(position) {
+      this.$toast("hello Toast", {
         position,
-      })
-    }
+      });
+    },
   },
-  data () {
+  data() {
     return {
       content: `
         methods: {
@@ -30,8 +30,10 @@ export default {
         <h-button @click="showToast('top')">上方弹出</h-button>
         <h-button @click="showToast('middle')">中间弹出</h-button>
         <h-button @click="showToast('bottom')">下方弹出</h-button>
-      `.replace(/\s{2,}/, '').trim()
-    }
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
+    };
   },
-}
+};
 </script>

@@ -6,25 +6,23 @@
   </div>
 </template>
 <script>
-
 export default {
-
   methods: {
-    showToast (position) {
-      this.$toast('<strong>8s后自动关闭</strong>', {
+    showToast(position) {
+      this.$toast("<strong>8s后自动关闭</strong>", {
         enableHtml: true,
         position,
         closeButton: {
-          text: '马上关闭',
-          callback () {
-            console.log('马上关闭')
-          }
+          text: "马上关闭",
+          callback() {
+            console.log("马上关闭");
+          },
         },
         autoClose: 8,
-      })
-    }
+      });
+    },
   },
-  data () {
+  data() {
     return {
       content: `
         methods: {
@@ -43,8 +41,10 @@ export default {
             }
         },
         <h-button @click="showToast('top')">上方弹出</h-button>
-      `.replace(/\s{2,}/, '').trim()
-    }
+      `
+        .replace(/\s{2,}/, "")
+        .trim(),
+    };
   },
-}
+};
 </script>
