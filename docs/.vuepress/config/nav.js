@@ -27,7 +27,7 @@ module.exports = [
     text: "框架学习",
     items: [
       { text: "Vue", link: "/frame/vue/vue3/01_vue3" },
-      { text: "ECharts", link: "/frame/echarts/00echarts" },
+      { text: "ECharts", link: "/frame/echarts/01_visualization" },
       { text: "Mini_program", link: "/frame/mini_program/01mini" },
       { text: "Uni-App", link: "/frame/uniapp/01uni" },
       { text: "React", link: "/frame/react/01_react" },
@@ -46,9 +46,9 @@ module.exports = [
     items: [
       { text: "Vue项目搭建", link: "/project/vue/vue3_ts/vue3_ts_erp" },
       { text: "React项目搭建", link: "/project/react/react_test/01_react" },
-      { text: "自定义组件库", link: "/project/ui/install/npm_use" },
-      { text: "自定义工具函数库", link: "/project/utils/chapter1/01_install" },
-      { text: "H5移动端", link: "/project/h5/vue2_h5" },
+      { text: "自定义组件库", link: "/project/ui/install/01_install" },
+      { text: "自定义工具函数库", link: "/project/utils/install/01_install" },
+      { text: "H5移动端", link: "/project/h5/vue2_h5/vue2_h5" },
       { text: "Work", link: "/project/work/css" },
     ],
   },

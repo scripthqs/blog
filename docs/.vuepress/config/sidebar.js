@@ -87,32 +87,32 @@ module.exports = {
     {
       title: "Vue2_CMS",
       collapsable: true,
-      children: getChildren("docs/project/vue/vue2_cms/"),
+      children: getChildren("docs/project/vue/vue2/"),
     },
   ],
   "/project/react/": getChildren("docs/project/react/react_test/"),
-  "/project/hqsUi/": [
+  "/project/ui/": [
     {
       title: "快速上手",
       collapsable: true,
-      children: getChildren("docs/project/hqsUi/install/"),
+      children: getChildren("docs/project/ui/install/"),
     },
     {
       title: "UI组件",
       collapsable: true,
-      children: getChildren("docs/project/hqsUi/docs/"),
+      children: getChildren("docs/project/ui/docs/"),
     },
   ],
-  "/project/hqsUtils/": [
+  "/project/utils/": [
     {
       title: "打包自定义工具库",
       collapsable: true,
-      children: getChildren("docs/project/hqsUtils/chapter1/"),
+      children: getChildren("docs/project/utils/install/"),
     },
     {
       title: "各种自定义",
       collapsable: true,
-      children: getChildren("docs/project/hqsUtils/chapter2/"),
+      children: getChildren("docs/project/utils/docs/"),
     },
   ],
 

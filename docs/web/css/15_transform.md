@@ -1,6 +1,6 @@
 # 转换 transform
 
-transform 转换属性可以实现元素的**位移，旋转、缩放**等效果。可以简单的理解为变形。
+transform 转换属性可以实现元素的**位移，旋转、缩放、倾斜**等效果。可以简单的理解为变形。
 
 通过 `transform` 转换可以实现 2D 转换或者 3D 转换。
 
@@ -131,3 +131,24 @@ body {
   transform-style: preserve-3d; /*子元素开启3d立体空间*/
 }
 ```
+
+## skew
+
+skew 属性对元素进行倾斜
+
+```css
+/* 实现平行四边形 */
+.box {
+  width: 200px;
+  height: 100px;
+  background-color: skyblue;
+  transform: skew(45deg);
+}
+```
+
+## backface-visibility
+
+背面可见性：backface-visibility，该 CSS 属性指定某个元素当背面朝向观察者时是否可见。
+
+- visible：背面朝向用户时可见
+- hidden：背面朝向用户时不可见
