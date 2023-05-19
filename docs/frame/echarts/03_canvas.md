@@ -1,4 +1,4 @@
-# 数据可视化 Canvas
+# Canvas
 
 ## Canvas 简介
 

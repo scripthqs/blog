@@ -1,4 +1,74 @@
-# ECharts 常用图表
+# ECharts
+
+## ECharts 简介
+
+ECharts 是百度公司开源的一个使用 JavaScript 实现的开源可视化库，兼容性强，底层依赖矢量图形库 ZRender ，提供直观，交互丰富，可高度个性化定制的数据可视化图表。
+
+[ECharts 官网](https://echarts.apache.org/zh/index.html)
+
+- 开源免费
+- 功能丰富
+- 多种数据的支持
+- 移动端的优化
+- 跨平台
+
+ECharts 能够做出各种各样漂亮的图表，它能满足绝大多数可视化图表的实现。它的兼容性强, 使用方便，功能强大, 是实现数据可视化的最佳选择之一。
+
+## Echarts 基本使用
+
+引入 ECharts 的方法
+
+1. 通过 npm 获取 echarts，`npm install echarts --save`
+2. 通过 jsDelivr 等 CDN 引入
+
+```html
+<!-- 4.ECharts 的容器( 必须要有高度,宽度是可选的 ) -->
+<div id="main" style="height: 400px"></div>
+
+<script>
+  window.onload = function() {
+    // 1.基于准备好的dom，初始化 echarts实例
+    let myChart = echarts.init(document.getElementById("main"));
+    // 2.指定图表的配置项和数据
+    let option = {
+      xAxis: {
+        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+      },
+      yAxis: {},
+      series: [
+        {
+          type: "bar",
+          data: [5, 20, 36, 10, 10, 20],
+        },
+      ],
+    };
+    // 3.使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  };
+</script>
+```
+
+一个图表最终呈现什么样子，完全取决于这个**配置项**，所以对于不同的图表, 除了**配置项会发生改变**之外，其他的代码都是**固定不变**的。
+
+## ECharts 渲染器
+
+ECharts 的默认渲染器是 canvas，可以切换成 svg
+
+```js
+// 切换为svg的渲染器( 默认是canvas )
+let myChart = echarts.init(document.getElementById("main"), null, { renderer: "svg" });
+```
+
+- Canvas 更适合绘制图形元素数量较多的图表，热力图、坐标图、大规模线图等
+- Svg 内存占用更低、适配性、扩展性性好，放大缩小图表不会模糊，除非数据量较大，不然建议 svg
+
+## option 配置项(组件)
+
+配置项不同就生成不同的图形，常用的配置项：
+
+
+
+## ECharts 常用图表
 
 ## 1 柱状图
 
@@ -50,105 +120,11 @@
 
    注意: 坐标轴 xAxis 或者 yAxis 中的配置,，**type 的值**主要有两种: **category** 和 **value** , 如果 type 属性的值为 category ,那么需要配置 data 数据，代表在 x 轴的呈现。如果 type 属性配置为 value，那么无需配置 data , 此时 y 轴会自动去 series 下找数据进行图表的绘制。
 
-### 1.2 柱状图的常见效果
-
-#### 1 最值
-
-使用 markPoint 标记出最大值\最小值
-
-```js
-series: [
-    {
-        ......
-        markPoint: {
-            data: [
-                {
-                    type: 'max', name: '最大值'
-                },
-                {
-                    type: 'min', name: '最小值'
-                }
-            ]
-        }
-    }
-]
-```
-
-#### 2 平均值
-
-使用 markLine 标记平均值
-
-```js
-series: [
-    {
-        ......
-        markLine: {
-            data: [
-                {
-                    type: 'average', name: '平均值'
-                }
-            ]
-        }
-    }
-]
-```
-
-#### 3 数值显示
-
-使用 label 数值显示
-
-```js
-series: [
-    {
-        ......
-        label: {
-            show: true, // 是否可见
-            rotate: 60 // 旋转角度
-        }
-    }
-]
-```
-
-#### 4 柱宽度
-
-使用 barWidth 表示柱宽度
-
-```js
-series: [
-    {
-        ......
-        barWidth: '30%' // 柱的宽度
-    }
-]
-```
-
-#### 5 横向柱状图
-
-所谓的横向柱状图, 只需要让 x 轴的角色和 y 轴的角色互换一下即可.。即 xAxis 的 type 设置为 value , yAxis 的 type 设置为 category , 并且设置 data 即可
-
-```js
-var option = {
-  xAxis: {
-    type: "value",
-  },
-  yAxis: {
-    type: "category",
-    data: xDataArr,
-  },
-  series: [
-    {
-      type: "bar",
-      data: yDataArr,
-    },
-  ],
-};
-```
-
-## 2 通用配置
+## 通用配置
 
 使用 ECharts 绘制出来的图表，都天生就自带一些功能,，这些功能是每一个图表都具备的，我们可以通过 配置，对这些功能进行设置。
 
-### 1 标题 title
+### 标题 title
 
 ```js
 var option = {
@@ -166,7 +142,7 @@ var option = {
 };
 ```
 
-### 2 提示框 tooltip
+### 提示框 tooltip
 
 tooltip 指的是当鼠标移入到图表或者点击图表时, 展示出的提示框
 
@@ -184,7 +160,7 @@ var option = {
 这个{b} 和 {c} 所代表的含义不需要去记, 在官方文档中有详细的描述
 ```
 
-### 3 工具按钮 toolbox
+### 工具按钮 toolbox
 
 toolbox 是 ECharts 提供的工具栏，内置有导出图片，数据视图，重置,，数据区域缩放，动态类型切换五个工具。
 
@@ -206,9 +182,9 @@ var option = {
 };
 ```
 
-### 4 图例 legend
+### 图例 legend
 
-legend 是图例,用于筛选类别,需要和 series 配合使用
+legend 是图例，用于筛选类别，需要和 series 配合使用
 
 ```js
 var option = {
@@ -236,101 +212,3 @@ var option = {
   ],
 };
 ```
-
-## 3 折线图
-
-折线图和柱状图很相似
-
-```js
-series: [
-  {
-    type: "line", //折线图是line,柱状图是bar
-    data: yDataArr,
-  },
-];
-```
-
-### 3.1 折线图的常见效果
-
-#### 1 markPoint
-
-使用 markPoint 标记出最大值\最小值
-
-#### 2 markLine
-
-使用 markLine 标记平均值
-
-#### 3 标注区间
-
-使用 markArea 标注区间
-
-```js
-var option = {
-    series: [
-        {
-            ......
-            markArea: {
-                data: [
-                    {
-                        xAxis: '1月'
-                    },
-                    {
-                        xAxis: '2月'
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
-
-#### 4 线条控制
-
-```js
-var option = {
-    series: [
-        {
-            ......
-            smooth: true,//平滑线条 smooth
-            lineStyle: {//线条样式 lineStyle
-                color: 'green',
-                type: 'dashed' // 可选值还有 dotted solid
-            },
-            areaStyle: {//填充风格 areaStyle
-                color: 'pink'
-            }
-        }
-    ]
-}
-```
-
-#### 5 紧挨边缘
-
-boundaryGap 是设置给 x 轴的, 让起点从 x 轴的 0 坐标开始
-
-```js
-var option = {
-  xAxis: {
-    type: "category",
-    data: xDataArr,
-    boundaryGap: false,
-  },
-};
-```
-
-#### 6 缩放, 脱离 0 值比例
-
-如果每一组数据之间相差较少, 且都比 0 大很多, 那么有可能会出现折线变成一条直线的情况
-
-```js
-var option = {
-  yAxis: {
-    type: "value",
-    scale: true,
-  },
-};
-```
-
-#### 7 堆叠图
-
-堆叠图指的是，同个类目轴上系列配置相同的 stack 值后，后一个系列的值会在前一个系列的值上相加

@@ -4,11 +4,30 @@
 
 ```css
 .example {
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(8px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 做毛玻璃效果 */
+  background-color: transparent;
   backdrop-filter: blur(8px);
-  border-radius: 25px;
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* 图片的毛玻璃效果 */
+
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  /* 超出去的模糊效果 隐藏掉 */
+  overflow: hidden;
+}
+
+img {
+  /* 毛玻璃效果 */
+  filter: blur(8px);
 }
 ```
 
