@@ -42,6 +42,7 @@ module.exports = {
   "/net/node/": getChildren("docs/net/node/"),
   "/net/express/": getChildren("docs/net/express/"),
   "/net/db/": getChildren("docs/net/db/"),
+  "/net/ssr/": getChildren("docs/net/ssr/"),
 
   //框架学习
   "/frame/vue/": [
@@ -75,6 +76,7 @@ module.exports = {
   "/tools/vscode/": getChildren("docs/tools/vscode/"),
   "/tools/git/": getChildren("docs/tools/git/"),
   "/tools/webpack/": getChildren("docs/tools/webpack/"),
+  "/tools/vite/": getChildren("docs/tools/vite/"),
 
   // 开源项目
   "/project/h5/": getChildren("docs/project/h5/vue2_h5/"),

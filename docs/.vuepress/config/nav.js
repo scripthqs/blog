@@ -21,6 +21,7 @@ module.exports = [
       { text: "Node", link: "/net/node/01_node" },
       { text: "Express", link: "/net/express/01_express" },
       { text: "数据库", link: "/net/db/01_database" },
+      { text: "SSR", link: "/net/ssr/01_ssr" },
     ],
   },
   {
@@ -39,6 +40,7 @@ module.exports = [
       { text: "VSCode", link: "/tools/vscode/01vsc" },
       { text: "Git", link: "/tools/git/01_git" },
       { text: "Webpack", link: "/tools/webpack/01_webpack" },
+      { text: "Vite", link: "/tools/vite/01_vite" },
     ],
   },
   {
