@@ -28,8 +28,8 @@ module.exports = [
     items: [
       { text: "Vue", link: "/frame/vue/vue3/01_vue3" },
       { text: "可视化", link: "/frame/echarts/01_visualization" },
-      { text: "小程序", link: "/frame/mini_program/01mini" },
-      { text: "Uni-App", link: "/frame/uniapp/01uni" },
+      { text: "小程序", link: "/frame/mini_program/01_mini" },
+      { text: "Uni-App", link: "/frame/uniapp/01_uni" },
       { text: "React", link: "/frame/react/01_react" },
     ],
   },

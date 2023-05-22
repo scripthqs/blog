@@ -702,6 +702,9 @@ SVG 动画元素是基于 SMIL 实现，SVG 中使用 SMIL 实现元素有：
 // animateTransform可以平移、旋转、缩放等
 
 //animateMotion可以定义动画
+<animateMotion href="#rectangle" dur="5s" rotate="auto" fill="freeze">
+  <mpath href="#linePath"></mpath>
+</animateMotion>
 ```
 
 ## 第三方动画库

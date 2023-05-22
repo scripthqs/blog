@@ -66,149 +66,263 @@ let myChart = echarts.init(document.getElementById("main"), null, { renderer: "s
 
 配置项不同就生成不同的图形，常用的配置项：
 
+- grid：直接坐标系绘图区域
+- yAxis：直角坐标系 grid 中的 y 轴
+- xAxis：直角坐标系 grid 中的 x 轴
+- title ：图表的标题
+- legend：图例，展现了不同系列的标记、颜色和名字
+- tooltip：提示框
+- toolbox：工具栏，提供操作图表的工具
+- series：系列，配置系列图表的类型和图形信息数据
+- visualMap：视觉映射，可以将数据值映射到图形的形状、大小、颜色等
+- geo：地理坐标系组件。用于地图的绘制，支持在地理坐标系上绘制散点图，线集。
 
+## grid 配置
 
-## ECharts 常用图表
+grid 是绘图区域
 
-## 1 柱状图
+- show：是否显示直角坐标系网格
+- left、right、top、bottom： grid 组件离容器左右上下的距离
+- containLabel：grid 区域是否包含坐标轴的刻度标签
+- backgroundColor： Color 类型，网格背景色，默认透明
 
-### 1.1 柱状图的实现
+## xAxis 和 yAxis 配置
 
-1. ECharts 最基本的代码结构
+x 轴和 y 轴选项
 
-   ```js
-   // 准备盒子
-   <div style="width: 600px;height:400px"></div>;
-   // 获取盒子 DOM
-   var mCharts = echarts.init(document.querySelector("div"));
-   var option = {};
-   ```
+- show 是否显示轴
+- name：坐标轴名称
+- type ： 坐标轴类型。
+  - value 数值轴，适用于连续数据。
+  - category 类目轴，适用于离散的类目数据。类目数据可来源 xAxis.data、series.data 或 dataset.source 之一。
+- data：类目数据，在类目轴（type: 'category'）中有效。 array 类型
+- axisLine：坐标轴轴线相关设置
+- axisTick：坐标轴刻度相关设置
+- axisLabel：坐标轴刻度标签的相关设置
+- splitLine：坐标轴在 grid 区域中的分隔线
 
-   此时 option 是一个空空如也的对象
+## series 配置
 
-2. 准备 x 轴的数据
+series 系列用于配置系列图表的类型和图形信息数据。
 
-   ```js
-   var xDataArr = ["张三", "李四", "王五", "闰土", "小明", "茅台", "二妞", "大强"];
-   ```
+- name：系列名称，用于 tooltip 的显示，legend 的图例筛选等
+- type：指定系列图表的类型，比如：柱状图、折线图、饼图、散点图、地图等
+- coordinateSystem：该系列使用的坐标系，默认二位直角坐标系（笛卡尔坐标系）
+- data：系列中的数值内容数组。数组中的每一项称为数据项
 
-3. 准备 y 轴的数据
+  - 一维数组: `[ value,value ]`
+  - 二位数组：`[[index,value],[index,value]]`,`[ [x, y, value ], [ x, y,value ] ]`
+  - 对象类型（推荐）：`[ { value: x， name: x， label: { }，itemStyle:{}、 emphasis:{} .... } ]`
+  - data 有很多种写法，一般对象类型使用最多，因为它可以同时支持多种 type 的图形。
 
-   ```js
-   var yDataArr = [88, 92, 63, 77, 94, 80, 72, 86];
-   ```
+这几个属性可以写在 series 里，也可以写在 data 的对象写法里，使用就近原则，data 中的比 series 优先级高
 
-4. 准备 option , 将 series 中的 type 的值设置为: bar
+- label：图形上的文本标签
+- itemStyle：图形样式
+- emphasis：高亮的图形样式和标签样式
 
-   ```js
-   var option = {
-     xAxis: {
-       type: "category",
-       data: xDataArr,
-     },
-     yAxis: {
-       type: "value",
-     },
-     series: [
-       {
-         type: "bar",
-         data: yDataArr,
-       },
-     ],
-   };
-   ```
-
-   注意: 坐标轴 xAxis 或者 yAxis 中的配置,，**type 的值**主要有两种: **category** 和 **value** , 如果 type 属性的值为 category ,那么需要配置 data 数据，代表在 x 轴的呈现。如果 type 属性配置为 value，那么无需配置 data , 此时 y 轴会自动去 series 下找数据进行图表的绘制。
-
-## 通用配置
-
-使用 ECharts 绘制出来的图表，都天生就自带一些功能,，这些功能是每一个图表都具备的，我们可以通过 配置，对这些功能进行设置。
-
-### 标题 title
+当 type 为 pie 时，是饼图，常用饼图相关配置
 
 ```js
-var option = {
-  title: {
-    text: "成绩", // 标题文字
-    textStyle: {
-      color: "red", // 文字颜色
+series: [
+  {
+    type: "pie", // line bar scatter pie
+    label: {
+      show: true,
     },
-    borderWidth: 5, // 标题边框
-    borderColor: "green", // 标题边框颜色
-    borderRadius: 5, // 标题边框圆角
-    left: 20, // 标题的位置
-    top: 20, // 标题的位置
+    center: ["50%", "50%"], // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+    radius: ["50%", "100%"], // 饼图的半径。数组的第一项是内半径，第二项是外半径。
+    roseType: "area", //area玫瑰图(南丁格尔图)。 圆心角一样，通过半径展现数据大小(默认false)
+  },
+];
+```
+
+## title 标题
+
+图表的标题，Object 类型。
+
+```js
+let option = {
+  backgroundColor: "rgba(255, 0, 0, 0.1)", //容器背景色
+  grid: {
+    show: true,
+    backgroundColor: "rgba(0, 255, 0, 0.1)", //坐标系背景
+  },
+  title: {
+    show: true,
+    text: "Echart 5 条形图",
+    left: 20,
+    top: 10,
+    // subtext: '第二个标题'
+    // ....
   },
 };
 ```
 
-### 提示框 tooltip
+## legend 图例
 
-tooltip 指的是当鼠标移入到图表或者点击图表时, 展示出的提示框
-
-```js
-var option = {
-    tooltip: {
-        trigger: 'item',//触发类型，可选值有item\axis，配合series的name
-        triggerOn: 'click',//触发时机，可选值mouseOver\click
-        formatter: '{b}:{c}'//格式化显示，字符串模板
-        formatter: function (arg) {
-            return arg.name + ':' + arg.data//回调函数
-        }
-    }
-}
-这个{b} 和 {c} 所代表的含义不需要去记, 在官方文档中有详细的描述
-```
-
-### 工具按钮 toolbox
-
-toolbox 是 ECharts 提供的工具栏，内置有导出图片，数据视图，重置,，数据区域缩放，动态类型切换五个工具。
+图例，展现了不同系列的标记、颜色和名字，Object 类型。
 
 ```js
-var option = {
-  toolbox: {
-    feature: {
-      //工具栏的按钮是配置在 feature 的节点之下
-      saveAsImage: {}, // 将图表保存为图片
-      dataView: {}, // 是否显示出原始数据
-      restore: {}, // 还原图表
-      dataZoom: {}, // 数据缩放
-      magicType: {
-        // 将图表在不同类型之间切换,图表的转换需要数据的支持
-        type: ["bar", "line"],
+let options = {
+  legend: {
+    show: true,
+    // width: 100, //整个图例的宽
+    itemWidth: 40, // 单个图例的宽
+    icon: "circle", // round circle ...
+
+    // formatter: "aaa-{name}", //格式化图例文字
+    formatter: function(name) {
+      console.log(name);
+      // 富文本的语法: {style_name|content}
+      return name + "{percentageStyle| 40%}";
+    },
+    textStyle: {
+      // 给富文本添加样式
+      rich: {
+        percentageStyle: {
+          color: "red",
+          fontSize: 20,
+          // css 样式
+        },
       },
     },
   },
 };
 ```
 
-### 图例 legend
-
-legend 是图例，用于筛选类别，需要和 series 配合使用
+## tooltip 提示框
 
 ```js
-var option = {
-  legend: {
-    data: ["语文", "数学"], //数组，data 的值需要和 series 数组中某组数据的 name 值一致
+let options = {
+  tooltip: {
+    show: true,
+    // 使用了 trigger ，一般也结合 axisPointer
+    trigger: "item", // 默认是 item axis
+    // axisPointer: {
+    //   type: "line", //  (默认是竖线 line)  (横线 + 竖线 cross)  (横线 + 竖线 shadow)
+    // },
+    // formatter: '<div style="color:red">haha</div>',
   },
-  xAxis: {
-    type: "category",
-    data: ["张三", "李四", "王五", "闰土", "小明", "茅台", "二妞", "大强"],
-  },
-  yAxis: {
-    type: "value",
-  },
+};
+```
+
+## 颜色
+
+支持颜色的配置，也支持渐变色
+
+- 可以使用对象
+- 还可以使用 api `new echarts.graphic.LinearGradient()`
+
+```js
+let options = {
   series: [
     {
-      name: "语文",
-      type: "bar",
-      data: [88, 92, 63, 77, 94, 80, 72, 86],
-    },
-    {
-      name: "数学",
-      type: "bar",
-      data: [93, 60, 61, 82, 95, 70, 71, 86],
+      // 图形的颜色
+      itemStyle: {
+        color: {
+          // 渐变
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "red",
+            },
+            {
+              offset: 1,
+              color: "blue",
+            },
+          ],
+        },
+      },
     },
   ],
 };
 ```
+
+## ECharts 地图绘制
+
+ECharts 可以使用 GeoJSON 格式的数据作为地图的轮廓，可以获取第三方的 GeoJSON 数据注册到 ECharts 中
+
+- <https://datav.aliyun.com/portal/school/atlas/area_selector>
+- <https://github.com/echarts-maps/echarts-china-cities-js/tree/master/js/shape-with-internal-borders>
+
+绘制地图的步骤
+
+1. 拿到 GeoJSON 数据
+2. 注册对应的地图的 GeoJSON 数据（调用 setOption 前注册）
+3. 配置 geo 选项或者配置 map series，两种方式
+
+```js
+// 1.导入了一个中国的 geo json，拿到 GeoJSON 数据
+<script src="./geojson/china_geojson.js"></script>;
+
+// 2.注册一下中国地图的 geo json ( 需要在setOption之前调用 )
+echarts.registerMap("中国", { geoJSON: china_geojson });
+
+let option = {
+  //方式1：配置 geo 选项
+  geo: {
+    // 全局的地图( 创建一个地理坐标系统, 供其它系列复用该坐标系 )
+    map: "china",
+  },
+  //方式2：配置 map series
+  series: [
+    // 系列图是 地图(创建一个地理坐标系统, 用来展示数据 )
+    {
+      type: "map", // 系列图是 地图
+      map: "中国", // 展示中国地图( 因为只注册一个中国地图 )
+    },
+  ],
+};
+myChart.setOption(option);
+```
+
+需要用 data 填充数据时，只能使用 map series 的方式，并且可以配合 visualMap 组件<https://echarts.apache.org/zh/option.html#visualMap>
+
+## 地图着色
+
+可以通过 itemStyle 属性中的 areaColor 和 borderColor
+
+- areaColor ：地图区域的颜色
+- borderColor ：图形（边界）的描边颜色
+
+```js
+// =======地图着色=========
+itemStyle: {
+  areaColor: "#023677", // 地图区域的颜色。
+  borderColor: "#1180c7", // 图形的描边颜色。
+},
+```
+
+## ECharts 常见 API
+
+- echarts.init( dom， theme， opts )：创建 echartsInstance 实例
+- echarts.registerMap( mapName， opts )：注册地图
+- echarts.getMap( mapName )：获取已注册地图
+- echartsInstance.setOption(opts)：设置图表实例的配置项以及数据，万能接口。
+- echartsInstance.getWidth()、 echartsInstance. getHeight()：获取 ECharts 实例容器的宽高度。
+- echartsInstance.resize(opts)：改变图表尺寸，在容器大小发生改变时需要手动调用。
+- echartsInstance.showLoading()、 echartsInstance. hideLoading()：显示和隐藏加载动画效果。
+- echartsInstance.dispatchAction( )：触发图表行为，例如：图例开关、显示提示框 showTip 等
+- echartsInstance.dispose：销毁实例，销毁后实例无法再被使用
+- echartsInstance.on()：通过 on 方法添加事件处理函数，该文档描述了所有 ECharts 的事件列表。
+
+### 响应式 ECharts 图表
+
+1. 图表只设置高度，宽度设置为 100% 或 不设置
+2. 监听窗口的 resize 事件，即监听窗口尺寸的变化（需节流）
+3. 当窗口大小改变时，然后调用 `echartsInstance.resize` 改变图表的大小
+
+```js
+// 1.响应式图表
+window.addEventListener("resize", function() {
+  myChart.resize();
+});
+```
+
+在容器节点被销毁时，可以调用 `echartsInstance.dispose` 以销毁 echarts 的实例释放资源，避免内存泄漏

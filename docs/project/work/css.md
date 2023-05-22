@@ -1,5 +1,26 @@
 # 样式相关
 
+## 文本省略
+
+```css
+/* 单行省略 */
+.singe-line {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+}
+
+/* 两行省略 */
+.double-line {
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+```
+
 ## 毛玻璃效果
 
 ```css

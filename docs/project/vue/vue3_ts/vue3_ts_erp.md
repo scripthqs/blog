@@ -430,29 +430,25 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 但是类似 ElMessage 这种写在 script 中的组件不会自动导入。（好像是导入了没有样式）
 
-```bash
+```js
 //需要在vite.config.ts中配置
-import {
-  createStyleImportPlugin,
-  ElementPlusResolve
-} from "vite-plugin-style-import";
-
+import { createStyleImportPlugin, ElementPlusResolve } from "vite-plugin-style-import";
 
 //这个插件支持很多组件库
- plugins: [
-     createStyleImportPlugin({
-      resolves: [ElementPlusResolve()],
-      libs: [
-        {
-          libraryName: "element-plus",
-          esModule: true,
-          resolveStyle: (name: string) => {
-            return `element-plus/theme-chalk/${name}.css`;
-          }
-        }
-      ]
-    })
- ]
+plugins: [
+  createStyleImportPlugin({
+    resolves: [ElementPlusResolve()],
+    libs: [
+      {
+        libraryName: "element-plus",
+        esModule: true,
+        resolveStyle: (name: string) => {
+          return `element-plus/theme-chalk/${name}.css`;
+        },
+      },
+    ],
+  }),
+];
 ```
 
 > <https://github.com/vbenjs/vite-plugin-style-import/blob/main/README.md>
@@ -702,9 +698,11 @@ const toTree = (data: any) => {
 
 ## 动态路由
 
-根据不用用户（菜单）动态的注册应该有的路由，而不是一次性将所有的路由注册到 router 中。
+对于权限管理，最简单的方式就是一次性将所有路由注册，左侧菜单树根据接口渲染，这种方式也算常用。但是这种方式的缺点就是可以在浏览器地址栏手动输入路由进入没有权限的页面，如果要解决这个问题就可以选择采用动态路由的方式来解决。
 
-1. 基于角色（role)动态路由管理
+动态路由：根据不用用户（菜单）动态的注册应该有的路由，而不是一次性将所有的路由注册到 router 中。
+
+1. 基于角色(role)动态路由管理
 
    ```ts
    const roles = {
@@ -728,11 +726,61 @@ const toTree = (data: any) => {
 动态添加路由
 
 ```ts
-    {
-      path: "/main",
-      name: "main",
-      component: () => import("@/layout/layout.vue")
-    },
-    //添加一个name
-    router.addRoute("main", {path:'',components:()=>import('')});
+//添加路由
+router.addRoute({ path: '/about', component: About })
+{
+  path: "/main",
+  name: "main",
+  component: () => import("@/layout/layout.vue")
+},
+//给main添加一个嵌套路由
+router.addRoute("main", {path:'',components:()=>import('')});
+```
+
+## 实现多级面包屑
+
+- 多级面包屑结构 `[{一级},{二级},{三级},...]`
+- 菜单树结构`[{url:'',name:'',children:[{}]}]`
+- 当前路由 "/main/son/gon"，当前路由其实就是树的一个子节点
+- 只有从树的 root，一直往下找，这一段就是需要的数据
+
+```ts
+//定义面包屑接口
+interface IBreadcrumbs {
+  name: string;
+  url: string;
+}
+//path 当前路由
+//userMenus 菜单树
+export function mapPathToBreadcrumbs(path: string, userMenus: any[]) {
+  // 1.定义面包屑数组
+  const breadcrumbs: IBreadcrumbs[] = [];
+  // 拆分当前路由
+  console.log("当前路由：", path);
+  const pathSplit = path.split("/").filter((c) => !!c);
+  pathSplit.forEach((c, i) => {
+    if (i) {
+      pathSplit[i] = pathSplit[i - 1] + "/" + c;
+    } else {
+      pathSplit[i] = "/" + pathSplit[i];
+    }
+  });
+  console.log("将当前路由拆分：", pathSplit);
+  pathSplit.forEach((c) => {
+    const findItem = userMenus.find((menu) => menu.url === c);
+    if (findItem) {
+      breadcrumbs.push(findItem);
+      userMenus = findItem.children;
+    }
+  });
+  return breadcrumbs;
+}
+```
+
+## vue 组件的 ref 类型
+
+```ts
+// <el-form ref="formRef"></el-form>;
+import type { ElForm } from "element-plus";
+const formRef = ref<InstanceType<typeof ElForm>>();
 ```
