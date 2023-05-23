@@ -1,31 +1,27 @@
 {
-  "name": "vuepress-blog",
-  "version": "1.0.0",
+  "name": "blog",
+  "version": "2.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "decrypt": "encrypt decrypt --source-dir docs --key-file keys.json --temp .temp-encrypt",
-    "encrypt": "encrypt encrypt --source-dir docs --key-file keys.json --temp .temp-encrypt",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "dev": "vuepress dev docs --no-cache",
-    "build": "vuepress build docs",
-    "docs:nav": "vuepress nav docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scripthqs/scripthqs.github.io.git"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.8.2",
-    "vuepress": "^1.8.2",
-    "watchpack": "^2.4.0"
+  "bugs": {
+    "url": "https://github.com/scripthqs/scripthqs.github.io/issues"
   },
-  "dependencies": {
-    "@mr-hope/vuepress-plugin-theme-color": "0.1.0-rc.8",
-    "@oak-tree-house/vuepress-plugin-encrypt": "^1.0.1",
-    "caniuse-lite": "^1.0.30001442",
-    "hqs-ui": "^1.0.2",
-    "moment": "^2.29.1",
-    "vuepress-plugin-comment": "^0.7.3",
-    "vuepress-theme-default-prefers-color-scheme": "^2.0.0"
+  "homepage": "https://github.com/scripthqs/scripthqs.github.io#readme",
+  "devDependencies": {
+    "@vuepress/plugin-register-components": "^2.0.0-beta.62",
+    "@vuepress/plugin-search": "^2.0.0-beta.62",
+    "vuepress": "^2.0.0-beta.62",
+    "vuepress-plugin-comment2": "^2.0.0-beta.212"
   }
 }

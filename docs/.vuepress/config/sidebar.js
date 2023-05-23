@@ -1,6 +1,6 @@
-const { getChildren } = require("../auto-sidebar/vuepress-auto-sidebar");
+import { getChildren } from "../auto-sidebar/vuepress-auto-sidebar";
 
-module.exports = {
+export default {
   // "/guide/": require("docs/guide/"),
 
   //前端基础
@@ -8,31 +8,31 @@ module.exports = {
   "/web/css/": getChildren("docs/web/css/"),
   "/web/js/": [
     {
-      title: "JavaScript 基础",
-      collapsable: true,
-      children: getChildren("docs/web/js/JavaScript/"),
+      text: "JavaScript 基础",
+      collapsible: true,
+      children: getChildren("docs/web/js/JavaScript"),
     },
     {
-      title: "JavaScript 高级",
-      collapsable: true,
+      text: "JavaScript 高级",
+      collapsible: true,
       children: getChildren("docs/web/js/JsAdvanced/"),
     },
     {
-      title: "ECMAScript 6",
-      collapsable: true,
+      text: "ECMAScript 6",
+      collapsible: true,
       children: getChildren("docs/web/js/ECMAScript6/"),
     },
   ],
   "/web/ts/": getChildren("docs/web/ts/"),
   "/web/algorithm/": [
     {
-      title: "算法基础",
-      collapsable: true,
+      text: "算法基础",
+      collapsible: true,
       children: getChildren("docs/web/algorithm/docs/"),
     },
     {
-      title: "Word",
-      collapsable: true,
+      text: "Word",
+      collapsible: true,
       children: getChildren("docs/web/algorithm/word/"),
     },
   ],
@@ -47,23 +47,23 @@ module.exports = {
   //框架学习
   "/frame/vue/": [
     {
-      title: "Vue2",
-      collapsable: true,
+      text: "Vue2",
+      collapsible: true,
       children: getChildren("docs/frame/vue/vue2"),
     },
     {
-      title: "Vue Router",
-      collapsable: true,
+      text: "Vue Router",
+      collapsible: true,
       children: getChildren("docs/frame/vue/vuer"),
     },
     {
-      title: "VueX",
-      collapsable: true,
+      text: "VueX",
+      collapsible: true,
       children: getChildren("docs/frame/vue/vuex"),
     },
     {
-      title: "Vue3",
-      collapsable: true,
+      text: "Vue3",
+      collapsible: true,
       children: getChildren("docs/frame/vue/vue3"),
     },
   ],
@@ -82,38 +82,38 @@ module.exports = {
   "/project/h5/": getChildren("docs/project/h5/vue2_h5/"),
   "/project/vue/": [
     {
-      title: "Vue3_TS_ERP",
-      collapsable: true,
+      text: "Vue3_TS_ERP",
+      collapsible: true,
       children: getChildren("docs/project/vue/vue3_ts/"),
     },
     {
-      title: "Vue2_CMS",
-      collapsable: true,
+      text: "Vue2_CMS",
+      collapsible: true,
       children: getChildren("docs/project/vue/vue2/"),
     },
   ],
   "/project/react/": getChildren("docs/project/react/react_test/"),
   "/project/ui/": [
     {
-      title: "快速上手",
-      collapsable: true,
+      text: "快速上手",
+      collapsible: true,
       children: getChildren("docs/project/ui/install/"),
     },
     {
-      title: "UI组件",
-      collapsable: true,
+      text: "UI组件",
+      collapsible: true,
       children: getChildren("docs/project/ui/docs/"),
     },
   ],
   "/project/utils/": [
     {
-      title: "打包自定义工具库",
-      collapsable: true,
+      text: "打包自定义工具库",
+      collapsible: true,
       children: getChildren("docs/project/utils/install/"),
     },
     {
-      title: "各种自定义",
-      collapsable: true,
+      text: "各种自定义",
+      collapsible: true,
       children: getChildren("docs/project/utils/docs/"),
     },
   ],

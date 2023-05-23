@@ -1,11 +1,11 @@
-module.exports = [
+export default [
   {
     text: "首页",
     link: "/guide/",
   },
   {
     text: "前端基础",
-    items: [
+    children: [
       { text: "HTML", link: "/web/html/01_web" },
       { text: "CSS", link: "/web/css/01_css" },
       { text: "JavaScript", link: "/web/js/JavaScript/01_JavaScript" },
@@ -15,7 +15,7 @@ module.exports = [
   },
   {
     text: "服务器知识",
-    items: [
+    children: [
       { text: "AJAX", link: "/net/ajax/01_ssr" },
       { text: "Axios", link: "/net/axios/01_axios" },
       { text: "Node", link: "/net/node/01_node" },
@@ -26,7 +26,7 @@ module.exports = [
   },
   {
     text: "框架学习",
-    items: [
+    children: [
       { text: "Vue", link: "/frame/vue/vue3/01_vue3" },
       { text: "可视化", link: "/frame/echarts/01_visualization" },
       { text: "小程序", link: "/frame/mini_program/01_mini" },
@@ -36,7 +36,7 @@ module.exports = [
   },
   {
     text: "实用工具",
-    items: [
+    children: [
       { text: "VSCode", link: "/tools/vscode/01vsc" },
       { text: "Git", link: "/tools/git/01_git" },
       { text: "Webpack", link: "/tools/webpack/01_webpack" },
@@ -45,7 +45,7 @@ module.exports = [
   },
   {
     text: "开源项目",
-    items: [
+    children: [
       { text: "Vue项目搭建", link: "/project/vue/vue3_ts/vue3_ts_erp" },
       { text: "React项目搭建", link: "/project/react/react_test/01_react" },
       { text: "自定义组件库", link: "/project/ui/install/01_install" },
@@ -56,7 +56,7 @@ module.exports = [
   },
   {
     text: "官方文档",
-    items: [
+    children: [
       { text: "MDN", link: "https://developer.mozilla.org/zh-CN/" },
       { text: "Vue", link: "https://v3.cn.vuejs.org/" },
       { text: "React", link: "https://zh-hans.reactjs.org/" },
@@ -74,7 +74,7 @@ module.exports = [
   },
   {
     text: "关于我",
-    items: [
+    children: [
       { text: "GitHub", link: "https://github.com/Scripthqs" },
       { text: "简历", link: "/about/" },
     ],
@@ -82,10 +82,10 @@ module.exports = [
 
   {
     text: "更多链接",
-    items: [
+    children: [
       {
         text: "在线编辑",
-        items: [
+        children: [
           { text: "图片压缩", link: "https://tinypng.com/" },
           { text: "前端工具箱", link: "https://tool.lu/" },
           { text: "VeryToolz在线工具", link: "https://verytoolz.com/" },
@@ -93,14 +93,14 @@ module.exports = [
       },
       {
         text: "在线服务",
-        items: [
+        children: [
           { text: "阿里云", link: "https://www.aliyun.com/" },
           { text: "腾讯云", link: "https://cloud.tencent.com/" },
         ],
       },
       {
         text: "博客指南",
-        items: [
+        children: [
           { text: "掘金", link: "https://juejin.im/" },
           { text: "CSDN", link: "https://blog.csdn.net/" },
         ],

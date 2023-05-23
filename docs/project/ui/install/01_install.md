@@ -2,7 +2,7 @@
 title: 快速上手
 ---
 
-## 安装
+## 安装（已经弃用）
 
 安装 hqs-ui 组件库
 
@@ -99,7 +99,7 @@ import {Button} from 'hqs-ui' export default { components: { 'h-button': Button,
 通过如下步骤可以直接运行项目：
 
 ```bash
-git clone https://github.com/Scripthqs/hqs-ui.git
+git clone https://github.com/scripthqs/hqs-ui.git
 npm install
 npm run serve
 ```

@@ -1,20 +1,10 @@
 //侧边栏
 
-const fs = require("fs");
-const path = require("path");
-function getChildren(path, sort = true) {
+import fs from "fs";
+import path from "path";
+export function getChildren(path, sort = true) {
   let root = [];
   readDirSync(path, root);
-  root = root.map((item) => {
-    // console.log(item.split("/"), "item------------");
-    if (item.split("/")[5]) {
-      return item.split("/")[4] + "/" + item.split("/")[5];
-    } else if (item.split("/")[4]) {
-      return item.split("/")[3] + "/" + item.split("/")[4];
-    } else if (item.split("/")[3]) {
-      return item.split("/")[3];
-    }
-  });
   //排序
   if (sort) {
     let sortList = [];
@@ -33,7 +23,7 @@ function getChildren(path, sort = true) {
       .concat(nosortList);
   }
 
-  // console.log(root, "root");
+
   return root;
 }
 function readDirSync(path, root) {
@@ -59,4 +49,4 @@ function prefixPath(basePath, dirPath) {
   // replace用于处理windows电脑的路径用\表示的问题
   return path.join(basePath, dirPath).replace(/\\/g, "/");
 }
-module.exports = { getChildren: getChildren };
+// module.exports = { getChildren: getChildren };
