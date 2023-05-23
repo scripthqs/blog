@@ -1,4 +1,4 @@
-export const data = JSON.parse("{\"key\":\"v-77b61f24\",\"path\":\"/frame/uniapp/13uni.html\",\"title\":\"组件创建和生命周期\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[{\"level\":2,\"title\":\"1 组件创建\",\"slug\":\"_1-组件创建\",\"link\":\"#_1-组件创建\",\"children\":[]},{\"level\":2,\"title\":\"2 组件的生命周期函数\",\"slug\":\"_2-组件的生命周期函数\",\"link\":\"#_2-组件的生命周期函数\",\"children\":[]}],\"git\":{\"updatedTime\":1684839917000},\"filePathRelative\":\"frame/uniapp/13uni.md\"}")
+export const data = JSON.parse("{\"key\":\"v-77b61f24\",\"path\":\"/frame/uniapp/13uni.html\",\"title\":\"组件创建和生命周期\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[{\"level\":2,\"title\":\"1 组件创建\",\"slug\":\"_1-组件创建\",\"link\":\"#_1-组件创建\",\"children\":[]},{\"level\":2,\"title\":\"2 组件的生命周期函数\",\"slug\":\"_2-组件的生命周期函数\",\"link\":\"#_2-组件的生命周期函数\",\"children\":[]}],\"git\":{\"updatedTime\":1673432599000},\"filePathRelative\":\"frame/uniapp/13uni.md\"}")
 
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()

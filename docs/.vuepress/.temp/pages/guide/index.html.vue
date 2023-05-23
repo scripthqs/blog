@@ -1,7 +1,7 @@
 <template><div><h1 id="首页" tabindex="-1"><a class="header-anchor" href="#首页" aria-hidden="true">#</a> 首页</h1>
 <!-- {{ $global.CURRENT_PROVERB }} -->
 <p>本站主要用于记录个人的学习笔记，如有错误，欢迎网站底部评论留言指出！</p>
-<a-button type="primary">Primary Button</a-button><h2 id="我的邮箱" tabindex="-1"><a class="header-anchor" href="#我的邮箱" aria-hidden="true">#</a> 我的邮箱</h2>
+<h2 id="我的邮箱" tabindex="-1"><a class="header-anchor" href="#我的邮箱" aria-hidden="true">#</a> 我的邮箱</h2>
 <ul>
 <li><a href="mailto:1941186772@qq.com">1941186772@qq.com</a></li>
 <li><a href="mailto:scripthqs@qq.com">scripthqs@qq.com</a></li>

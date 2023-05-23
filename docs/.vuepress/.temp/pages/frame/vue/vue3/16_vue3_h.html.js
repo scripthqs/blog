@@ -1,4 +1,4 @@
-export const data = JSON.parse("{\"key\":\"v-5243ad72\",\"path\":\"/frame/vue/vue3/16_vue3_h.html\",\"title\":\"h 函数\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1684839917000},\"filePathRelative\":\"frame/vue/vue3/16_vue3_h.md\"}")
+export const data = JSON.parse("{\"key\":\"v-5243ad72\",\"path\":\"/frame/vue/vue3/16_vue3_h.html\",\"title\":\"h 函数\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1681912465000},\"filePathRelative\":\"frame/vue/vue3/16_vue3_h.md\"}")
 
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()

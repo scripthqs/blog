@@ -73,14 +73,6 @@ export default [
     ],
   },
   {
-    text: "关于我",
-    children: [
-      { text: "GitHub", link: "https://github.com/Scripthqs" },
-      { text: "简历", link: "/about/" },
-    ],
-  },
-
-  {
     text: "更多链接",
     children: [
       {

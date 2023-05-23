@@ -1,4 +1,4 @@
-export const data = JSON.parse("{\"key\":\"v-1b15b281\",\"path\":\"/frame/vue/vue3/17_vue3_jsx.html\",\"title\":\"vue3 中使用 jsx\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1684839917000},\"filePathRelative\":\"frame/vue/vue3/17_vue3_jsx.md\"}")
+export const data = JSON.parse("{\"key\":\"v-1b15b281\",\"path\":\"/frame/vue/vue3/17_vue3_jsx.html\",\"title\":\"vue3 中使用 jsx\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1681912465000},\"filePathRelative\":\"frame/vue/vue3/17_vue3_jsx.md\"}")
 
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept()
