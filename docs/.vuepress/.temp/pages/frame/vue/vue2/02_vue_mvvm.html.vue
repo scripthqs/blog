@@ -1,0 +1,141 @@
+<template><div><h1 id="vue-js-介绍" tabindex="-1"><a class="header-anchor" href="#vue-js-介绍" aria-hidden="true">#</a> Vue.js 介绍</h1>
+<h2 id="编程模式" tabindex="-1"><a class="header-anchor" href="#编程模式" aria-hidden="true">#</a> 编程模式</h2>
+<ul>
+<li>以前使用的编程范式，是命令式编程</li>
+<li>使用 Vue 的编程范式，是声明式编程。</li>
+</ul>
+<p>使用构造函数的方式，传一个对象<code v-pre>{}</code>作为参数。</p>
+<ul>
+<li>
+<p><code v-pre>{}</code>包含<code v-pre>el</code>属性：该属性决定这个 Vue 对象挂载到哪个元素</p>
+</li>
+<li>
+<p><code v-pre>{}</code>包含了<code v-pre>data</code>属性，该属性通常会存储一些数据</p>
+<ul>
+<li>这些数据可以自定义</li>
+<li>也可以是从服务器加载的</li>
+</ul>
+</li>
+<li>
+<p><code v-pre>{}</code>包含了<code v-pre>methods</code>属性，该属性用于在 Vue 中定义新的方法</p>
+</li>
+<li>
+<p><code v-pre>v-for</code>循环</p>
+</li>
+<li>
+<p><code v-pre>v-on</code>监听事件</p>
+<ul>
+<li><code v-pre>v-on:click</code>可以写成<code v-pre>@click</code></li>
+</ul>
+</li>
+<li>
+<p>Vue 的实例中，如果想要获取 data 里的属性、methods 里面的方法，可以通过 this 来访问。</p>
+</li>
+<li>
+<p>this 指向的是 Vue 的实例对象。</p>
+</li>
+</ul>
+<h2 id="vue-的两个特性" tabindex="-1"><a class="header-anchor" href="#vue-的两个特性" aria-hidden="true">#</a> Vue 的两个特性</h2>
+<ol>
+<li>
+<p><strong>数据驱动视图</strong>：</p>
+<ul>
+<li>数据的变化<strong>会驱动视图</strong>自动更新</li>
+<li>好处：程序员只管把数据维护好，那么页面结构会被 vue 自动渲染出来！</li>
+</ul>
+</li>
+<li>
+<p><strong>双向数据绑定</strong>：</p>
+<blockquote>
+<p>在网页中，form 表单负责<strong>采集数据</strong>，Ajax 负责<strong>提交数据</strong>。</p>
+</blockquote>
+<ul>
+<li>js 数据的变化，会被自动渲染到页面上</li>
+<li>页面上表单采集的数据发生变化的时候，会被 vue 自动获取到，并更新到 js 数据中</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>注意：数据驱动视图和双向数据绑定的底层原理是 <strong>MVVM</strong>（Mode 数据源、View 视图、ViewModel 就是 vue 的实例）</p>
+</blockquote>
+<h2 id="mvvm-模式" tabindex="-1"><a class="header-anchor" href="#mvvm-模式" aria-hidden="true">#</a> MVVM 模式</h2>
+<p>MVVM 指的是 Model、View 和 ViewModel。<strong>ViewModel</strong> 作为 MVVM 的核心，是它把当前页面的数据源（Model）和页面的结构（View）连接在了一起。</p>
+<ol>
+<li>
+<p><code v-pre>Model</code></p>
+<ul>
+<li>数据层，<strong>对应 data 中的数据</strong></li>
+<li>可以是自已定义的数据，也可以来自于服务器在网络请求的数据</li>
+<li>可定义数据修改和操作的业务逻辑 对应 JS 对象</li>
+</ul>
+</li>
+<li>
+<p><code v-pre>View</code></p>
+<ul>
+<li>用户看到的视图层，<strong>对应 el 中的模板代码</strong></li>
+<li>在前端开发中，通常就是 DOM 层</li>
+<li>主要作用是给用户展示各种信息</li>
+</ul>
+</li>
+<li>
+<p><code v-pre>view Model</code></p>
+<ul>
+<li>视图模型层，<strong>new Vue 实例</strong></li>
+<li>是 View 和 Model 沟通的桥梁</li>
+<li>一方面实现了<code v-pre>Data Bindings</code>（数据绑定），将 Model 的改变实时的反应到 View</li>
+<li>另一方面它实现了<code v-pre>DOM Listener</code>（DOM 监听），当 DOM 发生一些事件（点击、滚动、touch 等）时，可以监听到，并在需要的情况下改变对应的 Data。</li>
+<li>负责业务逻辑的处理（比如 Ajax 请求），对数据进行加工后交给视图展示 同步连接 V 和 M 的对象</li>
+</ul>
+</li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>data 中所有的属性，最后都出现在 vm 身上</li>
+<li>Vue 实例身上所有的属性及 Vue 原型上的所有属性，在 Vue 模板中都可以直接使用</li>
+</ol>
+<ul>
+<li>当<strong>Model 数据源</strong>发生变化时，会被 ViewModel 监听到，VM 会根据最新的数据源自动更新页面的结构</li>
+<li>当表单元素的值<strong>View</strong>发生变化时，也会被 VM 监听到，VM 会把变化过后最新的值自动同步到 Model 数据源中</li>
+</ul>
+<h2 id="计数器中的-mvvm" tabindex="-1"><a class="header-anchor" href="#计数器中的-mvvm" aria-hidden="true">#</a> 计数器中的 MVVM</h2>
+<ul>
+<li><code v-pre>h1、button</code>标签就是<code v-pre>View</code>，就是 DOM</li>
+<li><code v-pre>data</code>这个对象的属性值就是<code v-pre>Model</code>，就是我们抽离出来的 obj</li>
+<li><code v-pre>new Vue()</code>就是<code v-pre>View Model</code>，我们创建的 Vue 实例</li>
+</ul>
+<p>工作流程：</p>
+<ul>
+<li><code v-pre>View Model</code>通过<code v-pre>Data Bindings</code>让 obj 的数据实时在 DOM 中显示。</li>
+<li>View Model<code v-pre>通过</code>DOM Listener<code v-pre>来监听</code>methods 中的操作，来改变 obj 中的数据。</li>
+</ul>
+<p>好处：</p>
+<ul>
+<li>Vue 可以帮助我们完成 Vue Model 层任务，避免手动操作 DOM 元素，让前端开发者有更多的时间去关注数据的业务逻辑处理。</li>
+</ul>
+<h2 id="创建-vue-实例传入的-options" tabindex="-1"><a class="header-anchor" href="#创建-vue-实例传入的-options" aria-hidden="true">#</a> 创建 Vue 实例传入的 options</h2>
+<p>最基础的 options</p>
+<ul>
+<li>el
+<ul>
+<li>类型：string | HTMLElement</li>
+<li>决定之后的 Vue 实例会管理哪个 DOM</li>
+</ul>
+</li>
+<li>data
+<ul>
+<li>类型：Object | Function（组件当中时，data 必须是函数）</li>
+<li>Vue 实例对应的数据类型</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li>类型：{[key:string]:Function}</li>
+<li>定义属于 Vue 的一些方法，可以在其他地方调用，也可以在指令中调用</li>
+<li>methods 中的函数不能使用箭头函数。箭头函数没有自己的 this，指向外层作用域，js 中<code v-pre>{}</code>并不是块级作用域，而是对象，所有会一直指向 Window。</li>
+</ul>
+</li>
+<li>Vue 的生命周期函数(钩子)</li>
+</ul>
+</div></template>
+
+
