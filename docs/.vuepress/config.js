@@ -1,14 +1,14 @@
 import { defineUserConfig } from "vuepress";
 import { defaultTheme } from "@vuepress/theme-default";
-import { viteBundler } from "@vuepress/bundler-vite";
+
 import head from "./config/head";
 import navbar from "./config/nav";
 import sidebar from "./config/sidebar";
 import plugins from "./config/plugins";
-
 export default defineUserConfig({
   lang: "zh-CN",
   title: "Script",
+  dest: "./dist",
   description: "前端开发学习笔记",
   head,
   theme: defaultTheme({
@@ -22,8 +22,4 @@ export default defineUserConfig({
     contributors: false,
   }),
   plugins,
-  viteBundler: viteBundler({
-    viteOptions: {},
-    vuePluginOptions: {},
-  }),
 });
