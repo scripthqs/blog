@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-26bcf501","path":"/frame/vue/vue3/14_vue3_directives.html","title":"Vue 自定义指令","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"自定义指令参数修饰符","slug":"自定义指令参数修饰符","link":"#自定义指令参数修饰符","children":[]}],"git":{"updatedTime":1681912465000},"filePathRelative":"frame/vue/vue3/14_vue3_directives.md"}');export{e as data};

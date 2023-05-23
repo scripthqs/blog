@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-e86f5932","path":"/web/js/ECMAScript6/04_tString.html","title":"模板字符串","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"模板字符串配合函数","slug":"模板字符串配合函数","link":"#模板字符串配合函数","children":[]}],"git":{"updatedTime":1680763857000},"filePathRelative":"web/js/ECMAScript6/04_tString.md"}');export{t as data};

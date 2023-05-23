@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-405bcabe","path":"/web/algorithm/word/word.html","title":"word","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1683815438000},"filePathRelative":"web/algorithm/word/word.md"}');export{t as data};
