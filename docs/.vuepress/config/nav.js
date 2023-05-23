@@ -55,22 +55,8 @@ export default [
     ],
   },
   {
-    text: "官方文档",
-    children: [
-      { text: "MDN", link: "https://developer.mozilla.org/zh-CN/" },
-      { text: "Vue", link: "https://v3.cn.vuejs.org/" },
-      { text: "React", link: "https://zh-hans.reactjs.org/" },
-      {
-        text: "微信小程序",
-        link: "https://developers.weixin.qq.com/miniprogram/dev/framework/",
-      },
-      { text: "Uni-App", link: "https://uniapp.dcloud.net.cn/" },
-      { text: "Webpack", link: "https://webpack.docschina.org/concepts/" },
-      { text: "Vant", link: "https://youzan.github.io/vant/#/zh-CN/" },
-      { text: "Element-UI", link: "https://element.eleme.cn/#/zh-CN" },
-      { text: "VuePress", link: "https://vuepress.vuejs.org/zh/" },
-      { text: "网道", link: "https://wangdoc.com/" },
-    ],
+    text: "留言板",
+    link: "/comment/",
   },
   {
     text: "更多链接",

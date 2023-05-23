@@ -1,6 +1,5 @@
 import { defineUserConfig } from "vuepress";
 import { defaultTheme } from "@vuepress/theme-default";
-
 import head from "./config/head";
 import navbar from "./config/nav";
 import sidebar from "./config/sidebar";
