@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-17d8ebc7","path":"/web/js/ECMAScript6/01_es6.html","title":"ECMAScript 简介","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1680763857000},"filePathRelative":"web/js/ECMAScript6/01_es6.md"}');export{e as data};
