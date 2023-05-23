@@ -1,0 +1,62 @@
+<template><div><h1 id="js-变量" tabindex="-1"><a class="header-anchor" href="#js-变量" aria-hidden="true">#</a> js 变量</h1>
+<h2 id="常量" tabindex="-1"><a class="header-anchor" href="#常量" aria-hidden="true">#</a> 常量</h2>
+<p>常量也称字面量，不可改变的量。</p>
+<ul>
+<li>数字 12345</li>
+<li>字符串 单词句子'123' 'word' '吃饭'</li>
+<li>布尔值 true false</li>
+</ul>
+<p>字面量都可以直接使用，但是我们都不会直接使用字面量。一般定义一个变量来保存这个字面量。</p>
+<h2 id="变量" tabindex="-1"><a class="header-anchor" href="#变量" aria-hidden="true">#</a> 变量</h2>
+<p>变量是程序向内存申请的一块可以存储数据的空间。变量需要的声明和赋值。</p>
+<p>声明/定义变量</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">var</span> name<span class="token punctuation">;</span> <span class="token comment">//声明一个名为`name`的变量。ES6之前都用`var`</span>
+<span class="token keyword">const</span> name<span class="token punctuation">;</span><span class="token comment">//定义一个常量</span>
+<span class="token keyword">let</span> age<span class="token punctuation">;</span><span class="token comment">//定义一个变量</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>变量的赋值</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>name <span class="token operator">=</span> <span class="token string">"haha"</span><span class="token punctuation">;</span> <span class="token comment">//变量名=变量值</span>
+age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>变量的声明和赋值可以写在一起</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token string">"world"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  name <span class="token operator">=</span> <span class="token string">"zs"</span><span class="token punctuation">,</span>
+  gender <span class="token operator">=</span> <span class="token string">"男"</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>声明一个变量并赋值，称为变量的初始化。</p>
+<p>声明变量要点：</p>
+<ul>
+<li>变量新赋值，以最后一次赋值为准</li>
+<li>同时声明多个变量，多个变量名用<code v-pre>,</code>隔开。var name = 'a' , age =18;</li>
+<li>变量建议先声明再使用。</li>
+<li>变量名严格区分大小写。</li>
+<li>定义但为赋值的变量结果显示<code v-pre>undefined</code></li>
+</ul>
+<h2 id="区块" tabindex="-1"><a class="header-anchor" href="#区块" aria-hidden="true">#</a> 区块</h2>
+<p>JavaScript 使用大括号，将多个语句组合起来，称为区块。对于<code v-pre>var</code>命令，JavaScript 的区块不构成单独的作用域（scope）。</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token string">"hello world"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//报错</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//报错</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在区块内部，使用 var 声明并赋值的变量 a，在区块外部依然有效。区块对于 var 不构成单独的作用域。所以现在都是用 let 和 const 声明变量</p>
+<h2 id="标识符" tabindex="-1"><a class="header-anchor" href="#标识符" aria-hidden="true">#</a> 标识符</h2>
+<p>标识符：在 js 中可以由我们自主命名的都可以称为标识符。</p>
+<p>变量名、函数名、属性名、参数名都是标识符。我们写代码时取的名字就是标识符。</p>
+<ul>
+<li>可以含有字母、数字、<code v-pre>_</code>、<code v-pre>$</code></li>
+<li>不能以数字开头</li>
+<li>不能是关键字和保留字</li>
+<li>一般使用驼峰命名法，首字母小写，每个单词开头大写，<code v-pre>helloWorld</code> <code v-pre>tuoFengMingFa</code></li>
+<li>或者下划线方法<code v-pre>hello_world</code></li>
+</ul>
+<h2 id="关键字" tabindex="-1"><a class="header-anchor" href="#关键字" aria-hidden="true">#</a> 关键字</h2>
+<p>JS 本身已经使用的单词，不能再用来充当变量。</p>
+<h2 id="保留字" tabindex="-1"><a class="header-anchor" href="#保留字" aria-hidden="true">#</a> 保留字</h2>
+<p>预备关键字</p>
+</div></template>
+
+
