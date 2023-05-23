@@ -1,0 +1,1 @@
+import{_ as t,o as a,c,d as e,e as _}from"./app-68a897fb.js";const o={},r=e("h1",{id:"文档已经升级到-vue3-0-该组件库已经不适用",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#文档已经升级到-vue3-0-该组件库已经不适用","aria-hidden":"true"},"#"),_(" 文档已经升级到 vue3.0，该组件库已经不适用")],-1),s=[r];function n(d,i){return a(),c("div",null,s)}const h=t(o,[["render",n],["__file","01_ui.html.vue"]]);export{h as default};

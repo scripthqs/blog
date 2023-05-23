@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-b4b63690","path":"/frame/vue/vue3/12_vue3_provide_inject.html","title":"provide 与 inject","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1681912465000},"filePathRelative":"frame/vue/vue3/12_vue3_provide_inject.md"}');export{e as data};
