@@ -2397,1199 +2397,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Git 的简介",
-    "headers": [
-      {
-        "level": 2,
-        "title": "git 是什么",
-        "slug": "git-是什么",
-        "link": "#git-是什么",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "使用 git 的目的",
-        "slug": "使用-git-的目的",
-        "link": "#使用-git-的目的",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "下载和安装 git",
-        "slug": "下载和安装-git",
-        "link": "#下载和安装-git",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 的初始配置",
-        "slug": "git-的初始配置",
-        "link": "#git-的初始配置",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 初始化仓库",
-        "slug": "git-初始化仓库",
-        "link": "#git-初始化仓库",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 的工作区域",
-        "slug": "git-的工作区域",
-        "link": "#git-的工作区域",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 的基本使用",
-        "slug": "git-的基本使用",
-        "link": "#git-的基本使用",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Git 的撤销",
-        "slug": "git-的撤销",
-        "link": "#git-的撤销",
-        "children": [
-          {
-            "level": 3,
-            "title": "情况 1",
-            "slug": "情况-1",
-            "link": "#情况-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "情况 2",
-            "slug": "情况-2",
-            "link": "#情况-2",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "情况 3",
-            "slug": "情况-3",
-            "link": "#情况-3",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "情况 4",
-            "slug": "情况-4",
-            "link": "#情况-4",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tools/git/01_git.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Git 分支",
-    "headers": [
-      {
-        "level": 2,
-        "title": "分支的分类",
-        "slug": "分支的分类",
-        "link": "#分支的分类",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "分支命令",
-        "slug": "分支命令",
-        "link": "#分支命令",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "暂时保持更改",
-        "slug": "暂时保持更改",
-        "link": "#暂时保持更改",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 分支操作",
-        "slug": "git-分支操作",
-        "link": "#git-分支操作",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "使用 vscode 命令行工具",
-        "slug": "使用-vscode-命令行工具",
-        "link": "#使用-vscode-命令行工具",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/02_git_branch.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Git 管理远程仓库 GitHub",
-    "headers": [
-      {
-        "level": 2,
-        "title": "注册 github 账号",
-        "slug": "注册-github-账号",
-        "link": "#注册-github-账号",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Github 基本概念",
-        "slug": "github-基本概念",
-        "link": "#github-基本概念",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "github 的三个页面",
-        "slug": "github-的三个页面",
-        "link": "#github-的三个页面",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "GitHub pages 搭建",
-        "slug": "github-pages-搭建",
-        "link": "#github-pages-搭建",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/03_git_github.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "git 多人协作",
-    "headers": [
-      {
-        "level": 2,
-        "title": "git 多人协作的流程",
-        "slug": "git-多人协作的流程",
-        "link": "#git-多人协作的流程",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "将本地仓库推送到远程仓库",
-        "slug": "将本地仓库推送到远程仓库",
-        "link": "#将本地仓库推送到远程仓库",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "将远程仓库克隆到本地仓库",
-        "slug": "将远程仓库克隆到本地仓库",
-        "link": "#将远程仓库克隆到本地仓库",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "将最新版本更新到本地仓库",
-        "slug": "将最新版本更新到本地仓库",
-        "link": "#将最新版本更新到本地仓库",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "解决冲突",
-        "slug": "解决冲突",
-        "link": "#解决冲突",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "为开源项目做贡献",
-        "slug": "为开源项目做贡献",
-        "link": "#为开源项目做贡献",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/04_git_work.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "github 的 ssh 免登录",
-    "headers": [
-      {
-        "level": 2,
-        "title": "ssh 免登录",
-        "slug": "ssh-免登录",
-        "link": "#ssh-免登录",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "如何使用 ssh",
-        "slug": "如何使用-ssh",
-        "link": "#如何使用-ssh",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/05_git_ssh.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": ".gitignore 和.gitkeep",
-    "headers": [
-      {
-        "level": 2,
-        "title": "git 忽略清单",
-        "slug": "git-忽略清单",
-        "link": "#git-忽略清单",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "git 占位文件",
-        "slug": "git-占位文件",
-        "link": "#git-占位文件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "README.MD",
-        "slug": "readme-md",
-        "link": "#readme-md",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/06_git_igonre.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "通过 git 命令给 github 网站设置代理",
-    "headers": [
-      {
-        "level": 2,
-        "title": "全局代理（不推荐）",
-        "slug": "全局代理-不推荐",
-        "link": "#全局代理-不推荐",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "只对 github 网站进行代理（推荐）",
-        "slug": "只对-github-网站进行代理-推荐",
-        "link": "#只对-github-网站进行代理-推荐",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "使用镜像网站替换（尝试了一次好像没成功）",
-        "slug": "使用镜像网站替换-尝试了一次好像没成功",
-        "link": "#使用镜像网站替换-尝试了一次好像没成功",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "要针对 SSH 协议的仓库地址",
-        "slug": "要针对-ssh-协议的仓库地址",
-        "link": "#要针对-ssh-协议的仓库地址",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "注册国内的仓库",
-        "slug": "注册国内的仓库",
-        "link": "#注册国内的仓库",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/07_git_proxy.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "github 的疑难杂症",
-    "headers": [
-      {
-        "level": 2,
-        "title": "git 修改远程仓库地址",
-        "slug": "git-修改远程仓库地址",
-        "link": "#git-修改远程仓库地址",
-        "children": [
-          {
-            "level": 3,
-            "title": "方法 1",
-            "slug": "方法-1",
-            "link": "#方法-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "方法 2",
-            "slug": "方法-2",
-            "link": "#方法-2",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "git 报错处理",
-        "slug": "git-报错处理",
-        "link": "#git-报错处理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "github 登录不了",
-        "slug": "github-登录不了",
-        "link": "#github-登录不了",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "403 Forbidden 错误",
-        "slug": "_403-forbidden-错误",
-        "link": "#_403-forbidden-错误",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/08_git_problem.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "远程仓库的实用技巧",
-    "headers": [
-      {
-        "level": 2,
-        "title": "存放静态资源",
-        "slug": "存放静态资源",
-        "link": "#存放静态资源",
-        "children": [
-          {
-            "level": 3,
-            "title": "作用",
-            "slug": "作用",
-            "link": "#作用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "注意",
-            "slug": "注意",
-            "link": "#注意",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tools/git/09_git_assets.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "git 一键提交",
-    "headers": [
-      {
-        "level": 2,
-        "title": "方法",
-        "slug": "方法",
-        "link": "#方法",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "注意",
-        "slug": "注意",
-        "link": "#注意",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "我的 git 文件",
-        "slug": "我的-git-文件",
-        "link": "#我的-git-文件",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/10_git_sh.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "pages 的项目问题解决",
-    "headers": [
-      {
-        "level": 2,
-        "title": "打包报错",
-        "slug": "打包报错",
-        "link": "#打包报错",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "页面空白",
-        "slug": "页面空白",
-        "link": "#页面空白",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "刷新页面 404",
-        "slug": "刷新页面-404",
-        "link": "#刷新页面-404",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "对于 gitee pages",
-        "slug": "对于-gitee-pages",
-        "link": "#对于-gitee-pages",
-        "children": []
-      }
-    ],
-    "path": "/tools/git/11_git_pages.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "样式相关",
-    "headers": [
-      {
-        "level": 2,
-        "title": "文本省略",
-        "slug": "文本省略",
-        "link": "#文本省略",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "毛玻璃效果",
-        "slug": "毛玻璃效果",
-        "link": "#毛玻璃效果",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "object-fit",
-        "slug": "object-fit",
-        "link": "#object-fit",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "锚点滚动效果",
-        "slug": "锚点滚动效果",
-        "link": "#锚点滚动效果",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "点击闪烁效果",
-        "slug": "点击闪烁效果",
-        "link": "#点击闪烁效果",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "antd 表单验证滚动",
-        "slug": "antd-表单验证滚动",
-        "link": "#antd-表单验证滚动",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "倒计时",
-        "slug": "倒计时",
-        "link": "#倒计时",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "图片懒加载",
-        "slug": "图片懒加载",
-        "link": "#图片懒加载",
-        "children": []
-      }
-    ],
-    "path": "/project/work/css.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "处理数据",
-    "headers": [
-      {
-        "level": 2,
-        "title": "分组",
-        "slug": "分组",
-        "link": "#分组",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "list to tree",
-        "slug": "list-to-tree",
-        "link": "#list-to-tree",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "传入数字获取序列数组",
-        "slug": "传入数字获取序列数组",
-        "link": "#传入数字获取序列数组",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "获取对象的长度",
-        "slug": "获取对象的长度",
-        "link": "#获取对象的长度",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "valueOf 方法",
-        "slug": "valueof-方法",
-        "link": "#valueof-方法",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "js 中的 Truthy 和 Falsy",
-        "slug": "js-中的-truthy-和-falsy",
-        "link": "#js-中的-truthy-和-falsy",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "require.context()函数",
-        "slug": "require-context-函数",
-        "link": "#require-context-函数",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "路由传参",
-        "slug": "路由传参",
-        "link": "#路由传参",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "js 连点",
-        "slug": "js-连点",
-        "link": "#js-连点",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "设置随机颜色",
-        "slug": "设置随机颜色",
-        "link": "#设置随机颜色",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "dayjs 格式化时间 UTC",
-        "slug": "dayjs-格式化时间-utc",
-        "link": "#dayjs-格式化时间-utc",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "封装 storage",
-        "slug": "封装-storage",
-        "link": "#封装-storage",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "下载文件",
-        "slug": "下载文件",
-        "link": "#下载文件",
-        "children": [
-          {
-            "level": 3,
-            "title": "返回文件流",
-            "slug": "返回文件流",
-            "link": "#返回文件流",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如何处理 blob 文件",
-            "slug": "如何处理-blob-文件",
-            "link": "#如何处理-blob-文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "在 axios 拦截中区分文件流还是 json 数据",
-            "slug": "在-axios-拦截中区分文件流还是-json-数据",
-            "link": "#在-axios-拦截中区分文件流还是-json-数据",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Content-Disposition（响应）和文件名",
-            "slug": "content-disposition-响应-和文件名",
-            "link": "#content-disposition-响应-和文件名",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "文件流格式下载",
-            "slug": "文件流格式下载",
-            "link": "#文件流格式下载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "url 下载",
-            "slug": "url-下载",
-            "link": "#url-下载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "利用 a 标签的 href 属性",
-            "slug": "利用-a-标签的-href-属性",
-            "link": "#利用-a-标签的-href-属性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "H5 新增了 download 属性",
-            "slug": "h5-新增了-download-属性",
-            "link": "#h5-新增了-download-属性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "使用 a 标签下载",
-            "slug": "使用-a-标签下载",
-            "link": "#使用-a-标签下载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "download 属性失效",
-            "slug": "download-属性失效",
-            "link": "#download-属性失效",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "跨域文件下载解决方案(后端)",
-            "slug": "跨域文件下载解决方案-后端",
-            "link": "#跨域文件下载解决方案-后端",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "跨域文件下载解决方案(前端)不好",
-            "slug": "跨域文件下载解决方案-前端-不好",
-            "link": "#跨域文件下载解决方案-前端-不好",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "跨域文件下载解决方案(前端)推荐",
-            "slug": "跨域文件下载解决方案-前端-推荐",
-            "link": "#跨域文件下载解决方案-前端-推荐",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "注意",
-        "slug": "注意",
-        "link": "#注意",
-        "children": [
-          {
-            "level": 3,
-            "title": "后端问题",
-            "slug": "后端问题",
-            "link": "#后端问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "前端问题",
-            "slug": "前端问题",
-            "link": "#前端问题",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "使用阿里云 oss，实现上传下载",
-        "slug": "使用阿里云-oss-实现上传下载",
-        "link": "#使用阿里云-oss-实现上传下载",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "大文件上传",
-        "slug": "大文件上传",
-        "link": "#大文件上传",
-        "children": []
-      }
-    ],
-    "path": "/project/work/js.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vite",
-    "headers": [],
-    "path": "/tools/vite/01_vite.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "VSCode 配置",
-    "headers": [
-      {
-        "level": 2,
-        "title": "我的 vscode 配置文件（setting.json）",
-        "slug": "我的-vscode-配置文件-setting-json",
-        "link": "#我的-vscode-配置文件-setting-json",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "将 vscode 的终端更改为 gitbash",
-        "slug": "将-vscode-的终端更改为-gitbash",
-        "link": "#将-vscode-的终端更改为-gitbash",
-        "children": []
-      }
-    ],
-    "path": "/tools/vscode/01vsc.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "VSCode 插件",
-    "headers": [
-      {
-        "level": 2,
-        "title": "中文插件",
-        "slug": "中文插件",
-        "link": "#中文插件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Code Spell Checker",
-        "slug": "code-spell-checker",
-        "link": "#code-spell-checker",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "VSCode Great Icons",
-        "slug": "vscode-great-icons",
-        "link": "#vscode-great-icons",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "prettier 代码格式化插件",
-        "slug": "prettier-代码格式化插件",
-        "link": "#prettier-代码格式化插件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "快捷键",
-        "slug": "快捷键",
-        "link": "#快捷键",
-        "children": []
-      }
-    ],
-    "path": "/tools/vscode/02vsc.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "VSCode 生成代码片段",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Lorem",
-        "slug": "lorem",
-        "link": "#lorem",
-        "children": []
-      }
-    ],
-    "path": "/tools/vscode/03vsc.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "webpack 简介",
-    "headers": [
-      {
-        "level": 2,
-        "title": "webpack 概述",
-        "slug": "webpack-概述",
-        "link": "#webpack-概述",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "grunt/gulp",
-        "slug": "grunt-gulp",
-        "link": "#grunt-gulp",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "webpack 和 node",
-        "slug": "webpack-和-node",
-        "link": "#webpack-和-node",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "前端工程化",
-        "slug": "前端工程化",
-        "link": "#前端工程化",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/01_webpack.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "webpack 基本使用",
-    "headers": [
-      {
-        "level": 2,
-        "title": "准备工作",
-        "slug": "准备工作",
-        "link": "#准备工作",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "安装 webpack",
-        "slug": "安装-webpack",
-        "link": "#安装-webpack",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "配置 webpack",
-        "slug": "配置-webpack",
-        "link": "#配置-webpack",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "报错处理",
-        "slug": "报错处理",
-        "link": "#报错处理",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/02_webpack_init.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "webpack 核心概念",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Entry 入口",
-        "slug": "entry-入口",
-        "link": "#entry-入口",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Output 输出",
-        "slug": "output-输出",
-        "link": "#output-输出",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Loader 翻译",
-        "slug": "loader-翻译",
-        "link": "#loader-翻译",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Plugins 插件",
-        "slug": "plugins-插件",
-        "link": "#plugins-插件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Mode 模式",
-        "slug": "mode-模式",
-        "link": "#mode-模式",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Chunk",
-        "slug": "chunk",
-        "link": "#chunk",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Module",
-        "slug": "module",
-        "link": "#module",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Resolve",
-        "slug": "resolve",
-        "link": "#resolve",
-        "children": [
-          {
-            "level": 3,
-            "title": "path.join 和 path.resolve",
-            "slug": "path-join-和-path-resolve",
-            "link": "#path-join-和-path-resolve",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Optimization",
-        "slug": "optimization",
-        "link": "#optimization",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/03_webpack_center.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "修改 webpack 默认配置",
-    "headers": [
-      {
-        "level": 2,
-        "title": "webpack.config.js",
-        "slug": "webpack-config-js",
-        "link": "#webpack-config-js",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "webpack 的默认配置",
-        "slug": "webpack-的默认配置",
-        "link": "#webpack-的默认配置",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "自定义打包的入口与出口",
-        "slug": "自定义打包的入口与出口",
-        "link": "#自定义打包的入口与出口",
-        "children": [
-          {
-            "level": 3,
-            "title": "内置模块 path",
-            "slug": "内置模块-path",
-            "link": "#内置模块-path",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tools/webpack/04_webpack_config.js.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Loader",
-    "headers": [
-      {
-        "level": 2,
-        "title": "loader 概述",
-        "slug": "loader-概述",
-        "link": "#loader-概述",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "打包处理 css 文件",
-        "slug": "打包处理-css-文件",
-        "link": "#打包处理-css-文件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "打包处理 less 文件",
-        "slug": "打包处理-less-文件",
-        "link": "#打包处理-less-文件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "postCSS 工具",
-        "slug": "postcss-工具",
-        "link": "#postcss-工具",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "打包处理图片资源",
-        "slug": "打包处理图片资源",
-        "link": "#打包处理图片资源",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "打包处理 js 文件中的高级语法",
-        "slug": "打包处理-js-文件中的高级语法",
-        "link": "#打包处理-js-文件中的高级语法",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/05_webpack_loader.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Plugin 插件",
-    "headers": [
-      {
-        "level": 2,
-        "title": "plugin 简介",
-        "slug": "plugin-简介",
-        "link": "#plugin-简介",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "webpack-dev-server",
-        "slug": "webpack-dev-server",
-        "link": "#webpack-dev-server",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "html-webpack-plugin",
-        "slug": "html-webpack-plugin",
-        "link": "#html-webpack-plugin",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "devServer 节点",
-        "slug": "devserver-节点",
-        "link": "#devserver-节点",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/06_webpack_plugin.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "打包发布",
-    "headers": [
-      {
-        "level": 2,
-        "title": "为什么要打包发布",
-        "slug": "为什么要打包发布",
-        "link": "#为什么要打包发布",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "配置 webpack 的打包发布",
-        "slug": "配置-webpack-的打包发布",
-        "link": "#配置-webpack-的打包发布",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "把 js 文件统一生成到 js 目录中",
-        "slug": "把-js-文件统一生成到-js-目录中",
-        "link": "#把-js-文件统一生成到-js-目录中",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "把图片文件统一生成到 image 目录中",
-        "slug": "把图片文件统一生成到-image-目录中",
-        "link": "#把图片文件统一生成到-image-目录中",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "自动清理 dist 目录下的旧文件",
-        "slug": "自动清理-dist-目录下的旧文件",
-        "link": "#自动清理-dist-目录下的旧文件",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/07_webpack_clean.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Source Map",
-    "headers": [
-      {
-        "level": 2,
-        "title": "生产环境遇到的问题",
-        "slug": "生产环境遇到的问题",
-        "link": "#生产环境遇到的问题",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "什么是 Source Map",
-        "slug": "什么是-source-map",
-        "link": "#什么是-source-map",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "webpack 开发环境下的 Source Map",
-        "slug": "webpack-开发环境下的-source-map",
-        "link": "#webpack-开发环境下的-source-map",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Source Map 总结",
-        "slug": "source-map-总结",
-        "link": "#source-map-总结",
-        "children": []
-      }
-    ],
-    "path": "/tools/webpack/08_webpack_Source_Map.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "前端数据请求",
     "headers": [
       {
@@ -4545,6 +3352,71 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "SSR 服务端渲染",
+    "headers": [
+      {
+        "level": 2,
+        "title": "SPA 、SSG、 SSR",
+        "slug": "spa-、ssg、-ssr",
+        "link": "#spa-、ssg、-ssr",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "爬虫和 SEO",
+        "slug": "爬虫和-seo",
+        "link": "#爬虫和-seo",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "SSR 实现方案",
+        "slug": "ssr-实现方案",
+        "link": "#ssr-实现方案",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Nuxt 3",
+        "slug": "nuxt-3",
+        "link": "#nuxt-3",
+        "children": [
+          {
+            "level": 3,
+            "title": "App.vue 入口文件",
+            "slug": "app-vue-入口文件",
+            "link": "#app-vue-入口文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "nuxt.config 配置文件",
+            "slug": "nuxt-config-配置文件",
+            "link": "#nuxt-config-配置文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "nuxt3 内置组件",
+            "slug": "nuxt3-内置组件",
+            "link": "#nuxt3-内置组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "新建页面",
+            "slug": "新建页面",
+            "link": "#新建页面",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/net/ssr/01_ssr.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "NodeJS 简介",
     "headers": [
       {
@@ -5030,67 +3902,293 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SSR 服务端渲染",
+    "title": "样式相关",
     "headers": [
       {
         "level": 2,
-        "title": "SPA 、SSG、 SSR",
-        "slug": "spa-、ssg、-ssr",
-        "link": "#spa-、ssg、-ssr",
+        "title": "文本省略",
+        "slug": "文本省略",
+        "link": "#文本省略",
         "children": []
       },
       {
         "level": 2,
-        "title": "爬虫和 SEO",
-        "slug": "爬虫和-seo",
-        "link": "#爬虫和-seo",
+        "title": "毛玻璃效果",
+        "slug": "毛玻璃效果",
+        "link": "#毛玻璃效果",
         "children": []
       },
       {
         "level": 2,
-        "title": "SSR 实现方案",
-        "slug": "ssr-实现方案",
-        "link": "#ssr-实现方案",
+        "title": "object-fit",
+        "slug": "object-fit",
+        "link": "#object-fit",
         "children": []
       },
       {
         "level": 2,
-        "title": "Nuxt 3",
-        "slug": "nuxt-3",
-        "link": "#nuxt-3",
+        "title": "锚点滚动效果",
+        "slug": "锚点滚动效果",
+        "link": "#锚点滚动效果",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "点击闪烁效果",
+        "slug": "点击闪烁效果",
+        "link": "#点击闪烁效果",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "antd 表单验证滚动",
+        "slug": "antd-表单验证滚动",
+        "link": "#antd-表单验证滚动",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "倒计时",
+        "slug": "倒计时",
+        "link": "#倒计时",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "图片懒加载",
+        "slug": "图片懒加载",
+        "link": "#图片懒加载",
+        "children": []
+      }
+    ],
+    "path": "/project/work/css.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "处理数据",
+    "headers": [
+      {
+        "level": 2,
+        "title": "分组",
+        "slug": "分组",
+        "link": "#分组",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "list to tree",
+        "slug": "list-to-tree",
+        "link": "#list-to-tree",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "传入数字获取序列数组",
+        "slug": "传入数字获取序列数组",
+        "link": "#传入数字获取序列数组",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "获取对象的长度",
+        "slug": "获取对象的长度",
+        "link": "#获取对象的长度",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "valueOf 方法",
+        "slug": "valueof-方法",
+        "link": "#valueof-方法",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "js 中的 Truthy 和 Falsy",
+        "slug": "js-中的-truthy-和-falsy",
+        "link": "#js-中的-truthy-和-falsy",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "require.context()函数",
+        "slug": "require-context-函数",
+        "link": "#require-context-函数",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "路由传参",
+        "slug": "路由传参",
+        "link": "#路由传参",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "js 连点",
+        "slug": "js-连点",
+        "link": "#js-连点",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "设置随机颜色",
+        "slug": "设置随机颜色",
+        "link": "#设置随机颜色",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "dayjs 格式化时间 UTC",
+        "slug": "dayjs-格式化时间-utc",
+        "link": "#dayjs-格式化时间-utc",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "封装 storage",
+        "slug": "封装-storage",
+        "link": "#封装-storage",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "下载文件",
+        "slug": "下载文件",
+        "link": "#下载文件",
         "children": [
           {
             "level": 3,
-            "title": "App.vue 入口文件",
-            "slug": "app-vue-入口文件",
-            "link": "#app-vue-入口文件",
+            "title": "返回文件流",
+            "slug": "返回文件流",
+            "link": "#返回文件流",
             "children": []
           },
           {
             "level": 3,
-            "title": "nuxt.config 配置文件",
-            "slug": "nuxt-config-配置文件",
-            "link": "#nuxt-config-配置文件",
+            "title": "如何处理 blob 文件",
+            "slug": "如何处理-blob-文件",
+            "link": "#如何处理-blob-文件",
             "children": []
           },
           {
             "level": 3,
-            "title": "nuxt3 内置组件",
-            "slug": "nuxt3-内置组件",
-            "link": "#nuxt3-内置组件",
+            "title": "在 axios 拦截中区分文件流还是 json 数据",
+            "slug": "在-axios-拦截中区分文件流还是-json-数据",
+            "link": "#在-axios-拦截中区分文件流还是-json-数据",
             "children": []
           },
           {
             "level": 3,
-            "title": "新建页面",
-            "slug": "新建页面",
-            "link": "#新建页面",
+            "title": "Content-Disposition（响应）和文件名",
+            "slug": "content-disposition-响应-和文件名",
+            "link": "#content-disposition-响应-和文件名",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "文件流格式下载",
+            "slug": "文件流格式下载",
+            "link": "#文件流格式下载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "url 下载",
+            "slug": "url-下载",
+            "link": "#url-下载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "利用 a 标签的 href 属性",
+            "slug": "利用-a-标签的-href-属性",
+            "link": "#利用-a-标签的-href-属性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "H5 新增了 download 属性",
+            "slug": "h5-新增了-download-属性",
+            "link": "#h5-新增了-download-属性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "使用 a 标签下载",
+            "slug": "使用-a-标签下载",
+            "link": "#使用-a-标签下载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "download 属性失效",
+            "slug": "download-属性失效",
+            "link": "#download-属性失效",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "跨域文件下载解决方案(后端)",
+            "slug": "跨域文件下载解决方案-后端",
+            "link": "#跨域文件下载解决方案-后端",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "跨域文件下载解决方案(前端)不好",
+            "slug": "跨域文件下载解决方案-前端-不好",
+            "link": "#跨域文件下载解决方案-前端-不好",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "跨域文件下载解决方案(前端)推荐",
+            "slug": "跨域文件下载解决方案-前端-推荐",
+            "link": "#跨域文件下载解决方案-前端-推荐",
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "注意",
+        "slug": "注意",
+        "link": "#注意",
+        "children": [
+          {
+            "level": 3,
+            "title": "后端问题",
+            "slug": "后端问题",
+            "link": "#后端问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "前端问题",
+            "slug": "前端问题",
+            "link": "#前端问题",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "使用阿里云 oss，实现上传下载",
+        "slug": "使用阿里云-oss-实现上传下载",
+        "link": "#使用阿里云-oss-实现上传下载",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "大文件上传",
+        "slug": "大文件上传",
+        "link": "#大文件上传",
+        "children": []
       }
     ],
-    "path": "/net/ssr/01_ssr.html",
+    "path": "/project/work/js.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8026,389 +7124,904 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "React 项目开发",
+    "title": "Git 的简介",
     "headers": [
       {
         "level": 2,
-        "title": "创建 React 项目",
-        "slug": "创建-react-项目",
-        "link": "#创建-react-项目",
+        "title": "git 是什么",
+        "slug": "git-是什么",
+        "link": "#git-是什么",
         "children": []
       },
       {
         "level": 2,
-        "title": "项目配置",
-        "slug": "项目配置",
-        "link": "#项目配置",
+        "title": "使用 git 的目的",
+        "slug": "使用-git-的目的",
+        "link": "#使用-git-的目的",
         "children": []
       },
       {
         "level": 2,
-        "title": "Router 路由配置",
-        "slug": "router-路由配置",
-        "link": "#router-路由配置",
+        "title": "下载和安装 git",
+        "slug": "下载和安装-git",
+        "link": "#下载和安装-git",
         "children": []
       },
       {
         "level": 2,
-        "title": "Redux 状态管理",
-        "slug": "redux-状态管理",
-        "link": "#redux-状态管理",
+        "title": "git 的初始配置",
+        "slug": "git-的初始配置",
+        "link": "#git-的初始配置",
         "children": []
       },
       {
         "level": 2,
-        "title": "axios 网络请求",
-        "slug": "axios-网络请求",
-        "link": "#axios-网络请求",
+        "title": "git 初始化仓库",
+        "slug": "git-初始化仓库",
+        "link": "#git-初始化仓库",
         "children": []
       },
       {
         "level": 2,
-        "title": "配置 styled-components",
-        "slug": "配置-styled-components",
-        "link": "#配置-styled-components",
+        "title": "git 的工作区域",
+        "slug": "git-的工作区域",
+        "link": "#git-的工作区域",
         "children": []
       },
       {
         "level": 2,
-        "title": "创建 React + TypeScript 项目",
-        "slug": "创建-react-typescript-项目",
-        "link": "#创建-react-typescript-项目",
+        "title": "git 的基本使用",
+        "slug": "git-的基本使用",
+        "link": "#git-的基本使用",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Git 的撤销",
+        "slug": "git-的撤销",
+        "link": "#git-的撤销",
         "children": [
           {
             "level": 3,
-            "title": "FC",
-            "slug": "fc",
-            "link": "#fc",
+            "title": "情况 1",
+            "slug": "情况-1",
+            "link": "#情况-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "情况 2",
+            "slug": "情况-2",
+            "link": "#情况-2",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "情况 3",
+            "slug": "情况-3",
+            "link": "#情况-3",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "情况 4",
+            "slug": "情况-4",
+            "link": "#情况-4",
             "children": []
           }
         ]
       }
     ],
-    "path": "/project/react/react_test/01_react.html",
+    "path": "/tools/git/01_git.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Vue 购物街",
+    "title": "Git 分支",
     "headers": [
       {
         "level": 2,
-        "title": "1 准备",
-        "slug": "_1-准备",
-        "link": "#_1-准备",
+        "title": "分支的分类",
+        "slug": "分支的分类",
+        "link": "#分支的分类",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "分支命令",
+        "slug": "分支命令",
+        "link": "#分支命令",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "暂时保持更改",
+        "slug": "暂时保持更改",
+        "link": "#暂时保持更改",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "git 分支操作",
+        "slug": "git-分支操作",
+        "link": "#git-分支操作",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "使用 vscode 命令行工具",
+        "slug": "使用-vscode-命令行工具",
+        "link": "#使用-vscode-命令行工具",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/02_git_branch.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Git 管理远程仓库 GitHub",
+    "headers": [
+      {
+        "level": 2,
+        "title": "注册 github 账号",
+        "slug": "注册-github-账号",
+        "link": "#注册-github-账号",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Github 基本概念",
+        "slug": "github-基本概念",
+        "link": "#github-基本概念",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "github 的三个页面",
+        "slug": "github-的三个页面",
+        "link": "#github-的三个页面",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "GitHub pages 搭建",
+        "slug": "github-pages-搭建",
+        "link": "#github-pages-搭建",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/03_git_github.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "git 多人协作",
+    "headers": [
+      {
+        "level": 2,
+        "title": "git 多人协作的流程",
+        "slug": "git-多人协作的流程",
+        "link": "#git-多人协作的流程",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "将本地仓库推送到远程仓库",
+        "slug": "将本地仓库推送到远程仓库",
+        "link": "#将本地仓库推送到远程仓库",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "将远程仓库克隆到本地仓库",
+        "slug": "将远程仓库克隆到本地仓库",
+        "link": "#将远程仓库克隆到本地仓库",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "将最新版本更新到本地仓库",
+        "slug": "将最新版本更新到本地仓库",
+        "link": "#将最新版本更新到本地仓库",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "解决冲突",
+        "slug": "解决冲突",
+        "link": "#解决冲突",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "为开源项目做贡献",
+        "slug": "为开源项目做贡献",
+        "link": "#为开源项目做贡献",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/04_git_work.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "github 的 ssh 免登录",
+    "headers": [
+      {
+        "level": 2,
+        "title": "ssh 免登录",
+        "slug": "ssh-免登录",
+        "link": "#ssh-免登录",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "如何使用 ssh",
+        "slug": "如何使用-ssh",
+        "link": "#如何使用-ssh",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/05_git_ssh.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": ".gitignore 和.gitkeep",
+    "headers": [
+      {
+        "level": 2,
+        "title": "git 忽略清单",
+        "slug": "git-忽略清单",
+        "link": "#git-忽略清单",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "git 占位文件",
+        "slug": "git-占位文件",
+        "link": "#git-占位文件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "README.MD",
+        "slug": "readme-md",
+        "link": "#readme-md",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/06_git_igonre.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "通过 git 命令给 github 网站设置代理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "全局代理（不推荐）",
+        "slug": "全局代理-不推荐",
+        "link": "#全局代理-不推荐",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "只对 github 网站进行代理（推荐）",
+        "slug": "只对-github-网站进行代理-推荐",
+        "link": "#只对-github-网站进行代理-推荐",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "使用镜像网站替换（尝试了一次好像没成功）",
+        "slug": "使用镜像网站替换-尝试了一次好像没成功",
+        "link": "#使用镜像网站替换-尝试了一次好像没成功",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "要针对 SSH 协议的仓库地址",
+        "slug": "要针对-ssh-协议的仓库地址",
+        "link": "#要针对-ssh-协议的仓库地址",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "注册国内的仓库",
+        "slug": "注册国内的仓库",
+        "link": "#注册国内的仓库",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/07_git_proxy.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "github 的疑难杂症",
+    "headers": [
+      {
+        "level": 2,
+        "title": "git 修改远程仓库地址",
+        "slug": "git-修改远程仓库地址",
+        "link": "#git-修改远程仓库地址",
         "children": [
           {
             "level": 3,
-            "title": "1.1 划分目录结构",
-            "slug": "_1-1-划分目录结构",
-            "link": "#_1-1-划分目录结构",
+            "title": "方法 1",
+            "slug": "方法-1",
+            "link": "#方法-1",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.2 css 样式重置",
-            "slug": "_1-2-css-样式重置",
-            "link": "#_1-2-css-样式重置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 vue 的配置文件",
-            "slug": "_1-3-vue-的配置文件",
-            "link": "#_1-3-vue-的配置文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 项目模板的划分",
-            "slug": "_1-4-项目模板的划分",
-            "link": "#_1-4-项目模板的划分",
+            "title": "方法 2",
+            "slug": "方法-2",
+            "link": "#方法-2",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "2 首页的开发",
-        "slug": "_2-首页的开发",
-        "link": "#_2-首页的开发",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 navbar 导航栏封装",
-            "slug": "_2-1-navbar-导航栏封装",
-            "link": "#_2-1-navbar-导航栏封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 网络的请求的封装",
-            "slug": "_2-2-网络的请求的封装",
-            "link": "#_2-2-网络的请求的封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 swiper 轮播图封装",
-            "slug": "_2-3-swiper-轮播图封装",
-            "link": "#_2-3-swiper-轮播图封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 推荐信息封装",
-            "slug": "_2-4-推荐信息封装",
-            "link": "#_2-4-推荐信息封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 Tab 标签页封装",
-            "slug": "_2-5-tab-标签页封装",
-            "link": "#_2-5-tab-标签页封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.6 better-scroll 滚动封装",
-            "slug": "_2-6-better-scroll-滚动封装",
-            "link": "#_2-6-better-scroll-滚动封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.7 BackTop 回到顶部",
-            "slug": "_2-7-backtop-回到顶部",
-            "link": "#_2-7-backtop-回到顶部",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.8 上拉加载更多的问题",
-            "slug": "_2-8-上拉加载更多的问题",
-            "link": "#_2-8-上拉加载更多的问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.9 让 Home 保持原来的状态",
-            "slug": "_2-9-让-home-保持原来的状态",
-            "link": "#_2-9-让-home-保持原来的状态",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.10 使用防抖，优化监听",
-            "slug": "_2-10-使用防抖-优化监听",
-            "link": "#_2-10-使用防抖-优化监听",
-            "children": []
-          }
-        ]
+        "title": "git 报错处理",
+        "slug": "git-报错处理",
+        "link": "#git-报错处理",
+        "children": []
       },
       {
         "level": 2,
-        "title": "3 详情页的开发",
-        "slug": "_3-详情页的开发",
-        "link": "#_3-详情页的开发",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 根据商品 ID 配置路由",
-            "slug": "_3-1-根据商品-id-配置路由",
-            "link": "#_3-1-根据商品-id-配置路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 详情页导航栏",
-            "slug": "_3-2-详情页导航栏",
-            "link": "#_3-2-详情页导航栏",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 轮播图",
-            "slug": "_3-3-轮播图",
-            "link": "#_3-3-轮播图",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 商品信息",
-            "slug": "_3-4-商品信息",
-            "link": "#_3-4-商品信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.5 商家信息",
-            "slug": "_3-5-商家信息",
-            "link": "#_3-5-商家信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.6 商品细节",
-            "slug": "_3-6-商品细节",
-            "link": "#_3-6-商品细节",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.7 评论信息",
-            "slug": "_3-7-评论信息",
-            "link": "#_3-7-评论信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.8 参数信息",
-            "slug": "_3-8-参数信息",
-            "link": "#_3-8-参数信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.9 推荐商品",
-            "slug": "_3-9-推荐商品",
-            "link": "#_3-9-推荐商品",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.10 标题和内容的联动效果",
-            "slug": "_3-10-标题和内容的联动效果",
-            "link": "#_3-10-标题和内容的联动效果",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.11 底部工具栏的封装",
-            "slug": "_3-11-底部工具栏的封装",
-            "link": "#_3-11-底部工具栏的封装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.12 toast 插件的封装",
-            "slug": "_3-12-toast-插件的封装",
-            "link": "#_3-12-toast-插件的封装",
-            "children": []
-          }
-        ]
+        "title": "github 登录不了",
+        "slug": "github-登录不了",
+        "link": "#github-登录不了",
+        "children": []
       },
       {
         "level": 2,
-        "title": "4 购物车页面的开发",
-        "slug": "_4-购物车页面的开发",
-        "link": "#_4-购物车页面的开发",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 使用 Vuex 管理购物车的商品",
-            "slug": "_4-1-使用-vuex-管理购物车的商品",
-            "link": "#_4-1-使用-vuex-管理购物车的商品",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 删除商品",
-            "slug": "_4-2-删除商品",
-            "link": "#_4-2-删除商品",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.3 全选按钮",
-            "slug": "_4-3-全选按钮",
-            "link": "#_4-3-全选按钮",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.4 计算总价格",
-            "slug": "_4-4-计算总价格",
-            "link": "#_4-4-计算总价格",
-            "children": []
-          }
-        ]
-      },
+        "title": "403 Forbidden 错误",
+        "slug": "_403-forbidden-错误",
+        "link": "#_403-forbidden-错误",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/08_git_problem.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "远程仓库的实用技巧",
+    "headers": [
       {
         "level": 2,
-        "title": "5 分类页面的开发",
-        "slug": "_5-分类页面的开发",
-        "link": "#_5-分类页面的开发",
+        "title": "存放静态资源",
+        "slug": "存放静态资源",
+        "link": "#存放静态资源",
         "children": [
           {
             "level": 3,
-            "title": "5.1 导航栏的开发",
-            "slug": "_5-1-导航栏的开发",
-            "link": "#_5-1-导航栏的开发",
+            "title": "作用",
+            "slug": "作用",
+            "link": "#作用",
             "children": []
           },
           {
             "level": 3,
-            "title": "5.2 侧边栏的开发",
-            "slug": "_5-2-侧边栏的开发",
-            "link": "#_5-2-侧边栏的开发",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "5.3 商品分类的开发",
-            "slug": "_5-3-商品分类的开发",
-            "link": "#_5-3-商品分类的开发",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "6 项目的优化打包和发布",
-        "slug": "_6-项目的优化打包和发布",
-        "link": "#_6-项目的优化打包和发布",
-        "children": [
-          {
-            "level": 3,
-            "title": "6.1 解决移动端点击问题",
-            "slug": "_6-1-解决移动端点击问题",
-            "link": "#_6-1-解决移动端点击问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.2 图片懒加载",
-            "slug": "_6-2-图片懒加载",
-            "link": "#_6-2-图片懒加载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.3 配置路由懒加载",
-            "slug": "_6-3-配置路由懒加载",
-            "link": "#_6-3-配置路由懒加载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.3 px2vm",
-            "slug": "_6-3-px2vm",
-            "link": "#_6-3-px2vm",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.4 移除 console 的信息",
-            "slug": "_6-4-移除-console-的信息",
-            "link": "#_6-4-移除-console-的信息",
+            "title": "注意",
+            "slug": "注意",
+            "link": "#注意",
             "children": []
           }
         ]
       }
     ],
-    "path": "/project/h5/vue2_h5/vue2_h5.html",
+    "path": "/tools/git/09_git_assets.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "git 一键提交",
+    "headers": [
+      {
+        "level": 2,
+        "title": "方法",
+        "slug": "方法",
+        "link": "#方法",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "注意",
+        "slug": "注意",
+        "link": "#注意",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "我的 git 文件",
+        "slug": "我的-git-文件",
+        "link": "#我的-git-文件",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/10_git_sh.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "pages 的项目问题解决",
+    "headers": [
+      {
+        "level": 2,
+        "title": "打包报错",
+        "slug": "打包报错",
+        "link": "#打包报错",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "页面空白",
+        "slug": "页面空白",
+        "link": "#页面空白",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "刷新页面 404",
+        "slug": "刷新页面-404",
+        "link": "#刷新页面-404",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "对于 gitee pages",
+        "slug": "对于-gitee-pages",
+        "link": "#对于-gitee-pages",
+        "children": []
+      }
+    ],
+    "path": "/tools/git/11_git_pages.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vite",
+    "headers": [],
+    "path": "/tools/vite/01_vite.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "VSCode 配置",
+    "headers": [
+      {
+        "level": 2,
+        "title": "我的 vscode 配置文件（setting.json）",
+        "slug": "我的-vscode-配置文件-setting-json",
+        "link": "#我的-vscode-配置文件-setting-json",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "将 vscode 的终端更改为 gitbash",
+        "slug": "将-vscode-的终端更改为-gitbash",
+        "link": "#将-vscode-的终端更改为-gitbash",
+        "children": []
+      }
+    ],
+    "path": "/tools/vscode/01vsc.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "VSCode 插件",
+    "headers": [
+      {
+        "level": 2,
+        "title": "中文插件",
+        "slug": "中文插件",
+        "link": "#中文插件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Code Spell Checker",
+        "slug": "code-spell-checker",
+        "link": "#code-spell-checker",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "VSCode Great Icons",
+        "slug": "vscode-great-icons",
+        "link": "#vscode-great-icons",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "prettier 代码格式化插件",
+        "slug": "prettier-代码格式化插件",
+        "link": "#prettier-代码格式化插件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "快捷键",
+        "slug": "快捷键",
+        "link": "#快捷键",
+        "children": []
+      }
+    ],
+    "path": "/tools/vscode/02vsc.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "VSCode 生成代码片段",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Lorem",
+        "slug": "lorem",
+        "link": "#lorem",
+        "children": []
+      }
+    ],
+    "path": "/tools/vscode/03vsc.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "webpack 简介",
+    "headers": [
+      {
+        "level": 2,
+        "title": "webpack 概述",
+        "slug": "webpack-概述",
+        "link": "#webpack-概述",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "grunt/gulp",
+        "slug": "grunt-gulp",
+        "link": "#grunt-gulp",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "webpack 和 node",
+        "slug": "webpack-和-node",
+        "link": "#webpack-和-node",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "前端工程化",
+        "slug": "前端工程化",
+        "link": "#前端工程化",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/01_webpack.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "webpack 基本使用",
+    "headers": [
+      {
+        "level": 2,
+        "title": "准备工作",
+        "slug": "准备工作",
+        "link": "#准备工作",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "安装 webpack",
+        "slug": "安装-webpack",
+        "link": "#安装-webpack",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "配置 webpack",
+        "slug": "配置-webpack",
+        "link": "#配置-webpack",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "报错处理",
+        "slug": "报错处理",
+        "link": "#报错处理",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/02_webpack_init.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "webpack 核心概念",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Entry 入口",
+        "slug": "entry-入口",
+        "link": "#entry-入口",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Output 输出",
+        "slug": "output-输出",
+        "link": "#output-输出",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Loader 翻译",
+        "slug": "loader-翻译",
+        "link": "#loader-翻译",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Plugins 插件",
+        "slug": "plugins-插件",
+        "link": "#plugins-插件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Mode 模式",
+        "slug": "mode-模式",
+        "link": "#mode-模式",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Chunk",
+        "slug": "chunk",
+        "link": "#chunk",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Module",
+        "slug": "module",
+        "link": "#module",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Resolve",
+        "slug": "resolve",
+        "link": "#resolve",
+        "children": [
+          {
+            "level": 3,
+            "title": "path.join 和 path.resolve",
+            "slug": "path-join-和-path-resolve",
+            "link": "#path-join-和-path-resolve",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Optimization",
+        "slug": "optimization",
+        "link": "#optimization",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/03_webpack_center.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "修改 webpack 默认配置",
+    "headers": [
+      {
+        "level": 2,
+        "title": "webpack.config.js",
+        "slug": "webpack-config-js",
+        "link": "#webpack-config-js",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "webpack 的默认配置",
+        "slug": "webpack-的默认配置",
+        "link": "#webpack-的默认配置",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "自定义打包的入口与出口",
+        "slug": "自定义打包的入口与出口",
+        "link": "#自定义打包的入口与出口",
+        "children": [
+          {
+            "level": 3,
+            "title": "内置模块 path",
+            "slug": "内置模块-path",
+            "link": "#内置模块-path",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tools/webpack/04_webpack_config.js.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Loader",
+    "headers": [
+      {
+        "level": 2,
+        "title": "loader 概述",
+        "slug": "loader-概述",
+        "link": "#loader-概述",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "打包处理 css 文件",
+        "slug": "打包处理-css-文件",
+        "link": "#打包处理-css-文件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "打包处理 less 文件",
+        "slug": "打包处理-less-文件",
+        "link": "#打包处理-less-文件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "postCSS 工具",
+        "slug": "postcss-工具",
+        "link": "#postcss-工具",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "打包处理图片资源",
+        "slug": "打包处理图片资源",
+        "link": "#打包处理图片资源",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "打包处理 js 文件中的高级语法",
+        "slug": "打包处理-js-文件中的高级语法",
+        "link": "#打包处理-js-文件中的高级语法",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/05_webpack_loader.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Plugin 插件",
+    "headers": [
+      {
+        "level": 2,
+        "title": "plugin 简介",
+        "slug": "plugin-简介",
+        "link": "#plugin-简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "webpack-dev-server",
+        "slug": "webpack-dev-server",
+        "link": "#webpack-dev-server",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "html-webpack-plugin",
+        "slug": "html-webpack-plugin",
+        "link": "#html-webpack-plugin",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "devServer 节点",
+        "slug": "devserver-节点",
+        "link": "#devserver-节点",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/06_webpack_plugin.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "打包发布",
+    "headers": [
+      {
+        "level": 2,
+        "title": "为什么要打包发布",
+        "slug": "为什么要打包发布",
+        "link": "#为什么要打包发布",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "配置 webpack 的打包发布",
+        "slug": "配置-webpack-的打包发布",
+        "link": "#配置-webpack-的打包发布",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "把 js 文件统一生成到 js 目录中",
+        "slug": "把-js-文件统一生成到-js-目录中",
+        "link": "#把-js-文件统一生成到-js-目录中",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "把图片文件统一生成到 image 目录中",
+        "slug": "把图片文件统一生成到-image-目录中",
+        "link": "#把图片文件统一生成到-image-目录中",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "自动清理 dist 目录下的旧文件",
+        "slug": "自动清理-dist-目录下的旧文件",
+        "link": "#自动清理-dist-目录下的旧文件",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/07_webpack_clean.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Source Map",
+    "headers": [
+      {
+        "level": 2,
+        "title": "生产环境遇到的问题",
+        "slug": "生产环境遇到的问题",
+        "link": "#生产环境遇到的问题",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "什么是 Source Map",
+        "slug": "什么是-source-map",
+        "link": "#什么是-source-map",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "webpack 开发环境下的 Source Map",
+        "slug": "webpack-开发环境下的-source-map",
+        "link": "#webpack-开发环境下的-source-map",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Source Map 总结",
+        "slug": "source-map-总结",
+        "link": "#source-map-总结",
+        "children": []
+      }
+    ],
+    "path": "/tools/webpack/08_webpack_Source_Map.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10403,6 +10016,400 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Vue 购物街",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1 准备",
+        "slug": "_1-准备",
+        "link": "#_1-准备",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 划分目录结构",
+            "slug": "_1-1-划分目录结构",
+            "link": "#_1-1-划分目录结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 css 样式重置",
+            "slug": "_1-2-css-样式重置",
+            "link": "#_1-2-css-样式重置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 vue 的配置文件",
+            "slug": "_1-3-vue-的配置文件",
+            "link": "#_1-3-vue-的配置文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 项目模板的划分",
+            "slug": "_1-4-项目模板的划分",
+            "link": "#_1-4-项目模板的划分",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2 首页的开发",
+        "slug": "_2-首页的开发",
+        "link": "#_2-首页的开发",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 navbar 导航栏封装",
+            "slug": "_2-1-navbar-导航栏封装",
+            "link": "#_2-1-navbar-导航栏封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 网络的请求的封装",
+            "slug": "_2-2-网络的请求的封装",
+            "link": "#_2-2-网络的请求的封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 swiper 轮播图封装",
+            "slug": "_2-3-swiper-轮播图封装",
+            "link": "#_2-3-swiper-轮播图封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 推荐信息封装",
+            "slug": "_2-4-推荐信息封装",
+            "link": "#_2-4-推荐信息封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 Tab 标签页封装",
+            "slug": "_2-5-tab-标签页封装",
+            "link": "#_2-5-tab-标签页封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.6 better-scroll 滚动封装",
+            "slug": "_2-6-better-scroll-滚动封装",
+            "link": "#_2-6-better-scroll-滚动封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.7 BackTop 回到顶部",
+            "slug": "_2-7-backtop-回到顶部",
+            "link": "#_2-7-backtop-回到顶部",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.8 上拉加载更多的问题",
+            "slug": "_2-8-上拉加载更多的问题",
+            "link": "#_2-8-上拉加载更多的问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.9 让 Home 保持原来的状态",
+            "slug": "_2-9-让-home-保持原来的状态",
+            "link": "#_2-9-让-home-保持原来的状态",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.10 使用防抖，优化监听",
+            "slug": "_2-10-使用防抖-优化监听",
+            "link": "#_2-10-使用防抖-优化监听",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3 详情页的开发",
+        "slug": "_3-详情页的开发",
+        "link": "#_3-详情页的开发",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 根据商品 ID 配置路由",
+            "slug": "_3-1-根据商品-id-配置路由",
+            "link": "#_3-1-根据商品-id-配置路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 详情页导航栏",
+            "slug": "_3-2-详情页导航栏",
+            "link": "#_3-2-详情页导航栏",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 轮播图",
+            "slug": "_3-3-轮播图",
+            "link": "#_3-3-轮播图",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 商品信息",
+            "slug": "_3-4-商品信息",
+            "link": "#_3-4-商品信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 商家信息",
+            "slug": "_3-5-商家信息",
+            "link": "#_3-5-商家信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.6 商品细节",
+            "slug": "_3-6-商品细节",
+            "link": "#_3-6-商品细节",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.7 评论信息",
+            "slug": "_3-7-评论信息",
+            "link": "#_3-7-评论信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.8 参数信息",
+            "slug": "_3-8-参数信息",
+            "link": "#_3-8-参数信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.9 推荐商品",
+            "slug": "_3-9-推荐商品",
+            "link": "#_3-9-推荐商品",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.10 标题和内容的联动效果",
+            "slug": "_3-10-标题和内容的联动效果",
+            "link": "#_3-10-标题和内容的联动效果",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.11 底部工具栏的封装",
+            "slug": "_3-11-底部工具栏的封装",
+            "link": "#_3-11-底部工具栏的封装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.12 toast 插件的封装",
+            "slug": "_3-12-toast-插件的封装",
+            "link": "#_3-12-toast-插件的封装",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4 购物车页面的开发",
+        "slug": "_4-购物车页面的开发",
+        "link": "#_4-购物车页面的开发",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 使用 Vuex 管理购物车的商品",
+            "slug": "_4-1-使用-vuex-管理购物车的商品",
+            "link": "#_4-1-使用-vuex-管理购物车的商品",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 删除商品",
+            "slug": "_4-2-删除商品",
+            "link": "#_4-2-删除商品",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.3 全选按钮",
+            "slug": "_4-3-全选按钮",
+            "link": "#_4-3-全选按钮",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.4 计算总价格",
+            "slug": "_4-4-计算总价格",
+            "link": "#_4-4-计算总价格",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5 分类页面的开发",
+        "slug": "_5-分类页面的开发",
+        "link": "#_5-分类页面的开发",
+        "children": [
+          {
+            "level": 3,
+            "title": "5.1 导航栏的开发",
+            "slug": "_5-1-导航栏的开发",
+            "link": "#_5-1-导航栏的开发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5.2 侧边栏的开发",
+            "slug": "_5-2-侧边栏的开发",
+            "link": "#_5-2-侧边栏的开发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5.3 商品分类的开发",
+            "slug": "_5-3-商品分类的开发",
+            "link": "#_5-3-商品分类的开发",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "6 项目的优化打包和发布",
+        "slug": "_6-项目的优化打包和发布",
+        "link": "#_6-项目的优化打包和发布",
+        "children": [
+          {
+            "level": 3,
+            "title": "6.1 解决移动端点击问题",
+            "slug": "_6-1-解决移动端点击问题",
+            "link": "#_6-1-解决移动端点击问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.2 图片懒加载",
+            "slug": "_6-2-图片懒加载",
+            "link": "#_6-2-图片懒加载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.3 配置路由懒加载",
+            "slug": "_6-3-配置路由懒加载",
+            "link": "#_6-3-配置路由懒加载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.3 px2vm",
+            "slug": "_6-3-px2vm",
+            "link": "#_6-3-px2vm",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.4 移除 console 的信息",
+            "slug": "_6-4-移除-console-的信息",
+            "link": "#_6-4-移除-console-的信息",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/project/h5/vue2_h5/vue2_h5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "React 项目开发",
+    "headers": [
+      {
+        "level": 2,
+        "title": "创建 React 项目",
+        "slug": "创建-react-项目",
+        "link": "#创建-react-项目",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "项目配置",
+        "slug": "项目配置",
+        "link": "#项目配置",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Router 路由配置",
+        "slug": "router-路由配置",
+        "link": "#router-路由配置",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Redux 状态管理",
+        "slug": "redux-状态管理",
+        "link": "#redux-状态管理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "axios 网络请求",
+        "slug": "axios-网络请求",
+        "link": "#axios-网络请求",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "配置 styled-components",
+        "slug": "配置-styled-components",
+        "link": "#配置-styled-components",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "创建 React + TypeScript 项目",
+        "slug": "创建-react-typescript-项目",
+        "link": "#创建-react-typescript-项目",
+        "children": [
+          {
+            "level": 3,
+            "title": "FC",
+            "slug": "fc",
+            "link": "#fc",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/project/react/react_test/01_react.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文档已经升级到 vue3.0，该组件库已经不适用",
+    "headers": [],
+    "path": "/project/ui/docs/01_ui.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "1 函数相关",
     "headers": [
       {
@@ -11106,6 +11113,35 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "快速上手",
+    "headers": [
+      {
+        "level": 2,
+        "title": "安装（已经弃用）",
+        "slug": "安装-已经弃用",
+        "link": "#安装-已经弃用",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "开始使用",
+        "slug": "开始使用",
+        "link": "#开始使用",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "运行",
+        "slug": "运行",
+        "link": "#运行",
+        "children": []
+      }
+    ],
+    "path": "/project/ui/install/01_install.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "使用自定义工具包",
     "headers": [
       {
@@ -11274,42 +11310,6 @@ export const searchIndex = [
       }
     ],
     "path": "/project/utils/install/04_npm.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文档已经升级到 vue3.0，该组件库已经不适用",
-    "headers": [],
-    "path": "/project/ui/docs/01_ui.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "快速上手",
-    "headers": [
-      {
-        "level": 2,
-        "title": "安装（已经弃用）",
-        "slug": "安装-已经弃用",
-        "link": "#安装-已经弃用",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "开始使用",
-        "slug": "开始使用",
-        "link": "#开始使用",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "运行",
-        "slug": "运行",
-        "link": "#运行",
-        "children": []
-      }
-    ],
-    "path": "/project/ui/install/01_install.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -12145,13 +12145,6 @@ export const searchIndex = [
     "title": "word",
     "headers": [],
     "path": "/web/algorithm/leetcode/word.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "word",
-    "headers": [],
-    "path": "/web/algorithm/word/word.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -14351,6 +14344,13 @@ export const searchIndex = [
       }
     ],
     "path": "/web/js/JavaScript/21_js_BOM.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "word",
+    "headers": [],
+    "path": "/web/algorithm/word/word.html",
     "pathLocale": "/",
     "extraFields": []
   },

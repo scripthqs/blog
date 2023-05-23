@@ -3,3 +3,9 @@ docs/.vuepress/.temp/
 docs/.vuepress/.cache/
 # Node modules
 node_modules/
+docs/.vuepress/.cache/deps/_metadata.json
+docs/.vuepress/.cache/deps/vue-router.js
+docs/.vuepress/.temp/internal/pagesComponents.js
+docs/.vuepress/.temp/internal/pagesData.js
+docs/.vuepress/.temp/internal/pagesRoutes.js
+docs/.vuepress/.temp/internal/searchIndex.js
