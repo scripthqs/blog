@@ -1,1 +1,0 @@
-export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"zh-CN\",\"title\":\"Script\",\"description\":\"前端开发学习笔记\",\"head\":[[\"link\",{\"rel\":\"icon\",\"href\":\"/img/icon.png\"}],[\"meta\",{\"name\":\"viewport\",\"content\":\"width=device-width,initial-scale=1,user-scalable=no\"}]],\"locales\":{}}")

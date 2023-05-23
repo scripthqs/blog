@@ -1,1 +1,0 @@
-export const data = JSON.parse("{\"key\":\"v-3e46aeee\",\"path\":\"/frame/vue/vue3/15_vue3_Plugins.html\",\"title\":\"Vue 插件\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1681912465000},\"filePathRelative\":\"frame/vue/vue3/15_vue3_Plugins.md\"}")

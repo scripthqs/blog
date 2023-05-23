@@ -1,1 +1,0 @@
-export const data = JSON.parse("{\"key\":\"v-6586fc18\",\"path\":\"/web/js/ECMAScript6/05_obj.html\",\"title\":\"对象的简写\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":1680763857000},\"filePathRelative\":\"web/js/ECMAScript6/05_obj.md\"}")
