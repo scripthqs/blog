@@ -1,0 +1,211 @@
+# HTTP 基础
+
+> 问题：当在浏览器地址栏输入 url 时，web 页面是如何呈现的？
+
+HTTP 是超文本传输协议，web 页面使用 HTTP 协议作为规范，完成客户端（浏览器）和服务器端之间通信过程。通俗的讲：网页的资源通常都是放在 web 资源服务器中，由浏览器发送 HTTP 来获取、解析、展示的。
+
+URL 的组成：
+
+- 协议://主机:端口/路径?查询
+- scheme://host:port/path?query#fragment
+
+HTTP 协议，超文本传输协议，详细规定了浏览器和万维网服务器之间相互通信的规则。协议就是约定，规定。
+
+## TCP/IP
+
+为了了解 HTTP，有必要先了解下 TCP/IP 协议族。我们使用的网络包括互联网，都是 TCP/IP 协议族的基础上运行的，HTTP 属于 TCP/IP 内部的子集。
+
+计算机和网络设备通信，双方必须基于相同的方法，或者说规则，这种规则称为协议。这种协议的总称叫做 TCP/IP。
+
+> 也有说法 TCP/IP 是 TCP 和 IP 两种协议。
+
+### 分层管理
+
+TCP/IP 协议族采用分层管理：应用层、传输层、网络层、数据链路层。
+
+1. 应用层：给用户提供服务。FTP 文件传输协议， DNS 域名系统，HTTP 协议属于该层。
+2. 传输层：提供两台计算机数据传输。有 TCP 和 UDP 两个协议。
+3. 网络层：通过哪种路径传输数据。IP 属于网络层。
+4. 链路层：处理连接网络的硬件部分。
+
+![TCP/IP](./images/TCP_IP.png)
+
+发送端从应用层往下走，接收端从应用层往上走。
+
+### IP、TCP、DNS
+
+1. IP 负责传输数据。IP 是协议，IP 地址是被分配的地址，IP 地址可变。
+2. TCP 确保可靠性。TCP 协议采用三次握手策略。
+
+   ![三次握手](./images/three_way.png)
+
+3. DNS 负责域名解析。计算机一般有 IP 地址和域名，IP 地址是长纯数字不便记忆，所以我们一般使用域名。DNS 专门用来转换域名和 IP 地址。
+
+### 页面加载的过程
+
+1. 浏览器查找域名对应的 IP 地址(DNS 查询：浏览器缓存->系统缓存->路由器缓存->ISP DNS 缓存->根域名服务器)
+2. 浏览器向 Web 服务器发送一个 HTTP 请求（TCP 三次握手）
+3. 服务器 301 重定向（从 <http://example.com> 重定向到 <http://www.example.com>）
+4. 浏览器跟踪重定向地址，请求另一个带 www 的网址
+5. 服务器处理请求（通过路由读取资源）
+6. 服务器返回一个 HTTP 响应（报头中把 Content-type 设置为 'text/html'）
+7. 浏览器对 DOM 树构建
+8. 浏览器发送请求获取嵌在 HTML 中的资源（如图片、音频、视频、CSS、JS 等）
+9. 浏览器显示完成页面
+10. 浏览器发送异步请求
+
+简而言之，输入网站域名，先获取到 index.html 文件，遇到 link 元素，下载 css 文件，遇到 script 元素下载 js 文件。
+
+## HTTP 请求
+
+一次 HTTP 请求主要包括请求(Request)和响应(Response)
+
+![HTTP](./images/HTTP.png)
+
+1. 前端应用从浏览器端向服务器发送 HTTP 请求(**请求报文**)
+2. 后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回 HTTP 响应(**响应报文**)
+3. 浏览器端接收到响应, 解析显示响应体/调用监视回调
+
+### HTTP 版本
+
+- HTTP/0.9：发布于 1991 年，只支持 get 请求获取文本数据，当时主要是获取 HTML 页面的内容
+- HTTP/1.0：发布于 1996 年，支持 post、head 等请求方法，支持请求头、响应头，不局限文本数据，可以获取更多数据类型，但是浏览器的每次请求都需要与服务器建立一个 TCP 连接，请求处理完成后立即断开 TCP，每次建立连接增加了性能损耗。
+- HTTP/1.1：发布于 1997 年，目前使用最广泛的版本，增加了 put、delete 等请求方法，采用了持久连接，多个请求可以共用同一个 TCP 连接
+- HTTP/2.0：发布于 2015 年
+- HTTP/3.4：发布于 2018 年
+
+### HTTP 请求方法
+
+HTTP 有不同的请求方法，表示要对给定资源执行不同的操作。简单的可以理解为增删改查。
+
+1. `GET`: 从服务器端**读取**数据（查）
+2. `POST`: 向服务器端**添加**新数据 （增）
+3. `PUT`: **更新**服务器端已经数据 （改）
+4. `DELETE`: **删除**服务器端数据 （删）
+5. `HEAD`：和 GET 请求类似，但是没有响应体。比如准备下载一个文件前，先获取文件的大小，再决定是否进行下载
+
+实际开发中，使用最后的是 get 和 post 请求，并且 post 请求也可以做增改删的功能。
+
+## 请求头
+
+http 请求的 header 就是 http 的请求头，键值对组成，里面一些字段的作用：
+
+- content-type：请求携带的数据类型
+
+  - application/x-www-form-urlencoded：表示数据被编码成以 '&' 分隔的键 - 值对，同时以 '=' 分隔键和值
+  - application/json：表示是一个 json 类型
+  - application/json：表示是一个 json 类型
+  - application/xml：表示是 xml 类型
+  - multipart/form-data：表示是上传文件
+
+- content-length：文件的大小长度
+- keep-alive：在 http1.1 中，所有连接默认是 connection: keep-alive 的
+- accept-encoding：告知服务器，客户端支持的文件压缩格式，比如 js 文件可以使用 gzip 编码，对应 .gz 文件
+- accept：告知服务器，客户端可接受文件的格式类型
+- user-agent：客户端相关的信息
+
+### 请求行
+
+- 请求方法字段
+- URL 字段
+- HTTP 协议版本字段
+
+```js
+method url
+GET /product_detail?id=2
+POST /login
+GET/index.html HTTP/1.1
+```
+
+### 请求体
+
+```js
+username=tom&pwd=123
+{"username": "tom", "pwd": 123}
+```
+
+### 请求报文
+
+- 行：GET/URL/HTTP1.1
+- 头：Host:Cookie:Content-type:User-Agent：
+- 空行:
+- 体:get 请求为空，username=admin&password=admin
+
+## HTTP 响应报文
+
+### 响应状态行
+
+由协议版本 状态码 状态码的原因短语组成
+
+```js
+status statusText
+HTTP/1.1 200 OK
+```
+
+### 多个响应头
+
+```js
+Content-Type: text/html;charset=utf-8
+Set-Cookie: BD_CK_SAM=1;path=/
+```
+
+### 响应体
+
+```js
+html 文本/json 文本/js/css/图片...
+```
+
+### 响应报文
+
+- 行：HTTP/1.1 200（OK） 404（找不到） 403（被禁止）401（未授权）
+- 头：content-type：content-length content-encoding
+- 空行
+- 体:HTML 的内容
+
+## post 请求体参数格式
+
+1. `Content-Type: application/x-www-form-urlencoded;charset=utf-8`
+   用于键值对参数，参数的键值用=连接, 参数之间用&连接
+   例如: `name=%E5%B0%8F%E6%98%8E&age=12`
+2. `Content-Type: application/json;charset=utf-8`
+   用于 json 字符串参数
+   例如: `{"name": "%E5%B0%8F%E6%98%8E", "age": 12}`
+3. `Content-Type: multipart/form-data`
+   用于文件上传请求
+
+## 常见的响应状态码
+
+- `200 OK` 请求成功。一般用于 GET 与 POST 请求
+- `201 Created` 已创建。成功请求并创建了新的资源
+- `301` 重定向
+- `401 Unauthorized` 未授权/请求要求用户的身份认证
+- `403` 没有权限访问
+- `404 Not Found` 服务器无法根据客户端的请求找到资源
+- `405` 请求方法不对
+- `429` 请求过于频繁
+- `500 Internal Server Error` 服务器内部错误，无法完成请求
+- `503` 服务器没有运行
+
+![响应状态码](./images/status.png)
+
+## API 的分类
+
+1. REST API: restful （Representational State Transfer (资源)表现层状态转化）
+
+   - 发送请求进行 CRUD 哪个操作由请求方式来决定
+   - 同一个请求路径可以进行多个操作
+   - 请求方式会用到 GET/POST/PUT/DELETE
+
+2. 非 REST API: restless
+   - 请求方式不决定请求的 CRUD 操作
+   - 一个请求路径只对应一个操作
+   - 一般只有 GET/POST
+
+## 区别一般 http 请求 与 ajax 请求
+
+1. ajax 请求是一种特别的 http 请求
+2. 对服务器端来说, 没有任何区别, 区别在**浏览器端**
+3. 浏览器端发请求: 只有`XHR` 或`fetch` 发出的才是 ajax 请求, 其它所有的都是非 ajax 请求
+4. 浏览器端接收到响应
+   - 一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
+   - ajax 请求: 浏览器不会对界面进行任何更新操作, 只是**调用监视的回调函数**并**传入响应相关数据**
