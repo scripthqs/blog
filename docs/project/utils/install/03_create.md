@@ -19,7 +19,7 @@ npm init -y
 
 ## 下载依赖包
 
-```shell
+```bash
 npm i webpack webpack-cli
 ```
 
@@ -42,7 +42,7 @@ module.exports = {
     filename: "hqs-utils.js",
     // 向外暴露的对象的名称
     library: "utils",
-    // 打包生成库可以通过esm/commonjs/reqirejs的语法引入
+    // 打包生成库可以通过esm/commonjs/requirejs的语法引入
     libraryTarget: "umd",
   },
 };

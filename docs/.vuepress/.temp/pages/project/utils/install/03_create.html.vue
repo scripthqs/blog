@@ -32,7 +32,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">"hqs-utils.js"</span><span class="token punctuation">,</span>
     <span class="token comment">// 向外暴露的对象的名称</span>
     <span class="token literal-property property">library</span><span class="token operator">:</span> <span class="token string">"utils"</span><span class="token punctuation">,</span>
-    <span class="token comment">// 打包生成库可以通过esm/commonjs/reqirejs的语法引入</span>
+    <span class="token comment">// 打包生成库可以通过esm/commonjs/requirejs的语法引入</span>
     <span class="token literal-property property">libraryTarget</span><span class="token operator">:</span> <span class="token string">"umd"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
