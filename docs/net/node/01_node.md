@@ -3,10 +3,14 @@
 相关网址：
 
 - <https://nodejs.org/zh-cn/>
-
 - <http://nodejs.cn/>
 
 Node.js 是一个开源与跨平台的`JavaScript`运行时环境。它是在浏览器外运行，它是一个事件驱动异步 I/O 单进程的**服务端**JS 环境，基于 Google 的 V8 引擎，V8 引擎执行 Javascript 的速度非常快，性能非常好。它使用新的 ECMAScript 标准，不必等待所有用户更新其浏览器，可以通过更改其版本来决定要使用新的标准特性。
+
+js 运行环境
+
+- 浏览器：最常见的环境
+- 服务器环境: Node 项目就是服务器环境
 
 注意：
 
@@ -14,6 +18,17 @@ Node.js 是一个开源与跨平台的`JavaScript`运行时环境。它是在浏
 - Node.js 是 JS 的后端运行环境，在后端中运行无法调用 **DOM 和 BOM 等浏览器内置 API。**
 - nodejs 调用服务查看服务器相关基础 node 环境
 - 在 Node.js 中可以进行一些额外的操作，比如文件系统读/写、网络 IO、加密、压缩解压文件等操作
+
+浏览器环境提供的额外 API 可以分成三大类：
+
+- 浏览器控制类：操作浏览器
+- DOM 类 API：操作网页的各种元素
+- Web 类：实现互联网的各种功能
+
+服务器环境主要提供操作系统的 API，包括
+
+- 文件操作 API
+- 网络通信 API
 
 ## Node.js 运行环境的核心
 
@@ -69,25 +84,6 @@ BFF 中间层
 - web 开发（后端）
 - 接口开发（小程序）
 - 客户端应用工具 gulp、webpack、vue 脚手架、react 脚手架、小程序
-
-## 模块化
-
-NodeJs 基于 Commonjs 模块化开发的规范，**它定义一个 JS 文件就称之为一个模块**
-
-node 的模块类型：
-
-- 核心（内置）模块 - 安装 nodejs 自带的模块
-- 第三方模块 - 需要手动通过(npm/yarn)来进行安装
-- 自定义模块 - 开发者自己编写开发
-
-```js
-// 导出
-module.exports / exports;
-// 导入
-require("module_name");
-```
-
-ES6 标准发布后，module 成为标准，标准使用是以 export 指令导出接口，以 import 引入模块。但是在我们一贯的**node 模块中**，我们依然采用的是 CommonJS 规范，**使用 require 引入模块**，使用 module.exports 导出接口。
 
 ## NodeJS 安装
 

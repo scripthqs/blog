@@ -2,7 +2,6 @@
 
 CDN 边缘网络节点
 
-
 css3 实现毛玻璃背景效果怎么实现?
 3、Promise 的 then 方法为什么能链式调用?
 4、async/ await 是怎么做到串行执行异步操作的?
@@ -122,7 +121,7 @@ cookie 是浏览器访问服务器后，服务器返回的一段数据，通常�
 localStorage.setItem("aaa", (Math.random() * 10).toString());
 
 // 其他窗口监听storage事件
-window.addEventListener("storage", function(e) {
+window.addEventListener("storage", function (e) {
   console.log(e);
   console.log(e.newValue);
 });

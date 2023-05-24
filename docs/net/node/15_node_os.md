@@ -1,5 +1,52 @@
 # 常用内置模块
 
+## Node 全局变量
+
+在 node 中有一个全局对象 global，它的作用和网页中的 window 类似，里面包括了的 process、console、setTimeout
+
+- 在全局中创建的变量会作为 global 的属性保存
+- 在全局中创建的函数会作为 global 的方法保存
+
+当 node 在执行模块中的代码时，他会首先在代码的最顶部，添加如下代码
+
+```js
+    function (exports,require,module,__filename,__dirname){
+
+    }
+```
+
+实际中模块中的代码都是包装在一个函数中执行的，并且在函数执行时，同时传递了 5 个实参
+
+- exports：该对象将变量和函数暴露在外面
+- require：函数，用来引入外部的模块
+- module：module 代表是当前模块的本身，exports 就是 module 的属性，既可以使用 exports 导出，也可以使用 module.exports
+- `__filename`：当前文件的完整路径
+- `__dirname`：当前文件夹的完整路径
+
+```js
+console.log(global);
+console.log(__filename);
+console.log(__dirname);
+```
+
+### 常见的全局对象
+
+process 对象
+
+- 提供了 Node 进程中相关的信息
+- 如 Node 的运行环境、参数信息等
+
+console 对象
+
+- 提供了简单的调试控制台
+
+定时器函数
+
+- setTimeout
+- setInterval
+- setImmediate
+- process.nextTick
+
 更多内置模块及常用内置模块的更多 API 用法，可以参考：<http://nodejs.cn/api/>
 
 ## os 模块
@@ -232,7 +279,7 @@ fs.createReadStream();
 必须为可读流绑定一个 data 事件，data 事件绑定完毕，它会自动读取数据
 
 ```js
-rs.on("data", function(data) {
+rs.on("data", function (data) {
   console.log(data);
 });
 ```
