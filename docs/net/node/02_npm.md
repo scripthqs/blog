@@ -179,7 +179,7 @@ npm run test
    supervisor app.js
    ```
 
-### nodemon
+### nodemon（推荐）
 
 更便于记忆
 

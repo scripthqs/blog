@@ -33,7 +33,7 @@
 
 在 Express 中，符合`restFul`规范的`请求动词`也是被支持的，例如如下代码：
 
-```javascript
+```js
 const express = require("express");
 const app = express();
 
@@ -60,7 +60,7 @@ app.listen(8080, () => {
 
 > 注意点：如果有`地址都一样，但是需要支持所有的请求动词`这种需求，则可以简写成以下代码：
 >
-> ```javascript
+> ```js
 > app.all("/", (req, res) => {
 >   // 业务代码，只要路径匹配上即可
 > });

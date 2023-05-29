@@ -61,7 +61,7 @@ use 数据库名
 #显示当前的库
 db
 
-//给数据库中创建一个members的集合，并向集合中添加文档（行）数据
+# 给数据库中创建一个members的集合，并向集合中添加文档（行）数据
 db.表名/集合名.insert(JSON格式数据)
 db.members.insert({id:1,name:'zhangsan'})
 

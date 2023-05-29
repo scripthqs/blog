@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-26a0cf10","path":"/net/express/04_express_router.html","title":"Express 路由","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"express.Router","slug":"express-router","link":"#express-router","children":[]}],"git":{"updatedTime":1681651780000},"filePathRelative":"net/express/04_express_router.md"}');export{e as data};

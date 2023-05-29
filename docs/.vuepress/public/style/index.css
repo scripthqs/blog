@@ -1,3 +1,8 @@
 .no-sidebar {
   background: url(../img/bg.svg) !important;
 }
+@media (max-width: 1400px) {
+  .no-sidebar {
+    background: none !important;
+  }
+}

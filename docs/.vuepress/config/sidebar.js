@@ -41,6 +41,7 @@ export default {
   "/net/axios/": getChildren("docs/net/axios/"),
   "/net/node/": getChildren("docs/net/node/"),
   "/net/express/": getChildren("docs/net/express/"),
+  "/net/koa/": getChildren("docs/net/koa/"),
   "/net/db/": getChildren("docs/net/db/"),
   "/net/ssr/": getChildren("docs/net/ssr/"),
 

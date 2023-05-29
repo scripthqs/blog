@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-3d3d8902","path":"/net/node/06_buffer.html","title":"Buffer 和二进制","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1684916829000},"filePathRelative":"net/node/06_buffer.md"}');export{e as data};

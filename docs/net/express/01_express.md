@@ -1,18 +1,34 @@
 # Express
 
+使用原生 http 内置模块搭建 web 服务器会比较复杂。
+
+- 目前在 Node 中比较流行的 Web 服务器框架是 express、koa
+- express 早于 koa 出现，并且在 Node 社区中迅速流行起来
+- express 整个框架的核心就是**中间件**
+
 ## 介绍
 
 网址：<https://www.expressjs.com.cn/>
 
 Express 是基于 Node.js 平台，`快速、开放、极简`的 Web 开发框架。**搭建 web 服务器**
 
-Express 的本质：就是一个 npm 上的第三方包，提供了快速创建 Web 服务器的便捷方法。
-
-使用 Express 开发框架可以非常方便、快速的创建 Web 网站的服务器或 API 接口的服务器
+Express 的本质：就是一个 npm 上的第三方包，提供了快速创建 Web 服务器的便捷方法。使用 Express 开发框架可以非常方便、快速的创建 Web 网站的服务器或 API 接口的服务器
 
 ## 安装 Express
 
-在项目目录中，打开 cmd 命令窗口，执行如下命令：
+express 的使用过程有两种方式
+
+- 方式一：通过 express 提供的脚手架，直接创建一个应用的骨架
+
+```bash
+# 安装 express-generator
+npm install -g express-generator
+express express-demo
+npm install
+node bin/www
+```
+
+- 方式二：从零搭建自己的 express 应用结构
 
 ```bash
 npm init -y  # 如果没有项目则先初始化

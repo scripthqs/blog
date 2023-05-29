@@ -8,7 +8,7 @@ filter，过滤器，其作用是根据给定的**判断函数**，返回判定�
 
 ```js
 const nums = [1, 2, 3, 4, 5, 6, 5, 4, 3];
-let newNums = nums.filter(function(n) {
+let newNums = nums.filter(function (n) {
   return n < 5;
 });
 console.log(newNums); //将小于5的数添加到新数组
@@ -21,7 +21,7 @@ console.log(newNums); //将小于5的数添加到新数组
 map 其作用如字面意思——“映射”，将原有数组的元素按照给定的函数将其映射成为一个新的值，并返回新值的集合。给定的函数可以是普通的函数，也可以是箭头函数。
 
 ```js
-let new1Nums = newNums.map(function(n) {
+let new1Nums = newNums.map(function (n) {
   return n * 2;
 });
 console.log(new1Nums); //将刚刚得到的数组*2处理
@@ -34,7 +34,7 @@ console.log(new1Nums); //将刚刚得到的数组*2处理
 归并操作，总共两个参数，第一个是函数，可以理解为累加器，遍历数组累加回传的返回值，第二个是初始数值。如果没有提供初始值，则将使用数组中的第一个元素
 
 ```js
-let new2Nums = new1Nums.reduce(function(preValue, n) {
+let new2Nums = new1Nums.reduce(function (preValue, n) {
   return preValue + n;
 }, 0);
 console.log(new2Nums);
@@ -47,13 +47,13 @@ map、reduce 和 filter 返回的可以（reduce 不一定是）都是数组，�
 ```js
 const nums = [1, 2, 3, 4, 5, 6, 5, 4, 3];
 let total = nums
-  .filter(function(n) {
+  .filter(function (n) {
     return n < 5;
   })
-  .map(function(n) {
+  .map(function (n) {
     return n * 2;
   })
-  .reduce(function(p, n) {
+  .reduce(function (p, n) {
     return p + n;
   }, 0);
 console.log(total);
@@ -75,7 +75,7 @@ find() 方法返回通过测试（函数内判断）的数组的**第一个元�
 
 ```js
 let arr = [1, 2, 3];
-let arr1 = arr.find(function(item) {
+let arr1 = arr.find(function (item) {
   return item >= 2;
 });
 console.log(arr5); //2
@@ -90,7 +90,7 @@ some() 方法会依次执行数组的每个元素：
 
 ```js
 let arr = [2, 4, 6, 8];
-let flag = arr.some(function(item) {
+let flag = arr.some(function (item) {
   return item > 5;
 });
 console.log(flag); //true
@@ -102,7 +102,7 @@ every 方法用于检测数组**所有元素是否都符合指定条件，返回
 
 ```js
 let arr = [2, 4, 6, 8];
-let flag = arr.every(function(item) {
+let flag = arr.every(function (item) {
   return item > 5;
 });
 console.log(flag); //false
@@ -119,7 +119,7 @@ arr.forEach(function(当前元素, 当前元素的索引值, arr), this/undefine
 
 ```js
 var arr = [1, 2, 3, 4, 5];
-var a = arr.forEach(function(value, index, arr) {
+var a = arr.forEach(function (value, index, arr) {
   console.log(value + " " + index + " " + arr);
 });
 ```

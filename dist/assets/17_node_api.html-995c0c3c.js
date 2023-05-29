@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-fe3694ce","path":"/zz/17_node_api.html","title":"接口设计","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"接口安全","slug":"接口安全","link":"#接口安全","children":[]}],"git":{"updatedTime":null},"filePathRelative":"zz/17_node_api.md"}');export{e as data};
