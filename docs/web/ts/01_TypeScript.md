@@ -12,7 +12,7 @@
 - 编辑器 VSCode 也是使用 TypeScript 来完成的
 - 在 React 中已经使用的 ant-design 的 UI 库，也大量使用 TypeScript 来编写
 - 目前公司非常流行 Vue3+TypeScript、React+TypeScript 的开发模式
-- 括小程序开发，也是支持 TypeScript 的
+- 包括小程序开发，也是支持 TypeScript 的
 
 ## TypeScript 开发环境搭建
 
