@@ -203,3 +203,11 @@ FOREIGN KEY (student_id) REFERENCES students(id) ON UPDATE CASCADE,
 FOREIGN KEY (course_id) REFERENCES courses(id) ON UPDATE CASCADE
 );
 ```
+
+## JSON_OBJECT
+
+使用 JSON_OBJECT 可以将数据转成对象
+
+## JSON_ARRAYAGG
+
+JSON_ARRAYAGG 和 JSON_OBJECT 结合可以多对多转成数组
