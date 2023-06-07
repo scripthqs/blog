@@ -107,14 +107,14 @@ vue create vuemall
 2. 封装组件时，一般都会使用到插槽，对于一个完整的 Tabbar 组件，一般需要封装 Tabbar 组件和 TabBarItem 组件
 
 ```vue
-//Tabbar组件
+<!-- Tabbar组件 -->
 <template>
   <div id="tab-bar">
     <slot></slot>
   </div>
 </template>
 
-//TabBarItem组件
+<!-- TabBarItem组件 -->
 <template>
   <div class="tab-bar-item" @click="itemClick">
     <div v-if="!isActive"><slot name="item-icon"></slot></div>
@@ -237,12 +237,7 @@ vue create vuemall
        <slot name="indicator"> </slot>
        <div class="indicator">
          <slot name="indicator" v-if="showIndicator && slideCount > 1">
-           <div
-             v-for="(item, index) in slideCount"
-             class="indi-item"
-             :class="{ active: index === currentIndex - 1 }"
-             :key="index"
-           ></div>
+           <div v-for="(item, index) in slideCount" class="indi-item" :class="{ active: index === currentIndex - 1 }" :key="index"></div>
          </slot>
        </div>
      </div>
@@ -328,8 +323,7 @@ export default {
       class="tab-control-item"
       :class="{ active: index === currentIndex }"
       :key="item"
-      @click="itemClick(index)"
-    >
+      @click="itemClick(index)">
       <span>{{ item }}</span>
     </div>
   </div>
@@ -626,7 +620,7 @@ export function debounce(func, delay = 100) {
   let times = null;
 
   // 返回函数形成闭包，使得 times 变量能够重复引用不被销毁
-  return function(...args) {
+  return function (...args) {
     // 下次调用时如果存在上次的计时，则清空上次的计时并重置计时
     if (times) clearTimeout(times);
     // 设置延时执行函数，以期待下次调用在本次延时未结束时重新进入此处
@@ -878,7 +872,7 @@ import Toast from "./Toast";
 const obj = {};
 export default obj;
 // 在main.js安装插件时，会自动调用该插件的install函数，并自动传入Vue对象
-obj.install = function(Vue) {
+obj.install = function (Vue) {
   // 1.创建组件构造器
   const toastConstructor = Vue.extend(Toast);
   // 2.根据组件构造器，可以创建出一个组件对象
