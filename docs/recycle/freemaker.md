@@ -57,3 +57,141 @@ hello,${w}
 <#import "header.ftl" as header>
 <#include "footer.ftl">
 ```
+
+## 函数
+
+```html
+<#function getOpOptions type ctype>
+  <#assign options = {
+    "varchar": [
+      {"key": "1", "value": "="},
+      {"key": "2", "value": "!="},
+      {"key": "3", "value": "like"},
+      {"key": "4", "value": "left_like"},
+      {"key": "5", "value": "right_like"},
+      {"key": "6", "value": "in"}
+    ],
+    "clob": [
+      {"key": "1", "value": "="},
+      {"key": "2", "value": "!="},
+      {"key": "3", "value": "like"},
+      {"key": "4", "value": "left_like"},
+      {"key": "5", "value": "right_like"},
+      {"key": "6", "value": "in"}
+    ],
+    "number": [
+      {"key": "1", "value": "="},
+      {"key": "2", "value": ">"},
+      {"key": "3", "value": "<"},
+      {"key": "4", "value": ">="},
+      {"key": "5", "value": "<="}
+    ],
+    "int": [
+      {"key": "1", "value": "="},
+      {"key": "2", "value": ">"},
+      {"key": "3", "value": "<"},
+      {"key": "4", "value": ">="},
+      {"key": "5", "value": "<="}
+    ],
+    "date": [
+      {"key": "1", "value": "="},
+      {"key": "2", "value": ">"},
+      {"key": "3", "value": "<"},
+      {"key": "4", "value": ">="},
+      {"key": "5", "value": "<="},
+      {"key": "6", "value": "日期范围"}
+    ]
+  }>
+
+  <#assign otherOption = [
+    {"key": "1", "value": "="},
+    {"key": "2", "value": ">"},
+    {"key": "3", "value": "<"},
+    {"key": "4", "value": ">="},
+    {"key": "5", "value": "<="}
+  ]>
+
+  <#if ctype == "userSelect" || ctype == "orgSelect">
+    <#return [
+      {"key": "1", "value": "="},
+      {"key": "3", "value": "like"},
+      {"key": "6", "value": "in"}
+    ]>
+  <#else>
+    <#if options[type]??>
+      <#return options[type]>
+    <#else>
+      <#return otherOption>
+    </#if>
+  </#if>
+</#function>
+
+
+<#function getOpOptions type ctype>
+  <#assign options = {
+    "varchar": [
+      {"key": "EQUAL", "value": "="},
+      {"key": "NOT_EQUAL", "value": "!="},
+      {"key": "LIKE", "value": "like"},
+      {"key": "LEFT_LIKE", "value": "left_like"},
+      {"key": "RIGHT_LIKE"value": "right_like"},
+      {"key": "IN", "value": "in"}
+    ],
+    "clob": [
+      {"key": "EQUAL", "value": "="},
+      {"key": "NOT_EQUAL", "value": "!="},
+      {"key": "LIKE", "value": "like"},
+      {"key": "LEFT_LIKE", "value": "left_like"},
+      {"key": "RIGHT_LIKE", "value": "right_like"},
+      {"key": "IN", "value": "in"}
+    ],
+    "number": [
+      {"key": "EQUAL", "value": "="},
+      {"key": "GREAT "value": ">"},
+      {"key": "LESS", "value": "<"},
+      {"key": "GREAT_EQUAL", "value": ">="},
+      {"key": "LESS_EQUAL", "value": "<="}
+    ],
+    "int": [
+      {"key": "EQUAL", "value": "="},
+      {"key": "GREAT", "value": ">"},
+      {"key": "LESS", "value": "<"},
+      {"key": "GREAT_EQUAL", "value": ">="},
+      {"key": "LESS_EQUAL", "value": "<="}
+    ],
+    "date": [
+      {"key": "EQUAL", "value": "="},
+      {"key": "GREAT", "value": ">"},
+      {"key": "LESS", "value": "<"},
+      {"key": "GREAT_EQUAL", "value": ">="},
+      {"key": "LESS_EQUAL", "value": "<="},
+      {"key": "between", "value": "日期范围"}
+    ]
+  }>
+
+  <#assign otherOption = [
+    {"key": "1", "value": "="},
+    {"key": "2", "value": ">"},
+    {"key": "3", "value": "<"},
+    {"key": "4", "value": ">="},
+    {"key": "5", "value": "<="}
+  ]>
+
+  <#if ctype == "userSelect" || ctype == "orgSelect">
+    <#return [
+      {"key": "1", "value": "="},
+      {"key": "3", "value": "like"},
+      {"key": "6", "value": "in"}
+    ]>
+  <#else>
+    <#if options[type]??>
+      <#return options[type]>
+    <#else>
+      <#return otherOption>
+    </#if>
+  </#if>
+</#function>
+
+
+```
+
