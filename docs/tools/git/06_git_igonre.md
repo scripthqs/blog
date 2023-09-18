@@ -35,6 +35,7 @@ git 不会将空文件夹上传到服务器，添加.gitkeep 文件即可使用 
 解决方法：git 清除本地缓存（改变成未 track 状态），然后再提交
 
 ```bash
+git rm --cached package-lock.json
 git rm -r --cached .
 git add .
 git commit -m 'update .gitignore'
