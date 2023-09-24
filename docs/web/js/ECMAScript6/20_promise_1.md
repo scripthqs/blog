@@ -4,23 +4,23 @@
 
 ```js
 //自定义Promise函数模块:匿名函数自定义
-(function(window) {
+(function (window) {
   //Promise构造函数
   //executor:执行器函数,（同步执行）(resolve, reject) => {}
   function Promise(executor) {}
 
   //Promise原型上的then方法,指定成功和失败的回调函数,返回一个新的Promise
-  Promise.prototype.then = function(onResolved, onReject) {};
+  Promise.prototype.then = function (onResolved, onReject) {};
   //Promise原型上的catch方法,指定失败的回调函数,返回一个新的Promise
-  Promise.prototype.catch = function(onReject) {};
+  Promise.prototype.catch = function (onReject) {};
   //Promise函数对象的resolve方法,返回指定结果的一个成功Promise
-  Promise.resolve = function(value) {};
+  Promise.resolve = function (value) {};
   //Promise函数对象的reject方法,返回指定reason的一个失败Promise
-  Promise.reject = function(reason) {};
+  Promise.reject = function (reason) {};
   //Promise函数对象的all方法,返回一个Promise,只有所有Promise成功时才成功
-  Promise.all = function(promises) {};
+  Promise.all = function (promises) {};
   //Promise函数对象的race方法,返回一个Promise,其结果由第一个完成的Promise决定
-  Promise.race = function(promises) {};
+  Promise.race = function (promises) {};
   //向外暴露Promise函数
   window.Promise = Promise;
 })(window);
@@ -93,7 +93,7 @@ function Promise(executor) {
 
 ```js
 //Promise原型上的then方法,指定成功和失败的回调函数,返回一个新的Promise
-Promise.prototype.then = function(onResolved, onRejected) {
+Promise.prototype.then = function (onResolved, onRejected) {
   const _this = this;
 
   //返回新的Promise对象
@@ -193,7 +193,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
 
 ```js
 //Promise原型上的then方法,指定成功和失败的回调函数,返回一个新的Promise
-Promise.prototype.then = function(onResolved, onRejected) {
+Promise.prototype.then = function (onResolved, onRejected) {
   // 指定默认的成功的回调onResolved （向后传递成功的value）
   if (typeof onResolved !== "function") {
     onResolved = (value) => value;
@@ -265,7 +265,7 @@ Promise.prototype.then = function(onResolved, onRejected) {
 
 ```js
 //Promise原型上的catch方法,指定失败的回调函数,返回一个新的Promise
-Promise.prototype.catch = function(onRejected) {
+Promise.prototype.catch = function (onRejected) {
   return this.then(undefined, onRejected);
 };
 ```
@@ -273,7 +273,7 @@ Promise.prototype.catch = function(onRejected) {
 ## 5. Promise.resolve
 
 ```js
-Promise.resolve = function(value) {
+Promise.resolve = function (value) {
   //返回一个成功或者失败的Promise
   return new Promise((resolve, reject) => {
     if (value instanceof Promise) {
@@ -290,7 +290,7 @@ Promise.resolve = function(value) {
 
 ```js
 //Promise函数对象的reject方法,返回指定reason的一个失败Promise
-Promise.reject = function(reason) {
+Promise.reject = function (reason) {
   return new Promise((resolve, reject) => {
     reject(reason);
   });
@@ -301,7 +301,7 @@ Promise.reject = function(reason) {
 
 ```js
 //Promise函数对象的all方法,返回一个Promise,只有所有Promise成功时才成功
-Promise.all = function(promises) {
+Promise.all = function (promises) {
   const values = new Array(promises.length); //用来保存所有成功value的数组
   let resolveCount = 0;
   return new Promise((resolve, reject) => {
@@ -331,7 +331,7 @@ Promise.all = function(promises) {
 
 ```js
 //Promise函数对象的race方法,返回一个Promise,其结果由第一个完成的Promise决定
-Promise.race = function(promises) {
+Promise.race = function (promises) {
   //返回一个Promise
   return new Promise((resolve, reject) => {
     promises.forEach((p, index) => {
@@ -353,7 +353,7 @@ Promise.race = function(promises) {
 ## 无注释纯净版本
 
 ```js
-(function(window) {
+(function (window) {
   const PENDING = "pending";
   const RESOLVED = "resolved";
   const REJECTED = "rejected";
@@ -399,7 +399,7 @@ Promise.race = function(promises) {
     }
   }
 
-  Promise.prototype.then = function(onResolved, onRejected) {
+  Promise.prototype.then = function (onResolved, onRejected) {
     onResolved = typeof onResolved === "function" ? onResolved : (value) => value;
     onRejected =
       typeof onRejected === "function"
@@ -445,11 +445,11 @@ Promise.race = function(promises) {
     });
   };
 
-  Promise.prototype.catch = function(onRejected) {
+  Promise.prototype.catch = function (onRejected) {
     return this.then(undefined, onRejected);
   };
 
-  Promise.resolve = function(value) {
+  Promise.resolve = function (value) {
     return new Promise((resolve, reject) => {
       if (value instanceof Promise) {
         value.then(resolve, reject);
@@ -459,13 +459,13 @@ Promise.race = function(promises) {
     });
   };
 
-  Promise.reject = function(reason) {
+  Promise.reject = function (reason) {
     return new Promise((resolve, reject) => {
       reject(reason);
     });
   };
 
-  Promise.all = function(promises) {
+  Promise.all = function (promises) {
     const values = new Array(promises.length);
     let resolveCount = 0;
     return new Promise((resolve, reject) => {
@@ -486,7 +486,7 @@ Promise.race = function(promises) {
     });
   };
 
-  Promise.race = function(promises) {
+  Promise.race = function (promises) {
     return new Promise((resolve, reject) => {
       promises.forEach((p, index) => {
         Promise.resolve(p).then(

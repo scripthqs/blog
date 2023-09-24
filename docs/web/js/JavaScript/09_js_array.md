@@ -120,7 +120,7 @@ num.forEach((v, i, o) => console.log(i, v, o));
 `forEach()`需要一个函数作为参数
 
 ```js
-arr.forEach(function(value, index, obj) {
+arr.forEach(function (value, index, obj) {
   console.log(value, index, obj);
 });
 ```
@@ -258,7 +258,7 @@ arr.toString();
 - 会改变原数组
 
 ```js
-arr2.sort(function(a, b) {
+arr2.sort(function (a, b) {
   return a - b; //升序排列，b-a降序排列
 });
 

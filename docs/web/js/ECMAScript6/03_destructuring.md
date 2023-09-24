@@ -25,10 +25,10 @@ console.log(name1, name2, newNames); //a,b,[undefined, "c", "d"]
 const Person = {
   name: "小明",
   age: "20",
-  fun1: function(name) {
+  fun1: function (name) {
     console.log(this.name);
   },
-  fun2: function(age) {
+  fun2: function (age) {
     console.log(this.age);
   },
 };

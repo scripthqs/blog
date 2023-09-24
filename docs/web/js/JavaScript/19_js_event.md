@@ -116,7 +116,7 @@ JavaScript 是以事件驱动为核心的语言。js 和 html 之间的交互是
 ```js
 document.addEventListener(
   "mousewheel",
-  function(event) {
+  function (event) {
     console.log(event.wheelDelta); //向下滚<0
   },
   false
@@ -128,7 +128,7 @@ document.addEventListener(
 ```js
 document.addEventListener(
   "DOMMouseScroll",
-  function(event) {
+  function (event) {
     console.log(event.detail); //向下滚>0
   },
   false

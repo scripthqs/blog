@@ -106,10 +106,10 @@ p.catch((reason) => {
 ```js
 //写法1：.then()方法同时处理resolved和rejected
 promise.then(
-  function(value) {
+  function (value) {
     // success
   },
-  function(error) {
+  function (error) {
     // failure
   }
 );
@@ -151,13 +151,13 @@ setTimeout(() => {
 回调地狱：回调函数嵌套调用，外部回调函数异步执行的结果是其内部嵌套的回调函数执行的条件
 
 ```js
-doSomething(function(result) {
+doSomething(function (result) {
   doSomethingElse(
     result,
-    function(newResult) {
+    function (newResult) {
       doThirdThing(
         newResult,
-        function(finalResult) {
+        function (finalResult) {
           console.log("Got the final result:" + finalResult);
         },
         failureCallback

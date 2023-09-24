@@ -39,7 +39,7 @@ console.log(Person.prototype.constructor === Person);
 
 ```js
 Person.prototype.test = "hello world";
-Person.prototype.fun = function() {
+Person.prototype.fun = function () {
   console.log("hello world");
 };
 console.log(per.test);
@@ -155,7 +155,7 @@ function Person() {
   this.name = "Tom";
 }
 var per = new Person();
-Object.prototype.hqs = function() {
+Object.prototype.hqs = function () {
   console.log("原型链真简单");
 };
 per.hqs();
@@ -229,10 +229,10 @@ Person.prototype.constructor = Person;
 //将原型对象赋值为一个对象，则需要手动设置constructor
 Person.prototype = {
   constructor: Person, //使用constructor属性指回原来的构造函数
-  fun1: function() {
+  fun1: function () {
     console.log("fun1");
   },
-  fun2: function() {
+  fun2: function () {
     console.log("fun2");
   },
 };
@@ -250,7 +250,7 @@ console.log((2).constructor === Number); // true
 console.log(true.constructor === Boolean); // true
 console.log("str".constructor === String); // true
 console.log([].constructor === Array); // true
-console.log(function() {}.constructor === Function); // true
+console.log(function () {}.constructor === Function); // true
 console.log({}.constructor === Object); // true
 ```
 
@@ -275,7 +275,7 @@ console.log(a.call(2)); //[object Number]
 console.log(a.call(true)); //[object Boolean]
 console.log(a.call("str")); //[object String]
 console.log(a.call([])); //[object Array]
-console.log(a.call(function() {})); //[object Function]
+console.log(a.call(function () {})); //[object Function]
 console.log(a.call({})); //[object Object]
 console.log(a.call(undefined)); //[object Undefined]
 console.log(a.call(null)); //[object Null]

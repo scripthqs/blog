@@ -24,18 +24,7 @@ export default {
     },
   ],
   "/web/ts/": getChildren("docs/web/ts/"),
-  "/web/algorithm/": [
-    {
-      text: "算法基础",
-      collapsible: true,
-      children: getChildren("docs/web/algorithm/docs/"),
-    },
-    {
-      text: "Word",
-      collapsible: true,
-      children: getChildren("docs/web/algorithm/word/"),
-    },
-  ],
+  "/web/algorithm/": getChildren("docs/web/algorithm/"),
   //服务器知识
   "/net/ajax/": getChildren("docs/net/ajax/"),
   "/net/axios/": getChildren("docs/net/axios/"),

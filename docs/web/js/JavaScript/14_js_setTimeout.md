@@ -12,7 +12,7 @@
 - 参数 2：每次调用间隔的时间，单位是毫秒。
 
 ```js
-var timer = setInterval(function() {
+var timer = setInterval(function () {
   console.log(1);
 }, 1000);
 ```
@@ -37,7 +37,7 @@ clearInterval(timer);
 - 参数 2：调用等待的间隔时间，单位是毫秒。
 
 ```js
-var timer = setTimeout(function(a, b) {
+var timer = setTimeout(function (a, b) {
   console.log(a + b);
 }, 1000);
 ```
@@ -48,7 +48,7 @@ var timer = setTimeout(function(a, b) {
 
 ```js
 var timer = setTimeout(
-  function(a, b) {
+  function (a, b) {
     console.log(a + b);
   },
   1000,

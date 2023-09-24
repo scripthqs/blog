@@ -46,7 +46,7 @@ calc(sum);
 calc(foo); //不会报错，函数类型的参数不会被检测
 
 // 3.使用匿名函数
-calc(function(num1, num2) {
+calc(function (num1, num2) {
   return num1 - num2;
 });
 calc(() => 123); //不传参数也不会报错

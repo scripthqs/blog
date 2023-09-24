@@ -110,3 +110,14 @@ calc() 函数可以在执行 css 属性值时执行一些计算。calc() 内部�
 width: calc(100% - 80px);
 background-position: calc(100% - 20px) calc(100% - 10px);
 ```
+
+## opacity
+
+opacity 的值范围从 0 到 1，其中 0 表示完全透明，1 表示完全不透明
+
+```css
+.element {
+  opacity: 0.5; /* 50% 透明度 */
+  background-color: rgba(255, 255, 255, 0.5); /* 白色，50% 透明度 */
+}
+```

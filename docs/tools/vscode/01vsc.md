@@ -103,7 +103,17 @@
   "files.autoSave": "afterDelay",
   "window.zoomLevel": -1,
   "liveServer.settings.CustomBrowser": "chrome",
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  //猜测文件类型
+  "files.autoGuessEncoding": true,
+  //动画
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  //鼠标滚轮字体大小
+  "editor.mouseWheelZoom": true,
+  //折行不换行
+  "editor.wordWrap": "on"
 }
 ```
 

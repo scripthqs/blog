@@ -5,7 +5,7 @@
 ES6 允许使用「箭头」（=>）定义函数。
 
 ```js
-var fn = function(arg1, arg2, arg3) {
+var fn = function (arg1, arg2, arg3) {
   return arg1 + arg2 + arg3;
 }; //ES5写法
 let fn1 = (arg1, arg2, arg3) => {
@@ -62,15 +62,15 @@ fun2.call(obj); //hello
 箭头函数的 this 是静态的，用来**指定回调函数**会非常合适
 
 ```js
-ad.onclick = function() {
+ad.onclick = function () {
   _this = this;
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(this); //this指向window
     _this.style.background = "blue";
   }, 1000);
 };
 
-ad.onclick = function() {
+ad.onclick = function () {
   setTimeout(() => {
     console.log(this); //this指向ad
     this.style.background = "blue";
@@ -84,7 +84,7 @@ ad.onclick = function() {
 
 ```js
 const arr = [1, 2, 3, 4, 5];
-const res = arr.filter(function(item) {
+const res = arr.filter(function (item) {
   return item % 2 == 0;
 });
 console.log(res);

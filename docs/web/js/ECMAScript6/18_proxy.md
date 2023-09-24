@@ -20,11 +20,11 @@ const obj = {
 // 1.针对一个属性
 let _name = obj.name;
 Object.defineProperty(obj, "name", {
-  set: function(newValue) {
+  set: function (newValue) {
     console.log("监听: 给name设置了新的值:", newValue);
     _name = newValue;
   },
-  get: function() {
+  get: function () {
     console.log("监听: 获取name的值");
     return _name;
   },
@@ -36,11 +36,11 @@ const keys = Object.keys(obj);
 Object.keys(obj).forEach((key) => {
   let value = obj[key];
   Object.defineProperty(obj, key, {
-    set: function(newValue) {
+    set: function (newValue) {
       console.log(`监听: 给${key}设置了新的值:`, newValue);
       value = newValue;
     },
-    get: function() {
+    get: function () {
       console.log(`监听: 获取${key}的值`);
       return value;
     },
@@ -82,11 +82,11 @@ const obj = {
 
 // 1.创建一个Proxy对象
 const objProxy = new Proxy(obj, {
-  set: function(target, key, newValue) {
+  set: function (target, key, newValue) {
     console.log(`监听: 监听${key}的设置值: `, newValue);
     target[key] = newValue;
   },
-  get: function(target, key) {
+  get: function (target, key) {
     console.log(`监听: 监听${key}的获取`);
     return target[key];
   },

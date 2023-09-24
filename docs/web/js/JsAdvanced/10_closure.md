@@ -113,7 +113,7 @@ hqs.fn2();
 方法 2：**添加为 window 的方法**
 
 ```js
-(function(w) {
+(function (w) {
   var msg = "abcdeXYZ";
   function fn1() {
     console.log(msg.toUpperCase());
@@ -167,7 +167,7 @@ fn();
 2.**被遗忘的计时器或回调函数：** 设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。
 
 ```js
-var intervalId = setInterval(function() {
+var intervalId = setInterval(function () {
   console.log("------");
 }, 1000);
 //clearInterval(intervalId)
@@ -200,8 +200,8 @@ f();
 var name = "the window";
 var object = {
   name: "my object",
-  getNameFun: function() {
-    return function() {
+  getNameFun: function () {
+    return function () {
       return this.name;
     };
   },
@@ -217,9 +217,9 @@ alert(object.getNameFun()()); //the window
 var name = "the window";
 var object = {
   name: "my object",
-  getNameFun: function() {
+  getNameFun: function () {
     that = this;
-    return function() {
+    return function () {
       return that.name;
     };
   },
@@ -242,7 +242,7 @@ function fun(n, o) {
   //2.undefined 0 1 2
   //3.undefined 0 1
   return {
-    fun: function(m) {
+    fun: function (m) {
       var m = undefined;
       //1.m=1 m=2 m=3
       //2.m=1 m=2 m=3
@@ -256,10 +256,7 @@ var a = fun(0);
 a.fun(1);
 a.fun(2);
 a.fun(3); //undefined 0 0 0
-var b = fun(0)
-  .fun(1)
-  .fun(2)
-  .fun(3); //undefined 0 1 2
+var b = fun(0).fun(1).fun(2).fun(3); //undefined 0 1 2
 var c = fun(0).fun(1);
 c.fun(2);
 c.fun(3); //undefined 0 1 1

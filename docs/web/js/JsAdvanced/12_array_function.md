@@ -124,6 +124,6 @@ var a = arr.forEach(function (value, index, arr) {
 });
 ```
 
-## `. Includes`
+## `.Includes()`
 
 想判断一个数组中是否包含某个元素，可以通过 indexOf 获取结果，并且判断是否为 -1。在 ES7 中，我们可以通过 includes 来判断一个数组中是否包含一个指定的元素，根据情况，如果包含则返回 true，否则返回 false

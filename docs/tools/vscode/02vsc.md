@@ -27,4 +27,10 @@ prettier 的 setting.json 配置文件
   "prettier.bracketSpacing": true, //  prettier-在对象，数组括号与文字之间加空格 "{ foo: bar }"
 ```
 
-## 快捷键
+## CodeSnap
+
+代码截图插件
+
+## Error Lens
+
+报错插件

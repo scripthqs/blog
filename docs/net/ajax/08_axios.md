@@ -54,7 +54,7 @@ function axios({ url, method = "GET", params = {}, data = {} }) {
     }
 
     // 绑定状态改变的监听
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
       // 同步执行
       // 如果请求没有完成，直接结束
       if (request.readyState !== 4) {

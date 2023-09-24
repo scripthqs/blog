@@ -306,6 +306,11 @@ export { localCache, sessionCache }
 
 ## Data 属性
 
+`data-` 属性是一种自定义属性，用于存储与元素相关的私有数据，必须以`data-`开头，可以通过 `dataset` 属性来访问这些自定义属性
+
+- 使用 `setAttribute()`来设置 `data-`属性的值
+- 使用 `getAttribute()`来获取 `data-` 属性的值
+
 ```html
 <div class="box" age="20" data-name="abcd" data-age="25" data-mes="hell world"></div>
 <h1 class="title"></h1>
@@ -314,5 +319,8 @@ export { localCache, sessionCache }
   const boxEl = document.querySelector(".box");
   console.log(boxEl);
   console.log(boxEl.dataset); //可以拿到data对象里面的数据
+  boxEl.setAttribute("data-age", "30");
+  console.log(boxEl.getAttribute("data-name")); // "abcd"
+  console.log(boxEl.getAttribute("data-age")); // "30"
 </script>
 ```

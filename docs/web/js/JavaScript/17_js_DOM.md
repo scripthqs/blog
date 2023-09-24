@@ -1,67 +1,62 @@
-# DOM 简介
+# DOM 操作
 
-Javascript 基础分为 3 个部分：
+## DOM 查询
 
-- ECMAScript:JavaScript 的语法标准，包括变量、表达式、运算符、函数、if 语句、for 语句。
-- DOM：文档对象模型(Document Object Model)，操作网页上的元素的 API。比如让盒子移动、变色、轮播图等。
-- BOM：浏览器对象模型(Browser Object Model)，操作浏览器部分功能的 API。比如让浏览器自动滚动。
+- `innerHTML` 这个属性可以获取到元素内部的 html 代码，对于自结束标签没有意义
+- 如果需要读取元素节点属性：`元素.id` `元素.name` `元素.value`
+- class 属性不能采用这种方式，读取 class 采用：`元素.className`
 
-JS 通过 DOM 来对 HTML 文档进行操作，只要理解 DOM 就可以操作 WEB 页面。
+获取元素节点的子节点
 
-- Document 文档：文档表示整个 HTML 网页文档。
-- Object 对象：将网页中每一个部分都转换成了对象，网页中的标签、文本、注释都是对象。
+- `元素.getElementsByTagName('li');`
+- `子节点数组 = 父节点.childNodes;` 获取所有子节点。根据 DOM，标签中的空白和换行也会当成文本节点。
+- `子节点数组 = 父节点.children;` 获取当前元素的所有子元素
+- `.innerHTML`和`.innerText`的区别，innerText 没有标签，只有文本
+- 在事件的响应函数中，响应函数是给谁绑定的，this 就是谁
 
-- Model 模型：使用模型来表示对象之间的关系，这样方便我们获取对象。
+## 获取 html 文档
 
-## 解析过程
+- `document.title` 获取文档标题
+- `document.head` 获取文档的头标签
+- `document.documentElement;`获取 html 根标签
+- `document.body;`获取 body 标签
+- `document.all;`获取页面中所有元素
+- `var div = document.querySelector(".box1 div");`这个方法总会返回第一个元素，兼容 IE8 及以上
+- `var div = document.querySelectorAll(".box1 div");`这个方法会返回符合条件的数组，兼容 IE8 及以上
 
-HTML 加载完毕，渲染引擎会在内存中把 HTML 文档生成一个 DOM 树，getElementById 是获取内中 BOM 上的元素节点。然后操作的时候修改该元素的属性。DOM 的作用：
+## DOM 的增删改
 
-- 找对象（元素节点）
-- 设置元素的属性值
-- 设置元素的样式
-- 动态创建和删除元素
-- 事件的触发响应：事件源、事件、事件的驱动程序
+- `createElement()`创建元素节点
+- `createTextNode()`创建文本节点
+- `元素.innerHTML="新标签"`
+- `appendChild()`把新的子节点添加到指定节点
+- `父节点.insertBefore(前节点,后节点)`在指定的子节点前面插入新的子节点
+- `父节点.replaceChild(新节点,旧节点)`在指定的子节点前面插入新的子节点
+- `父节点.removeChild(新节点,旧节点)` 删除指定节点
+- `需要删除的节点.parentNode.removeChild(需要删除的节点);`
+- 使用 innerHTML 也能完成 DOM 增删改的相关操作
+- `父元素.innerHTML += "<li>新标签</li>";` 但是修改的内容较大
+- 一般会将两种方法结合使用
+- 在响应函数的末尾加`return false;`可以取消默认行为
+- `confirm("确认删除吗?")`可以弹出确认取消框
 
-## 节点
+## DOM 操作 CSS
 
-节点(node)：构成元素 HTML 网页的最基本单元。网页中的每一个部分都可以称为一个节点，比如：HTML 标签、属性、文本、注释、整个文档都是一个节点。
+通过 JS 修改元素的样式
 
-节点的分类：
-
-- 文档节点（文档）：整个 HTML 文档。
-- 元素节点（标签）：HTML 标签。
-- 属性节点（属性）：元素的属性。
-- 文本节点（文本）：HTML 标签中的文本内容（包括标签之间的空格、换行）。
-
-节点的类型不同，属性和方法也不同，所有的节点都是 Object。
-
-节点的属性：
-
-|              | nodeName  | nodeType | nodeValue |
-| :----------: | :-------: | :------: | :-------: |
-| **文档节点** | #document |    9     |   null    |
-| **元素节点** |  标签名   |    1     |   null    |
-| **属性节点** |  属性名   |    2     |  属性值   |
-| **文本节点** |   #text   |    3     | 文本内容  |
-
-DOM 由节点组成，在 HTML 中，一切都是节点。
-
-## 元素节点的获取
-
-浏览器为我们提供文档节点对象，这个对象是 window 的属性。可以在页面中直接使用，文档节点代表的是整个网页。
-
-- `console.log(document)` 文档对象
-- 通过 document 对象找到元素节点
-- `var div1 = document.getElementById("box1");`通过 id 获取 一个 元素节点（为什么是一个呢？因为 id 是唯一的）
-- `var div2 = document.getElementsByTagName("div")`通过 标签名 获取 元素节点数组，所以有 s
-  - 这个方法会给我返回一个类数组对象，所有查询的元素都会封装到对象中。
-- `var div3 = document.getElementsByClassName("haha")` //方式三：通过 类名 获取 元素节点数组，所以有 s，ie8 及以下不支持
-- 都是通过 document 调用的
-
-## 浏览器加载顺序
-
-浏览器加载页面是按照从上到下的顺序加载的，如果将 script 标签写在页面上边，代码执行时，页面还没加载。
-
-- 可以为 window 绑定一个 onload 事件，该事件对应的响应函数将会在页面加载完毕后执行
-- `window.onload = function(){}`
+- 内联样式
+  - `元素.style.样式名 = "样式值"`
+  - 如果 CSS 中的样式名中含有`-`，比如`background-color`，需要将这种样式名修改为驼峰命名法,`backgroundColor`
+  - `border-top-width`修改为`borderTopWidth`
+  - 通过这种方法设置的样式是内联样式，具有较高的优先级
+  - 通过`元素.style.样式名`可以读取内联样式的属性值
+  - `元素.style["属性"];`这种方法读取更加灵活
+  - 这两种方法返回的属性值都是字符串，并且带单位
+- 元素当前显示的样式
+  - `元素.currentStyle.样式` 但是这种方法只有 IE 才能用
+  - `getComputedStyle()`这个方法 IE9 以上及其他浏览器可以使用，这是 window 的方法，可以直接使用，需要两个参数
+    - 需要获取的样式
+    - 可以传递一个伪元素，一般都传 null
+    - 该方法会返回一个对象，对象封装了当前元素对应的样式
+    - `getComputedStyle(box1,null).width`
+    - 该方法或获取真实的值，而不是默认值，比如宽度，不会获取 auto，而是真实的像素值

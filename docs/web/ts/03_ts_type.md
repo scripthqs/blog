@@ -362,10 +362,10 @@ function move(animal: ISwim | IRun) {
   }
 }
 const fish: ISwim = {
-  swim: function() {},
+  swim: function () {},
 };
 const dog: IRun = {
-  run: function() {},
+  run: function () {},
 };
 move(fish);
 move(dog);
