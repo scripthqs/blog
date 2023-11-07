@@ -8,6 +8,6 @@
 - <scripthqs@qq.com>
 - <scripthqs@gmail.com>
 
-## 每日一句
+## 记单词
 
 <StudyDaily/>
