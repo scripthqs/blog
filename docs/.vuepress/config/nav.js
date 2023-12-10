@@ -33,6 +33,7 @@ export default [
       { text: "小程序", link: "/frame/mini_program/01_mini" },
       { text: "Uni-App", link: "/frame/uniapp/01_uni" },
       { text: "React", link: "/frame/react/01_react" },
+      { text: "Electron", link: "/frame/electron/01_electron" },
     ],
   },
   {

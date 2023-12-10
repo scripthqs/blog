@@ -61,6 +61,8 @@ export default {
   "/frame/mini_program/": getChildren("docs/frame/mini_program/"),
   "/frame/uniapp/": getChildren("docs/frame/uniapp/"),
   "/frame/react/": getChildren("docs/frame/react/"),
+  "/frame/electron/": getChildren("docs/frame/electron/"),
+
 
   //实用工具
   "/tools/vscode/": getChildren("docs/tools/vscode/"),
