@@ -600,7 +600,7 @@ methods:{
 ```vue
 <keep-alive>
       <router-view></router-view>
-    </keep-alive>
+</keep-alive>
 ```
 
 ### 2.10 使用防抖，优化监听
