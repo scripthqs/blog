@@ -440,8 +440,7 @@ this.$router.push("/login");
               checkStrictly: 'true'
             }"
         @change="parentCateChanged"
-        clearable
-      ></el-cascader>
+        clearable></el-cascader>
     </el-form-item> </el-form
 ></el-dialog>
 ```
@@ -459,8 +458,7 @@ this.$router.push("/login");
   stripe
   border
   :show-row-hover="false"
-  :columns="columns"
->
+  :columns="columns">
   <!-- 是否有效 -->
   <!-- <template slot='isok' v-slot="scope"> -->
   <template v-slot:isok="scope">
@@ -490,8 +488,7 @@ this.$router.push("/login");
     绑定的数据元
     :props="{ expandTrigger: 'hover', ...cateProps  (要显示的东西) }"
     @change="handleChange"
-    选择项发生变化
-  ></el-cascader>
+    选择项发生变化></el-cascader>
   cateProps: { label: 'cat_name', 显示的名字 value: 'cat_id', 双向绑定的id children: 'children' 显示的子项 }
   ```
 
@@ -584,16 +581,10 @@ this.$router.push("/login");
 module.exports = {
   chainWebpack: (config) => {
     config.when(process.env.NODE_ENV === "production", (config) => {
-      config
-        .entry("app")
-        .clear()
-        .add("./src/main-prod.js");
+      config.entry("app").clear().add("./src/main-prod.js");
     });
     config.when(process.env.NODE_ENV === "development", (config) => {
-      config
-        .entry("app")
-        .clear()
-        .add("./src/main-dev.js");
+      config.entry("app").clear().add("./src/main-dev.js");
     });
   },
 };

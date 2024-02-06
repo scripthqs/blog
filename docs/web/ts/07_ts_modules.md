@@ -21,7 +21,7 @@ export {};
 需要使用 type 前缀 ，表明被导入的是一个类型
 
 ```ts
-import type { IDType, IPerson } from "./utils/type"
+import type { IDType, IPerson } from "./utils/type";
 ```
 
 ## 类型的查找

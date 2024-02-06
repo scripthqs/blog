@@ -215,6 +215,8 @@ console.log(`和为${a + b}，积为${a * b}`); //ES6新语法
 - `split()`可以将字符串拆分成一个数组，传递一个字符串作为参数，根据该字符串拆分数组
 - `toUpperCase()`将字符串转换成大写并返回
 - `toLowerCase()`将字符串装换成小写并返回
+- `startsWith()`字符串以什么开头
+- `endsWith()`字符串以什么结尾
 
 ## Boolean
 

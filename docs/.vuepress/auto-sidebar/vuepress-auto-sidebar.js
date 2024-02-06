@@ -49,4 +49,4 @@ function prefixPath(basePath, dirPath) {
   // replace用于处理windows电脑的路径用\表示的问题
   return path.join(basePath, dirPath).replace(/\\/g, "/");
 }
-// module.exports = { getChildren: getChildren };
+

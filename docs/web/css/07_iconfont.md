@@ -66,6 +66,6 @@ li::before {
 
 图标字体的本质还是字体，使用图标字体后，即可**设置字体的样式更改图标字体的样式**。
 
-## 3.Iconfont
+## Iconfont(目前最流行)
 
 国内的阿里图标字体库，官网<https://www.iconfont.cn/>

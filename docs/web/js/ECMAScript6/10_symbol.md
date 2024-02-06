@@ -50,10 +50,10 @@ obj[m.up] = () => {
 obj[m.down] = () => {
   console.log("向下");
 };
-obj[Symbol()] = function() {
+obj[Symbol()] = function () {
   console.log("hello");
 };
-obj[Symbol("msg")] = function() {
+obj[Symbol("msg")] = function () {
   console.log("world");
 };
 console.log(obj);

@@ -8,7 +8,7 @@ ES6 允许在大括号里面，直接写入变量和函数，作为对象的属�
 
 ```js
 let msg = "hello";
-let fun = function() {
+let fun = function () {
   console.log("函数fun");
 };
 
@@ -17,7 +17,7 @@ const key = "address" + " city";
 const obj = {
   msg: msg, //ES5写法
   fun, //ES6简写
-  fun1: function() {
+  fun1: function () {
     console.log("对象中的函数fun1"); //ES5写法
   },
   fun2() {

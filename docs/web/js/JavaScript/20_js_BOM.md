@@ -94,7 +94,7 @@ window.open(url, target, param);
     <script>
       var a1 = document.getElementsByTagName("a")[0];
       var a2 = document.getElementsByTagName("a")[1];
-      a1.onclick = function() {
+      a1.onclick = function () {
         var json = {
           name: "helloworld",
           fullscreen: "no",
@@ -107,7 +107,7 @@ window.open(url, target, param);
         //新窗口 = window.open(地址,是否开新窗口,新窗口的各种参数);
         window.open("http://www.baidu.com", "_blank", json);
       };
-      a2.onclick = function() {
+      a2.onclick = function () {
         //关闭本页面
         window.close();
       };
@@ -129,7 +129,7 @@ window.open(url, target, param);
 
 ```js
 //5秒后自动跳转到百度。
-setTimeout(function() {
+setTimeout(function () {
   location.href = "http://www.baidu.com";
 }, 5000);
 ```

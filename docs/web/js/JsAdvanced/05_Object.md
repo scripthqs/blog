@@ -15,7 +15,7 @@ const obj1 = {};
 const obj2 = {
   name: "a",
   age: 20,
-  fun1: function(name) {
+  fun1: function (name) {
     this.name = name;
   },
 };
@@ -28,7 +28,7 @@ function createPerson(name, age, fun) {
   const obj = new Object();
   obj.name = name;
   obj.age = age;
-  obj.fun = function() {
+  obj.fun = function () {
     console.log(this.name);
   };
   return obj;
@@ -54,7 +54,7 @@ console.log(obj1.fun === obj2.fun); //false
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.say = function() {
+  this.say = function () {
     console.log(this.age);
   };
 }
@@ -87,7 +87,7 @@ console.log(per1.say === per2.say); //false
 **使用原型对象来添加公用属性和方法，从而实现代码的复用**。
 
 ```js
-Person.prototype.fun1 = function() {};
+Person.prototype.fun1 = function () {};
 console.log(per1.fun1 === per2.fun1); //true
 ```
 
@@ -135,7 +135,7 @@ JS 中的对象(Object)是依靠构造器(constructor)和原型(prototype)构造
 var p = new Object();
 p.name = "hello";
 p.age = 19;
-p.fun = function(name) {
+p.fun = function (name) {
   this.name = name;
 };
 console.log(p.name); //"hello"
@@ -151,7 +151,7 @@ console.log(p.name); //'world'
 var p = {
   name: "hello",
   age: 20,
-  fun: function(name) {
+  fun: function (name) {
     this.name = name;
   },
 };
@@ -169,7 +169,7 @@ function Person(name, age) {
   var obj = {
     name: name,
     age: age,
-    fun: function(name) {
+    fun: function (name) {
       this.name;
     },
   };
@@ -188,7 +188,7 @@ console.log(p1, p2); //打印是个Object
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.say = function() {
+  this.say = function () {
     console.log(this.age);
   };
 }
@@ -206,7 +206,7 @@ function Person(name, age) {
   this.name = name;
   this.age = age;
 }
-Person.prototype.fun = function(name) {
+Person.prototype.fun = function (name) {
   this.name = name;
 };
 const p1 = new Person("hello", 20);
@@ -224,7 +224,7 @@ console.log(p1, p2); //打印是个Person
 function Father() {
   this.prop1 = "father prototype";
 }
-Father.prototype.showProp1 = function() {
+Father.prototype.showProp1 = function () {
   console.log(this.prop1);
 };
 function Son() {
@@ -233,7 +233,7 @@ function Son() {
 //子类的原型对象为父类的实例对象
 Son.prototype = new Father();
 Son.prototype.constructor = Son; //必须将构造器指回去
-Son.prototype.showProp2 = function() {
+Son.prototype.showProp2 = function () {
   console.log(this.prop2);
 };
 var s1 = new Son();
@@ -271,7 +271,7 @@ function Father(name, age) {
   this.name = name;
   this.age = age;
 }
-Father.prototype.setName = function(name) {
+Father.prototype.setName = function (name) {
   this.name = name;
 };
 function Son(name, age, height) {
@@ -280,7 +280,7 @@ function Son(name, age, height) {
 }
 Son.prototype = new Father(); //为了得到方法
 Son.prototype.constructor = Son; //指向自身的构造函数
-Son.prototype.setHeight = function(height) {
+Son.prototype.setHeight = function (height) {
   this.height = height;
 };
 var s = new Son("hello", 20, 1.81);
@@ -293,7 +293,7 @@ console.log(s.name, s.age, s.height);
 别名: 匿名函数自调用
 
 ```js
-(function() {
+(function () {
   alert("哈哈");
 })();
 ```
@@ -305,7 +305,7 @@ console.log(s.name, s.age, s.height);
 - 可以用来编写 js 模块
 
 ```js
-window.$ = function() {
+window.$ = function () {
   return {
     test: test,
   };

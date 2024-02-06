@@ -46,7 +46,7 @@
    ```
 
    ```js
-   var fun2 = function() {
+   var fun2 = function () {
      console.log("我是匿名函数中封装的代码");
    };
    ```
@@ -68,7 +68,7 @@ obj.fun();
 - 立即执行函数
 
 ```js
-(function() {
+(function () {
   console.log("匿名函数");
 })();
 ```
@@ -92,7 +92,7 @@ apply 与 call 的唯一**区别**就是：**调用 apply 方法时的参数，�
 
 ```js
 let num = 1;
-setInterval(function() {
+setInterval(function () {
   num++;
   console.log(num);
 }, 1000);
@@ -239,7 +239,7 @@ function fn1(a, b, f) {
   console.log(a + b);
   f && f();
 }
-fn1(10, 20, function() {
+fn1(10, 20, function () {
   console.log("我是一个函数");
 });
 ```
@@ -249,7 +249,7 @@ fn1(10, 20, function() {
 ```js
 function fn1() {
   let a = 20;
-  return function() {
+  return function () {
     console.log(a);
   };
 }

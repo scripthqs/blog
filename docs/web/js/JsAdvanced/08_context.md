@@ -203,11 +203,11 @@
 ```js
 //1.进入全局执行上下文
 var a = 10;
-var bar = function(x) {
+var bar = function (x) {
   var b = 5;
   fn(x + b); //3.进入fn执行上下文
 };
-var fn = function(y) {
+var fn = function (y) {
   var c = 5;
   console.log(a + c + y);
 };

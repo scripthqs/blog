@@ -11,7 +11,7 @@
 1. 没有意义的函数，**没有输入，不会变化**，
 
    ```js
-   var test = function() {
+   var test = function () {
      console.log("HelloWorld");
    };
    ```
@@ -19,7 +19,7 @@
 2. **通过传参改变数据**------普通的函数
 
    ```js
-   var test = function(string) {
+   var test = function (string) {
      console.log(string);
    };
    test("HelloWorld");
@@ -40,7 +40,7 @@ function fun1(a, b) {
 **2.函数表达式**：
 
 ```js
-const fun2 = function() {
+const fun2 = function () {
   console.log("hello world");
 };
 ```
@@ -81,7 +81,7 @@ function fn1() {
 - 事件的响应函数，响应函数是给谁绑定的，this 就是谁
 
   ```js
-  btn.onclick = function() {
+  btn.onclick = function () {
     console.log(this);
   };
   ```
@@ -111,7 +111,7 @@ function fn1() {
 别名: 匿名函数自调用
 
 ```js
-(function() {
+(function () {
   alert("哈哈");
 })();
 ```
@@ -123,7 +123,7 @@ function fn1() {
 - 可以用来编写 js 模块
 
 ```js
-window.$ = function() {
+window.$ = function () {
   return {
     test: test,
   };

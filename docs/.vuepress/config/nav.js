@@ -10,7 +10,7 @@ export default [
       { text: "CSS", link: "/web/css/01_css" },
       { text: "JavaScript", link: "/web/js/JavaScript/01_JavaScript" },
       { text: "TypeScript", link: "/web/ts/01_TypeScript" },
-      { text: "数据结构和算法", link: "/web/algorithm/docs/00_intro" },
+      { text: "数据结构和算法", link: "/web/algorithm/00_intro" },
     ],
   },
   {
@@ -33,6 +33,7 @@ export default [
       { text: "小程序", link: "/frame/mini_program/01_mini" },
       { text: "Uni-App", link: "/frame/uniapp/01_uni" },
       { text: "React", link: "/frame/react/01_react" },
+      { text: "Electron", link: "/frame/electron/01_electron" },
     ],
   },
   {

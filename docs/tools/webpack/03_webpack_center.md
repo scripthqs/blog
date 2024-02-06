@@ -18,7 +18,7 @@
 
 ## Mode 模式
 
-指示 webpack 使用相应模式的配置，开发模式（development）和生产模式（production）。
+指示 webpack 使用相应模式的配置，开发模式（development）和生产模式（production）。默认是production
 
 mode=development
 

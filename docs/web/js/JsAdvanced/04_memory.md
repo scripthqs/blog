@@ -78,7 +78,7 @@
 ```js
 let obj1 = {
   name: "a",
-  fun: function() {
+  fun: function () {
     this.name = "c";
   },
 };

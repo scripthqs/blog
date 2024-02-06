@@ -148,7 +148,7 @@ console.log(s.name, s.age, s.height);
 call()的手写：
 
 ```js
-Function.prototype.myCall = function(obj, ...args) {
+Function.prototype.myCall = function (obj, ...args) {
   // 判断 context 是否传入，如果未传入则设置为 window
   obj = obj || window;
   //新建一个唯一的Symbol变量避免重复,作为obj的属性
@@ -165,7 +165,7 @@ Function.prototype.myCall = function(obj, ...args) {
 apply 的手写：
 
 ```js
-Function.prototype.myApply = function(obj, args = []) {
+Function.prototype.myApply = function (obj, args = []) {
   // 判断 context 是否传入，如果未传入则设置为 window
   obj = obj || window;
   //新建一个唯一的Symbol变量避免重复,作为obj的属性
@@ -186,9 +186,9 @@ Function.prototype.myApply = function(obj, args = []) {
 bind 的手写：
 
 ```js
-Function.prototype.myBind = function(obj, ...args) {
+Function.prototype.myBind = function (obj, ...args) {
   let _this = this;
-  return function() {
+  return function () {
     let newArgs = args.concat(...arguments);
     _this.myCall(obj, newArgs); //手写myCall的基础上
   };
