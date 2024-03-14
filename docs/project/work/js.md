@@ -155,24 +155,32 @@ require.context 是 webpack 的一个 api，通过执行 require.context()函数
 
 ```js
 const pointEl = [];
+let intervalId = null;
 const frequency = 500;
+
 alert("请先点击需要连点的按钮，完成后按下回车键");
+
 document.onmousedown = (e) => {
   console.log(e, "获得e元素");
   pointEl.push(e);
 };
+
+const clickPoints = () => {
+  pointEl.forEach((event) => {
+    const element = document.elementFromPoint(event.clientX, event.clientY);
+    console.log(element);
+    element.click();
+  });
+};
+
 document.onkeyup = (e) => {
   if (e.code === "Enter") {
     if (!pointEl.length) return alert("你还未点击按钮");
-    setInterval(() => {
-      pointEl.forEach((event, index) => {
-        setTimeout(() => {
-          const cc = document.elementFromPoint(event.clientX, event.clientY);
-          console.log(cc);
-          cc.click();
-        }, frequency * index);
-      });
-    }, frequency * pointEl.length);
+    intervalId = setInterval(clickPoints, frequency);
+  } else if (e.code === "Escape") {
+    clearInterval(intervalId);
+    intervalId = null;
+    pointEl.length = 0;
   }
 };
 ```
