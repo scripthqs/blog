@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import dataJson from "./study/proverb.json";
 import { getCategory, getWords, deleteWords } from "../service/api";
 export default {
   data() {

@@ -45,17 +45,17 @@ export default [
       { text: "Vite", link: "/tools/vite/01_vite" },
     ],
   },
-  {
-    text: "开源项目",
-    children: [
-      { text: "Vue项目搭建", link: "/project/vue/vue3_ts/vue3_ts_erp" },
-      { text: "React项目搭建", link: "/project/react/react_test/01_react" },
-      { text: "自定义组件库", link: "/project/ui/install/01_install" },
-      { text: "自定义工具函数库", link: "/project/utils/install/01_install" },
-      { text: "H5移动端", link: "/project/h5/vue2_h5/vue2_h5" },
-      { text: "Work", link: "/project/work/css" },
-    ],
-  },
+  // {
+  //   text: "开源项目",
+  //   children: [
+  //     { text: "Vue项目搭建", link: "/project/vue/vue3_ts/vue3_ts_erp" },
+  //     { text: "React项目搭建", link: "/project/react/react_test/01_react" },
+  //     { text: "自定义组件库", link: "/project/ui/install/01_install" },
+  //     { text: "自定义工具函数库", link: "/project/utils/install/01_install" },
+  //     { text: "H5移动端", link: "/project/h5/vue2_h5/vue2_h5" },
+  //     { text: "Work", link: "/project/work/css" },
+  //   ],
+  // },
   {
     text: "留言板",
     link: "/comment/",
