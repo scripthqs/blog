@@ -1,7 +1,5 @@
 # bpm
 
-![image-20230613111358767](C:\Users\qiansheng.huang\AppData\Roaming\Typora\typora-user-images\image-20230613111358767.png)
-
 部署 manage front mobile 代码分支 fix-hqs-20230613
 
 ## bpm 介绍
