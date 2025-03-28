@@ -521,3 +521,11 @@ const router = new VueRouter({
 ## 路由导航
 
 全局前置守卫，beforeEach 参数是回调函数，可以根据 token 判断是否登录跳转
+
+
+## 问题
+
+- 多环境 public 文件夹 window变量
+- 后端数字类型id
+- ai自动翻译
+- 菜单级联勾选，
