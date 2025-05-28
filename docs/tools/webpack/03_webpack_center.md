@@ -6,7 +6,7 @@
 
 ## Output 输出
 
-指示 webpack 打包后的资源 bundles 输入到哪里区，以及如何命名
+指示 webpack 打包后的资源 bundles 输入到哪里去，以及如何命名
 
 ## Loader 翻译
 

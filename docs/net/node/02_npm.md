@@ -14,7 +14,21 @@ NPM（Node Package Manager）是随同 Node.js 一起安装的包管理工具，
 
 npm 仓库地址：<https://www.npmjs.com/>
 
-除了 npm 以外还有 yarn，功能和 npm 一样，也可以作为包管理工具，windows 系统一般使用 npm 就可以了，另外还有 npx（了解）。
+除了 npm 以外还有 yarn，功能和 npm 一样，也可以作为包管理工具，windows 系统一般使用 npm 就可以了，另外还有 npx。
+
+## npx
+
+npx 是 nodejs 自带的命令行工具，全称 node package executor 包执行器
+
+webpack 可执行文件
+
+/node_modules/.bin/webpack
+
+使用 npx 执行一个命令时
+
+1. 先看全局目录是否有这个命令，如果有直接执行
+2. 如果没有，会找当前目录下的 node_modules 的.bin
+3. 如果还是没有，会问你是否需要下载
 
 ## NPM 源切换
 

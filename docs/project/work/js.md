@@ -207,10 +207,7 @@ dayjs.extend(utc);
 
 //北京时间加 8小时
 export function formatUTC(utcString: string, format: string = "YYYY/MM/DD HH:mm:ss") {
-  const resultTime = dayjs
-    .utc(utcString)
-    .utcOffset(8)
-    .format(format);
+  const resultTime = dayjs.utc(utcString).utcOffset(8).format(format);
   return resultTime;
 }
 ```
@@ -444,7 +441,7 @@ export function downloadImage(url, name) {
   let image = new Image();
   // 解决跨域 Canvas 污染问题
   image.setAttribute("crossOrigin", "anonymous");
-  image.onload = function() {
+  image.onload = function () {
     let canvas = document.createElement("canvas");
     canvas.width = image.width;
     canvas.height = image.height;
@@ -485,7 +482,7 @@ function downloadByURL(url, fileName) {
  * @param data  二进制文件流数据
  * @param filename
  */
-const downloadByFile = function(data, filename) {
+const downloadByFile = function (data, filename) {
   if (!data) return;
 
   let url = window.URL.createObjectURL(new Blob([data]));
@@ -508,7 +505,7 @@ const downloadFile = (src: any, fileName: any) => {
   let x = new XMLHttpRequest();
   x.open("GET", src, true);
   x.responseType = "blob";
-  x.onload = function() {
+  x.onload = function () {
     let url = window.URL.createObjectURL(x.response);
     let a = document.createElement("a");
     a.href = url;
@@ -604,16 +601,14 @@ if (response.status === 200) {
 
 blob.slice
 
-
-
 ## 组件封装
 
-1. 单向数据流：子组件不应该修改父组件的数据，不能直接修改props和用this.$parent读取父组件
+1. 单向数据流：子组件不应该修改父组件的数据，不能直接修改 props 和用 this.$parent 读取父组件
 2. 单一职责：不要将多个功能耦合在一个组件中
 3. 高度封装：松耦合，对外提供接口来控制其行为
-4. 高度复用：不要在组件中引入vuex或者redux等状态管理库，或者使用$router或者$store等全局对象。不要依赖外部数据的DOM和CSS
-5. 使用合适的三方库：文档完善、依赖不要庞大、维护及时、下载量、是否允许商业使用、是否支持ESModule(支持Tree shaking)、TS类型支持
-6. 命名规范：多个单词（避免和html元素同名）、大驼峰
-7. 预留拓展空间、slot插槽
+4. 高度复用：不要在组件中引入 vuex 或者 redux 等状态管理库，或者使用$router或者$store 等全局对象。不要依赖外部数据的 DOM 和 CSS
+5. 使用合适的三方库：文档完善、依赖不要庞大、维护及时、下载量、是否允许商业使用、是否支持 ESModule(支持 Tree shaking)、TS 类型支持
+6. 命名规范：多个单词（避免和 html 元素同名）、大驼峰
+7. 预留拓展空间、slot 插槽
 8. 合理适用样式、组件适用类选择器、不应适用元素选择器
 9. 合理适用状态和属性，组件内部适用状态、暴露给外部使用属性
