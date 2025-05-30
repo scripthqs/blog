@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-5b66ed42","path":"/frame/autojs/01_autojs.html","title":"autoJS","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"安装","slug":"安装","link":"#安装","children":[]}],"git":{"updatedTime":1695003057000},"filePathRelative":"frame/autojs/01_autojs.md"}');export{t as data};

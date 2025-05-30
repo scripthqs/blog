@@ -86,6 +86,10 @@ npm uninstall 模块名
 npm root -g
 # 删除
 npm remove(简写r)
+# 查看指定包版本
+npm view vue versions
+# 安装指定包版本
+npm i vue@3.5.16
 ```
 
 安装参数：

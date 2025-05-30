@@ -76,7 +76,7 @@ fs.open("./bbb.txt", (err, fd) => {
 ```js
 const content = "hello world, my name is abcd";
 
-// 2.文件的写入操作
+// 1.异步写入
 fs.writeFile("./ccc.txt", content, { encoding: "utf8", flag: "a" }, (err) => {
   if (err) {
     console.log("文件写入错误:", err);
@@ -84,6 +84,22 @@ fs.writeFile("./ccc.txt", content, { encoding: "utf8", flag: "a" }, (err) => {
     console.log("文件写入成功");
   }
 });
+// 2. 同步写入
+fs.writeFileSync("a.txt", "内容");
+
+// 3. 追加写入
+fs.appendFile("a.txt", "追加内容", (err) => {});
+
+// 低级写入（适合大文件或流式写入）
+fs.open("a.txt", "w", (err, fd) => {
+  fs.write(fd, "内容", (err, written, str) => {
+    fs.close(fd);
+  });
+});
+// 使用流写入
+fs.createWriteStream(path[, options])
+ws.write('内容');
+ws.end();
 ```
 
 flag 的值：
@@ -153,3 +169,34 @@ rs.rename(oldpath,newpath,callcack)
 rs.renameSync(oldpath,newpath)
 
 ```
+
+## path 模块
+
+path 模块用于处理和转换文件路径
+
+```js
+const path = require("path");
+
+// 获取当前文件所在目录
+console.log(__dirname);
+
+// 路径拼接
+const fullPath = path.join(__dirname, "test", "a.txt");
+console.log(fullPath); // 自动处理分隔符
+
+// 解析绝对路径
+const absPath = path.resolve("a", "b", "c.txt");
+console.log(absPath);
+
+// 获取文件扩展名
+console.log(path.extname("index.html")); // .html
+
+// 获取文件名
+console.log(path.basename("/foo/bar/baz.txt")); // baz.txt
+
+// 获取目录名
+console.log(path.dirname("/foo/bar/baz.txt")); // /foo/bar
+```
+
+- path.join([...paths])：将多个路径片段拼接成一个路径，自动处理分隔符，适用构建相对路径。
+- path.resolve([...paths])：将路径或路径片段解析为绝对路径。

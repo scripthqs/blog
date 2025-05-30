@@ -1,1 +1,0 @@
-import{_ as t,o as c,c as o,b as e}from"./app-f4e03468.js";const r={},_=e("h1",{id:"",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#","aria-hidden":"true"},"#")],-1),a=[_];function n(s,d){return c(),o("div",null,a)}const i=t(r,[["render",n],["__file","02_electron_project.html.vue"]]);export{i as default};

@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-ce42f88a","path":"/net/node/05_node_events.html","title":"node 事件","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"事件的常用方法","slug":"事件的常用方法","link":"#事件的常用方法","children":[]}],"git":{"updatedTime":1684916829000},"filePathRelative":"net/node/05_node_events.md"}');export{e as data};

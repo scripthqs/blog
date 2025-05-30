@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-875d7084","path":"/frame/vue/vue3/08_vue3_shallow.html","title":"shallowReactive 与 shallowRef","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1681912465000},"filePathRelative":"frame/vue/vue3/08_vue3_shallow.md"}');export{e as data};

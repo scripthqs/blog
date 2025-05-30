@@ -64,13 +64,20 @@ vite 找到对应的依赖，然后调用 esbuild（对 js 语法进行处理的
 - root
 - envDir:用来配置当前环境变量的文件地址
 
-可以调用 vite 的 loadEnv 来手动确认 env 文件，process.cwd 方法：返回当前 node 进程的工作目录
+Vite 默认是不加载 .env 文件的，可以调用 vite 的 loadEnv 来手动确认 env 文件，process.cwd 方法：返回当前 node 进程的工作目录
 
 - .env：所有环境都用的
 - .env.development:开发环境，vite 默认取名 development
 - .env.product:生产环境，vite 默认取名 product
 
 在客户端，vite 会将环境变量注入到 import.meta.env 里面去，但是 vite 做了一个拦截，保护隐私性变量。必须要以 VITE 开头，才会注入到客户端去，如果我们想要改这个前缀，可以使用 envPrefix 配置
+
+```js
+// 根据当前工作目录中的 `mode` 加载 .env 文件
+// 设置第三个参数为 '' 来加载所有环境变量，而不管是否有
+// `VITE_` 前缀。
+const env = loadEnv(mode, process.cwd(), "");
+```
 
 ## vite 处理 css 模块
 
@@ -177,3 +184,87 @@ vite 内置了很多插件
 5. 配置 vite.config.js，配置别名、自动为文件加后缀、plugins、自定义 env 前缀、构建配置
 6. 更新 process.env 为 import.meta.env
 7. require.context 替换为 import.meta.glob，只支持静态字面量，不支持 alias
+
+## 自定义打包脚本
+
+```js
+// scripts/build.js
+import fs from "fs";
+import path from "path";
+import { spawn } from "child_process";
+// spawn 适合长时间运行、输出较多的命令（如打包、启动服务），输出实时显示，不会有内存限制。
+// exec 适合短命令，输出会缓存在内存里，命令结束后一次性返回，如果输出内容太多可能导致内存溢出
+import { fileURLToPath } from "url";
+
+const args = process.argv.slice(2);
+console.log("传入参数:", args);
+
+const envMap = {
+  a: {
+    VITE_API_URL: "https://api.xxx.com",
+    VITE_APP_TITLE: "生产",
+  },
+  b: {
+    VITE_API_URL: "https://api.test.com",
+    VITE_APP_TITLE: "测试",
+  },
+};
+
+// 兼容 __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// 读取环境名
+const envKey = args[0];
+const envVars = envMap[envKey];
+
+if (!envVars) {
+  console.error(`未找到环境变量配置: ${envKey}`);
+  process.exit(1);
+}
+
+// 生成 .env 文件内容
+let envContent = "";
+Object.entries(envVars).forEach(([key, value]) => {
+  envContent += `${key}=${value}\n`;
+});
+
+// 写入 .env 文件
+const envPath = path.resolve(__dirname, "../.env.temp");
+fs.writeFileSync(envPath, envContent);
+console.log(envContent, ".env 文件已生成:");
+
+// 判断操作系统，选择命令
+const isWin = process.platform === "win32";
+const npxCmd = isWin ? "npx.cmd" : "npx";
+
+// 调用 vite 打包，指定 mode 为 temp
+const vite = spawn(npxCmd, ["vite", "build", "--mode", "temp"], {
+  cwd: path.resolve(__dirname, ".."),
+  stdio: "inherit", //子进程的输出（如打包进度、日志）会直接显示在当前终端。
+});
+
+vite.on("close", (code) => {
+  if (code !== 0) {
+    console.error(`打包进程退出，错误码: ${code}`);
+    process.exit(code);
+  }
+  // 打包成功后的业务逻辑
+  try {
+    fs.unlinkSync(envPath); // 删除临时环境文件
+    console.log(".env.temp 文件已删除");
+  } catch (err) {
+    console.warn(".env.temp 删除失败:", err.message);
+  }
+});
+```
+
+## jsconfig.js
+
+<https://code.visualstudio.com/docs/languages/jsconfig>
+
+用于配置 VS Code（或部分支持 JavaScript 项目的工具）对项目的智能提示、路径别名和代码跳转等功能。
+
+```js
+
+```
