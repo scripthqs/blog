@@ -45,12 +45,12 @@ export default [
       { text: "Vite", link: "/tools/vite/01_vite" },
     ],
   },
-  {
-    text: "前端进阶",
-    children: [
-      { text: "Work", link: "/project/work/01_index" },
-    ],
-  },
+  // {
+  //   text: "前端进阶",
+  //   children: [
+  //     { text: "Work", link: "/project/work/01_index" },
+  //   ],
+  // },
   // {
   //   text: "开源项目",
   //   children: [
