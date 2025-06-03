@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-4ab7ee26","path":"/tools/ai/01_ai.html","title":"AI 工具","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"使用 ai 自动翻译","slug":"使用-ai-自动翻译","link":"#使用-ai-自动翻译","children":[]}],"git":{"updatedTime":1748866921000},"filePathRelative":"tools/ai/01_ai.md"}');export{a as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-446d5bc1","path":"/net/ajax/01_ssr.html","title":"前端数据请求","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"服务端渲染","slug":"服务端渲染","link":"#服务端渲染","children":[]},{"level":2,"title":"前后端分离","slug":"前后端分离","link":"#前后端分离","children":[]}],"git":{"updatedTime":1681303536000},"filePathRelative":"net/ajax/01_ssr.md"}');export{e as data};
