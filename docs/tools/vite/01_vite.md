@@ -164,27 +164,6 @@ vite-aliases：自动生成别名，检测 src 在内的所有文件夹，生成
 
 vite 内置了很多插件
 
-## vue-cli(webpack)升级 vite 攻略
-
-为什么要升级?
-
-项目越来越大,原有的编译速度越来越慢,严重影响开发效效率,而 Vite 以原生 ESM 方式提供源码,让浏
-览器接管了打包程序的部分工作,节省了这部分的打包时间同,从而编译起来显得快多了。
-
-- <https://vitejs.dev/guide/why.html>
-
-- 提升编译构建速度 26 倍
-
-## webpack -> vite
-
-1. 在根目录创建模版 index.html
-2. 安装相关依赖，支持低版本浏览器的 babel、处理 vue、jsx、svg 的插件
-3. 更新 package.json
-4. 升级 vue 2.7.14 版本以上
-5. 配置 vite.config.js，配置别名、自动为文件加后缀、plugins、自定义 env 前缀、构建配置
-6. 更新 process.env 为 import.meta.env
-7. require.context 替换为 import.meta.glob，只支持静态字面量，不支持 alias
-
 ## 自定义打包脚本
 
 ```js
@@ -264,7 +243,3 @@ vite.on("close", (code) => {
 <https://code.visualstudio.com/docs/languages/jsconfig>
 
 用于配置 VS Code（或部分支持 JavaScript 项目的工具）对项目的智能提示、路径别名和代码跳转等功能。
-
-```js
-
-```
