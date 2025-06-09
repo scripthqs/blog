@@ -52,11 +52,11 @@ const dep = new Depend();
 Object.keys(obj).forEach((key) => {
   let value = obj[key];
   Object.defineProperty(obj, key, {
-    set: function(newValue) {
+    set: function (newValue) {
       value = newValue;
       dep.notify();
     },
-    get: function() {
+    get: function () {
       return value;
     },
   });

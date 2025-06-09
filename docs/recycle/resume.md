@@ -11,7 +11,6 @@
 ## 八股文
 
 - css 常见布局 flex 自适应（百分比+flex vh/vw） rem px em 单位
-
 - 输入 url 到看到整个页面，http http2 https
 - promise 微任务宏任务
 - 原型链 作用域 精度问题
@@ -22,3 +21,12 @@
 - watch computed nextTick vue2/vue3 v-if/v-show v-if/v-for
 - webpack plugin loader vite
 - react
+
+## 项目
+
+- webpack +vite 打包
+- vxe-table 动态表单 水印
+- vue hooks
+- echarts 动画 响应式布局
+- ai 翻译、客户
+- ssr nuxt3 svg 动画 过渡 seo 语义化
