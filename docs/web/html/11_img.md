@@ -59,6 +59,36 @@
 
 内联框架的网页不会被搜索引擎检索到，对 SEO 没什么好处，使用较少。
 
+iframe 页面通信
+
+```js
+// 父页面发送
+iframe.contentWindow.postMessage('内容'，'子页面域名')
+// 子页面接收
+// 注意webpack会触发message事件，所以内容最好写个type
+window.addEventListener('message',(event)=>{
+  //安全校验
+  if(event.origin==='父页面域名'){
+    console.log(event.data)
+  }
+})
+
+//子页面发送
+window.parent.postMessage.postMessage('你好，父页面！', 'http://父页面域名');
+
+// window.top 最顶层窗口
+// window.parent：父级窗口
+
+// 父页面接收消息
+window.addEventListener('message', (event) => {
+  if (event.origin === 'http://子页面域名') {
+    console.log('收到子页面消息:', event.data);
+  }
+});
+
+//也可以通过dom操作
+```
+
 ## 多媒体标签(HTML5)
 
 多媒体包括音频`<audio>`和视频`<video>`

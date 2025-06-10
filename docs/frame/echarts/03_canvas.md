@@ -20,12 +20,10 @@ Canvas 是 html5 新增元素，提供了很多 javaScript 绘图 API，例如�
   }
 </style>
 <body>
-  <canvas id="tutorial" width="300" height="300px">
-    你的浏览器不兼容Canvas,请升级您的浏览器!
-  </canvas>
+  <canvas id="tutorial" width="300" height="300px"> 你的浏览器不兼容Canvas,请升级您的浏览器! </canvas>
 
   <script>
-    window.onload = function() {
+    window.onload = function () {
       // 1.拿到canvas的元素对象
       let canvasEl = document.getElementById("tutorial");
       if (!canvasEl.getContext) {
@@ -187,7 +185,7 @@ canvas 的 还有一些 API 设置图片的来源
 ```js
 const image = new Image(); //这种使用比较多
 const img = document.getElementById("img");
-image.onload = function() {}; //图片加载完后有onload事件
+image.onload = function () {}; //图片加载完后有onload事件
 ```
 
 ## 绘制状态
@@ -273,5 +271,61 @@ function draw() {
   ...
   ctx.restore();
   requestAnimationFrame(draw);
+}
+```
+
+## 开发中常用
+
+上传图片前压缩
+
+- ctx.drawImage
+- canvas.toBlob
+
+```js
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+// 4. 导出压缩后的图片（jpeg 格式，质量 0.7）
+canvas.toBlob(
+  function (blob) {
+    // 预览压缩后的图片
+    document.getElementById("preview").src = URL.createObjectURL(blob);
+
+    // 将 blob 上传到服务器
+    // new FormData().append('file', blob)
+  },
+  "image/jpeg",
+  0.7
+);
+```
+
+对页面进行截图：用 html2canvas 库
+
+裁剪图片
+
+```js
+img.onload = function () {
+  // 例如：裁剪图片中间 100x100 区域，绘制到 canvas 左上角
+  const sx = img.width / 2 - 50;
+  const sy = img.height / 2 - 50;
+  const sWidth = 100;
+  const sHeight = 100;
+  const dx = 0;
+  const dy = 0;
+  const dWidth = 100;
+  const dHeight = 100;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+};
+```
+
+滤镜效果
+
+```js
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.filter = currentFilter;
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  ctx.filter = "none"; // 恢复默认
 }
 ```

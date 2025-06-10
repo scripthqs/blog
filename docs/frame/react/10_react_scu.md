@@ -1,5 +1,10 @@
 # React 性能优化
 
+React 父组件的 state 数据发生变化，子组件就算没有用到 state 数据也会跟着更新。
+
+- vue 源码自动依赖收集
+- react 需要使用 React.memo 包装组件
+
 React 在 props 或 state 发生改变时，会调用 React 的 render 方法，会创建一棵不同的树。
 
 - React 需要基于这两个不同的树之间的差别来判断如何有效的更新 UI
@@ -56,7 +61,7 @@ this.setState({ lists: lists });
 
 ```js
 import { memo } from "react";
-const MemoComponent = memo(function(props) {
+const MemoComponent = memo(function (props) {
   console.log("MemoComponent render");
   return <h2>{props.message}</h2>;
 });

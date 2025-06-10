@@ -593,13 +593,57 @@ if (response.status === 200) {
 }
 ```
 
+### file-saver 库实现文件下载
+
 ## 使用阿里云 oss，实现上传下载
 
-## 大文件上传
+## 文件上传
 
-文件切片上传
+files:input 标签读取的文件对象，是 blob 的子类
+blob：文件二进制，包含许多操作方法
+formData:用于和后端传输的对象，后端只能接收 formData 或者 base64 数据
+fileReader:多用于把文件读取为某种格式，如 base64,text 文本
 
-blob.slice
+```js
+// File 对象和 blob 可以互相转
+let file = e.targe.files[0];
+let _sliceBlob = new Blob([file]).slice(0, 5000);
+let _sliceFile = new File([_sliceBlob], "test.png");
+//fileReader 做缩略图 文本预览
+let fr = new FileReader();
+fr.readAsDataURL(_sliceFile);
+fr.onload = function () {
+  console.log(fr.result);
+};
+
+let _formData = new FormData();
+_formData.append("file", file);
+
+//多文件上传
+let fileList = [];
+fileList.forEach((item) => {
+  let _formData = new FormData();
+  _formData.append(item.name, item);
+});
+//切片上传
+async submit(){
+  let file = e.targe.files[0];
+  let size = 2 * 1024 * 1024;
+  let fileSize =file.size
+  let current = 0
+  let percentage = 0
+  while(current<fileSize){
+     let _formData = new FormData();
+     let _sliceFile =file.slice(current,current+size)
+    _formData.append(file.name, _sliceFile);
+    await axios.post('/upload',_formData)
+    //显示上传进度
+    percentage = Math.min((current/fileSize)*100,100)
+    current += size
+  }
+}
+
+```
 
 ## 组件封装
 

@@ -25,8 +25,28 @@
 ## 项目
 
 - webpack +vite 打包
-- vxe-table 动态表单 水印
+- vxe-table 动态表单 水印 el-select 多个 tag 才省略
 - vue hooks
 - echarts 动画 响应式布局
-- ai 翻译、客户
+- ai 翻译、客户、iframe 事件通信 postMessage、eval 函数执行代码字符串
 - ssr nuxt3 svg 动画 过渡 seo 语义化
+- 微前端 monorepo
+- uniapp
+- 代码规范 css bem 块元素修饰符 样式 vue watch 函数入参 try catch
+
+处理第三方库组件没有提供的效果
+
+1. css 控制视觉显影效果，虚伪达成
+2. js 回归原始的 dom 操作
+
+React 在 props 或 state 发生改变时，会调用 React 的 render 方法，会创建一棵不同的树。造成父组件 state 数据一遍，子组件就更新。
+
+- React 需要基于这两个不同的树之间的差别来判断如何有效的更新 UI
+- React 进入了 diff 算法来优化
+- vue 源码自动依赖收集
+- react 需要使用 React.memo 包装组件
+- 父组件传递给子组件的方法用 useCallback 包装一下
+- useState == vue 直接改
+- useEffect == vue 生命周期（依赖数组为空） == vue 的 watch（依赖数组有值）
+- useMemo == vue computed
+- useRef 获取 ref ,也可以保存一些不会引入组件渲染的数据

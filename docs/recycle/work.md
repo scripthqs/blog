@@ -522,10 +522,78 @@ const router = new VueRouter({
 
 全局前置守卫，beforeEach 参数是回调函数，可以根据 token 判断是否登录跳转
 
-
 ## 问题
 
-- 多环境 public 文件夹 window变量
-- 后端数字类型id
-- ai自动翻译
+- 多环境 public 文件夹 window 变量
+- 后端数字类型 id
+- ai 自动翻译
 - 菜单级联勾选，
+
+### 组件库改造
+
+虚拟滚动：scrollTop+clientHeight >=scrollHeight paddingTop paddingBottom
+
+```js
+let span = document.createElement("span");
+span.setAttribute("class", "numContainer");
+
+mounted() {
+  document.querySelector('.mySelect').appendChild(span);
+},
+onChange() {
+// 这里的两个2可以自定义，如果需要实现超过三个选项省略则改为3，以此类推
+  if (this.val instanceof Array && this.val.length > 2) {
+      span.style.display = 'flex';
+      span.innerHTML = `+${this.val.length - 2}`;
+  } else {
+      span.style.display = 'none';
+  }
+},
+
+.mySelect {
+    ::v-deep .el-tag {
+        // 这里的n + 3中的3，是你需要显示的数量+1，比如我需要实现超过两个选项隐藏，这里就是2 + 1
+        &:nth-child(n + 3) {
+            display: none;
+        }
+    }
+    ::v-deep .el-select__tags {
+        white-space: nowrap;
+        overflow: hidden;
+        flex-flow: nowrap;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    ::v-deep .el-select__tags-text {
+        display: inline-block;
+        max-width: 44px; // 根据select下拉框宽度设定，我这里宽度下拉框是 180左右 超出两个隐藏就设为44px了
+        white-space: nowrap;
+        overflow: hidden;
+        flex-flow: nowrap;
+        vertical-align: bottom;
+        text-overflow: ellipsis;
+    }
+    ::v-deep.numContainer {
+        position: absolute;
+        top: 4px;
+        right: 35px;
+        text-rendering: optimizeLegibility;
+        font-size: 12px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        white-space: nowrap;
+        height: 20px;
+        padding: 0 5px;
+        line-height: 19px;
+        box-sizing: border-box;
+        margin: 2px 0 2px 6px;
+        display: none;
+        align-items: center;
+        background-color: #f4f4f5;
+        border-color: #e9e9eb;
+        color: #909399;
+        z-index: 10;
+    }
+}
+```

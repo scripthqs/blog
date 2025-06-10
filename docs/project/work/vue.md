@@ -22,5 +22,3 @@ const virtualNode = {
 ```
 
 真实 DOM 的属性非常多，直接 crud 是非常消耗性能。所以先用 diff 算法对比两个虚拟 DOM 哪里不同，再渲染成真实 DOM。
-
-### snabbdom 简介

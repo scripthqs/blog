@@ -294,8 +294,11 @@ export default App;
 
 ## useMemo
 
+- 和 vue 的计算属性类似
 - useMemo 返回的也是一个 memoized（记忆的） 值
 - 在依赖不变的情况下，多次定义的时候，返回的值是相同的
+
+useCallback、useEffect、useMemo 这些方法如果用到了 state 数据，一定要把这些依赖写在依赖数组里，否则会出现数据不同步、闭包陷阱等 bug。
 
 ## useRef
 
