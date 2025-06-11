@@ -19,6 +19,7 @@
 
 - vue 响应式、diff 算法、虚拟 dom，vue 依赖收集
 - watch computed nextTick vue2/vue3 v-if/v-show v-if/v-for
+- ref/reactive
 - webpack plugin loader vite
 - react
 
