@@ -130,3 +130,10 @@ devServer: {
 - 凡是修改了 `webpack.config.js` 配置文件，或修改了 package.json 配置文件，必须重启实时打包的服务器，否则最新的配置文件无法生效。
 
 - 80 端口在 http 协议中，可以省略。
+
+## 手动编写 plugin
+
+1. 单一职责
+2. 生命周期钩子：compiler/compilation 必须是一个类，且实现 apply(compiler) 方法
+3. 异步处理：注意返回 promise
+4. 错误处理

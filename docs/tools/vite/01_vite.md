@@ -158,11 +158,82 @@ hash 算法：将一串字符串经过运算得到一个新的乱码字符串，
 
 ## vite 插件
 
-vite 会在生命周期的不同阶段调用不同的插件达到目的
+vite 插件的本质是一个返回插件对象的函数，对象中包含各种生命周期钩子。
+
+```js
+export default {
+  plugins: [myPlugin()],
+};
+
+function myPlugin() {
+  return {
+    name: "my-plugin", // 插件名，必填
+    // 配置钩子
+    config(config, env) {
+      // 修改 Vite 配置
+    },
+    // 解析模块路径
+    resolveId(source) {
+      // 自定义模块解析
+    },
+    // 加载文件内容
+    load(id) {
+      // 自定义文件加载
+    },
+    // 转换文件内容
+    transform(code, id) {
+      // 代码转换
+      return code;
+    },
+    // 其他钩子...
+  };
+}
+```
+
+插件返回值:可以返回字符串（转换后的代码）、对象（包含 code、map 等）、或 null（不处理）。
+
+插件顺序:可以通过 enforce: 'pre' | 'post' 控制插件执行顺序。
 
 vite-aliases：自动生成别名，检测 src 在内的所有文件夹，生成别名。插件需要在 vite 执行配置文件之前去改写配置文件。vite 插件必须返回 vite 一个配置对象，为了让插件扩展性更高，设计成函数。
 
 vite 内置了很多插件
+
+## vite 代码分割
+
+vite 的代码分割主要是依赖底层的 rollup 构建能力，通过动态导入 import 和手动配置
+build.rollupOptions.output.manualChunks
+
+只要你在代码中使用了 import() 语法，Vite 会自动把被动态导入的模块单独打包成一个 chunk，实现按需加载。
+
+```js
+// 自动代码分割
+button.onclick = () => {
+  import("./moduleA").then((mod) => {
+    mod.doSomething();
+  });
+};
+```
+
+手动分割：manualChunks
+
+在 vite.config.js 里配置 build.rollupOptions.output.manualChunks，可以自定义如何拆分 chunk，比如把第三方库单独打包。
+
+```js
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            // 每个依赖单独打包
+            return id.toString().split("node_modules/")[1].split("/")[0];
+          }
+        },
+      },
+    },
+  },
+};
+```
 
 ## 自定义打包脚本
 

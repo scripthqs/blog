@@ -35,10 +35,162 @@
 - uniapp
 - 代码规范 css bem 块元素修饰符 样式 vue watch 函数入参 try catch
 
+### webpack->vite
+
+webpack 遍历依赖全量打包启动服务器，慢，配置复杂
+vite 使用浏览器原生 es-module,按需编译动态加载，配置简单
+
+vite 预编译 处理commonjs
+
+- vue 版本
+- vite 插件
+- index.html
+- 环境变量 process.env ->import.meta.env
+- require.context->import.meta.glob
+- 配置别名 resolve.alias
+- 自动为文件加后缀 resolve.extensions
+- sass 降级
+- variables.scss->variables.module.scss
+
+打包：
+
+```js
+// process.argv.slice(2);
+// node 子进程
+import { spawn } from "child_process";
+// 写一个env.temp 的环境变量
+// spawn(npxCmd, ["vite", "build", "--mode", "temp"]
+// 删除env.temp
+```
+
+```js
+build.rollupOptions.output;
+// manualChunks(id) {
+//   if (id.includes("node_modules")) {
+//     // 让每个插件都打包成独立的文件
+//     return id .toString() .split("node_modules/")[1] .split("/")[0] .toString();
+//   }
+// }
+// import _ from "lodash-es"; // 你将会把整个lodash的库引入到项目
+// import { cloneDeep } from "lodash-es"; // 你将会把引入cloneDeep引入到项目
+```
+
+代码分割原理：vite rollup 默认是有 es6 的 import 语法 自动分割，manualChunks 函数手动分割 id绝对路径
+
+- 换成了挂 window 下面
+
 处理第三方库组件没有提供的效果
 
 1. css 控制视觉显影效果，虚伪达成
 2. js 回归原始的 dom 操作
+
+## vue2 和 vue3
+
+1. defineProperty 该为 Proxy,解决数组无法通过下标修改，对象属性增减的问题
+2. 选项式 api 改为组合式编程，方便按需引入，配合 tree-shaking 打包体积变小
+3. vue3 的 mixin 改为 hooks
+4. v-model 监听的事件和传递值不一样
+   - vue2 value，change
+   - vue3 传递 modelValue，监听 update:modelValue
+
+watch/watchEffect/computed
+
+- state、getters、actions 等同于 Vue2 中的 data、computed、methods
+- 可以直接在 store 上访问 state、getters、actions 中定义的属性
+
+- render 函数 cre
+
+Vuex 需要定义 State、Getters、Mutations、Actions、Modules
+
+- 更新唯一方式就是提交 mutations。mutation 必须是同步函数
+- mutation 必须同步，action 支持异步
+
+## ref 和 reactive
+
+ref:支持基本数据类型+引用数据类型
+reactive:只支持引用数据类型
+
+他们解构后都会丢失响应式，需要使用 toRefs。
+
+ref 和 reactive 都可以定义对象、数组，具体使用哪个根据赋值方式来定
+
+- 直接赋值：ref 会保留响应式，reactive 会丢失响应式
+- 修改数据：reactive 和 ref 都可以，但是 ref 需要多写个.value，vscode 可以提供插件自动补全 ref
+
+## diff 算法
+
+框架设计，数据发生改变，引用数据的视图发生改变。
+
+虚拟dom 用js对象模拟dom结构，通过diff算法比较新旧dom，减少不必要的dom更新，跨平台
+
+- 同层比较和优化策略
+- 三大核心操作：移动节点、更新节点、新增和删除节点
+- 差异记录和批量更新
+
+v-for 的 key 作用
+
+- key 属性是 dom 元素的唯一标识， 可以在 diff 算法用来判断是否是同一个节点
+- 可以调高虚拟 dom 的更新效率：使用 index 做 key，破坏顺序操作的时候， 因为每一个节点都找不到对应的 key，导致部分节点不能复用,所有的新 vnode 都需要重新创建。
+- 不设置 key 或者 key 不唯一可能会有 bug：结构中包含输入类的 DOM，会产生错误的 DOM 更新
+- 数据没有逆序添加，逆序删除破坏顺序的操作， 只用于列表展示的话 使用 index 作为 Key 没有毛病
+
+## hooks
+
+1. 函数名前缀加上 use；
+2. 合理利用 Vue 提供的响应式函数及生命周期
+3. 暴露出 变量 和 方法 提供外部需要时使用
+
+## 封装组件
+
+- 单一职责
+- 高内聚低耦合，内部的功能紧密相关，减少组件之间的依赖
+- 灵活的slot，props必填选填明确，使用默认值
+- 像css使用BEM命名 回调事件以on开头，组件内事件以 handle 开头 ，私有方法以 _ 开头
+- 使用computed对props进行二次封装
+
+## ts
+
+数组对象不定属性
+
+```ts
+let arr: [number, string, ...(number | string)[]];
+let obj: { x: string; [propsName: string]: number } = { x: "123", a: 1 };
+```
+
+泛型
+
+- 来在定义时不指定具体类型，使用时再指定类型
+- 泛型约束，extends
+
+类型工具
+
+- `Partial<IPerson>` 变可选
+- `Required<IPerson>` 变必填
+- `Readonly` 只读
+- `Record<Keys, Type>` 构造一个对象类型
+- `ReturnType` 返回值
+
+declare 声明模块、变量、文件、空间等
+
+```ts
+// 引入vue文件不识别
+declare module "*.vue";
+```
+
+tsconfig.json
+
+- compilerOptions
+  - 'jsx':'prev'
+- include
+- exclude
+
+常用
+
+- 泛型 vue 网络请求 page 出参入参
+- package.json 中找 exports 下的 types
+- HTMLInputElement HTMLCanvasElement
+
+## react
 
 React 在 props 或 state 发生改变时，会调用 React 的 render 方法，会创建一棵不同的树。造成父组件 state 数据一遍，子组件就更新。
 
@@ -51,3 +203,8 @@ React 在 props 或 state 发生改变时，会调用 React 的 render 方法，
 - useEffect == vue 生命周期（依赖数组为空） == vue 的 watch（依赖数组有值）
 - useMemo == vue computed
 - useRef 获取 ref ,也可以保存一些不会引入组件渲染的数据
+
+## 公司
+
+架构 人员配比
+试用期 福利待遇 年终奖金

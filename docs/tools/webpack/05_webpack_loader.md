@@ -217,3 +217,11 @@ webpack 的 loader 配置
   }
 }
 ```
+
+## 手动编写 loader
+
+1. 单一职责，只处理某种类型的转换，便于组合和复用
+2. 异步处理：读取文件使用 this.async()获取回调
+3. 返回值：必须返回 string 或 buffer，不能直接返回对象
+4. 缓存：loader 结果可以缓存可以加上 this.cacheable
+5. 参数获取：使用官方推荐的 loaderUtils 工具

@@ -271,3 +271,22 @@ npx --no -- commitlint --edit ${1}
 # .husky/pre-commit
 npx lint-staged
 ```
+
+## 限定 node 和 npm 等包管理工具版本
+
+在 package.json 中添加 engines 字段，指定 node 和 npm 的版本范围：
+
+```js
+{
+  "engines": {
+    "node": ">=16.0.0 <19.0.0",
+    "npm": ">=7.0.0"
+  }
+}
+```
+
+.nvmrc
+
+```js
+18.16.0
+```
