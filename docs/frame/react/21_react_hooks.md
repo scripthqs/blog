@@ -59,6 +59,8 @@ Hook 是 js 函数，可以帮助我们钩入(hook into) React State 以及生�
 
 useState 可以定义个 state 变量，和 class 里面的 this.state 提供的功能完全一样。
 
+useState 的更新是异步的，批量更新重新渲染，数据一致，异步任务更好的协调 ui。
+
 - 参数：接受唯一一个参数，用作初始化值，如果不设置就是 undefined
 - 返回值：数组，包含两个元素，配合数组的解构，完成赋值会非常方便
   - 当前状态的值
