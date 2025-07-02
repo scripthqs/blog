@@ -59,8 +59,6 @@ Hook 是 js 函数，可以帮助我们钩入(hook into) React State 以及生�
 
 useState 可以定义个 state 变量，和 class 里面的 this.state 提供的功能完全一样。
 
-useState 的更新是异步的，批量更新重新渲染，数据一致，异步任务更好的协调 ui。
-
 - 参数：接受唯一一个参数，用作初始化值，如果不设置就是 undefined
 - 返回值：数组，包含两个元素，配合数组的解构，完成赋值会非常方便
   - 当前状态的值
@@ -85,12 +83,57 @@ const App = memo(() => {
 export default App;
 ```
 
+### 操作数组
+
+不要直接修改原数组
+
+- 避免使用 push、pop、splice、sort、reverse 等会直接修改原数组的方法。
+- 直接修改原数组不会触发 React 的视图更新。
+
+推荐用不可变方法
+
+- 使用 concat、filter、map、slice 等返回新数组的方法。
+- 每次都要返回一个新数组给 setState。
+
+### 操作对象
+
+不要直接修改原对象
+
+- 直接修改对象属性（如 obj.key = value）不会触发 React 的视图更新。
+- React 依赖对象引用的变化来判断是否需要重新渲染。
+
+每次都要返回一个新对象
+
+- 使用展开运算符 { ...obj } 或 Object.assign 创建新对象，再传给 setState。
+  这样可以保证对象引用发生变化，React 能检测到并更新视图。
+
+### useState 的更新机制
+
+useState 的更新是异步的，将更新操作放入队列，等到本轮事件循环结束后统一批量处理，然后重新渲染组件。可以提升性能，避免多次重复渲染，并保证数据的一致性。
+
 ## useEffect
 
 Effect Hook 可以用来完成一些类似于 class 中生命周期的功能。
 
 - 类似于网络请求、手动更新 DOM、一些事件的监听，都是 React 更新 DOM 的一些副作用（Side Effects）
 - 对于完成这些功能的 Hook 被称之为 Effect Hook
+- 两个参数：回调函数和依赖数组（可选）
+
+```js
+useEffect(() => {
+  // 副作用逻辑
+  // 在组件渲染后执行副作用逻辑（如请求、订阅、DOM 操作等）。
+  return () => {
+    // 清理逻辑
+    // 可以返回一个清理函数，用于组件卸载或依赖变化时清理副作用。
+  };
+}, [依赖1, 依赖2]);
+// 依赖数组：[依赖1, 依赖2]
+// 控制副作用的执行时机。
+// 为空数组 [] 时只在首次挂载和卸载时执行。
+// 不传时每次渲染都会执行。
+// 填写依赖项时，只有依赖变化才会重新执行副作用。
+```
 
 ```js
 import React, { memo, useState, useEffect } from "react";
@@ -256,6 +299,49 @@ const App = memo(() => {
 export default App;
 ```
 
+## useLayoutEffect
+
+和 useEffect 非常的相似
+
+- useEffect 在 DOM 更新后异步执行，不会阻塞浏览器渲染，不会阻塞 DOM 的更新
+- useLayoutEffect 会在渲染的内容更新到 DOM 上之前执行，会阻塞 DOM 的更新
+
+什么时候用：
+
+1. 需要同步读取或更改 DOM，例如读取元素的带下或者位置，并再渲染前调整
+2. 防止闪烁：某情况下使用异步 useEffect 可能导致布局的跳动或者闪烁
+3. 模拟生命周期的方法
+
+## useReducer
+
+useReducer 有 3 个参数
+
+1. reducer：处理 state 的函数（必选）,接收 (state, action)，返回新 state。
+2. initialState：初始 state（必选）
+3. init：可选的初始化函数（可选）,用于惰性初始化 state 的函数。
+
+```js
+const [state, dispatch] = useReducer(reducer, initialState, init?);
+```
+
+## useSyncExternalStore
+
+用于订阅外部可变数据源（如 Redux、全局状态、原生事件、localStorage 等），保证并发渲染下数据一致性。
+
+```js
+const value = useSyncExternalStore(
+  subscribe,      // 订阅函数，注册回调，数据变化时触发
+  getSnapshot,    // 获取当前快照（同步返回当前值）
+  getServerSnapshot? // SSR 时获取快照（可选）
+);
+```
+
+getSnapshot 如果和上次不同，react 是会重新渲染
+
+## useTransition
+
+useTransition 用于实现并发 UI 更新，让一些“低优先级”的状态更新（如大列表渲染、搜索过滤等）不会阻塞高优先级的交互（如输入、点击）。
+
 ## useContext
 
 在之前的开发中，要在组件中使用共享的 Context 有两种方式
@@ -322,15 +408,6 @@ useRef 返回一个 ref 对象，返回的 ref 对象在组件的整个生命周
 - 父组件可以拿到 DOM 后进行任意的操作
 
 useImperativeHandle 可以只暴露固定的操作
-
-## useLayoutEffect
-
-和 useEffect 非常的相似
-
-- useEffect 会在渲染的内容更新到 DOM 上后执行，不会阻塞 DOM 的更新
-- useLayoutEffect 会在渲染的内容更新到 DOM 上之前执行，会阻塞 DOM 的更新
-
-希望在某些操作发生之后再更新 DOM，那么应该将这个操作放到 useLayoutEffect。
 
 ## redux hooks
 
