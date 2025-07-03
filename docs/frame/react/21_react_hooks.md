@@ -342,6 +342,48 @@ getSnapshot 如果和上次不同，react 是会重新渲染
 
 useTransition 用于实现并发 UI 更新，让一些“低优先级”的状态更新（如大列表渲染、搜索过滤等）不会阻塞高优先级的交互（如输入、点击）。
 
+## useDeferredValue
+
+useDeferredValue 用于延迟某个值的更新，让界面在高优先级更新（如输入、点击）时更流畅，低优先级的内容（如大列表渲染）可以稍后再更新。
+
+和防抖很像，防抖需要一个固定时间，useDeferredValue 是根据用户设备情况觉得，设备好就几乎没有延迟。
+
+useTransition 和 useDeferredValue 的区别：
+
+1. 用于包裹一段低优先级的更新逻辑，主动控制哪些更新可以延后。
+2. 用于延迟某个值的变化，让依赖这个值的渲染变成低优先级。
+
+## useRef
+
+useRef 返回一个 ref 对象，返回的 ref 对象在组件的整个生命周期保持不变。用法：
+
+- 引入 DOM（或者组件，但是需要是 class 组件）元素
+- 保存一个数据，这个对象在整个生命周期中可以保存不变（比如定时器）
+- useRef 保存的数据修改不会导致组件重新渲染，适合保存一些临时变量或缓存
+
+1. 组件在重新渲染时，useRef 的值不会重新初始化
+2. 改变 ref.current 属性时，React 不会重新渲染组件。ref 是一个普通的 js 对象
+3. useRef 的值不能作为 useEffect 等其他 hooks 的依赖项，因为它不是一个响应式数据
+4. useRef 不能直接获取去子组件的实例，需要使用 forwardRef
+
+## forwardRef
+
+用于让父组件可以拿到子组件内部的 ref，常用于函数组件需要暴露 DOM 或实例给父组件的场景。
+
+## useImperativeHandle
+
+对于 ref 和 forwardRef 结合使用
+
+- 通过 forwardRef 可以将 ref 转发到子组件
+- 子组件拿到父组件中创建的 ref，绑定到自己的某一个元素中
+
+这样的做法将子组件的 DOM 直接暴露给了父组件，会有一些问题
+
+- 直接暴露给父组件不可控
+- 父组件可以拿到 DOM 后进行任意的操作
+
+useImperativeHandle 可以只暴露固定的操作
+
 ## useContext
 
 在之前的开发中，要在组件中使用共享的 Context 有两种方式
@@ -387,27 +429,6 @@ export default App;
 - 在依赖不变的情况下，多次定义的时候，返回的值是相同的
 
 useCallback、useEffect、useMemo 这些方法如果用到了 state 数据，一定要把这些依赖写在依赖数组里，否则会出现数据不同步、闭包陷阱等 bug。
-
-## useRef
-
-useRef 返回一个 ref 对象，返回的 ref 对象在组件的整个生命周期保持不变。用法：
-
-- 引入 DOM（或者组件，但是需要是 class 组件）元素
-- 保存一个数据，这个对象在整个生命周期中可以保存不变
-
-## useImperativeHandle
-
-对于 ref 和 forwardRef 结合使用
-
-- 通过 forwardRef 可以将 ref 转发到子组件
-- 子组件拿到父组件中创建的 ref，绑定到自己的某一个元素中
-
-这样的做法将子组件的 DOM 直接暴露给了父组件，会有一些问题
-
-- 直接暴露给父组件不可控
-- 父组件可以拿到 DOM 后进行任意的操作
-
-useImperativeHandle 可以只暴露固定的操作
 
 ## redux hooks
 
