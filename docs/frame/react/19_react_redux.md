@@ -444,3 +444,49 @@ const homeSlice = createSlice({
 export const { changeBanners, changeRecommends } = homeSlice.actions;
 export default homeSlice.reducer;
 ```
+
+## zustand
+
+```bash
+npm install zustand
+```
+
+```js
+// store.js
+import { create } from "zustand";
+
+// 创建 store
+interface StoreState {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+}
+
+const useStore = create<StoreState>((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+}));
+
+export default useStore;
+
+
+
+// 组件中使用
+import React from 'react';
+import useStore from './store';
+
+function Counter() {
+  const { count, increment, decrement } = useStore();
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>+1</button>
+      <button onClick={decrement}>-1</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
