@@ -19,7 +19,7 @@ SSG(Static Site Generate) 静态站点生成
 SSR(Server Side Render)服务器端渲染
 
 - 构建 SSR 应用常见的库和框架有： Vue Nuxt、 React Next.js 等
-- 在服务器端渲染页面，并将渲染好 HTML 返回给浏览器呈现
+- 在服务器端渲染页面，并将渲染好 HTML 返回给浏览器呈现，浏览器拿到就是完整页面。
 - 利于 SEO，更快的首屏渲染速度
 - 但是更消耗服务器资源，开发者需要注意代码运行环境，服务器端还是浏览器端
 

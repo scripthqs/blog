@@ -268,3 +268,21 @@ vw 相比于 rem 的优势：
   overflow-y: auto;
 }
 ```
+
+## 移动端 1px 问题
+
+现象：在高分辨率的移动设备下，直接写 1px 的边框会比实际粗。
+原因：移动设备物理像素密度高，一个 css 像素对应多个物理像素，直接用 1px 渲染的线宽会被放大
+
+`window.devicePixelRatio` 可以获取当前设备的物理像素与 CSS 像素的比例
+
+解决方案：
+
+1. 小程序等可以支持 0.5px
+2. 使用 transform 缩放
+3. 设置 viewport + rem
+
+## 移动端异性屏
+
+1. 使用安全区域适配 ，`env(safe-area-inset-top)`
+2. 在 meta 标签中添加 `viewport-fit=cover`，让页面内容可以延伸到整个屏幕，包括异形区域。
