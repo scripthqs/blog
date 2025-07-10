@@ -1,1 +1,0 @@
-import{_ as s,o as c,c as t,b as e,e as a}from"./app-007a9be1.js";const o={},r=e("h1",{id:"scss",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#scss","aria-hidden":"true"},"#"),a(" scss")],-1),n=[r];function _(d,i){return c(),t("div",null,n)}const l=s(o,[["render",_],["__file","scss.html.vue"]]);export{l as default};

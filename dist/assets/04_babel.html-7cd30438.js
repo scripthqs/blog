@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-58e38ae8","path":"/tools/vite/04_babel.html","title":"babel","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1750860883000},"filePathRelative":"tools/vite/04_babel.md"}');export{e as data};
